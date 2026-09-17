@@ -17,11 +17,11 @@ export default function PackagesPage() {
             />
           </div>
           <div className="enterprise-container relative z-10">
-            <h1 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-3">All Health Packages</h1>
-            <p className="text-muted-foreground text-base max-w-xl mb-4">
+            <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground mb-3">All Health <span className="text-primary">Packages</span></h1>
+            <p className="type-primary-body-b1 text-muted-foreground max-w-xl mb-4">
               Choose from our curated health packages designed to keep you and your family healthy.
             </p>
-            <div className="flex items-center gap-2 text-sm text-primary bg-primary/5 px-4 py-2 rounded-full w-fit">
+            <div className="flex items-center gap-2 type-primary-body-b2 text-primary bg-primary/5 px-4 py-2 rounded-full w-fit">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
