@@ -272,12 +272,12 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
     >
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Basic Information */}
-        <section className="border border-gray-100 rounded-xl p-5 bg-white">
+        <section className="border border-border rounded-xl p-5 bg-card">
           <div className="flex items-center gap-2 mb-5">
-            <span className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+            <span className="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
               <FileText size={16} />
             </span>
-            <h3 className="font-semibold text-gray-900">Basic Information</h3>
+            <h3 className="type-primary-body-b1-medium text-foreground">Basic Information</h3>
           </div>
 
           <div className="grid md:grid-cols-[1fr_1fr_1fr_auto] gap-5 items-start">
@@ -325,9 +325,9 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
             </div>
 
             {/* Assigned Icon panel */}
-            <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4 flex flex-col items-center text-center gap-2 min-w-[180px]">
-              <span className="text-sm font-medium text-gray-700">Assigned Icon</span>
-              <div className="w-14 h-14 rounded-xl bg-white border border-gray-100 flex items-center justify-center overflow-hidden shadow-sm">
+            <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex flex-col items-center text-center gap-2 min-w-[180px]">
+              <span className="type-primary-body-b2-medium text-foreground">Assigned Icon</span>
+              <div className="w-14 h-14 rounded-xl bg-card border border-border flex items-center justify-center overflow-hidden shadow-sm">
                 {testData.iconUpload ? (
                   <img
                     src={testData.iconUpload}
@@ -338,10 +338,10 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
                   getCategoryIcon()
                 )}
               </div>
-              <div className="text-sm font-semibold text-gray-900">
+              <div className="type-primary-body-b2-medium text-foreground">
                 {testData.iconUpload ? 'Custom Icon' : testData.icon.name}
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="type-primary-body-b2 text-muted-foreground">
                 {testData.iconUpload ? 'Uploaded image' : `Category: ${testData.icon.category}`}
               </div>
               <Button type="button" variant="outline" size="sm" className="mt-1" onClick={() => { setIconPickerMode('library'); setIconPickerOpen(true) }}>
@@ -353,12 +353,12 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
         </section>
 
         {/* Pricing */}
-        <section className="border border-gray-100 rounded-xl p-5 bg-white">
+        <section className="border border-border rounded-xl p-5 bg-card">
           <div className="flex items-center gap-2 mb-5">
-            <span className="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+            <span className="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
               <Percent size={16} />
             </span>
-            <h3 className="font-semibold text-gray-900">Pricing</h3>
+            <h3 className="type-primary-body-b1-medium text-foreground">Pricing</h3>
           </div>
           <div className="grid md:grid-cols-4 gap-5">
             <Input
@@ -402,12 +402,12 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
         </section>
 
         {/* Test Information */}
-        <section className="border border-gray-100 rounded-xl p-5 bg-white">
+        <section className="border border-border rounded-xl p-5 bg-card">
           <div className="flex items-center gap-2 mb-5">
-            <span className="w-7 h-7 rounded-lg bg-green-50 text-green-600 flex items-center justify-center">
+            <span className="w-7 h-7 rounded-lg bg-success/10 text-success flex items-center justify-center">
               <FileText size={16} />
             </span>
-            <h3 className="font-semibold text-gray-900">Test Information</h3>
+            <h3 className="type-primary-body-b1-medium text-foreground">Test Information</h3>
           </div>
           <div className="grid md:grid-cols-4 gap-5">
               <Select
@@ -447,17 +447,17 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
               />
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-sm font-medium text-gray-700">
-                Fasting Required <span className="text-red-500">*</span>
+              <label className="type-primary-body-b2-medium text-foreground">
+                Fasting Required <span className="text-destructive">*</span>
               </label>
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={() => handleFastingSelect('yes')}
-                  className={`flex-1 rounded-lg border py-2.5 text-sm font-medium transition-colors ${
+                  className={`flex-1 rounded-lg border py-2.5 type-primary-body-b2-medium transition-colors ${
                     testData.fastingRequired === 'yes'
-                      ? 'border-blue-500 text-blue-600 bg-blue-50'
-                      : 'border-gray-200 text-gray-600'
+                      ? 'border-primary text-primary bg-primary/10'
+                      : 'border-border text-muted-foreground'
                   }`}
                 >
                   Yes
@@ -465,10 +465,10 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
                 <button
                   type="button"
                   onClick={() => handleFastingSelect('no')}
-                  className={`flex-1 rounded-lg border py-2.5 text-sm font-medium transition-colors ${
+                  className={`flex-1 rounded-lg border py-2.5 type-primary-body-b2-medium transition-colors ${
                     testData.fastingRequired === 'no'
-                      ? 'border-blue-500 text-blue-600 bg-blue-50'
-                      : 'border-gray-200 text-gray-600'
+                      ? 'border-primary text-primary bg-primary/10'
+                      : 'border-border text-muted-foreground'
                   }`}
                 >
                   No
@@ -479,12 +479,12 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
         </section>
 
         {/* Description */}
-        <section className="border border-gray-100 rounded-xl p-5 bg-white">
+        <section className="border border-border rounded-xl p-5 bg-card">
           <div className="flex items-center gap-2 mb-5">
-            <span className="w-7 h-7 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center">
+            <span className="w-7 h-7 rounded-lg bg-warning/10 text-warning flex items-center justify-center">
               <FileText size={16} />
             </span>
-            <h3 className="font-semibold text-gray-900">Description</h3>
+            <h3 className="type-primary-body-b1-medium text-foreground">Description</h3>
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             <Textarea
@@ -539,12 +539,12 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
         onClose={() => setIconPickerOpen(false)}
         size="md"
       >
-        <div className="flex gap-1 rounded-lg bg-gray-100 p-1 mb-4">
+        <div className="flex gap-1 rounded-lg bg-surface p-1 mb-4">
           <button
             type="button"
             onClick={() => setIconPickerMode('library')}
-            className={`flex-1 rounded-md py-2 text-sm font-medium transition-colors ${
-              iconPickerMode === 'library' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500'
+            className={`flex-1 rounded-md py-2 type-primary-body-b2-medium transition-colors ${
+              iconPickerMode === 'library' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
             }`}
           >
             Library
@@ -552,8 +552,8 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
           <button
             type="button"
             onClick={() => setIconPickerMode('upload')}
-            className={`flex-1 rounded-md py-2 text-sm font-medium transition-colors ${
-              iconPickerMode === 'upload' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500'
+            className={`flex-1 rounded-md py-2 type-primary-body-b2-medium transition-colors ${
+              iconPickerMode === 'upload' ? 'bg-card text-foreground shadow-sm' : 'text-muted-foreground'
             }`}
           >
             Upload
@@ -569,24 +569,24 @@ const AddTestModal = ({ open, onClose, onCreated, initialData, testId, mode = 'c
                 onClick={() => handleIconSelect(icon)}
                 className={`flex flex-col items-center gap-1.5 rounded-lg border p-3 transition-colors ${
                   !testData.iconUpload && testData.icon?.name === icon.id
-                    ? 'border-blue-500 bg-blue-50 text-blue-700'
-                    : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border text-muted-foreground hover:bg-surface'
                 }`}
               >
                 <icon.Icon size={20} />
-                <span className="text-[11px] font-medium">{icon.label}</span>
+                <span className="type-primary-body-b2-medium">{icon.label}</span>
               </button>
             ))}
           </div>
         ) : (
-          <label className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-200 rounded-xl py-12 cursor-pointer hover:border-blue-300 transition-colors text-center">
-            <span className="w-11 h-11 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center">
+          <label className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-border rounded-xl py-12 cursor-pointer hover:border-primary/50 transition-colors text-center">
+            <span className="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center">
               <UploadCloud size={20} />
             </span>
-            <span className="text-sm font-medium text-gray-800">
+            <span className="type-primary-body-b2-medium text-foreground">
               {testData.iconUpload ? 'Custom icon selected' : 'Upload Icon'}
             </span>
-            <span className="text-xs text-gray-400">SVG, PNG up to 2MB</span>
+            <span className="type-primary-body-b2 text-muted-foreground">SVG, PNG up to 2MB</span>
             <input
               type="file"
               accept="image/*,.svg"

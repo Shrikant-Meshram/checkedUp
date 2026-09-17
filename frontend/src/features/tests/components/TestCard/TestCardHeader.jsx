@@ -32,7 +32,7 @@ const TestCardHeader = ({ testName, testCode, iconName }) => {
           <Icon size={22} />
         </span>
         <div className="min-w-0">
-          <h3 className="font-semibold text-foreground text-sm truncate" title={testName}>
+          <h3 className="type-primary-body-b1-medium md:type-primary-body-b2-medium capitalize text-foreground truncate" title={testName}>
             {testName}
           </h3>
         </div>

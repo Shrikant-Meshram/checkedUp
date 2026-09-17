@@ -104,22 +104,22 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b2 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b2 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b2 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
 )
 
 const DetailRow = ({ label, value, valueClass = 'text-foreground' }) => (
-  <div className="flex items-center justify-between py-2 text-sm">
+  <div className="flex items-center justify-between py-2 type-primary-body-b2">
     <span className="text-muted-foreground">{label}</span>
-    <span className={`font-medium ${valueClass}`}>{value}</span>
+    <span className={`type-primary-body-b2-medium ${valueClass}`}>{value}</span>
   </div>
 )
 
@@ -132,10 +132,10 @@ const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
         <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${style.bg} ${style.text}`}><Icon size={22} /></span>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <p className="font-semibold text-foreground">{getTitle(test)}</p>
-            <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${isActive(test) ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>{isActive(test) ? 'Active' : 'Inactive'}</span>
+            <p className="type-primary-body-b1-medium text-foreground">{getTitle(test)}</p>
+            <span className={`rounded-md px-2 py-0.5 type-primary-body-b2 ${isActive(test) ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>{isActive(test) ? 'Active' : 'Inactive'}</span>
           </div>
-          <span className={`mt-1.5 inline-block rounded-md px-2 py-0.5 text-xs font-medium ${catColor.bg} ${catColor.text}`}>{getCategory(test)}</span>
+          <span className={`mt-1.5 inline-block rounded-md px-2 py-0.5 type-primary-body-b2 ${catColor.bg} ${catColor.text}`}>{getCategory(test)}</span>
         </div>
       </div>
       <div className="mt-4 divide-y divide-border border-t border-border">
@@ -146,8 +146,8 @@ const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
       </div>
       {test.description && (
         <div className="mt-3 border-t border-border pt-3">
-          <p className="text-sm text-muted-foreground">Description</p>
-          <p className="mt-1 text-sm text-foreground">{test.description}</p>
+          <p className="type-primary-body-b2 text-muted-foreground">Description</p>
+          <p className="mt-1 type-primary-body-b2 text-foreground">{test.description}</p>
         </div>
       )}
       <div className="mt-3 divide-y divide-border border-t border-border">
@@ -178,18 +178,18 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
       {open && (
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
-              <ArrowUp size={14} /> Asc
-            </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
-              <ArrowDown size={14} /> Desc
-            </button>
-            {onHide && (
-              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
-                <EyeOff size={14} /> Hide
-              </button>
-            )}
+      <div className="absolute left-0 top-full mt-1 bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
+        <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
+          <ArrowUp size={14} /> Asc
+        </button>
+        <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
+          <ArrowDown size={14} /> Desc
+        </button>
+        {onHide && (
+          <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
+            <EyeOff size={14} /> Hide
+          </button>
+        )}
           </div>
         </>
       )}
@@ -373,7 +373,7 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
   return (
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="text-2xl font-bold text-foreground">Tests</h1>
+        <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Tests</h1>
         {isPatient ? (
           <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
             <ShoppingCart size={18} className="mr-2" />Book a Test
@@ -389,8 +389,8 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
 
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Tests</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Manage and view all laboratory tests</p>
+          <h1 className="type-primary-heading-h0 !font-medium text-foreground">Tests</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">Manage and view all laboratory tests</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(event) => { setSearch(event.target.value); setPage(1) }} placeholder="Search tests by name or code..." />
@@ -491,7 +491,7 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
       </>
       )}
 
-      {isLoading ? <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading tests…</div> : isError ? <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-destructive">Unable to load tests. Please try again.</div> : visibleTests.length === 0 ? <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">No tests match the selected filters.</div> : view === 'grid' ? (
+      {isLoading ? <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-muted-foreground">Loading tests…</div> : isError ? <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-destructive">Unable to load tests. Please try again.</div> : visibleTests.length === 0 ? <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-muted-foreground">No tests match the selected filters.</div> : view === 'grid' ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visibleTests.map((test, index) => {
             const id = getTestId(test, index)
@@ -511,8 +511,8 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
         </div>
       ) : (
         <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-          <div className="rounded-xl border border-border bg-white">
-            <table className="w-full min-w-[820px] text-sm">
+          <div className="rounded-xl border border-border bg-card">
+            <table className="w-full min-w-[820px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   <SortableHeader title="Test Name" sortKey="name" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, name: true }))} />
@@ -530,12 +530,12 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
                   const catColor = getCategoryColor(getCategory(test))
                   return (
                     <tr key={id} onClick={() => setSelectedTestId(id)} className={`cursor-pointer border-t border-border transition hover:bg-accent/40 ${selectedTestId === id ? 'bg-primary/5' : ''}`}>
-                      {!hiddenColumns.name && <td className="px-4 py-3 font-medium text-foreground">{getTitle(test)}</td>}
-                      {!hiddenColumns.category && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 text-xs font-medium ${catColor.bg} ${catColor.text}`}>{getCategory(test)}</span></td>}
+                      {!hiddenColumns.name && <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">{getTitle(test)}</td>}
+                      {!hiddenColumns.category && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 type-primary-body-b2 ${catColor.bg} ${catColor.text}`}>{getCategory(test)}</span></td>}
                       {!hiddenColumns.sampleType && <td className="px-4 py-3">{getValue(test, ['sampleType', 'sample'])}</td>}
                       {!hiddenColumns.price && <td className="px-4 py-3">{getValue(test, ['price'], null) != null ? Number(getValue(test, ['price'], null)).toLocaleString('en-IN') : '—'}</td>}
                       {!hiddenColumns.tat && <td className="px-4 py-3">{getValue(test, ['reportTime', 'tat', 'turnaroundTime'])}</td>}
-                      {!hiddenColumns.status && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 text-xs ${isActive(test) ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>{isActive(test) ? 'Active' : 'Inactive'}</span></td>}
+                      {!hiddenColumns.status && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 type-primary-body-b2 ${isActive(test) ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>{isActive(test) ? 'Active' : 'Inactive'}</span></td>}
                       <td className="px-4 py-3" onClick={(event) => event.stopPropagation()}>
                         <div className="flex items-center gap-1">
                           {isPatient && (
@@ -634,29 +634,29 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setMenuOpen(null)} />
           <div
-            className="fixed bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]"
+            className="fixed bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]"
             style={{ top: menuOpen.top, left: menuOpen.left }}
           >
-            <button onClick={(e) => { e.stopPropagation(); setSelectedTestId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={(e) => { e.stopPropagation(); setSelectedTestId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <Eye size={14} /> View
             </button>
             {isPatient && (
-              <button onClick={(e) => { e.stopPropagation(); setBookModal({ open: true, test: menuOpen.test }); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={(e) => { e.stopPropagation(); setBookModal({ open: true, test: menuOpen.test }); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <ShoppingCart size={14} /> Book
               </button>
             )}
             <Can resource="tests" action="update">
-              <button onClick={(e) => { e.stopPropagation(); handleEdit(menuOpen.test); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={(e) => { e.stopPropagation(); handleEdit(menuOpen.test); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <Pencil size={14} /> Edit
               </button>
             </Can>
             <Can resource="tests" action="create">
-              <button onClick={(e) => { e.stopPropagation(); handleDuplicate(menuOpen.test); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={(e) => { e.stopPropagation(); handleDuplicate(menuOpen.test); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <Copy size={14} /> Duplicate
               </button>
             </Can>
             <Can resource="tests" action="delete">
-              <button onClick={(e) => { e.stopPropagation(); handleDelete(menuOpen.test); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 w-full text-left">
+              <button onClick={(e) => { e.stopPropagation(); handleDelete(menuOpen.test); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-destructive hover:bg-destructive/10 w-full text-left">
                 <Trash2 size={14} /> Delete
               </button>
             </Can>

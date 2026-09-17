@@ -31,7 +31,7 @@ const TestCard = ({
   return (
     <article
       onClick={() => onView?.(test)}
-      className="flex flex-col rounded-xl border border-border bg-white shadow-sm transition hover:shadow-md cursor-pointer"
+      className="flex flex-col rounded-xl border border-border bg-card shadow-sm transition hover:shadow-md cursor-pointer"
     >
       <TestCardHeader
         testName={testName}
