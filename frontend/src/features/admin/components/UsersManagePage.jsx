@@ -42,14 +42,14 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
             {onHide && (
-              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <EyeOff size={14} /> Hide
               </button>
             )}
@@ -67,13 +67,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -424,19 +424,19 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
           >
             <button
               onClick={(e) => { e.stopPropagation(); handleView(openMenu.user); setMenuOpen(null) }}
-              className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left"
+              className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left"
             >
               <Eye size={14} /> View
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); handleEdit(openMenu.user) }}
-              className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left"
+              className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left"
             >
               <Edit2 size={14} /> Edit
             </button>
             <button
               onClick={(e) => { e.stopPropagation(); handleDelete(openMenu.user) }}
-              className="flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 w-full text-left"
+              className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-red-500 hover:bg-red-50 w-full text-left"
             >
               <Trash2 size={14} /> Delete
             </button>
@@ -445,7 +445,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
       )}
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="text-2xl font-bold text-foreground">Users</h1>
+          <h1 className="type-primary-heading-h1 !font-medium text-foreground">Users</h1>
         <Can resource="users" action="create">
           <Button size="sm" onClick={() => setShowAddModal(true)}>
             <UserPlus size={16} />
@@ -456,8 +456,8 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Users</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Manage all users and their access</p>
+        <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Users</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">Manage all users and their access</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name, email or phone..." />
@@ -566,9 +566,9 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
 
       {/* Users Table / Grid */}
       {isLoading ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading users…</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">Loading users…</div>
       ) : isError ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-destructive">Unable to load users. Please try again.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-destructive">Unable to load users. Please try again.</div>
       ) : filteredUsers.length === 0 ? (
         <EmptyState
           title="No users found"
@@ -579,7 +579,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
       ) : view === 'list' ? (
         <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
           <div className="rounded-xl border border-border bg-white">
-            <table className="w-full min-w-[900px] text-sm">
+            <table className="w-full min-w-[900px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   <SortableHeader title="User" sortKey="name" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, name: true }))} />
@@ -630,31 +630,31 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       {!hiddenColumns.name && (
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-3">
-                            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${avatarColor} text-white font-semibold text-xs`}>
+                            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${avatarColor} text-white type-primary-body-b3`}>
                               {initials}
                             </span>
                             <div>
                               <p className="font-medium text-foreground">{user.name}</p>
-                              <p className="text-xs text-muted-foreground">{user.email}</p>
+                              <p className="type-primary-body-b3 text-muted-foreground">{user.email}</p>
                             </div>
                           </div>
                         </td>
                       )}
                       {!hiddenColumns.role && (
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
+                          <span className={`inline-flex items-center px-2.5 py-1 rounded-full type-primary-body-b3 font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
                             {user.role?.replace(/_/g, ' ')}
                           </span>
                         </td>
                       )}
                       {!hiddenColumns.phone && (
                         <td className="px-4 py-3">
-                          <span className="text-xs text-muted-foreground">{user.phone || '—'}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground">{user.phone || '—'}</span>
                         </td>
                       )}
                       {!hiddenColumns.status && (
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
                             <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`}></span>
                             {isActive ? 'Active' : 'Inactive'}
                           </span>
@@ -662,12 +662,12 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       )}
                       {!hiddenColumns.registered && (
                         <td className="px-4 py-3">
-                          <span className="text-xs text-muted-foreground">{formatDate(user.createdAt)}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground">{formatDate(user.createdAt)}</span>
                         </td>
                       )}
                       {!hiddenColumns.lastLogin && (
                         <td className="px-4 py-3">
-                          <span className="text-xs text-muted-foreground">{formatLastLogin(user.updatedAt)}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground">{formatLastLogin(user.updatedAt)}</span>
                         </td>
                       )}
                       <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
@@ -736,25 +736,25 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${avatarColor} text-white font-semibold text-xs`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${avatarColor} text-white type-primary-body-b3`}>
                         {initials}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-semibold text-foreground text-sm truncate" title={user.name}>{user.name}</h3>
-                        <p className="text-xs text-muted-foreground">{user.email}</p>
+                        <h3 className="type-primary-body-b1-medium md:type-primary-body-b2-medium text-foreground truncate" title={user.name}>{user.name}</h3>
+                        <p className="type-primary-body-b3 text-muted-foreground">{user.email}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`}></span>
                       {isActive ? 'Active' : 'Inactive'}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col flex-1 p-4 pt-3">
-                  <dl className="mt-3 space-y-1.5 text-xs">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b1 md:type-primary-body-b2">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Role</span>
-                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
+                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full type-primary-body-b3 font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
                         {user.role?.replace(/_/g, ' ')}
                       </span>
                     </div>
@@ -772,7 +772,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -821,8 +821,8 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
           <div className="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
-                <h3 className="font-semibold text-foreground">Add User</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">Create a new user account.</p>
+                <h3 className="type-primary-body-b1-medium text-foreground">Add User</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Create a new user account.</p>
               </div>
               <button onClick={handleCloseModal} className="p-1 text-muted-foreground hover:text-foreground">
                 <X size={20} />
@@ -847,11 +847,11 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
               {/* Document Uploads - Only for Lab Assistant */}
               {form.role === 'lab_assistant' && (
                 <div className="space-y-3">
-                  <p className="text-sm font-medium text-foreground">Documents</p>
+                  <p className="type-primary-body-b2-medium text-foreground">Documents</p>
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
                       <div className="p-3 pb-0">
-                        <span className="text-xs font-medium text-muted-foreground">ID Proof</span>
+                        <span className="type-primary-body-b3 font-medium text-muted-foreground">ID Proof</span>
                       </div>
                       <div className="p-3 pt-2">
                         <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -862,21 +862,21 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                             onChange={(e) => setIdProofFile(e.target.files?.[0] || null)}
                           />
                           <Upload size={16} className="text-muted-foreground" />
-                          <span className="text-xs text-muted-foreground">
+                          <span className="type-primary-body-b3 text-muted-foreground">
                             {idProofFile ? idProofFile.name : 'Upload ID proof'}
                           </span>
                         </label>
                       </div>
                       {idProofFile && (
                         <div className="px-3 pb-3 pt-0 flex items-center justify-between border-t border-border mt-1">
-                          <span className="text-[10px] text-muted-foreground truncate">{idProofFile.name}</span>
-                          <button onClick={() => setIdProofFile(null)} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                          <span className="type-primary-body-b3 text-muted-foreground truncate">{idProofFile.name}</span>
+                          <button onClick={() => setIdProofFile(null)} className="type-primary-body-b3 text-red-500 hover:underline shrink-0">Remove</button>
                         </div>
                       )}
                     </div>
                     <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
                       <div className="p-3 pb-0">
-                        <span className="text-xs font-medium text-muted-foreground">Other Documents (max 5)</span>
+                        <span className="type-primary-body-b3 font-medium text-muted-foreground">Other Documents (max 5)</span>
                       </div>
                       <div className="p-3 pt-2">
                         <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -894,7 +894,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                             }}
                           />
                           <Upload size={16} className="text-muted-foreground" />
-                          <span className="text-xs text-muted-foreground">
+                          <span className="type-primary-body-b3 text-muted-foreground">
                             {otherDocsFiles.length > 0 ? `${otherDocsFiles.length}/5 file(s) selected` : 'Upload documents'}
                           </span>
                         </label>
@@ -903,8 +903,8 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                         <div className="px-3 pb-3 pt-0 border-t border-border mt-1 space-y-1.5">
                           {otherDocsFiles.map((f, i) => (
                             <div key={i} className="flex items-center justify-between">
-                              <span className="text-[10px] text-muted-foreground truncate">{f.name}</span>
-                              <button onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                              <span className="type-primary-body-b3 text-muted-foreground truncate">{f.name}</span>
+                              <button onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="type-primary-body-b3 text-red-500 hover:underline shrink-0">Remove</button>
                             </div>
                           ))}
                         </div>
@@ -915,7 +915,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
               )}
             </div>
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
-              <button onClick={handleCloseModal} className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
+              <button onClick={handleCloseModal} className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
               <Button onClick={handleSave} disabled={saving} loading={saving}>Create</Button>
             </div>
           </div>
@@ -928,8 +928,8 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
           <div className="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
-                <h3 className="font-semibold text-foreground">User Details</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">View user account information.</p>
+                <h3 className="type-primary-body-b1-medium text-foreground">User Details</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">View user account information.</p>
               </div>
               <button onClick={() => { setShowViewModal(false); setSelectedUser(null) }} className="p-1 text-muted-foreground hover:text-foreground">
                 <X size={20} />
@@ -937,12 +937,12 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
             </div>
             <div className="p-4 space-y-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl">
+                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white type-primary-heading-h3-medium">
                   {selectedUser.name?.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground text-lg">{selectedUser.name}</h4>
-                  <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold capitalize mt-1 ${roleBadgeColor[selectedUser.role] || 'bg-gray-100 text-gray-600'}`}>
+                  <h4 className="font-semibold text-foreground type-primary-heading-h4-medium">{selectedUser.name}</h4>
+                  <span className={`inline-block px-2.5 py-0.5 rounded-full type-primary-body-b3 font-semibold capitalize mt-1 ${roleBadgeColor[selectedUser.role] || 'bg-gray-100 text-gray-600'}`}>
                     {selectedUser.role?.replace(/_/g, ' ')}
                   </span>
                 </div>
@@ -951,29 +951,29 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Mail size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="text-[10px] text-muted-foreground">Email</p>
-                    <p className="text-sm text-foreground">{selectedUser.email}</p>
+                    <p className="text-muted-foreground">Email</p>
+                    <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedUser.email}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Phone size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="text-[10px] text-muted-foreground">Phone</p>
-                    <p className="text-sm text-foreground">{selectedUser.phone || '—'}</p>
+                    <p className="text-muted-foreground">Phone</p>
+                    <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedUser.phone || '—'}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Shield size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="text-[10px] text-muted-foreground">Role</p>
-                    <p className="text-sm text-foreground capitalize">{selectedUser.role?.replace(/_/g, ' ')}</p>
+                    <p className="text-muted-foreground">Role</p>
+                    <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground capitalize">{selectedUser.role?.replace(/_/g, ' ')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Calendar size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="text-[10px] text-muted-foreground">Registered On</p>
-                    <p className="text-sm text-foreground">
+                    <p className="text-muted-foreground">Registered On</p>
+                    <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">
                       {selectedUser.createdAt ? new Date(selectedUser.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
                     </p>
                   </div>
@@ -981,17 +981,17 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 {/* Documents */}
                 {(selectedUser.idProof || selectedUser.otherDocuments?.length > 0 || selectedUser.labCertificate || selectedUser.labRegistration) && (
                   <div className="p-3 bg-accent/50 rounded-lg">
-                    <p className="text-[10px] text-muted-foreground mb-2">Documents</p>
+                    <p className="text-muted-foreground mb-2">Documents</p>
                     <div className="space-y-3">
                       {selectedUser.idProof && (
                         <div>
-                          <p className="text-[11px] font-medium text-foreground mb-1">ID Proof</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">ID Proof</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(selectedUser.idProof) ? (
                             <button type="button" onClick={() => setLightbox(selectedUser.idProof)} className="block">
                               <img src={selectedUser.idProof} alt="ID Proof" className="h-16 w-16 object-cover rounded-lg border border-border cursor-pointer hover:opacity-80 transition" />
                             </button>
                           ) : (
-                            <a href={selectedUser.idProof} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                            <a href={selectedUser.idProof} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                               <FileText size={12} /> View Document
                             </a>
                           )}
@@ -999,13 +999,13 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       )}
                       {selectedUser.labCertificate && (
                         <div>
-                          <p className="text-[11px] font-medium text-foreground mb-1">Lab Certificate</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">Lab Certificate</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(selectedUser.labCertificate) ? (
                             <button type="button" onClick={() => setLightbox(selectedUser.labCertificate)} className="block">
                               <img src={selectedUser.labCertificate} alt="Lab Certificate" className="h-16 w-16 object-cover rounded-lg border border-border cursor-pointer hover:opacity-80 transition" />
                             </button>
                           ) : (
-                            <a href={selectedUser.labCertificate} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                            <a href={selectedUser.labCertificate} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                               <FileText size={12} /> View Document
                             </a>
                           )}
@@ -1013,13 +1013,13 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       )}
                       {selectedUser.labRegistration && (
                         <div>
-                          <p className="text-[11px] font-medium text-foreground mb-1">Lab Registration</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">Lab Registration</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(selectedUser.labRegistration) ? (
                             <button type="button" onClick={() => setLightbox(selectedUser.labRegistration)} className="block">
                               <img src={selectedUser.labRegistration} alt="Lab Registration" className="h-16 w-16 object-cover rounded-lg border border-border cursor-pointer hover:opacity-80 transition" />
                             </button>
                           ) : (
-                            <a href={selectedUser.labRegistration} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                            <a href={selectedUser.labRegistration} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                               <FileText size={12} /> View Document
                             </a>
                           )}
@@ -1027,13 +1027,13 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       )}
                       {selectedUser.otherDocuments?.map((doc, i) => (
                         <div key={i}>
-                          <p className="text-[11px] font-medium text-foreground mb-1">{doc.name || 'Document'}</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">{doc.name || 'Document'}</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(doc.url) ? (
                             <button type="button" onClick={() => setLightbox(doc.url)} className="block">
                               <img src={doc.url} alt={doc.name || 'Document'} className="h-16 w-16 object-cover rounded-lg border border-border cursor-pointer hover:opacity-80 transition" />
                             </button>
                           ) : (
-                            <a href={doc.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                            <a href={doc.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                               <FileText size={12} /> {doc.name || 'View Document'}
                             </a>
                           )}
@@ -1047,7 +1047,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
               <button
                 onClick={() => { setShowViewModal(false); setSelectedUser(null) }}
-                className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition"
+                className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition"
               >
                 Close
               </button>
@@ -1062,8 +1062,8 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
           <div className="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
-                <h3 className="font-semibold text-foreground">Edit User</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">Update user account details.</p>
+                <h3 className="type-primary-body-b1-medium text-foreground">Edit User</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Update user account details.</p>
               </div>
               <button onClick={() => { setShowEditModal(false); setSelectedUser(null) }} className="p-1 text-muted-foreground hover:text-foreground">
                 <X size={20} />
@@ -1110,11 +1110,11 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 error={errors.password}
               />
               <div>
-                <label className="block text-xs font-medium text-muted-foreground mb-1.5">Role</label>
+                <label className="block type-primary-body-b2 font-medium text-muted-foreground mb-1.5">Role</label>
                 <select
                   value={form.role}
                   onChange={(e) => handleChange('role', e.target.value)}
-                  className="w-full border border-border rounded-lg px-4 py-3 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-card"
+                  className="w-full border border-border rounded-lg px-4 py-3 type-primary-body-b2 outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-card"
                 >
                   <option value="patient">Customer</option>
                   <option value="lab_assistant">Lab Technician</option>
@@ -1124,7 +1124,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
               <button
                 onClick={() => { setShowEditModal(false); setSelectedUser(null) }}
-                className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition"
+                className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition"
               >
                 Cancel
               </button>

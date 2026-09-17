@@ -97,10 +97,10 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
         {/* Header */}
         <div className="flex items-start justify-between p-6 pb-2">
           <div>
-            <h3 className="font-heading font-bold text-xl text-foreground">
+            <h3 className="font-heading type-primary-heading-h3-medium text-foreground">
               {editingCategory ? 'Edit Category' : 'Add Category'}
             </h3>
-            <p className="text-muted-foreground text-sm mt-1">
+            <p className="text-muted-foreground type-primary-body-b2 mt-1">
               {editingCategory
                 ? 'Update this test category and its details.'
                 : 'Create a new test category and configure its details.'}
@@ -114,14 +114,14 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
         <div className="p-6 pt-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left — Icon & Visual */}
           <div>
-            <p className="text-sm font-semibold text-foreground">
+            <p className="type-primary-body-b2 font-semibold text-foreground">
               Icon & Visual <span className="text-red-500">*</span>
             </p>
-            <p className="text-xs text-muted-foreground mb-3">
+            <p className="type-primary-body-b3 text-muted-foreground mb-3">
               Choose an icon and visual identity for this category.
             </p>
 
-            <p className="text-sm font-medium text-foreground mb-2">
+            <p className="type-primary-body-b2 font-medium text-foreground mb-2">
               Choose Icon <span className="text-red-500">*</span>
             </p>
             <div className="grid grid-cols-5 gap-2.5">
@@ -147,7 +147,7 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
               ))}
             </div>
 
-            <div className="flex items-start gap-1.5 mt-3 text-xs text-muted-foreground">
+            <div className="flex items-start gap-1.5 mt-3 type-primary-body-b3 text-muted-foreground">
               <Info size={13} className="mt-0.5 flex-shrink-0" />
               <span>You can upload a custom icon in SVG, PNG or JPG format.</span>
             </div>
@@ -162,7 +162,7 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="inline-flex items-center gap-1.5 text-sm text-primary font-semibold mt-3 hover:underline"
+              className="inline-flex items-center gap-1.5 type-primary-body-b2 text-primary font-semibold mt-3 hover:underline"
             >
               <Upload size={14} /> Upload Custom Icon
             </button>
@@ -171,37 +171,37 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
           {/* Right — Form fields + Preview */}
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block type-primary-body-b2 font-medium text-foreground mb-1">
                 Category Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={form.name}
                 onChange={(e) => handleChange('name', e.target.value)}
-                className="w-full px-3 py-2 border border-border rounded-lg text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                className="w-full px-3 py-2 border border-border rounded-lg type-primary-body-b2 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                 placeholder="Enter category name"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block type-primary-body-b2 font-medium text-foreground mb-1">
                 Description
               </label>
               <textarea
                 value={form.description}
                 onChange={(e) => handleChange('description', e.target.value.slice(0, 150))}
-                className="w-full px-3 py-2 border border-border rounded-lg text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
+                className="w-full px-3 py-2 border border-border rounded-lg type-primary-body-b2 outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
                 rows={3}
                 maxLength={150}
                 placeholder="Enter a short description about this category"
               />
-              <p className="text-right text-[11px] text-muted-foreground mt-1">{descLength}/150</p>
+              <p className="text-right type-primary-body-b3 text-muted-foreground mt-1">{descLength}/150</p>
             </div>
 
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-foreground">Active</p>
-                <p className="text-xs text-muted-foreground">Inactive categories will not be visible for selection.</p>
+                <p className="type-primary-body-b2 font-medium text-foreground">Active</p>
+                <p className="type-primary-body-b3 text-muted-foreground">Inactive categories will not be visible for selection.</p>
               </div>
               <button
                 type="button"
@@ -217,7 +217,7 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
             </div>
 
             <div>
-              <p className="text-sm font-medium text-foreground mb-2">Preview</p>
+              <p className="type-primary-body-b2 font-medium text-foreground mb-2">Preview</p>
               <div className="border border-border rounded-xl p-3 flex items-center gap-3">
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden ${form.icon === 'custom' ? 'bg-primary/10' : (iconBgColors[form.icon] || 'bg-primary/10')}`}>
                   {form.customIcon ? (
@@ -232,11 +232,11 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className="text-sm font-semibold text-foreground truncate">
+                    <p className="type-primary-body-b2 font-semibold text-foreground truncate">
                       {form.name || 'Category Name'}
                     </p>
                     <span
-                      className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                      className={`type-primary-body-b3 font-semibold px-2 py-0.5 rounded-full ${
                         form.isActive
                           ? 'bg-green-100 text-green-700'
                           : 'bg-gray-100 text-gray-600'
@@ -245,10 +245,10 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
                       {form.isActive ? 'Active' : 'Inactive'}
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground truncate">
+                  <p className="type-primary-body-b3 text-muted-foreground truncate">
                     {form.description || 'Category description will appear here...'}
                   </p>
-                  <p className="text-xs text-muted-foreground mt-0.5">X Subcategories &middot; Y Tests</p>
+                  <p className="type-primary-body-b3 text-muted-foreground mt-0.5">X Subcategories &middot; Y Tests</p>
                 </div>
               </div>
             </div>
@@ -259,7 +259,7 @@ const CategoryModal = ({ isOpen, onClose, onSave, editingCategory, form, setForm
         <div className="flex items-center justify-end gap-3 p-6 pt-2 border-t border-border">
           <button
             onClick={onClose}
-            className="px-4 py-2.5 text-sm font-medium text-foreground border border-border hover:bg-accent rounded-lg transition"
+            className="px-4 py-2.5 type-primary-body-b2 font-medium text-foreground border border-border hover:bg-accent rounded-lg transition"
           >
             Cancel
           </button>

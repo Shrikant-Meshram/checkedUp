@@ -11,24 +11,24 @@ const RevenueOverviewChart = ({ data, totalRevenue, trend, filter, onFilterChang
   const dropRef = useClickOutside(() => setOpen(false))
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-1 gap-2">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Revenue Overview</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Revenue Overview</h3>
         <div className="relative shrink-0" ref={dropRef}>
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
+            className="flex items-center gap-2 type-primary-label-l2 font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
           >
             {filter}
             <ChevronDown size={14} className={`text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
           </button>
           {open && (
-            <div className="absolute right-0 top-full mt-1 z-50 bg-white border border-border rounded-lg shadow-lg py-1 min-w-[140px]">
+            <div className="absolute right-0 top-full mt-1 z-50 bg-card border border-border rounded-lg shadow-lg py-1 min-w-[140px]">
               {filters.map((f) => (
                 <button
                   key={f}
                   onClick={() => { onFilterChange(f); setOpen(false) }}
-                  className="flex items-center justify-between w-full px-3 py-2 text-xs text-foreground hover:bg-accent transition"
+                  className="flex items-center justify-between w-full px-3 py-2 type-primary-label-l2 text-foreground hover:bg-accent transition"
                 >
                   {f}
                   {filter === f && <Check size={14} className="text-primary" />}
@@ -40,13 +40,13 @@ const RevenueOverviewChart = ({ data, totalRevenue, trend, filter, onFilterChang
       </div>
 
       <div className="mb-5">
-        <p className="text-muted-foreground text-xs font-medium mb-1">Total Revenue</p>
+        <p className="text-muted-foreground type-primary-body-b3 font-medium mb-1">Total Revenue</p>
         <div className="flex items-center gap-3">
-          <span className="font-mono font-bold text-2xl text-foreground">
+          <span className="font-mono type-primary-heading-h2-medium text-foreground">
             {formatCurrency(totalRevenue)}
           </span>
           {trend > 0 && (
-            <span className="inline-flex items-center gap-0.5 text-[11px] font-semibold text-green-600">
+            <span className="inline-flex items-center gap-0.5 type-primary-label-l2 font-semibold text-success">
               <TrendingUp size={12} />
               {trend}% from last 7 days
             </span>

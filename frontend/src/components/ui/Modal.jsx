@@ -92,12 +92,12 @@ const Modal = ({ open, onClose, title, subtitle, headerActions, children, size =
           <div className="flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 border-b border-border rounded-t-xl shrink-0">
             <div className="min-w-0">
               {title && (
-                <h2 id={titleId} className="font-serif text-base sm:text-lg text-foreground truncate">
+                <h2 id={titleId} className="font-serif text-base sm:type-primary-heading-h2 text-foreground truncate">
                   {title}
                 </h2>
               )}
               {subtitle && (
-                <p id={subtitleId} className="text-[11px] sm:text-xs text-muted-foreground mt-0.5 truncate">
+                <p id={subtitleId} className="type-primary-body-b3 sm:type-primary-body-b3 text-muted-foreground mt-0.5 truncate">
                   {subtitle}
                 </p>
               )}

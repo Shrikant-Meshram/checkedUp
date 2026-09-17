@@ -81,7 +81,7 @@ const AdminQuickActions = () => {
 
   return (
     <div>
-      <h3 className="font-serif text-base sm:text-lg font-bold text-foreground mb-3 sm:mb-4">Quick Actions</h3>
+      <h3 className="type-primary-heading-h3-medium text-foreground mb-3 sm:mb-4">Quick Actions</h3>
       <div className="flex gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-6 sm:gap-3 overflow-x-auto pb-2 scrollbar-hide">
         {actions.map((action) => {
           const Icon = action.icon
@@ -94,7 +94,7 @@ const AdminQuickActions = () => {
                 <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition ${action.iconBg}`}>
                   <Icon size={16} className={action.iconColor} />
                 </div>
-                <h4 className="font-semibold text-foreground text-xs sm:text-sm leading-tight">{action.label}</h4>
+                <h4 className="type-primary-body-b3-medium text-foreground leading-tight">{action.label}</h4>
               </button>
             </Can>
           )

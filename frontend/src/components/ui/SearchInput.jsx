@@ -10,7 +10,7 @@ const SearchInput = ({ value, onChange, placeholder = 'Search...', className = '
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="pl-9 pr-4 py-2.5 border border-border rounded-lg text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full"
+        className="pl-9 pr-4 py-2.5 border border-border rounded-lg type-primary-body-b2 outline-none focus:border-primary focus:ring-1 focus:ring-primary w-full"
       />
     </div>
   )

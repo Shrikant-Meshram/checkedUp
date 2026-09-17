@@ -138,11 +138,11 @@ const Navbar = () => {
             {testsDropdownOpen && (
               <div className="absolute top-full left-0 pt-2">
                 <div className="bg-white border border-border rounded-lg shadow-lg py-2 min-w-[220px]">
-                  <Link to={ROUTES.TESTS} className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition">All Tests</Link>
-                  <Link to={`${ROUTES.TESTS}?category=Organ Function Test`} className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition">Organ Function Test</Link>
-                  <Link to={`${ROUTES.TESTS}?category=Diabetes Test`} className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition">Diabetes Test</Link>
-                  <Link to={`${ROUTES.TESTS}?category=Vitamin Test`} className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition">Vitamin Test</Link>
-                  <Link to={`${ROUTES.TESTS}?category=Hormone Test`} className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition">Hormone Test</Link>
+                  <Link to={ROUTES.TESTS} className="block px-4 py-2.5 type-primary-body-b2 text-foreground hover:bg-accent hover:text-primary transition">All Tests</Link>
+                  <Link to={`${ROUTES.TESTS}?category=Organ Function Test`} className="block px-4 py-2.5 type-primary-body-b2 text-foreground hover:bg-accent hover:text-primary transition">Organ Function Test</Link>
+                  <Link to={`${ROUTES.TESTS}?category=Diabetes Test`} className="block px-4 py-2.5 type-primary-body-b2 text-foreground hover:bg-accent hover:text-primary transition">Diabetes Test</Link>
+                  <Link to={`${ROUTES.TESTS}?category=Vitamin Test`} className="block px-4 py-2.5 type-primary-body-b2 text-foreground hover:bg-accent hover:text-primary transition">Vitamin Test</Link>
+                  <Link to={`${ROUTES.TESTS}?category=Hormone Test`} className="block px-4 py-2.5 type-primary-body-b2 text-foreground hover:bg-accent hover:text-primary transition">Hormone Test</Link>
                 </div>
               </div>
             )}
@@ -192,7 +192,7 @@ const Navbar = () => {
                   className="relative group/icon p-2 text-foreground hover:text-primary transition"
                 >
                   {React.createElement(roleConfig[user.role].quickLink.icon, { size: 20 })}
-                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-foreground text-white text-[10px] font-medium rounded whitespace-nowrap opacity-0 group-hover/icon:opacity-100 transition pointer-events-none z-50">
+                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-foreground text-white type-primary-body-b3-medium rounded whitespace-nowrap opacity-0 group-hover/icon:opacity-100 transition pointer-events-none z-50">
                     {roleConfig[user.role].quickLink.label}
                   </span>
                 </Link>
@@ -211,7 +211,7 @@ const Navbar = () => {
                   className="relative group/icon p-2 text-foreground hover:text-primary transition"
                 >
                   <TestTube size={20} />
-                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-foreground text-white text-[10px] font-medium rounded whitespace-nowrap opacity-0 group-hover/icon:opacity-100 transition pointer-events-none z-50">
+                  <span className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-foreground text-white type-primary-body-b3-medium rounded whitespace-nowrap opacity-0 group-hover/icon:opacity-100 transition pointer-events-none z-50">
                     Book a Test
                   </span>
                 </Link>
@@ -223,12 +223,12 @@ const Navbar = () => {
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
                   className="flex items-center gap-2 pl-2"
                 >
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold type-primary-body-b2">
                     {user.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
                   </div>
                   <div className="text-left">
-                    <p className="text-sm font-semibold text-foreground leading-tight">{user.name}</p>
-                    <p className="text-[10px] text-muted-foreground capitalize">{user.role?.replace('_', ' ')}</p>
+                    <p className="type-primary-body-b2 font-semibold text-foreground leading-tight">{user.name}</p>
+                    <p className="type-primary-body-b3 text-muted-foreground capitalize">{user.role?.replace('_', ' ')}</p>
                   </div>
                   <ChevronDown size={14} className={`text-muted-foreground transition-transform ${profileDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -246,13 +246,13 @@ const Navbar = () => {
                       {/* Profile Header */}
                       <div className="p-4 border-b border-border">
                         <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
+                          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold type-primary-heading-h2">
                             {user.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
                           </div>
                           <div>
                             <p className="font-semibold text-foreground">{user.name}</p>
-                            <p className="text-xs text-muted-foreground">{user.email}</p>
-                            <span className="inline-block mt-1 px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-semibold rounded capitalize">
+                            <p className="type-primary-body-b3 text-muted-foreground">{user.email}</p>
+                            <span className="inline-block mt-1 px-2 py-0.5 bg-primary/10 text-primary type-primary-body-b3 font-semibold rounded capitalize">
                               {user.role?.replace('_', ' ')}
                             </span>
                           </div>
@@ -272,8 +272,8 @@ const Navbar = () => {
                               <item.icon size={16} />
                             </div>
                             <div>
-                              <p className="text-sm font-medium text-foreground">{item.label}</p>
-                              <p className="text-[11px] text-muted-foreground">{item.description}</p>
+                              <p className="type-primary-body-b2 font-medium text-foreground">{item.label}</p>
+                              <p className="type-primary-body-b3 text-muted-foreground">{item.description}</p>
                             </div>
                           </Link>
                         ))}
@@ -291,7 +291,7 @@ const Navbar = () => {
                           <div className="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-500 flex-shrink-0">
                             <LogOut size={16} />
                           </div>
-                          <p className="text-sm font-medium text-red-500">Logout</p>
+                          <p className="type-primary-body-b2 font-medium text-red-500">Logout</p>
                         </button>
                       </div>
                     </motion.div>
@@ -312,7 +312,7 @@ const Navbar = () => {
                 <span className="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full"></span>
               </button>
               {/* Profile Avatar */}
-              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xs">
+              <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold type-primary-body-b3">
                 {user.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
               </div>
             </>
@@ -346,19 +346,19 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
-              className="relative bg-white w-[85%] max-w-[320px] h-screen shadow-2xl overflow-y-auto flex flex-col"
+              className="relative bg-card w-[85%] max-w-[320px] h-screen shadow-2xl overflow-y-auto flex flex-col"
             >
               {/* User Profile Header */}
               {user && (
                 <div className="p-6 pb-4 border-b border-border">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground type-primary-body-b1-medium">
                         {user.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground">{user.name}</p>
-                        <p className="text-xs text-muted-foreground capitalize">{user.role?.replace('_', ' ')}</p>
+                        <p className="type-primary-body-b2-medium text-foreground">{user.name}</p>
+                        <p className="type-primary-body-b2 text-muted-foreground capitalize">{user.role?.replace('_', ' ')}</p>
                       </div>
                     </div>
                     <button
@@ -462,7 +462,7 @@ const Navbar = () => {
                       className={`flex items-center gap-3 py-3 transition ${isActive(item.route) ? 'text-primary font-bold' : 'text-foreground hover:text-primary'}`}
                     >
                       <item.icon size={18} className={isActive(item.route) ? 'text-primary' : 'text-muted-foreground'} />
-                      <span className="text-sm font-medium">{item.label}</span>
+                      <span className="type-primary-body-b2-medium">{item.label}</span>
                     </Link>
                   ))}
                 </div>
@@ -485,7 +485,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-3 w-full py-3 text-red-500 hover:text-red-600 transition font-semibold text-sm"
+                    className="flex items-center gap-3 w-full py-3 text-destructive hover:text-red-600 transition type-primary-body-b2-medium"
                   >
                     <LogOut size={18} />
                     <span>Logout</span>

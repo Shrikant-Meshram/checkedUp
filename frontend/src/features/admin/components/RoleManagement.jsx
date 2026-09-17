@@ -249,15 +249,15 @@ const RoleManagement = () => {
             >
               <ArrowLeft size={20} />
             </button>
-            <h1 className="text-2xl font-bold text-foreground">Role Management</h1>
+            <h1 className="type-primary-heading-h1-medium text-foreground">Role Management</h1>
           </div>
-          <p className="text-muted-foreground text-sm mt-1 ml-7">
+          <p className="text-muted-foreground type-primary-body-b2 mt-1 ml-7">
             View, create, and manage roles and their permissions.
           </p>
         </div>
         <button
           onClick={() => handleOpenModal()}
-          className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold text-sm transition flex-shrink-0"
+          className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg font-semibold type-primary-body-b2 transition flex-shrink-0"
         >
           <Plus size={16} />
           Add Role
@@ -269,7 +269,7 @@ const RoleManagement = () => {
         <div className="p-4 border-b border-border">
           <div className="flex items-center gap-2 mb-3">
             <h3 className="font-semibold text-foreground">Roles</h3>
-            <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-0.5 rounded-full">
+            <span className="bg-blue-100 text-blue-700 type-primary-label-l2 font-semibold px-2 py-0.5 rounded-full">
               {roles.length} Total
             </span>
           </div>
@@ -279,7 +279,7 @@ const RoleManagement = () => {
         {/* Roles List */}
         <div className="divide-y divide-border">
           {loading ? (
-            <div className="p-8 text-center text-muted-foreground text-sm">Loading...</div>
+            <div className="p-8 text-center text-muted-foreground type-primary-body-b3">Loading...</div>
           ) : paginatedRoles.length === 0 ? (
             <EmptyState
               title="No roles found"
@@ -301,14 +301,14 @@ const RoleManagement = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="text-sm font-semibold text-foreground">{role.displayName || role.name}</p>
+                        <p className="type-primary-body-b2 font-semibold text-foreground">{role.displayName || role.name}</p>
                         {role.name !== 'admin' && (
-                          <span className={`text-[10px] sm:text-[11px] font-semibold px-1.5 sm:px-2 py-0.5 rounded-full ${colorSet.badge}`}>
+                          <span className={`type-primary-label-l2 font-semibold px-1.5 sm:px-2 py-0.5 rounded-full ${colorSet.badge}`}>
                             {role.name}
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-muted-foreground mt-0.5">
+                      <p className="type-primary-body-b2 text-muted-foreground mt-0.5">
                         {role.description || 'No description'}
                         {' \u00B7 '}
                         {permissionCount(role.permissions)} permissions
@@ -335,7 +335,7 @@ const RoleManagement = () => {
                           <button
                             onClick={(e) => { e.stopPropagation(); if (role.name !== 'admin') { handleOpenModal(role) } }}
                             disabled={role.name === 'admin'}
-                            className={`flex items-center gap-2 px-3 py-2 text-sm w-full text-left ${
+                            className={`flex items-center gap-2 px-3 py-2 type-primary-body-b2 w-full text-left ${
                               role.name === 'admin'
                                 ? 'text-muted-foreground/50 cursor-not-allowed'
                                 : 'text-foreground hover:bg-accent'
@@ -347,7 +347,7 @@ const RoleManagement = () => {
                           <button
                             onClick={(e) => { e.stopPropagation(); if (role.name !== 'admin') { handleDelete(role._id); setMenuOpen(null) } }}
                             disabled={role.name === 'admin'}
-                            className={`flex items-center gap-2 px-3 py-2 text-sm w-full text-left ${
+                            className={`flex items-center gap-2 px-3 py-2 type-primary-body-b2 w-full text-left ${
                               role.name === 'admin'
                                 ? 'text-muted-foreground/50 cursor-not-allowed'
                                 : 'text-red-500 hover:bg-red-50'
@@ -365,12 +365,12 @@ const RoleManagement = () => {
                   {isExpanded && role.permissions && (
                     <div className="px-3 sm:px-4 pb-4">
                       <div className="border border-border rounded-lg overflow-x-auto">
-                        <table className="w-full text-sm min-w-[380px]">
+                        <table className="w-full type-primary-body-b2 min-w-[380px]">
                           <thead>
                             <tr className="bg-violet-50 border-b border-border">
-                              <th className="text-left px-3 sm:px-4 py-2 sm:py-2.5 font-semibold text-violet-600 text-xs sm:text-sm">Resource</th>
+                              <th className="text-left px-3 sm:px-4 py-2 sm:py-2.5 font-semibold text-violet-600 type-primary-label-l2 sm:type-primary-body-b2">Resource</th>
                               {ACTIONS.map((a) => (
-                                <th key={a} className="text-center px-2 sm:px-4 py-2 sm:py-2.5 font-semibold text-foreground capitalize text-xs sm:text-sm">
+                                <th key={a} className="text-center px-2 sm:px-4 py-2 sm:py-2.5 font-semibold text-foreground capitalize type-primary-label-l2 sm:type-primary-body-b2">
                                   {a}
                                 </th>
                               ))}
@@ -387,7 +387,7 @@ const RoleManagement = () => {
                                       <span className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full ${resConfig.bg} flex items-center justify-center flex-shrink-0`}>
                                         <ResIcon size={12} className={resConfig.color} />
                                       </span>
-                                      <span className="font-medium text-foreground text-xs sm:text-sm whitespace-nowrap">{resConfig.label}</span>
+                                      <span className="font-medium text-foreground type-primary-label-l2 sm:type-primary-body-b2 whitespace-nowrap">{resConfig.label}</span>
                                     </div>
                                   </td>
                                   {ACTIONS.map((action) => (
@@ -420,7 +420,7 @@ const RoleManagement = () => {
         {/* Pagination Footer */}
         {!loading && filteredRoles.length > 0 && (
           <div className="px-4 py-3 border-t border-border flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">
+            <p className="type-primary-body-b2 text-muted-foreground">
               Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1} to{' '}
               {Math.min(currentPage * ITEMS_PER_PAGE, filteredRoles.length)} of{' '}
               {filteredRoles.length} roles
@@ -437,7 +437,7 @@ const RoleManagement = () => {
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page)}
-                  className={`w-8 h-8 rounded text-sm font-medium transition ${
+                  className={`w-8 h-8 rounded type-primary-body-b2 font-medium transition ${
                     currentPage === page
                       ? 'bg-blue-600 text-white'
                       : 'border border-border hover:bg-accent text-foreground'
@@ -464,10 +464,10 @@ const RoleManagement = () => {
           <div className="bg-white rounded-xl shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
             <div className="flex items-center justify-between p-4 border-b border-border shrink-0">
               <div>
-                <h3 className="font-semibold text-foreground">
+                <h3 className="type-primary-body-b1-medium text-foreground">
                   {editingRole ? 'Edit Role' : 'Add Role'}
                 </h3>
-                <p className="text-xs text-muted-foreground mt-0.5">
+                <p className="type-primary-label-l2 text-muted-foreground mt-0.5">
                   {editingRole ? 'Update role details and permissions.' : 'Create a new role with permissions.'}
                 </p>
               </div>
@@ -507,9 +507,9 @@ const RoleManagement = () => {
               />
 
               <div>
-                <p className="text-sm font-semibold text-foreground mb-3">Permissions</p>
+                <p className="type-primary-body-b2-medium text-foreground mb-3">Permissions</p>
                 <div className="border border-border rounded-lg overflow-x-auto">
-                  <table className="w-full text-sm min-w-[400px]">
+                  <table className="w-full type-primary-body-b2 min-w-[400px]">
                     <thead>
                       <tr className="bg-violet-50 border-b border-border">
                         <th className="text-left px-4 py-2 font-semibold text-violet-600">Resource</th>
@@ -563,7 +563,7 @@ const RoleManagement = () => {
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border shrink-0">
               <button
                 onClick={handleCloseModal}
-                className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition"
+                className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition"
               >
                 Cancel
               </button>

@@ -70,13 +70,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -200,7 +200,7 @@ const ReportsManagePage = ({ bookings, isLoading, isError }) => {
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="text-2xl font-bold text-foreground">{isPatient ? 'My Reports' : 'Reports'}</h1>
+        <h1 className="type-primary-heading-h0-mobile-medium text-foreground">{isPatient ? 'My Reports' : 'Reports'}</h1>
         {isPatient && (
           <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
             <ShoppingCart size={18} className="mr-2" />Book a Test
@@ -211,8 +211,8 @@ const ReportsManagePage = ({ bookings, isLoading, isError }) => {
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{isPatient ? 'My Reports' : 'Reports'}</h1>
-          <p className="mt-1 text-sm text-muted-foreground">{isPatient ? 'View reports for your completed bookings.' : 'Review completed bookings and uploaded reports.'}</p>
+          <h1 className="type-primary-heading-h1 !font-medium text-foreground">{isPatient ? 'My Reports' : 'Reports'}</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">{isPatient ? 'View reports for your completed bookings.' : 'Review completed bookings and uploaded reports.'}</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }} placeholder="Search reports..." />
@@ -320,11 +320,11 @@ const ReportsManagePage = ({ bookings, isLoading, isError }) => {
 
       {/* Content */}
       {isLoading ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading reports…</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">Loading reports…</div>
       ) : isError ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-destructive">Unable to load reports. Please try again.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-destructive">Unable to load reports. Please try again.</div>
       ) : sorted.length === 0 ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">No reports match the selected filters.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">No reports match the selected filters.</div>
       ) : view === 'grid' ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visibleBookings.map((booking) => {
@@ -336,25 +336,25 @@ const ReportsManagePage = ({ bookings, isLoading, isError }) => {
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white font-semibold text-xs`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3`}>
                         {getInitials(booking.patientName)}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-semibold text-foreground text-sm truncate" title={booking.patientName}>{booking.patientName}</h3>
-                        <p className="text-xs text-muted-foreground">{booking.phone}</p>
+                        <h3 className="type-primary-body-b1-medium md:type-primary-body-b2-medium text-foreground truncate" title={booking.patientName}>{booking.patientName}</h3>
+                        <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${statusStyle.bg} ${statusStyle.text}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                       {booking.status}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col flex-1 p-4 pt-3">
-                  <dl className="mt-3 space-y-1.5 text-xs">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b1 md:type-primary-body-b2">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Payment</span>
-                      <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
+                      <span className={`rounded-md px-2 py-0.5 type-primary-body-b2 ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Booking Date</span>
@@ -366,7 +366,7 @@ const ReportsManagePage = ({ bookings, isLoading, isError }) => {
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -391,7 +391,7 @@ const ReportsManagePage = ({ bookings, isLoading, isError }) => {
       ) : (
         <div className="rounded-xl border border-border bg-white">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[800px] text-sm">
+            <table className="w-full min-w-[800px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Patient Name</th>
@@ -413,18 +413,18 @@ const ReportsManagePage = ({ bookings, isLoading, isError }) => {
                     <tr key={booking._id || booking.id} className="border-t border-border hover:bg-accent/30 transition">
                       <td className="px-4 py-3 font-medium text-foreground">{booking.patientName || '—'}</td>
                       <td className="px-4 py-3">
-                        <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                        <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${statusStyle.bg} ${statusStyle.text}`}>
                           <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                           {booking.status}
                         </span>
                       </td>
                       <td className="px-4 py-3">
-                        <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>
+                        <span className={`rounded-md px-2 py-0.5 type-primary-body-b2 ${paymentStyle.bg} ${paymentStyle.text}`}>
                           {booking.paymentStatus}
                         </span>
                       </td>
                       <td className="px-4 py-3 text-foreground">{booking.bookingDate || '—'}</td>
-                      <td className="px-4 py-3 text-muted-foreground text-xs">{createdAt}</td>
+                      <td className="px-4 py-3 type-primary-body-b2 text-muted-foreground">{createdAt}</td>
                       <td className="px-4 py-3">
                         <div className="flex items-center justify-end gap-1">
                           <button

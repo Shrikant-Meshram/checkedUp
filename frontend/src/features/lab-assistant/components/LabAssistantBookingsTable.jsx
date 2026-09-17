@@ -9,20 +9,20 @@ const PAGE_SIZE = 10
 const PAGE_SIZES = [10, 25, 50]
 
 const STATUS_STYLES = {
-  Pending: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-500' },
-  Assigned: { bg: 'bg-blue-50', text: 'text-blue-600', dot: 'bg-blue-500' },
+  Pending: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
+  Assigned: { bg: 'bg-primary/10', text: 'text-primary', dot: 'bg-primary' },
   Reached: { bg: 'bg-indigo-50', text: 'text-indigo-600', dot: 'bg-indigo-500' },
   'Sample Collected': { bg: 'bg-purple-50', text: 'text-purple-600', dot: 'bg-purple-500' },
-  Completed: { bg: 'bg-emerald-50', text: 'text-emerald-600', dot: 'bg-emerald-500' },
-  Cancelled: { bg: 'bg-red-50', text: 'text-red-600', dot: 'bg-red-500' },
+  Completed: { bg: 'bg-success/10', text: 'text-success', dot: 'bg-success' },
+  Cancelled: { bg: 'bg-destructive/10', text: 'text-destructive', dot: 'bg-destructive' },
   Rescheduled: { bg: 'bg-orange-50', text: 'text-orange-600', dot: 'bg-orange-500' },
 }
 
 const PAYMENT_STYLES = {
-  Paid: { bg: 'bg-emerald-50', text: 'text-emerald-600', dot: 'bg-emerald-500' },
-  Pending: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-500' },
-  Unpaid: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-500' },
-  Failed: { bg: 'bg-red-50', text: 'text-red-600', dot: 'bg-red-500' },
+  Paid: { bg: 'bg-success/10', text: 'text-success', dot: 'bg-success' },
+  Pending: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
+  Unpaid: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
+  Failed: { bg: 'bg-destructive/10', text: 'text-destructive', dot: 'bg-destructive' },
 }
 
 const AVATAR_COLORS = [
@@ -62,15 +62,15 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
       {open && (
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+          <div className="absolute left-0 top-full mt-1 bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
             {onHide && (
-              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <EyeOff size={14} /> Hide
               </button>
             )}
@@ -89,20 +89,20 @@ const MobileBookingCard = ({ booking, handleReached, openSampleModal, openNaviga
   const isPayDisabled = booking.status !== BOOKING_STATUS.SAMPLE_COLLECTED || booking.paymentStatus === PAYMENT_STATUS.PAID
 
   return (
-    <article className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+    <article className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
       <div className="p-4 pb-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white font-semibold text-xs`}>
+            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3`}>
               {getInitials(booking.patientName)}
             </span>
             <div className="min-w-0">
-              <h3 className="font-semibold text-foreground text-sm truncate" title={booking.patientName}>{booking.patientName}</h3>
-              <p className="text-xs text-muted-foreground">{booking.phone}</p>
+              <h3 className="type-primary-body-b2-medium text-foreground truncate" title={booking.patientName}>{booking.patientName}</h3>
+              <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
             </div>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3 ${statusStyle.bg} ${statusStyle.text}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
               {booking.status}
             </span>
@@ -111,19 +111,19 @@ const MobileBookingCard = ({ booking, handleReached, openSampleModal, openNaviga
       </div>
       <div className="flex flex-col flex-1 p-4 pt-3">
         <div className="flex items-center justify-between">
-          <span className="text-lg font-bold text-foreground">₹{(booking.totalAmount || booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</span>
-          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>
+          <span className="type-primary-heading-h3-medium text-foreground">₹{(booking.totalAmount || booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</span>
+          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3 ${paymentStyle.bg} ${paymentStyle.text}`}>
             <span className={`w-1.5 h-1.5 rounded-full ${paymentStyle.dot}`}></span>
             {booking.paymentStatus}
           </span>
         </div>
-        <dl className="mt-3 space-y-1.5 text-xs">
+        <dl className="mt-3 space-y-1.5 type-primary-body-b3">
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground">Test</span>
             <div className="flex items-center gap-1">
-              <span className="font-medium text-foreground text-right max-w-[140px] truncate">{booking.test?.title || booking.package?.title}</span>
+              <span className="type-primary-body-b3-medium text-foreground text-right max-w-[140px] truncate">{booking.test?.title || booking.package?.title}</span>
               {(booking.additionalTests?.length > 0 || booking.additionalPackages?.length > 0) && (
-                <span className="text-purple-700 text-[10px] font-medium bg-purple-50 px-1.5 py-0.5 rounded whitespace-nowrap">
+                <span className="type-primary-body-b3 text-purple-700 font-medium bg-purple-50 px-1.5 py-0.5 rounded whitespace-nowrap">
                   +{booking.additionalTests.length + booking.additionalPackages.length}
                 </span>
               )}
@@ -131,11 +131,11 @@ const MobileBookingCard = ({ booking, handleReached, openSampleModal, openNaviga
           </div>
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground">Date</span>
-            <span className="text-foreground">{booking.bookingDate} {booking.bookingTime}</span>
+            <span className="type-primary-body-b3 text-foreground">{booking.bookingDate} {booking.bookingTime}</span>
           </div>
           <div className="flex items-start justify-between gap-2">
             <span className="text-muted-foreground shrink-0">Address</span>
-            <span className="text-foreground text-right line-clamp-2">{booking.address || '—'}</span>
+            <span className="type-primary-body-b3 text-foreground text-right line-clamp-2">{booking.address || '—'}</span>
           </div>
         </dl>
         <div className="mt-auto pt-3 border-t border-border flex items-center justify-between gap-1">
@@ -237,17 +237,17 @@ const LabAssistantBookingsTable = ({
 
           {/* Desktop Table View */}
           <div className="hidden sm:block overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-            <div className="rounded-xl border border-border bg-white">
-              <table className="w-full min-w-[900px] text-sm">
+            <div className="rounded-xl border border-border bg-card">
+              <table className="w-full min-w-[900px] type-primary-body-b2">
                 <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                   <tr>
                     <SortableHeader title="Patient" sortKey="patient" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, patient: true }))} />
                     <SortableHeader title="Test" sortKey="test" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, test: true }))} />
                     <SortableHeader title="Date" sortKey="date" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, date: true }))} />
-                    <th className="px-4 py-3">Address</th>
+                    <th className="px-4 py-3 type-primary-body-b3-medium">Address</th>
                     <SortableHeader title="Status" sortKey="status" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, status: true }))} />
                     <SortableHeader title="Payment" sortKey="payment" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, payment: true }))} />
-                    <th className="px-4 py-3">Actions</th>
+                    <th className="px-4 py-3 type-primary-body-b3-medium">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -262,12 +262,12 @@ const LabAssistantBookingsTable = ({
                         {!hiddenColumns.patient && (
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-3">
-                              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${getAvatarColor(booking.patientName)} text-white font-semibold text-[10px]`}>
+                              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3`}>
                                 {getInitials(booking.patientName)}
                               </span>
                               <div>
-                                <h3 className="text-sm font-medium text-foreground">{booking.patientName}</h3>
-                                <p className="text-[11px] text-muted-foreground">{booking.phone}</p>
+                                <h3 className="type-primary-body-b2-medium text-foreground">{booking.patientName}</h3>
+                                <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
                               </div>
                             </div>
                           </td>
@@ -276,34 +276,34 @@ const LabAssistantBookingsTable = ({
                           <td className="px-4 py-3">
                             <div>
                               <div className="flex items-center gap-1.5 flex-wrap">
-                                <p className="text-sm font-medium text-foreground">{booking.test?.title || booking.package?.title}</p>
+                                <p className="type-primary-body-b2-medium text-foreground">{booking.test?.title || booking.package?.title}</p>
                                 {(booking.additionalTests?.length > 0 || booking.additionalPackages?.length > 0) && (
-                                  <span className="text-[10px] text-purple-700 font-medium bg-purple-50 px-1.5 py-0.5 rounded">
+                                  <span className="type-primary-body-b3 text-purple-700 font-medium bg-purple-50 px-1.5 py-0.5 rounded">
                                     +{booking.additionalTests.length + booking.additionalPackages.length}
                                   </span>
                                 )}
                               </div>
-                              <p className="font-mono text-xs font-bold text-primary mt-0.5">₹{(booking.totalAmount || booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</p>
+                              <p className="font-mono type-primary-body-b3-medium text-primary mt-0.5">₹{(booking.totalAmount || booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</p>
                             </div>
                           </td>
                         )}
                         {!hiddenColumns.date && (
                           <td className="px-4 py-3">
                             <div>
-                              <p className="text-sm font-medium text-foreground">{booking.bookingDate}</p>
-                              <p className="text-[11px] text-muted-foreground mt-0.5">{booking.bookingTime}</p>
+                              <p className="type-primary-body-b2-medium text-foreground">{booking.bookingDate}</p>
+                              <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{booking.bookingTime}</p>
                             </div>
                           </td>
                         )}
                         <td className="px-4 py-3">
                           <div className="flex gap-1.5 items-start max-w-[200px]">
-                            <MapPin className="text-red-500 mt-0.5 flex-shrink-0" size={14} />
-                            <span className="text-[12px] text-muted-foreground line-clamp-2">{booking.address || 'No address'}</span>
+                            <MapPin className="text-destructive mt-0.5 flex-shrink-0" size={14} />
+                            <span className="type-primary-body-b3 text-muted-foreground line-clamp-2">{booking.address || 'No address'}</span>
                           </div>
                         </td>
                         {!hiddenColumns.status && (
                           <td className="px-4 py-3">
-                            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3 ${statusStyle.bg} ${statusStyle.text}`}>
                               <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                               {booking.status}
                             </span>
@@ -311,7 +311,7 @@ const LabAssistantBookingsTable = ({
                         )}
                         {!hiddenColumns.payment && (
                           <td className="px-4 py-3">
-                            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>
+                            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3 ${paymentStyle.bg} ${paymentStyle.text}`}>
                               <span className={`w-1.5 h-1.5 rounded-full ${paymentStyle.dot}`}></span>
                               {booking.paymentStatus}
                             </span>

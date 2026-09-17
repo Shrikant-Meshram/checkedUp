@@ -18,7 +18,7 @@ const LabOwnerAssistantsSection = ({
   return (
     <>
       {activeSection === 'assistants' && (
-        <div className="bg-white rounded-xl shadow-card border border-border mt-6 p-5 md:p-6">
+        <div className="bg-card rounded-xl shadow-card border border-border mt-6 p-5 md:p-6">
           <DashboardSectionHeader
             title="Lab Assistants"
             subtitle="Manage your assistants"
@@ -40,7 +40,7 @@ const LabOwnerAssistantsSection = ({
                     scrollToTable()
                   }}
                   variant="ghost"
-                  className={`border rounded-xl p-4 hover:shadow-card-hover transition text-left bg-white
+                  className={`border rounded-xl p-4 hover:shadow-card-hover transition text-left bg-card
                       ${
                         selectedAssistant === assistant._id
                           ? 'border-purple-500 ring-2 ring-purple-200'
@@ -48,21 +48,21 @@ const LabOwnerAssistantsSection = ({
                       }
                       `}
                 >
-                  <div className="w-10 h-10 rounded-[10px] bg-green-100 text-green-600 flex items-center justify-center font-bold text-sm">
+                  <div className="w-10 h-10 rounded-[10px] bg-success/10 text-success flex items-center justify-center type-primary-body-b1-medium">
                     <Users size={18} />
                   </div>
-                  <h3 className="font-serif text-lg text-foreground mt-3">{assistant.name}</h3>
-                  <p className="text-muted-foreground text-xs mt-0.5 break-all">{assistant.email}</p>
+                  <h3 className="type-primary-heading-h4-medium text-foreground mt-3">{assistant.name}</h3>
+                  <p className="type-primary-body-b3 text-muted-foreground mt-0.5 break-all">{assistant.email}</p>
                   <div className="grid grid-cols-2 gap-3 mt-4">
                     <div className="bg-primary/10 rounded-lg p-3 text-center">
-                      <p className="text-[10px] text-muted-foreground">Total Tests</p>
-                      <h4 className="font-mono font-bold text-base text-primary mt-0.5">
+                      <p className="type-primary-label-l2 text-muted-foreground">Total Tests</p>
+                      <h4 className="font-mono type-primary-heading-h3-medium text-primary mt-0.5">
                         {totalBookings.length}
                       </h4>
                     </div>
-                    <div className="bg-green-50 border border-green-100 rounded-lg p-3 text-center">
-                      <p className="text-[10px] text-muted-foreground">Completed</p>
-                      <h4 className="font-mono font-bold text-base text-green-600 mt-0.5">
+                    <div className="bg-success/10 border border-success/20 rounded-lg p-3 text-center">
+                      <p className="type-primary-label-l2 text-muted-foreground">Completed</p>
+                      <h4 className="font-mono type-primary-heading-h3-medium text-success mt-0.5">
                         {
                           totalBookings.filter((item) => item.status === BOOKING_STATUS.COMPLETED)
                             .length

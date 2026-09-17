@@ -82,7 +82,7 @@ const SettlementCharts = ({ history, isLoading }) => {
       {/* Revenue Trend */}
       <div className="rounded-xl border border-border bg-white p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-semibold text-foreground">Revenue Trend</h3>
+          <h3 className="type-primary-body-b2-medium text-foreground">Revenue Trend</h3>
           <Select
             options={[
               { value: 'week', label: 'This Week' },
@@ -98,8 +98,8 @@ const SettlementCharts = ({ history, isLoading }) => {
             const widthPercent = (month.totalRevenue / maxRevenue) * 100
             return (
               <div key={month.month} className="space-y-1">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground font-medium">{month.label}</span>
+                <div className="flex items-center justify-between type-primary-body-b3">
+                  <span className="text-muted-foreground type-primary-body-b3-medium">{month.label}</span>
                   <span className="text-foreground">{formatCurrency(month.totalRevenue)}</span>
                 </div>
                 <div className="w-full bg-muted/30 rounded-full h-3 overflow-hidden">
@@ -114,7 +114,7 @@ const SettlementCharts = ({ history, isLoading }) => {
         </div>
 
         {sortedMonths.length > 0 && (
-          <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs text-muted-foreground">
+          <div className="mt-4 pt-3 border-t border-border flex items-center justify-between type-primary-body-b3 text-muted-foreground">
             <span>Total Revenue: {formatCurrency(sortedMonths.reduce((sum, m) => sum + m.totalRevenue, 0))}</span>
             <span>Lab Share: {formatCurrency(sortedMonths.reduce((sum, m) => sum + m.labShare, 0))}</span>
           </div>
@@ -124,7 +124,7 @@ const SettlementCharts = ({ history, isLoading }) => {
       {/* Top Lab Owners by Revenue */}
       <div className="rounded-xl border border-border bg-white p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-semibold text-foreground">Top Lab Owners by Revenue</h3>
+          <h3 className="type-primary-body-b2-medium text-foreground">Top Lab Owners by Revenue</h3>
           <Select
             options={[
               { value: 'week', label: 'This Week' },
@@ -140,11 +140,11 @@ const SettlementCharts = ({ history, isLoading }) => {
             const widthPercent = (lab.totalRevenue / maxLabRevenue) * 100
             return (
               <div key={lab.name} className="flex items-center gap-3">
-                <span className="text-xs text-muted-foreground w-4">{index + 1}</span>
+                <span className="type-primary-body-b3 text-muted-foreground w-4">{index + 1}</span>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-foreground truncate">{lab.name}</span>
-                    <span className="text-xs font-medium text-foreground">{formatCurrency(lab.totalRevenue)}</span>
+                    <span className="type-primary-body-b3 text-foreground truncate">{lab.name}</span>
+                    <span className="type-primary-body-b3-medium text-foreground">{formatCurrency(lab.totalRevenue)}</span>
                   </div>
                   <div className="w-full bg-muted/30 rounded-full h-2 overflow-hidden">
                     <div
@@ -159,14 +159,14 @@ const SettlementCharts = ({ history, isLoading }) => {
         </div>
 
         {topLabOwners.length > 5 && (
-          <button className="mt-3 text-xs text-primary hover:underline w-full text-center">View All</button>
+          <button className="mt-3 type-primary-body-b3 text-primary hover:underline w-full text-center">View All</button>
         )}
       </div>
 
       {/* Settlement Status */}
       <div className="rounded-xl border border-border bg-white p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-semibold text-foreground">Settlement Status</h3>
+          <h3 className="type-primary-body-b2-medium text-foreground">Settlement Status</h3>
         </div>
 
         <div className="flex items-center justify-center">
@@ -192,8 +192,8 @@ const SettlementCharts = ({ history, isLoading }) => {
               ))}
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-lg font-bold text-foreground">{formatCurrency(totalAmount)}</span>
-              <span className="text-xs text-muted-foreground">Total</span>
+              <span className="type-primary-heading-h3 text-foreground">{formatCurrency(totalAmount)}</span>
+              <span className="type-primary-body-b3 text-muted-foreground">Total</span>
             </div>
           </div>
         </div>
@@ -207,9 +207,9 @@ const SettlementCharts = ({ history, isLoading }) => {
               <div key={status} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className={`w-2.5 h-2.5 rounded-full ${style.bg}`}></span>
-                  <span className="text-xs text-foreground">{status}</span>
+                  <span className="type-primary-body-b3 text-foreground">{status}</span>
                 </div>
-                <span className="text-xs text-muted-foreground">{formatCurrency(amount)} ({percent}%)</span>
+                <span className="type-primary-body-b3 text-muted-foreground">{formatCurrency(amount)} ({percent}%)</span>
               </div>
             )
           })}

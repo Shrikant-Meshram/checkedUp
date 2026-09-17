@@ -40,7 +40,7 @@ const AdminStatsGrid = ({
           value={tests.length}
           icon={<FlaskConical size={18} />}
           color="green"
-          bgColor="bg-green-100 text-green-600"
+          bgColor="bg-success/10 text-success"
           onClick={() => navigate(ROUTES.TESTS)}
         />
         <DashboardStatsCard
@@ -48,7 +48,7 @@ const AdminStatsGrid = ({
           value={bookings.filter((item) => item.status === BOOKING_STATUS.PENDING).length}
           icon={<TestTubeDiagonal size={18} />}
           color="yellow"
-          bgColor="bg-yellow-100 text-yellow-600"
+          bgColor="bg-warning/10 text-warning"
           active={activeSection === 'pending'}
           onClick={() => {
             setActiveSection('pending')
@@ -60,7 +60,7 @@ const AdminStatsGrid = ({
           value={bookings.filter((item) => item.status === BOOKING_STATUS.COMPLETED).length}
           icon={<PackageOpen size={18} />}
           color="purple"
-          bgColor="bg-purple-100 text-purple-600"
+          bgColor="bg-primary/10 text-primary"
           active={activeSection === 'completed'}
           onClick={() => {
             setActiveSection('completed')
@@ -72,7 +72,7 @@ const AdminStatsGrid = ({
           value={packages.length}
           icon={<PackageOpen size={18} />}
           color="purple"
-          bgColor="bg-purple-100 text-purple-600"
+          bgColor="bg-primary/10 text-primary"
           onClick={() => navigate(ROUTES.PACKAGES)}
         />
         <DashboardStatsCard
@@ -80,7 +80,7 @@ const AdminStatsGrid = ({
           value={labOwners.length}
           icon={<Users size={18} />}
           color="green"
-          bgColor="bg-green-100 text-green-600"
+          bgColor="bg-success/10 text-success"
           onClick={scrollToLabOwners}
         />
         <DashboardStatsCard
@@ -88,7 +88,7 @@ const AdminStatsGrid = ({
           value={bookings.filter((item) => item.paymentStatus === 'Paid').length}
           icon={<Banknote size={18} />}
           color="green"
-          bgColor="bg-green-100 text-green-600"
+          bgColor="bg-success/10 text-success"
           onClick={openPaymentOverview}
         />
       </div>
@@ -106,7 +106,7 @@ const AdminStatsGrid = ({
               </div>
               <div>
                 <h3 className="font-primary text-base text-foreground">Create Test</h3>
-                <p className="text-muted-foreground text-[11px] mt-0.5">Add laboratory tests</p>
+                <p className="text-muted-foreground type-primary-body-b3 mt-0.5">Add laboratory tests</p>
               </div>
             </div>
           </button>
@@ -115,15 +115,15 @@ const AdminStatsGrid = ({
         <Can resource="packages" action="create">
           <button
             onClick={() => setActivePanel('package')}
-            className="bg-purple-50 border border-purple-200 rounded-xl p-5 hover:bg-purple-100 transition text-left"
+            className="bg-primary/5 border border-primary/20 rounded-xl p-5 hover:bg-primary/10 transition text-left"
           >
             <div className="flex items-center gap-4">
-              <div className="w-11 h-11 rounded-[10px] bg-purple-100 flex items-center justify-center">
-                <PackageOpen size={20} className="text-purple-600" />
+              <div className="w-11 h-11 rounded-[10px] bg-primary/10 flex items-center justify-center">
+                <PackageOpen size={20} className="text-primary" />
               </div>
               <div>
-                <h3 className="font-primary text-base text-foreground">Create Package</h3>
-                <p className="text-muted-foreground text-[11px] mt-0.5">Add health packages</p>
+                <h3 className="type-primary-body-b2-medium text-foreground">Create Package</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Add health packages</p>
               </div>
             </div>
           </button>
@@ -132,15 +132,15 @@ const AdminStatsGrid = ({
         <Can resource="lab_owners" action="create">
           <button
             onClick={() => setActivePanel('lab-owner')}
-            className="bg-yellow-50 border border-yellow-200 rounded-xl p-5 hover:bg-yellow-100 transition text-left"
+            className="bg-warning/5 border border-warning/20 rounded-xl p-5 hover:bg-warning/10 transition text-left"
           >
             <div className="flex items-center gap-4">
-              <div className="w-11 h-11 rounded-[10px] bg-yellow-100 flex items-center justify-center">
-                <Users size={20} className="text-yellow-600" />
+              <div className="w-11 h-11 rounded-[10px] bg-warning/10 flex items-center justify-center">
+                <Users size={20} className="text-warning" />
               </div>
               <div>
-                <h3 className="font-primary text-base text-foreground">Create Lab Owner</h3>
-                <p className="text-muted-foreground text-[11px] mt-0.5">Add laboratory owner</p>
+                <h3 className="type-primary-body-b2-medium text-foreground">Create Lab Owner</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Add laboratory owner</p>
               </div>
             </div>
           </button>
@@ -149,15 +149,15 @@ const AdminStatsGrid = ({
         <Can resource="payments" action="update">
           <button
             onClick={() => setActivePanel('payment')}
-            className="bg-green-50 border border-green-200 rounded-xl p-5 hover:bg-green-100 transition text-left"
+            className="bg-success/5 border border-success/20 rounded-xl p-5 hover:bg-success/10 transition text-left"
           >
             <div className="flex items-center gap-4">
-              <div className="w-11 h-11 rounded-[10px] bg-green-100 flex items-center justify-center">
-                <CreditCard size={20} className="text-green-600" />
+              <div className="w-11 h-11 rounded-[10px] bg-success/10 flex items-center justify-center">
+                <CreditCard size={20} className="text-success" />
               </div>
               <div>
-                <h3 className="font-primary text-base text-foreground">Payment Settings</h3>
-                <p className="text-muted-foreground text-[11px] mt-0.5">Upload QR & UPI Details</p>
+                <h3 className="type-primary-body-b2-medium text-foreground">Payment Settings</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Upload QR & UPI Details</p>
               </div>
             </div>
           </button>

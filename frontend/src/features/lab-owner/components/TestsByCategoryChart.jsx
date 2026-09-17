@@ -19,24 +19,24 @@ const TestsByCategoryChart = ({ data, filter, onFilterChange }) => {
   const total = chartData.reduce((sum, d) => sum + (d.value || 0), 0)
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-4 gap-2">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Tests by Category</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Tests by Category</h3>
         <div className="relative shrink-0" ref={dropRef}>
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
+            className="flex items-center gap-2 type-primary-label-l2 font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
           >
             {filter}
             <ChevronDown size={14} className={`text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
           </button>
           {open && (
-            <div className="absolute right-0 top-full mt-1 z-50 bg-white border border-border rounded-lg shadow-lg py-1 min-w-[140px]">
+            <div className="absolute right-0 top-full mt-1 z-50 bg-card border border-border rounded-lg shadow-lg py-1 min-w-[140px]">
               {filters.map((f) => (
                 <button
                   key={f}
                   onClick={() => { onFilterChange(f); setOpen(false) }}
-                  className="flex items-center justify-between w-full px-3 py-2 text-xs text-foreground hover:bg-accent transition"
+                  className="flex items-center justify-between w-full px-3 py-2 type-primary-label-l2 text-foreground hover:bg-accent transition"
                 >
                   {f}
                   {filter === f && <Check size={14} className="text-primary" />}
@@ -76,8 +76,8 @@ const TestsByCategoryChart = ({ data, filter, onFilterChange }) => {
             </PieChart>
           </ResponsiveContainer>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-mono font-bold text-lg sm:text-2xl text-foreground">{total.toLocaleString('en-IN')}</span>
-            <span className="text-[10px] sm:text-[11px] text-muted-foreground">Total Tests</span>
+            <span className="font-mono type-primary-heading-h2-medium text-foreground">{total.toLocaleString('en-IN')}</span>
+            <span className="type-primary-label-l2 text-muted-foreground">Total Tests</span>
           </div>
         </div>
 
@@ -88,11 +88,11 @@ const TestsByCategoryChart = ({ data, filter, onFilterChange }) => {
               <div key={index} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }}></span>
-                  <span className="text-xs sm:text-sm text-foreground font-medium">{item.name}</span>
+                  <span className="type-primary-body-b2 text-foreground font-medium">{item.name}</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-xs sm:text-sm font-semibold text-foreground">{item.value}</span>
-                  <span className="text-[10px] sm:text-[11px] text-muted-foreground w-10 sm:w-12 text-right">{pct}%</span>
+                  <span className="type-primary-body-b2 font-semibold text-foreground">{item.value}</span>
+                  <span className="type-primary-label-l2 text-muted-foreground w-10 sm:w-12 text-right">{pct}%</span>
                 </div>
               </div>
             )

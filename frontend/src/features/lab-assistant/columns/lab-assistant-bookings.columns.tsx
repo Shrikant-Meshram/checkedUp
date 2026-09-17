@@ -47,7 +47,7 @@ const statusStyles: Record<string, string> = {
 
 const StatusBadge = ({ status }: { status: string }) => (
   <span
-    className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold inline-block ${
+    className={`px-2.5 py-0.5 rounded-full type-primary-body-b3-medium inline-block ${
       statusStyles[status] || "bg-primary/10 text-muted-foreground"
     }`}
   >
@@ -99,8 +99,8 @@ export function createLabAssistantBookingsColumns({
               <CircleUser className="text-primary" size={18} />
             </div>
             <div>
-              <h3 className="text-sm font-medium text-foreground">{booking.patientName}</h3>
-              <p className="text-[11px] text-muted-foreground">{booking.phone}</p>
+              <h3 className="type-primary-body-b2-medium text-foreground">{booking.patientName}</h3>
+              <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
             </div>
           </div>
         )
@@ -116,10 +116,10 @@ export function createLabAssistantBookingsColumns({
         const booking = row.original
         return (
           <div>
-            <p className="text-sm font-medium text-foreground">
+            <p className="type-primary-body-b2-medium text-foreground">
               {booking.test?.title || booking.package?.title}
             </p>
-            <p className="font-mono text-xs font-bold text-primary mt-0.5">
+            <p className="font-mono type-primary-body-b3-medium text-primary mt-0.5">
               ₹{booking.test?.price || booking.package?.price}
             </p>
           </div>
@@ -136,8 +136,8 @@ export function createLabAssistantBookingsColumns({
         const booking = row.original
         return (
           <div>
-            <p className="text-sm font-medium text-foreground">{booking.bookingDate}</p>
-            <p className="text-[11px] text-muted-foreground mt-0.5">{booking.bookingTime}</p>
+            <p className="type-primary-body-b2-medium text-foreground">{booking.bookingDate}</p>
+            <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{booking.bookingTime}</p>
           </div>
         )
       },
@@ -150,7 +150,7 @@ export function createLabAssistantBookingsColumns({
       cell: ({ row }) => (
         <div className="flex gap-1.5 items-start max-w-[200px]">
           <MapPin className="text-red-500 mt-0.5 flex-shrink-0" size={14} />
-          <span className="text-[12px] text-muted-foreground line-clamp-2">
+          <span className="type-primary-body-b3 text-muted-foreground line-clamp-2">
             <CopyAddress text={row.getValue("address")} />
           </span>
         </div>

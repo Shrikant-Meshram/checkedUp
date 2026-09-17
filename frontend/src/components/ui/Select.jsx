@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
-import { createPortal } from 'react-dom'
 import { ChevronDown, Check } from 'lucide-react'
 
 const Select = ({
@@ -30,7 +29,6 @@ const Select = ({
   const containerRef = useRef(null)
   const dropdownRef = useRef(null)
   const buttonRef = useRef(null)
-  const dropdownRef = useRef(null)
 
   const generatedId = React.useId()
   const selectId = idProp || (name ? `select-${name}` : generatedId)
@@ -66,8 +64,8 @@ const Select = ({
   const displayText = selectedOption?.label || placeholder || 'Select'
 
   const sizeClasses = {
-    sm: 'h-7 text-xs px-2.5 pr-7',
-    default: 'h-12 text-sm px-3 pr-8',
+    sm: 'h-7 type-primary-body-b3 px-2.5 pr-7',
+    default: 'h-12 type-primary-body-b2 px-3 pr-8',
   }
 
   const handleSelect = useCallback(
@@ -198,7 +196,7 @@ const Select = ({
           >
             <ul role="listbox" className="py-1">
               {allOptions.length === 0 ? (
-                <li className="px-3 py-2 text-sm text-muted-foreground text-center">No options</li>
+                <li className="px-3 py-2 type-primary-body-b2 text-muted-foreground text-center">No options</li>
               ) : (
                 allOptions.map((opt) => {
                   const isSelected = String(opt.value) === String(selectedValue)
@@ -209,7 +207,7 @@ const Select = ({
                       aria-selected={isSelected}
                       onClick={() => handleSelect(opt.value)}
                       className={`
-                        flex items-center gap-2 px-3 py-2 text-sm cursor-pointer transition whitespace-nowrap
+                        flex items-center gap-2 px-3 py-2 type-primary-body-b2 cursor-pointer transition whitespace-nowrap
                         ${isSelected ? 'bg-primary/10 text-primary font-medium' : 'text-foreground hover:bg-accent'}
                       `}
                     >
@@ -224,7 +222,7 @@ const Select = ({
           document.body
         )}
       </div>
-      {error && <p className="text-destructive text-xs mt-1.5 font-medium">{error}</p>}
+      {error && <p className="text-destructive type-primary-body-b3 mt-1.5 font-medium">{error}</p>}
     </div>
   )
 }

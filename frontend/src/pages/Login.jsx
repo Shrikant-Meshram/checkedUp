@@ -229,7 +229,7 @@ const Login = () => {
         {/* Middle: DNA Animation & Text */}
         <div className="flex flex-col items-center justify-center z-10 w-full mt-4">
           <DNAAnimation />
-          <h2 className="font-heading font-bold text-white mt-6 mb-5 text-center type-primary-heading-h2-regular md:type-primary-heading-h2-regular">
+          <h2 className="text-white type-primary-heading-h2-regular mt-6 mb-5 text-center">
             Trusted diagnostics, at your door.
           </h2>
           
@@ -238,25 +238,25 @@ const Login = () => {
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">NABL Certified Labs</span>
+              <span className="text-white type-primary-body-b2-medium">NABL Certified Labs</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">Reports in 24 Hours</span>
+              <span className="text-white type-primary-body-b2-medium">Reports in 24 Hours</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">Home Sample Collection</span>
+              <span className="text-white type-primary-body-b2-medium">Home Sample Collection</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">100% Accurate Results</span>
+              <span className="text-white type-primary-body-b2-medium">100% Accurate Results</span>
             </div>
           </div>
         </div>
@@ -264,18 +264,18 @@ const Login = () => {
         {/* Bottom: Stat Boxes */}
         <div className="flex justify-between items-center z-10 w-full max-w-[320px] mx-auto mt-6">
           <div className="text-center">
-            <h4 className="text-white font-bold text-lg">50k+</h4>
-            <p className="text-white/60 text-xs">Patients</p>
+            <h4 className="text-white type-primary-body-b1-medium">50k+</h4>
+            <p className="text-white/60 type-primary-body-b3">Patients</p>
           </div>
           <div className="w-[1px] h-8 bg-white/20"></div>
           <div className="text-center">
-            <h4 className="text-white font-bold text-lg">1200+</h4>
-            <p className="text-white/60 text-xs">Cities</p>
+            <h4 className="text-white type-primary-body-b1-medium">1200+</h4>
+            <p className="text-white/60 type-primary-body-b3">Cities</p>
           </div>
           <div className="w-[1px] h-8 bg-white/20"></div>
           <div className="text-center">
-            <h4 className="text-white font-bold text-lg">5.0</h4>
-            <p className="text-white/60 text-xs">Rating</p>
+            <h4 className="text-white type-primary-body-b1-medium">5.0</h4>
+            <p className="text-white/60 type-primary-body-b3">Rating</p>
           </div>
         </div>
       </div>
@@ -304,7 +304,7 @@ const Login = () => {
           ))}
         </div>
 
-        <div className="w-full max-w-[440px] bg-white p-[40px] border border-border rounded-[10px] shadow-sm relative z-10">
+        <div className="w-full max-w-[440px] bg-card p-[40px] border border-border rounded-[10px] shadow-sm relative z-10">
           <div className="text-center md:text-left mb-6">
             <h2 className="type-primary-heading-h0-mobile lg:type-primary-heading-h0 text-foreground">Sign In</h2>
             <p className="text-muted-foreground mt-2 type-primary-body-b2 md:type-primary-body-b1">
@@ -370,7 +370,7 @@ const Login = () => {
 
           <p className="mt-6 text-muted-foreground text-center type-primary-body-b2 md:type-primary-body-b1">
             Don't have an account?{' '}
-            <Link to={ROUTES.SIGNUP} className="text-primary font-bold hover:underline">
+            <Link to={ROUTES.SIGNUP} className="text-primary type-primary-body-b2-medium hover:underline">
               Create account
             </Link>
           </p>
@@ -381,7 +381,7 @@ const Login = () => {
       {/* Mobile: Floating Card Overlay — mobile only */}
       {!isDesktop && (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-[1px]">
-        <div className="w-full max-w-[400px] bg-white p-[32px] rounded-[16px] shadow-2xl relative">
+        <div className="w-full max-w-[400px] bg-card p-[32px] rounded-[16px] shadow-2xl relative">
           <button
             onClick={() => navigate(ROUTES.HOME)}
             className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition"
@@ -439,7 +439,7 @@ const Login = () => {
 
           <p className="mt-5 text-muted-foreground text-center type-primary-body-b2">
             Don't have an account?{' '}
-            <Link to={ROUTES.SIGNUP} className="text-primary font-bold hover:underline">
+            <Link to={ROUTES.SIGNUP} className="text-primary type-primary-body-b2-medium hover:underline">
               Create account
             </Link>
           </p>

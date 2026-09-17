@@ -3,9 +3,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 const LabAssistantWeeklySamplesChart = ({ data }) => {
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-4 gap-2">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Samples Collected This Week</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Samples Collected This Week</h3>
       </div>
 
       <div className="h-[220px]">

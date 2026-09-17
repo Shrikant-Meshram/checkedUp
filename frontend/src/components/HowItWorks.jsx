@@ -27,14 +27,14 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-surface py-16">
       <div className="enterprise-container">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground">
             How It <span className="text-primary">Works</span>
           </h2>
-          <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
+          <p className="mt-3 type-primary-body-b2 text-muted-foreground max-w-xl mx-auto">
             Getting your lab tests done is simple, fast, and hassle-free.
             Follow these easy steps from the comfort of your home.
           </p>
@@ -45,7 +45,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 text-center border border-border hover:shadow-lg transition-shadow duration-300"
+              className="bg-card rounded-2xl p-8 text-center border border-border hover:shadow-lg transition-shadow duration-300"
             >
               {/* Icon */}
               <div className={`w-16 h-16 rounded-full ${step.iconBg} flex items-center justify-center mx-auto mb-5`}>
@@ -53,8 +53,8 @@ const HowItWorks = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-lg font-bold text-foreground mb-3">{step.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+              <h3 className="type-primary-heading-h3 text-foreground mb-3">{step.title}</h3>
+              <p className="type-primary-body-b2 text-muted-foreground leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>

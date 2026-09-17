@@ -33,7 +33,7 @@ export default function ReportViewerModal({ isOpen, onClose, reportUrl, title = 
             download
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+className="inline-flex items-center gap-1.5 type-primary-body-b2-medium text-primary hover:underline"
           >
             <Download size={14} /> Download PDF
           </a>
@@ -43,14 +43,14 @@ export default function ReportViewerModal({ isOpen, onClose, reportUrl, title = 
           <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
             <ExternalLink size={28} className="text-primary" />
           </div>
-          <p className="text-sm text-muted-foreground text-center">
+          <p className="type-primary-body-b2 text-muted-foreground text-center">
             PDF preview is optimized for desktop viewing.
           </p>
           <a
             href={reportUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground type-primary-body-b2-medium hover:bg-primary/90 transition"
           >
             <ExternalLink size={14} /> Open PDF
           </a>
@@ -71,7 +71,7 @@ export default function ReportViewerModal({ isOpen, onClose, reportUrl, title = 
           download
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+          className="inline-flex items-center gap-1.5 type-primary-body-b2-medium text-primary hover:underline"
         >
           <Download size={14} /> Download PDF
         </a>

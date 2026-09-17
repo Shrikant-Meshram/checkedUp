@@ -63,23 +63,23 @@ const getCategoryColor = (name) => {
 }
 
 const TestCardSkeleton = () => (
-  <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden animate-pulse">
+  <div className="bg-card border border-border rounded-2xl overflow-hidden animate-pulse">
     <div className="p-5">
       <div className="flex items-start gap-4 mb-4">
-        <div className="w-16 h-16 bg-gray-200 rounded-xl"></div>
+        <div className="w-16 h-16 bg-surface rounded-xl"></div>
         <div className="flex-1">
-          <div className="h-5 bg-gray-200 rounded w-3/4 mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/4 mb-2"></div>
-          <div className="h-6 bg-gray-200 rounded w-20 mt-2"></div>
+          <div className="h-5 bg-surface rounded w-3/4 mb-2"></div>
+          <div className="h-4 bg-surface rounded w-1/4 mb-2"></div>
+          <div className="h-6 bg-surface rounded w-20 mt-2"></div>
         </div>
       </div>
       <div className="flex items-center gap-6 mb-4">
-        <div className="h-4 bg-gray-200 rounded w-20"></div>
-        <div className="h-4 bg-gray-200 rounded w-24"></div>
+        <div className="h-4 bg-surface rounded w-20"></div>
+        <div className="h-4 bg-surface rounded w-24"></div>
       </div>
-      <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-        <div className="h-6 bg-gray-200 rounded w-16"></div>
-        <div className="h-5 bg-gray-200 rounded w-16"></div>
+      <div className="flex justify-between items-center pt-4 border-t border-border">
+        <div className="h-6 bg-surface rounded w-16"></div>
+        <div className="h-5 bg-surface rounded w-16"></div>
       </div>
     </div>
   </div>
@@ -260,11 +260,11 @@ const TestsPage = () => {
             />
           </div>
           <div className="enterprise-container relative z-10">
-            <h1 className="font-heading font-bold text-3xl lg:text-4xl text-foreground mb-3">All Lab Tests</h1>
-            <p className="text-muted-foreground text-base max-w-xl mb-4">
+            <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground mb-3">All Lab <span className="text-primary">Tests</span></h1>
+            <p className="type-primary-body-b1 text-muted-foreground max-w-xl mb-4">
               Choose from 1200+ accurate lab tests across multiple health categories.
             </p>
-            <div className="flex items-center gap-2 text-sm text-primary bg-primary/5 px-4 py-2 rounded-full w-fit">
+            <div className="flex items-center gap-2 type-primary-body-b2 text-primary bg-primary/5 px-4 py-2 rounded-full w-fit">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -307,7 +307,7 @@ const TestsPage = () => {
           {activeFilterCount > 0 && (
             <button
               onClick={clearFilters}
-              className="flex items-center gap-2 px-4 py-2 text-sm text-primary hover:bg-primary/5 rounded-lg transition mb-4"
+              className="flex items-center gap-2 px-4 py-2 type-primary-body-b2 text-primary hover:bg-primary/5 rounded-lg transition mb-4"
             >
               <RefreshCw size={16} />
               <span>Clear Filters</span>
@@ -339,7 +339,7 @@ const TestsPage = () => {
                 return (
                   <div
                     key={item._id}
-                    className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-md transition-all duration-200 cursor-pointer group"
+                    className="bg-card border border-border rounded-2xl overflow-hidden hover:shadow-md transition-all duration-200 cursor-pointer group"
                     onClick={() => handleBookNow(item, 'test')}
                   >
                     <div className="p-5">
@@ -349,7 +349,7 @@ const TestsPage = () => {
                           <img 
                             src={item.image} 
                             alt={item.title}
-                            className="w-16 h-16 rounded-xl object-cover border border-gray-100"
+                            className="w-16 h-16 rounded-xl object-cover border border-border"
                           />
                         ) : (() => {
                           const TestIcon = getTestIcon(item)
@@ -361,12 +361,12 @@ const TestsPage = () => {
                           )
                         })()}
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-heading font-bold text-base text-gray-900 truncate">{item.title}</h3>
-                          <p className="text-xs text-gray-400 mt-0.5">{item.code || item.testCode}</p>
+                          <h3 className="type-primary-body-b1-medium text-foreground truncate">{item.title}</h3>
+                          <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{item.code || item.testCode}</p>
                           {(() => {
                             const catColor = getCategoryColor(category)
                             return (
-                              <span className={`inline-block mt-2 px-3 py-1 rounded-sm text-xs font-medium ${catColor.bg} ${catColor.text}`}>
+                              <span className={`inline-block mt-2 px-3 py-1 rounded-sm type-primary-body-b3-medium ${catColor.bg} ${catColor.text}`}>
                                 {category}
                               </span>
                             )
@@ -375,30 +375,30 @@ const TestsPage = () => {
                       </div>
 
                       {/* Info Row */}
-                      <div className="flex items-center gap-6 mb-4 text-sm">
+                      <div className="flex items-center gap-6 mb-4 type-primary-body-b2">
                         <div className="flex items-center gap-2">
                           <Droplet size={16} className="text-blue-400" />
                           <div>
-                            <p className="font-medium text-gray-900">{item.sampleType || 'Blood'}</p>
-                            <p className="text-[10px] text-gray-400">Sample Type</p>
+                            <p className="type-primary-body-b2-medium text-foreground">{item.sampleType || 'Blood'}</p>
+                            <p className="type-primary-body-b3 text-muted-foreground">Sample Type</p>
                           </div>
                         </div>
-                        <div className="w-px h-8 bg-gray-200" />
+                        <div className="w-px h-8 bg-border" />
                         <div className="flex items-center gap-2">
                           <Clock size={16} className="text-orange-400" />
                           <div>
-                            <p className="font-medium text-gray-900">{item.reportTime || '24 hrs'}</p>
-                            <p className="text-[10px] text-gray-400">TAT</p>
+                            <p className="type-primary-body-b2-medium text-foreground">{item.reportTime || '24 hrs'}</p>
+                            <p className="type-primary-body-b3 text-muted-foreground">TAT</p>
                           </div>
                         </div>
                       </div>
 
                       {/* Price and Status */}
-                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <p className="text-lg font-bold text-gray-900">₹{item.price}</p>
+                      <div className="flex items-center justify-between pt-4 border-t border-border">
+                        <p className="type-primary-body-b1-medium text-foreground">₹{item.price}</p>
                         <div className="flex items-center gap-2">
-                          <span className={`w-2 h-2 rounded-full ${status === 'Active' ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                          <span className={`text-sm font-medium ${status === 'Active' ? 'text-green-600' : 'text-red-600'}`}>
+                          <span className={`w-2 h-2 rounded-full ${status === 'Active' ? 'bg-success' : 'bg-destructive'}`}></span>
+                          <span className={`type-primary-body-b2-medium ${status === 'Active' ? 'text-success' : 'text-destructive'}`}>
                             {status}
                           </span>
                         </div>
@@ -410,9 +410,9 @@ const TestsPage = () => {
             </div>
           ) : (
             /* Table View */
-            <div className="rounded-xl border border-border bg-white">
+            <div className="rounded-xl border border-border bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[820px] text-sm">
+                <table className="w-full min-w-[820px] type-primary-body-b2">
                   <thead className="bg-accent text-left text-muted-foreground">
                     <tr>
                       {[
@@ -427,7 +427,7 @@ const TestsPage = () => {
                           <button
                             type="button"
                             onClick={() => handleSort(col.key)}
-                            className="flex items-center gap-1 text-xs font-semibold hover:text-foreground transition"
+                            className="flex items-center gap-1 type-primary-body-b3-medium hover:text-foreground transition"
                           >
                             {col.label}
                             {sortConfig.key === col.key ? (
@@ -452,9 +452,9 @@ const TestsPage = () => {
                           className="cursor-pointer border-t border-border transition hover:bg-accent/40"
                           onClick={() => handleBookNow(item, 'test')}
                         >
-                          <td className="px-4 py-3 font-medium text-foreground">{item.title}</td>
+                          <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">{item.title}</td>
                           <td className="px-4 py-3">
-                            <span className={`rounded-md px-2 py-1 text-xs font-medium ${catColor.bg} ${catColor.text}`}>
+                            <span className={`rounded-md px-2 py-1 type-primary-body-b3-medium ${catColor.bg} ${catColor.text}`}>
                               {category}
                             </span>
                           </td>
@@ -462,7 +462,7 @@ const TestsPage = () => {
                           <td className="px-4 py-3">{item.price != null ? Number(item.price).toLocaleString('en-IN') : '—'}</td>
                           <td className="px-4 py-3">{item.reportTime || '24 hrs'}</td>
                           <td className="px-4 py-3">
-                            <span className={`rounded-md px-2 py-1 text-xs ${status === 'Active' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                            <span className={`rounded-md px-2 py-1 type-primary-body-b3 ${status === 'Active' ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>
                               {status}
                             </span>
                           </td>

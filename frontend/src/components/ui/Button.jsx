@@ -43,7 +43,7 @@ const Button = ({
         inline-flex items-center justify-center
         type-primary-body-b2-medium md:type-primary-body-b1-medium 
         ${variants[variant] || variants.primary}
-        ${isExpandable ? 'p-2.5 text-xs rounded-lg group overflow-hidden' : (sizes[size] || sizes.md)}
+        ${isExpandable ? 'p-2.5 type-primary-body-b3 rounded-lg group overflow-hidden' : (sizes[size] || sizes.md)}
         ${fullWidth ? 'w-full' : ''}
         ${className}
       `}

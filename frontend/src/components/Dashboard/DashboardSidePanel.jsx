@@ -50,14 +50,14 @@ const DashboardSidePanel = ({ open, title, subtitle, children, onClose }) => {
     >
       <div
         ref={panelRef}
-        className="bg-white w-full sm:w-[90%] md:max-w-2xl h-full sm:h-screen flex flex-col overflow-hidden"
+        className="bg-card w-full sm:w-[90%] md:max-w-2xl h-full sm:h-screen flex flex-col overflow-hidden"
       >
         {/* HEADER */}
         <div className="flex items-start justify-between border-b border-border px-4 sm:px-5 md:px-8 py-4 sm:py-5 shrink-0">
           <div className="min-w-0">
-            <h2 className="font-serif text-xl sm:text-2xl text-foreground truncate">{title}</h2>
+            <h2 className="type-primary-heading-h3-medium text-foreground truncate">{title}</h2>
             {subtitle && (
-              <p className="text-muted-foreground mt-1 sm:mt-1.5 text-[11px] sm:text-xs truncate">{subtitle}</p>
+              <p className="text-muted-foreground mt-1 sm:mt-1.5 type-primary-body-b3 truncate">{subtitle}</p>
             )}
           </div>
           <button

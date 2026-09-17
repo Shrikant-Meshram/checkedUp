@@ -40,7 +40,7 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort }) => {
   return (
     <th className="px-4 py-3 relative text-left">
       <div className="flex items-center gap-1">
-        <span>{title}</span>
+        <span className="type-primary-body-b2-medium">{title}</span>
         <button type="button" onClick={() => setOpen(!open)} className="p-0.5 rounded hover:bg-accent">
           {currentSort === 'asc' ? <ArrowUp size={14} /> : currentSort === 'desc' ? <ArrowDown size={14} /> : <ChevronsUpDown size={14} className="text-muted-foreground" />}
         </button>
@@ -49,10 +49,10 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
           </div>
@@ -176,7 +176,7 @@ const SettlementHistoryTable = ({ history, isLoading, activeFilters, onViewDetai
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading history…</div>
+      <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">Loading history…</div>
     )
   }
 
@@ -184,8 +184,8 @@ const SettlementHistoryTable = ({ history, isLoading, activeFilters, onViewDetai
     <div className="space-y-4">
       {/* Recent Settlement History Header */}
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-foreground">Recent Settlement History</h3>
-        <button className="text-sm text-primary hover:underline">View All</button>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Recent Settlement History</h3>
+        <button className="type-primary-body-b2 text-primary hover:underline">View All</button>
       </div>
 
       {sortedHistory.length === 0 ? (
@@ -196,7 +196,7 @@ const SettlementHistoryTable = ({ history, isLoading, activeFilters, onViewDetai
       ) : (
         <div className="rounded-xl border border-border bg-white">
           <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-            <table className="w-full min-w-[1000px] text-sm">
+            <table className="w-full min-w-[1000px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   <SortableHeader title="Settlement ID" sortKey="settlementId" sortConfig={sortConfig} onSort={handleSort} />
@@ -216,32 +216,32 @@ const SettlementHistoryTable = ({ history, isLoading, activeFilters, onViewDetai
                   return (
                     <tr key={item._id} className="border-t border-border transition hover:bg-accent/40">
                       <td className="px-4 py-3">
-                        <span className="font-medium text-primary">{item.settlementBatchId || '—'}</span>
+                        <span className="type-primary-body-b2-medium text-primary">{item.settlementBatchId || '—'}</span>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="text-foreground">{item.labOwner?.name || '—'}</span>
+                        <span className="type-primary-body-b2 text-foreground">{item.labOwner?.name || '—'}</span>
                       </td>
-                      <td className="px-4 py-3 font-medium text-foreground">{formatCurrency(item.totalAmount)}</td>
+                      <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">{formatCurrency(item.totalAmount)}</td>
                       <td className="px-4 py-3">
                         <div>
-                          <span className="font-medium text-foreground">{formatCurrency(item.commission)}</span>
-                          <span className="text-xs text-muted-foreground ml-1">
+                          <span className="type-primary-body-b2-medium text-foreground">{formatCurrency(item.commission)}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground ml-1">
                             ({item.totalAmount > 0 ? `${((item.commission / item.totalAmount) * 100).toFixed(1)}%` : '—'})
                           </span>
                         </div>
                       </td>
-                      <td className="px-4 py-3 font-medium text-foreground">{formatCurrency(item.netPayable || item.labShare)}</td>
+                      <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">{formatCurrency(item.netPayable || item.labShare)}</td>
                       <td className="px-4 py-3">
-                        <span className="text-xs text-muted-foreground font-mono">{item.settlementUTR || item.utr || '—'}</span>
+                        <span className="type-primary-body-b3 text-muted-foreground font-mono">{item.settlementUTR || item.utr || '—'}</span>
                       </td>
                       <td className="px-4 py-3">
                         <div>
-                          <span className="text-sm text-foreground">{formatDate(item.paidAt || item.settledAt)}</span>
-                          <span className="text-xs text-muted-foreground block">{formatTime(item.paidAt || item.settledAt)}</span>
+                          <span className="type-primary-body-b2 text-foreground">{formatDate(item.paidAt || item.settledAt)}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground block">{formatTime(item.paidAt || item.settledAt)}</span>
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                        <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3-medium ${statusStyle.bg} ${statusStyle.text}`}>
                           <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                           {item.status}
                         </span>

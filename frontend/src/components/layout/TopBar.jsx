@@ -24,7 +24,7 @@ const TopBar = ({ onToggleSidebar }) => {
     : 'U'
 
   return (
-    <header className="h-16 bg-white border-border flex items-center justify-between px-4 lg:px-6 flex-shrink-0">
+    <header className="h-16 bg-card border-border flex items-center justify-between px-4 lg:px-6 flex-shrink-0">
       {/* Left Side */}
       <div className="flex items-center gap-3">
         {/* Hamburger Menu */}
@@ -41,7 +41,7 @@ const TopBar = ({ onToggleSidebar }) => {
           <input
             type="text"
             placeholder="Search tests, packages, bookings..."
-            className="bg-transparent text-sm text-foreground placeholder-muted-foreground outline-none w-full"
+            className="bg-transparent type-primary-body-b2 text-foreground placeholder-muted-foreground outline-none w-full"
           />
         </div> */}
       </div>
@@ -65,12 +65,12 @@ const TopBar = ({ onToggleSidebar }) => {
             onClick={() => setProfileOpen(!profileOpen)}
             className="flex items-center gap-2 pl-2 pr-1 py-1 rounded-lg hover:bg-accent transition"
           >
-            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+            <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground type-primary-body-b2-medium flex-shrink-0">
               {initials}
             </div>
             <div className="text-left hidden sm:block">
-              <p className="text-sm font-semibold text-foreground leading-tight">{user?.name || 'User'}</p>
-              <p className="text-[10px] text-muted-foreground capitalize">{user?.role?.replace('_', ' ')}</p>
+              <p className="type-primary-body-b2-medium text-foreground leading-tight">{user?.name || 'User'}</p>
+              <p className="type-primary-body-b2 text-muted-foreground capitalize">{user?.role?.replace('_', ' ')}</p>
             </div>
             <ChevronDown size={14} className={`text-muted-foreground transition-transform hidden sm:block ${profileOpen ? 'rotate-180' : ''}`} />
           </button>
@@ -82,17 +82,17 @@ const TopBar = ({ onToggleSidebar }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.15 }}
-                className="absolute right-0 top-full mt-2 w-64 bg-white border border-border rounded-xl shadow-lg overflow-hidden z-50"
+                className="absolute right-0 top-full mt-2 w-64 bg-card border border-border rounded-xl shadow-lg overflow-hidden z-50"
               >
                 {/* Profile Header */}
                 <div className="p-4 border-b border-border">
                   <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-base">
+                    <div className="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-primary-foreground type-primary-body-b1-medium">
                       {initials}
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground text-sm">{user?.name}</p>
-                      <p className="text-xs text-muted-foreground">{user?.email}</p>
+                      <p className="type-primary-body-b2-medium text-foreground">{user?.name}</p>
+                      <p className="type-primary-body-b2 text-muted-foreground">{user?.email}</p>
                     </div>
                   </div>
                 </div>
@@ -103,14 +103,14 @@ const TopBar = ({ onToggleSidebar }) => {
                     <Link
                       to={ROUTES.HOME}
                       onClick={() => setProfileOpen(false)}
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-foreground hover:bg-accent transition"
+                      className="flex items-center gap-3 px-4 py-2.5 type-primary-body-b2 text-foreground hover:bg-accent transition"
                     >
                       Home
                     </Link>
                   )}
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-3 px-4 py-2.5 w-full text-sm text-red-500 hover:bg-red-50 transition text-left"
+                    className="flex items-center gap-3 px-4 py-2.5 w-full type-primary-body-b2 text-destructive hover:bg-red-50 transition text-left"
                   >
                     <LogOut size={16} />
                     <span>Logout</span>

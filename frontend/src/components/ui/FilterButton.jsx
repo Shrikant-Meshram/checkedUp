@@ -11,7 +11,7 @@ const FilterButton = ({ onClick, activeCount = 0 }) => {
       >
         <SlidersHorizontal size={16} />
         {activeCount > 0 && (
-          <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
+          <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground type-primary-body-b3 font-bold w-5 h-5 rounded-full flex items-center justify-center">
             {activeCount}
           </span>
         )}

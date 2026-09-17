@@ -179,8 +179,8 @@ const SettlementDashboard = () => {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Settlement</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <h1 className="type-primary-heading-h1 text-foreground">Settlement</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">
             {isAdmin ? 'Manage all payment settlements and their status' : 'View your payment settlements'}
           </p>
         </div>
@@ -214,7 +214,7 @@ const SettlementDashboard = () => {
         <div className="flex gap-8">
           <button
             onClick={() => setActiveTab('pending')}
-            className={`pb-3 text-sm font-medium transition border-b-2 ${
+            className={`pb-3 type-primary-body-b2-medium transition border-b-2 ${
               activeTab === 'pending'
                 ? 'border-primary text-primary'
                 : 'border-transparent text-muted-foreground hover:text-foreground'
@@ -224,7 +224,7 @@ const SettlementDashboard = () => {
           </button>
           <button
             onClick={() => setActiveTab('history')}
-            className={`pb-3 text-sm font-medium transition border-b-2 ${
+            className={`pb-3 type-primary-body-b2-medium transition border-b-2 ${
               activeTab === 'history'
                 ? 'border-primary text-primary'
                 : 'border-transparent text-muted-foreground hover:text-foreground'

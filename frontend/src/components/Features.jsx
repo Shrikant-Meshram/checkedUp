@@ -41,10 +41,10 @@ const Features = () => {
   ]
 
   return (
-    <section className="bg-white py-6">
+    <section className="bg-card py-6">
       <div className="enterprise-container">
         {/* Desktop: Card with vertical dividers */}
-        <div className="hidden lg:block border border-gray-200 rounded-2xl bg-gray-50/50">
+        <div className="hidden lg:block border border-border rounded-2xl bg-surface/50">
           <div className="flex items-center justify-between">
             {features.map((item, index) => (
               <React.Fragment key={index}>
@@ -53,12 +53,12 @@ const Features = () => {
                     <span className={item.iconColor}>{item.icon}</span>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-foreground leading-tight">{item.title}</p>
-                    <p className="text-xs text-muted-foreground">{item.desc}</p>
+                    <p className="type-primary-body-b2-medium text-foreground leading-tight">{item.title}</p>
+                    <p className="type-primary-body-b3 text-muted-foreground">{item.desc}</p>
                   </div>
                 </div>
                 {index < features.length - 1 && (
-                  <div className="w-px h-12 bg-gray-200 flex-shrink-0"></div>
+                  <div className="w-px h-12 bg-border flex-shrink-0"></div>
                 )}
               </React.Fragment>
             ))}
@@ -68,13 +68,13 @@ const Features = () => {
         {/* Mobile: 2-column grid */}
         <div className="grid grid-cols-2 gap-3 lg:hidden">
           {features.map((item, index) => (
-            <div key={index} className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl p-3">
+            <div key={index} className="flex items-center gap-3 bg-surface border border-border rounded-xl p-3">
               <div className={`w-10 h-10 rounded-full ${item.iconBg} flex items-center justify-center flex-shrink-0`}>
                 <span className={item.iconColor}>{React.cloneElement(item.icon, { size: 20 })}</span>
               </div>
               <div>
-                <p className="text-xs font-semibold text-foreground leading-tight">{item.title}</p>
-                <p className="text-[10px] text-muted-foreground">{item.desc}</p>
+                <p className="type-primary-body-b3-medium text-foreground leading-tight">{item.title}</p>
+                <p className="type-primary-body-b3 text-muted-foreground">{item.desc}</p>
               </div>
             </div>
           ))}

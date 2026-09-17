@@ -36,7 +36,7 @@ export default function BookingAddressSection({
     <div className="space-y-6">
       {/* Select Location */}
       <fieldset className="border border-border rounded-xl p-5">
-        <legend className="text-sm font-semibold text-foreground px-2">Select Location</legend>
+        <legend className="type-primary-body-b2 font-semibold text-foreground px-2">Select Location</legend>
         <div className="grid sm:grid-cols-2 gap-3">
           <button
             type="button"
@@ -45,8 +45,8 @@ export default function BookingAddressSection({
           >
             <MapPin size={24} className="text-primary" />
             <div className="text-center">
-              <p className="text-sm font-semibold text-foreground">Use Current Location</p>
-              <p className="text-xs text-muted-foreground">Detect my location</p>
+              <p className="type-primary-body-b2 font-semibold text-foreground">Use Current Location</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Detect my location</p>
             </div>
           </button>
           <button
@@ -56,8 +56,8 @@ export default function BookingAddressSection({
           >
             <Map size={24} className="text-primary" />
             <div className="text-center">
-              <p className="text-sm font-semibold text-foreground">Select on Map</p>
-              <p className="text-xs text-muted-foreground">Pick location on map</p>
+              <p className="type-primary-body-b2 font-semibold text-foreground">Select on Map</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Pick location on map</p>
             </div>
           </button>
         </div>
@@ -68,16 +68,16 @@ export default function BookingAddressSection({
         <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex items-start gap-3">
           <MapPin size={20} className="text-primary mt-0.5 shrink-0" />
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-foreground mb-0.5">Selected Location</p>
-            <p className="text-sm text-muted-foreground">{selectedAddress || 'Location selected'}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">
+            <p className="type-primary-body-b3 font-semibold text-foreground mb-0.5">Selected Location</p>
+            <p className="type-primary-body-b2 text-muted-foreground">{selectedAddress || 'Location selected'}</p>
+            <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
               Lat: {mapLocation.lat?.toFixed(4)}, Long: {mapLocation.lng?.toFixed(4)}
             </p>
           </div>
           <button
             type="button"
             onClick={openMap}
-            className="flex items-center gap-1 text-xs font-medium text-primary hover:text-primary/80 shrink-0"
+            className="flex items-center gap-1 type-primary-body-b3 font-medium text-primary hover:text-primary/80 shrink-0"
           >
             <Pencil size={12} /> Change Location
           </button>
@@ -114,7 +114,7 @@ export default function BookingAddressSection({
 
       {/* Address Details */}
       <div>
-        <h4 className="text-sm font-semibold text-foreground mb-3">Address Details</h4>
+        <h4 className="type-primary-body-b2 font-semibold text-foreground mb-3">Address Details</h4>
         <div className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
@@ -188,12 +188,12 @@ export default function BookingAddressSection({
 
       {/* Address Type */}
       <div>
-        <label className="text-sm font-semibold text-foreground mb-3 block">Address Type</label>
+        <label className="type-primary-body-b2 font-semibold text-foreground mb-3 block">Address Type</label>
         <div className="flex gap-3">
           <button
             type="button"
             onClick={() => setAddressType('home')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg border type-primary-body-b2 font-medium transition ${
               addressType === 'home'
                 ? 'border-primary bg-primary/5 text-primary'
                 : 'border-border text-muted-foreground hover:border-primary/50'
@@ -204,7 +204,7 @@ export default function BookingAddressSection({
           <button
             type="button"
             onClick={() => setAddressType('work')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg border type-primary-body-b2 font-medium transition ${
               addressType === 'work'
                 ? 'border-primary bg-primary/5 text-primary'
                 : 'border-border text-muted-foreground hover:border-primary/50'

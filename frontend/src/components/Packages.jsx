@@ -31,11 +31,11 @@ const PackageDetailsModal = ({ item, onClose, handleBookNow }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
-      <div className="relative bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+      <div className="relative bg-card rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-8 h-8 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-md transition"
+          className="absolute top-4 right-4 z-10 w-8 h-8 bg-card/90 hover:bg-card rounded-full flex items-center justify-center shadow-md transition"
         >
           <X size={18} className="text-foreground" />
         </button>
@@ -55,9 +55,9 @@ const PackageDetailsModal = ({ item, onClose, handleBookNow }) => {
         <div className="p-6">
           {/* Title & Category */}
           <div className="flex items-start justify-between gap-3 mb-4">
-            <h2 className="font-heading font-bold text-2xl text-foreground">{item.title}</h2>
+            <h2 className="type-primary-heading-h3-medium text-foreground">{item.title}</h2>
             {category && (
-              <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full whitespace-nowrap">
+              <span className="px-3 py-1 bg-primary/10 text-primary type-primary-body-b2-medium rounded-full whitespace-nowrap">
                 {category}
               </span>
             )}
@@ -65,17 +65,17 @@ const PackageDetailsModal = ({ item, onClose, handleBookNow }) => {
 
           {/* Description */}
           {item.description && (
-            <p className="text-sm text-muted-foreground mb-5 leading-relaxed">{item.description}</p>
+            <p className="type-primary-body-b2 text-muted-foreground mb-5 leading-relaxed">{item.description}</p>
           )}
 
           {/* Price */}
           <div className="flex items-baseline gap-1 mb-2">
-            <span className="text-xl font-bold text-foreground">₹</span>
-            <span className="text-3xl font-bold text-foreground">{item.price}</span>
+            <span className="type-primary-heading-h3 text-foreground">₹</span>
+            <span className="type-primary-heading-h1 text-foreground">{item.price}</span>
           </div>
 
           {/* Tests count */}
-          <p className="text-sm text-muted-foreground mb-5">
+          <p className="type-primary-body-b2 text-muted-foreground mb-5">
             {testsList.length} Tests Included
           </p>
 
@@ -83,13 +83,13 @@ const PackageDetailsModal = ({ item, onClose, handleBookNow }) => {
           <div className="border-t border-border my-4"></div>
 
           {/* Tests List */}
-          <h4 className="font-heading font-semibold text-sm text-foreground mb-3">Tests Included</h4>
+          <h4 className="type-primary-body-b1-medium text-foreground mb-3">Tests Included</h4>
           {testsList.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
               {testsList.map((test, i) => (
                 <div
                   key={test?._id || i}
-                  className="flex items-center gap-2 text-sm text-foreground"
+                  className="flex items-center gap-2 type-primary-body-b2 text-foreground"
                 >
                   <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Check size={12} className="text-primary" />
@@ -99,19 +99,19 @@ const PackageDetailsModal = ({ item, onClose, handleBookNow }) => {
               ))}
             </div>
           ) : (
-            <p className="text-sm text-muted-foreground mb-6">No Tests Available</p>
+            <p className="type-primary-body-b2 text-muted-foreground mb-6">No Tests Available</p>
           )}
 
           {/* Footer */}
           <div className="flex items-center gap-3 pt-4 border-t border-border">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 type-primary-body-b2 text-muted-foreground">
               <Shield size={16} className="text-primary" />
               <span>NABL Accredited Labs</span>
             </div>
             <div className="flex-1"></div>
             <button
               onClick={() => handleBookNow(item, 'package')}
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2.5 rounded-lg transition"
+              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white type-primary-body-b1-medium px-6 py-2.5 rounded-lg transition"
             >
               Book Now
               <ArrowRight size={16} />
@@ -144,7 +144,7 @@ const PackageCard = ({ item, handleBookNow, onViewDetails }) => {
         )}
         {/* Category Badge on Image */}
         {category && (
-          <span className="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-white/90 text-primary shadow-sm">
+          <span className="absolute top-3 left-3 px-3 py-1 type-primary-body-b3-medium rounded-full bg-card/90 text-primary shadow-sm">
             {category}
           </span>
         )}
@@ -153,25 +153,25 @@ const PackageCard = ({ item, handleBookNow, onViewDetails }) => {
       {/* Card Body */}
       <div className="p-5 flex flex-col flex-1">
         {/* Title */}
-        <h3 className="font-heading font-bold text-lg text-foreground leading-snug line-clamp-1 mb-2">
+        <h3 className="type-primary-body-b1-medium text-foreground leading-snug line-clamp-1 mb-2">
           {item.title}
         </h3>
 
         {/* Description preview */}
         {item.description && (
-          <p className="text-sm text-muted-foreground line-clamp-1 mb-3">
+          <p className="type-primary-body-b2 text-muted-foreground line-clamp-1 mb-3">
             {item.description}
           </p>
         )}
 
         {/* Price */}
         <div className="flex items-baseline gap-1 mb-1">
-          <span className="text-lg font-bold text-foreground">₹</span>
-          <span className="text-2xl font-bold text-foreground">{item.price}</span>
+          <span className="type-primary-body-b1 text-foreground">₹</span>
+          <span className="type-primary-heading-h3 text-foreground">{item.price}</span>
         </div>
 
         {/* Tests count */}
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="type-primary-body-b2 text-muted-foreground mb-4">
           {testsList.length} Tests Included
         </p>
 
@@ -182,7 +182,7 @@ const PackageCard = ({ item, handleBookNow, onViewDetails }) => {
               {testsList.slice(0, 3).map((test, i) => (
                 <li
                   key={test?._id || i}
-                  className="text-sm text-foreground flex items-center gap-2"
+                  className="type-primary-body-b2 text-foreground flex items-center gap-2"
                 >
                   <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                     <Check size={12} className="text-primary" />
@@ -192,7 +192,7 @@ const PackageCard = ({ item, handleBookNow, onViewDetails }) => {
               ))}
               {testsList.length > 3 && (
                 <li
-                  className="text-sm text-primary font-medium flex items-center gap-2 pl-7 cursor-pointer hover:underline"
+                  className="type-primary-body-b2-medium text-primary flex items-center gap-2 pl-7 cursor-pointer hover:underline"
                   onClick={(e) => {
                     e.stopPropagation()
                     onViewDetails(item)
@@ -203,13 +203,13 @@ const PackageCard = ({ item, handleBookNow, onViewDetails }) => {
               )}
             </ul>
           ) : (
-            <p className="text-sm text-muted-foreground">No Tests Available</p>
+            <p className="type-primary-body-b2 text-muted-foreground">No Tests Available</p>
           )}
         </div>
 
         {/* Footer */}
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-border">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2 type-primary-body-b2 text-muted-foreground">
             <Shield size={16} className="text-primary" />
             <span>NABL Accredited</span>
           </div>
@@ -229,7 +229,7 @@ const PackageCard = ({ item, handleBookNow, onViewDetails }) => {
                 e.stopPropagation()
                 handleBookNow(item, 'package')
               }}
-              className="flex items-center bg-primary hover:bg-primary/90 text-white text-sm font-semibold px-4 py-2 rounded-lg transition"
+              className="flex items-center bg-primary hover:bg-primary/90 text-white type-primary-body-b2-medium px-4 py-2 rounded-lg transition"
             >
               Book Now
             </button>
@@ -252,14 +252,14 @@ const PackageTableRow = ({ item, handleBookNow, onViewDetails }) => {
             <img src={item.image} alt={item.title} className="w-10 h-10 rounded-lg object-cover border border-border" />
           ) : (
             <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
-              <span className="text-lg">🩺</span>
+              <span className="type-primary-heading-h2">🩺</span>
             </div>
           )}
-          <span className="font-medium text-foreground">{item.title}</span>
+          <span className="type-primary-body-b2-medium text-foreground">{item.title}</span>
         </div>
       </td>
       <td className="px-4 py-3 text-muted-foreground">{category || '—'}</td>
-      <td className="px-4 py-3 font-medium text-foreground">₹{Number(item.price || 0).toLocaleString('en-IN')}</td>
+      <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">₹{Number(item.price || 0).toLocaleString('en-IN')}</td>
       <td className="px-4 py-3 text-muted-foreground">{testsList.length}</td>
     </tr>
   )
@@ -271,39 +271,39 @@ const PackageSkeleton = ({ viewMode = 'grid' }) => {
       <tr className="border-b border-border animate-pulse">
         <td className="px-4 py-3">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gray-200 rounded-lg"></div>
-            <div className="h-4 bg-gray-200 rounded w-40"></div>
+            <div className="w-10 h-10 bg-surface rounded-lg"></div>
+            <div className="h-4 bg-surface rounded w-40"></div>
           </div>
         </td>
-        <td className="px-4 py-3"><div className="h-4 bg-gray-200 rounded w-24"></div></td>
-        <td className="px-4 py-3"><div className="h-4 bg-gray-200 rounded w-16"></div></td>
-        <td className="px-4 py-3"><div className="h-4 bg-gray-200 rounded w-8"></div></td>
+        <td className="px-4 py-3"><div className="h-4 bg-surface rounded w-24"></div></td>
+        <td className="px-4 py-3"><div className="h-4 bg-surface rounded w-16"></div></td>
+        <td className="px-4 py-3"><div className="h-4 bg-surface rounded w-8"></div></td>
       </tr>
     )
   }
 
   return (
     <div className="bg-card border border-border rounded-xl overflow-hidden animate-pulse">
-      <div className="h-48 bg-gray-200"></div>
+      <div className="h-48 bg-surface"></div>
       <div className="p-5">
-        <div className="h-5 bg-gray-200 rounded w-3/4 mb-3"></div>
+        <div className="h-5 bg-surface rounded w-3/4 mb-3"></div>
         <div className="flex items-baseline gap-1 mb-1">
-          <div className="h-4 bg-gray-200 rounded w-4"></div>
-          <div className="h-6 bg-gray-200 rounded w-16"></div>
+          <div className="h-4 bg-surface rounded w-4"></div>
+          <div className="h-6 bg-surface rounded w-16"></div>
         </div>
-        <div className="h-3 bg-gray-200 rounded w-24 mb-4"></div>
-        <div className="border-t border-gray-200 my-2"></div>
+        <div className="h-3 bg-surface rounded w-24 mb-4"></div>
+        <div className="border-t border-border my-2"></div>
         <div className="space-y-2 mt-4">
           {[1, 2, 3, 4, 5].map((i) => (
             <div key={i} className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded bg-gray-200"></div>
-              <div className="h-3 bg-gray-200 rounded flex-1"></div>
+              <div className="w-4 h-4 rounded bg-surface"></div>
+              <div className="h-3 bg-surface rounded flex-1"></div>
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-          <div className="h-4 bg-gray-200 rounded w-32"></div>
-          <div className="h-4 bg-gray-200 rounded w-20"></div>
+        <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
+          <div className="h-4 bg-surface rounded w-32"></div>
+          <div className="h-4 bg-surface rounded w-20"></div>
         </div>
       </div>
     </div>
@@ -520,7 +520,7 @@ const Packages = ({ showAllPackages = false }) => {
               {activeFilterCount > 0 && (
                 <button
                   onClick={clearFilters}
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm text-primary hover:bg-primary/5 rounded-lg transition"
+                  className="flex items-center gap-2 px-4 py-2.5 type-primary-body-b2 text-primary hover:bg-primary/5 rounded-lg transition"
                 >
                   <RefreshCw size={16} />
                   <span>Clear</span>
@@ -556,13 +556,13 @@ const Packages = ({ showAllPackages = false }) => {
                 ))
               ) : (
                   <div className="bg-card border border-border rounded-xl overflow-hidden">
-                  <table className="w-full min-w-[800px] text-sm">
+                  <table className="w-full min-w-[800px] type-primary-body-b2">
                     <thead className="bg-accent text-left text-muted-foreground">
                       <tr>
-                        <th className="px-4 py-3 text-xs font-semibold">Package Name</th>
-                        <th className="px-4 py-3 text-xs font-semibold">Category</th>
-                        <th className="px-4 py-3 text-xs font-semibold">Price (₹)</th>
-                        <th className="px-4 py-3 text-xs font-semibold">Tests</th>
+                        <th className="px-4 py-3 type-primary-body-b3-medium">Package Name</th>
+                        <th className="px-4 py-3 type-primary-body-b3-medium">Category</th>
+                        <th className="px-4 py-3 type-primary-body-b3-medium">Price (₹)</th>
+                        <th className="px-4 py-3 type-primary-body-b3-medium">Tests</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -586,9 +586,9 @@ const Packages = ({ showAllPackages = false }) => {
         ) : showAllPackages ? (<>
           <div className="mt-6">
           {sortedPackages.length === 0 ? (
-            <div className="bg-white/50 border border-border rounded-xl p-8 text-center text-muted-foreground">
-              <p className="text-sm">No health packages found matching your criteria.</p>
-              <p className="text-xs mt-1 opacity-70">Try adjusting your search or filters.</p>
+            <div className="bg-card/50 border border-border rounded-xl p-8 text-center text-muted-foreground">
+              <p className="type-primary-body-b2">No health packages found matching your criteria.</p>
+              <p className="type-primary-body-b3 mt-1 opacity-70">Try adjusting your search or filters.</p>
             </div>
           ) : viewMode === 'grid' ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -599,7 +599,7 @@ const Packages = ({ showAllPackages = false }) => {
           ) : (
             <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[800px] text-sm">
+                <table className="w-full min-w-[800px] type-primary-body-b2">
                   <thead className="bg-accent text-left text-muted-foreground">
                     <tr>
                       {[
@@ -612,7 +612,7 @@ const Packages = ({ showAllPackages = false }) => {
                           <button
                             type="button"
                             onClick={() => handleSort(col.key)}
-                            className="flex items-center gap-1 text-xs font-semibold hover:text-foreground transition"
+                            className="flex items-center gap-1 type-primary-body-b3-medium hover:text-foreground transition"
                           >
                             {col.label}
                             {sortConfig.key === col.key ? (
@@ -648,9 +648,9 @@ const Packages = ({ showAllPackages = false }) => {
           )}
           </div>
         </>) : validPackages.length === 0 ? (
-          <div className="bg-white/50 border border-border rounded-xl p-8 text-center text-muted-foreground">
-            <p className="text-sm">No health packages are currently available.</p>
-            <p className="text-xs mt-1 opacity-70">Check back later or contact support to configure packages.</p>
+          <div className="bg-card/50 border border-border rounded-xl p-8 text-center text-muted-foreground">
+            <p className="type-primary-body-b2">No health packages are currently available.</p>
+            <p className="type-primary-body-b3 mt-1 opacity-70">Check back later or contact support to configure packages.</p>
           </div>
         ) : (
           /* Scroll layout for homepage */
@@ -670,7 +670,7 @@ const Packages = ({ showAllPackages = false }) => {
             {canScrollLeft && (
               <button
                 onClick={scrollLeft}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-border rounded-full flex items-center justify-center shadow-md hover:bg-accent transition hidden md:flex opacity-0 group-hover/scroll:opacity-100"
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center shadow-md hover:bg-accent transition hidden md:flex opacity-0 group-hover/scroll:opacity-100"
               >
                 <ChevronLeft size={20} className="text-foreground" />
               </button>
@@ -680,7 +680,7 @@ const Packages = ({ showAllPackages = false }) => {
             {canScrollRight && (
               <button
                 onClick={scrollRight}
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-border rounded-full flex items-center justify-center shadow-md hover:bg-accent transition hidden md:flex"
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-card border border-border rounded-full flex items-center justify-center shadow-md hover:bg-accent transition hidden md:flex"
               >
                 <ChevronRight size={20} className="text-foreground" />
               </button>
@@ -693,7 +693,7 @@ const Packages = ({ showAllPackages = false }) => {
           <div className="mt-6 sm:hidden">
             <button
               onClick={() => navigate(ROUTES.PACKAGES)}
-              className="flex items-center justify-center gap-1 w-full text-sm font-semibold text-primary border border-primary rounded-lg py-2 hover:bg-primary hover:text-white transition"
+              className="flex items-center justify-center gap-1 w-full type-primary-body-b2-medium text-primary border border-primary rounded-lg py-2 hover:bg-primary hover:text-white transition"
             >
               View all packages
               <ArrowRight size={16} />

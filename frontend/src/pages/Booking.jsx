@@ -143,8 +143,8 @@ const Booking = () => {
                 <FlaskConical size={18} className="text-white" />
               </div>
               <div>
-                <h1 className="text-white font-bold text-sm leading-tight">Checked Up</h1>
-                <p className="text-white/60 text-[10px] uppercase tracking-wider">Lab Tests</p>
+                <h1 className="text-white font-bold type-primary-body-b2 leading-tight">Checked Up</h1>
+                <p className="text-white/60 type-primary-body-b3 uppercase tracking-wider">Lab Tests</p>
               </div>
             </div>
           </div>
@@ -167,8 +167,8 @@ const Booking = () => {
           <div className="enterprise-container py-4 space-y-4">
             {/* Page Title */}
             <div className="mb-2">
-              <h1 className="text-xl font-bold text-foreground">Book Your Lab Test</h1>
-              <p className="text-sm text-muted-foreground mt-0.5">Fill in your details to schedule your sample collection</p>
+              <h1 className="type-primary-heading-h3-medium font-bold text-foreground">Book Your Lab Test</h1>
+              <p className="type-primary-body-b2 text-muted-foreground mt-0.5">Fill in your details to schedule your sample collection</p>
             </div>
 
             {/* Selected Test / Package */}
@@ -185,7 +185,7 @@ const Booking = () => {
             {/* Patient Details */}
             <div className="bg-card rounded-xl border border-border overflow-hidden">
               <div className="px-4 py-3 border-b border-border">
-                <h2 className="font-semibold text-foreground flex items-center gap-2">
+                <h2 className="type-primary-body-b3-medium text-foreground flex items-center gap-2">
                   <span className="text-primary">👤</span> Patient Details
                 </h2>
               </div>
@@ -197,7 +197,7 @@ const Booking = () => {
             {/* Address & Location */}
             <div className="bg-card rounded-xl border border-border overflow-hidden">
               <div className="px-4 py-3 border-b border-border">
-                <h2 className="font-semibold text-foreground flex items-center gap-2">
+                <h2 className="type-primary-body-b3-medium text-foreground flex items-center gap-2">
                   <span className="text-primary">📍</span> Address & Location
                 </h2>
               </div>
@@ -220,18 +220,18 @@ const Booking = () => {
             {/* Date & Time */}
             <div className="bg-card rounded-xl border border-border overflow-hidden">
               <div className="px-4 py-3 border-b border-border">
-                <h2 className="font-semibold text-foreground flex items-center gap-2">
+                <h2 className="type-primary-body-b3-medium text-foreground flex items-center gap-2">
                   <span className="text-primary">📅</span> Date & Time
                 </h2>
               </div>
               <div className="p-4 space-y-4">
                 {/* Date Picker Toggle */}
                 <div>
-                  <label className="text-xs font-semibold text-foreground mb-2 block">Select Date *</label>
+                  <label className="type-primary-body-b3-medium text-foreground mb-2 block">Select Date *</label>
                   <button
                     type="button"
                     onClick={() => setShowCalendar(!showCalendar)}
-                    className="w-full border border-border rounded-xl px-4 py-3.5 flex items-center justify-between outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm text-foreground bg-card transition"
+                    className="w-full border border-border rounded-xl px-4 py-3.5 flex items-center justify-between outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 type-primary-body-b2 text-foreground bg-card transition"
                   >
                     <span className={formData.bookingDate ? 'text-foreground' : 'text-muted-foreground'}>
                       {formData.bookingDate ? formatSelectedDate(formData.bookingDate) : 'Select date'}
@@ -254,7 +254,7 @@ const Booking = () => {
 
                 {/* Time Slots Dropdown */}
                 <div>
-                  <label className="text-xs font-semibold text-foreground mb-2 block">Select Time Slot *</label>
+                  <label className="type-primary-body-b3-medium text-foreground mb-2 block">Select Time Slot *</label>
                   <Select
                     name="bookingTime"
                     value={formData.bookingTime}
@@ -267,8 +267,8 @@ const Booking = () => {
                 {/* Selected Date & Time Summary */}
                 {formData.bookingDate && formData.bookingTime && (
                   <div className="bg-primary/5 border border-primary/20 rounded-lg px-4 py-3 flex items-center gap-2">
-                    <span className="text-primary text-sm">📅</span>
-                    <span className="text-sm font-medium text-foreground">
+                    <span className="text-primary type-primary-body-b2">📅</span>
+                    <span className="type-primary-body-b2-medium text-foreground">
                       Selected: {formatSelectedDate(formData.bookingDate)}, {formData.bookingTime}
                     </span>
                   </div>
@@ -292,7 +292,7 @@ const Booking = () => {
                 <Lock size={16} />
                 Confirm Booking
               </button>
-              <p className="text-center text-xs text-muted-foreground mt-2 flex items-center justify-center gap-1">
+              <p className="text-center type-primary-body-b3 text-muted-foreground mt-2 flex items-center justify-center gap-1">
                 <Shield size={12} /> You won't be charged now
               </p>
             </div>
