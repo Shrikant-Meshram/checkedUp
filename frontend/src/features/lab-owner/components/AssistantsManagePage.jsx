@@ -25,13 +25,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="type-primary-label-l2 text-muted-foreground">{title}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
         <p className="type-primary-heading-h2-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="type-primary-label-l2 text-muted-foreground">{detailTop}</p>
-        <p className="type-primary-label-l2 text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -356,7 +356,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
           <h1 className="type-primary-heading-h1-medium text-foreground">Assistants</h1>
-          <p className="mt-1 type-primary-body-b3 text-muted-foreground">Manage your lab assistants and their assignments.</p>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">Manage your lab assistants and their assignments.</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search assistant, email or phone..." />
@@ -479,7 +479,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                   </div>
                 </div>
                 <div className="flex flex-col flex-1 p-4 pt-3">
-                  <dl className="mt-3 space-y-1.5 type-primary-body-b3">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b2">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Phone</span>
                       <span className="font-medium text-foreground">{assistant.phone || '—'}</span>
