@@ -129,7 +129,7 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
       </span>
       <div className="min-w-0 flex-1 space-y-0">
         <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
-        <p className="type-primary-heading-h2 leading-tight text-foreground">{value}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
@@ -340,13 +340,13 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="type-primary-heading-h1 text-foreground">Payments</h1>
+        <h1 className="type-primary-heading-h0-mobile-medium  text-foreground">Payments</h1>
       </div>
 
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="type-primary-heading-h1 text-foreground">Payments</h1>
+          <h1 className="type-primary-heading-h1 !font-medium text-foreground">Payments</h1>
           <p className="mt-1 type-primary-body-b2 text-muted-foreground">Track and manage all payments and transactions</p>
         </div>
         <div className="flex items-center gap-2">
@@ -474,12 +474,12 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white type-primary-body-b3-medium`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white type-primary-body-b2-medium md:type-primary-body-b3-medium`}>
                         {getInitials(payment.patientName)}
                       </span>
                       <div className="min-w-0">
                         <h3 className="type-primary-body-b1-medium text-foreground truncate" title={payment.patientName}>{payment.patientName}</h3>
-                        <p className="type-primary-body-b3 text-muted-foreground">{payment.phone}</p>
+                        <p className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground">{payment.phone}</p>
                       </div>
                     </div>
                     <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b4-medium ${statusStyle.bg} ${statusStyle.text}`}>
@@ -491,21 +491,21 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                 <div className="flex flex-col p-4 pt-3">
                   <div className="flex items-center justify-between">
                     <span className="type-primary-heading-h3 text-foreground">{formatCurrency(amount)}</span>
-                    <span className="inline-flex items-center gap-1.5 type-primary-body-b3 text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5 type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground">
                       <span className={`flex h-5 w-5 items-center justify-center rounded ${methodStyle.bg}`}>
                         <CreditCard size={10} className={methodStyle.icon} />
                       </span>
                       {methodStyle.label}
                     </span>
                   </div>
-                  <dl className="mt-3 space-y-1.5 type-primary-body-b3">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b2 md:type-primary-body-b3">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Transaction ID</span>
-                      <span className="type-primary-body-b3-medium text-primary">{payment.transactionId || '—'}</span>
+                      <span className="type-primary-body-b2-medium md:type-primary-body-b3-medium text-primary">{payment.transactionId || '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Booking ID</span>
-                      <span className="type-primary-body-b3-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
+                      <span className="type-primary-body-b2-medium md:type-primary-body-b3-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Payment Date</span>
@@ -513,7 +513,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="type-primary-body-b3 text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-body-b3 md:type-primary-body-b4 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>

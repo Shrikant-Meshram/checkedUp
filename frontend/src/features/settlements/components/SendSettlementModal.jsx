@@ -82,29 +82,29 @@ const SendSettlementModal = ({ open, onClose, booking }) => {
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Booking Summary */}
         <div className="p-3 bg-accent rounded-lg">
-          <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="grid grid-cols-2 gap-3 type-primary-body-b2">
             <div>
-              <p className="text-xs text-muted-foreground">Patient</p>
-              <p className="font-medium">{booking.patientName || booking.user?.name || '—'}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Patient</p>
+              <p className="type-primary-body-b2-medium">{booking.patientName || booking.user?.name || '—'}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Test / Package</p>
-              <p className="font-medium">{booking.test?.title || booking.package?.title || '—'}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Test / Package</p>
+              <p className="type-primary-body-b2-medium">{booking.test?.title || booking.package?.title || '—'}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Lab Share (85%)</p>
-              <p className="font-semibold text-primary">{formatCurrency(booking.labShare)}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Lab Share (85%)</p>
+              <p className="type-primary-body-b2-medium text-primary">{formatCurrency(booking.labShare)}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Total Amount</p>
-              <p className="font-medium">{formatCurrency(booking.paymentAmount)}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Total Amount</p>
+              <p className="type-primary-body-b2-medium">{formatCurrency(booking.paymentAmount)}</p>
             </div>
           </div>
         </div>
 
         {/* UTR Number */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1.5">
+          <label className="flex items-center gap-2 type-primary-body-b2-medium text-foreground mb-1.5">
             <Banknote size={14} className="text-muted-foreground" />
             UTR Number <span className="text-red-500">*</span>
           </label>
@@ -113,16 +113,16 @@ const SendSettlementModal = ({ open, onClose, booking }) => {
             value={formData.utr}
             onChange={(e) => setFormData({ ...formData, utr: e.target.value })}
             placeholder="Enter UTR transaction reference"
-            className={`w-full px-3 py-2.5 border rounded-lg text-sm outline-none transition ${
+            className={`w-full px-3 py-2.5 border rounded-lg type-primary-body-b2 outline-none transition ${
               errors.utr ? 'border-red-500 focus:ring-1 focus:ring-red-500' : 'border-border focus:border-primary focus:ring-1 focus:ring-primary'
             }`}
           />
-          {errors.utr && <p className="text-xs text-red-500 mt-1">{errors.utr}</p>}
+          {errors.utr && <p className="type-primary-body-b3 text-red-500 mt-1">{errors.utr}</p>}
         </div>
 
         {/* Bank Name */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1.5">
+          <label className="flex items-center gap-2 type-primary-body-b2-medium text-foreground mb-1.5">
             <Building2 size={14} className="text-muted-foreground" />
             Bank Name <span className="text-red-500">*</span>
           </label>
@@ -131,18 +131,18 @@ const SendSettlementModal = ({ open, onClose, booking }) => {
             value={formData.bankName}
             onChange={(e) => setFormData({ ...formData, bankName: e.target.value })}
             placeholder="Enter bank name"
-            className={`w-full px-3 py-2.5 border rounded-lg text-sm outline-none transition ${
+            className={`w-full px-3 py-2.5 border rounded-lg type-primary-body-b2 outline-none transition ${
               errors.bankName ? 'border-red-500 focus:ring-1 focus:ring-red-500' : 'border-border focus:border-primary focus:ring-1 focus:ring-primary'
             }`}
           />
-          {errors.bankName && <p className="text-xs text-red-500 mt-1">{errors.bankName}</p>}
+          {errors.bankName && <p className="type-primary-body-b3 text-red-500 mt-1">{errors.bankName}</p>}
         </div>
 
         {/* Payment Proof */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1.5">
+          <label className="flex items-center gap-2 type-primary-body-b2-medium text-foreground mb-1.5">
             <Upload size={14} className="text-muted-foreground" />
-            Payment Proof <span className="text-xs text-muted-foreground font-normal">(optional)</span>
+            Payment Proof <span className="type-primary-body-b3 text-muted-foreground font-normal">(optional)</span>
           </label>
           {proofPreview ? (
             <div className="relative inline-block">
@@ -158,7 +158,7 @@ const SendSettlementModal = ({ open, onClose, booking }) => {
           ) : (
             <label className="flex items-center gap-2 px-3 py-2.5 border border-dashed border-border rounded-lg cursor-pointer hover:bg-accent transition">
               <Upload size={16} className="text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Click to upload receipt</span>
+              <span className="type-primary-body-b2 text-muted-foreground">Click to upload receipt</span>
               <input type="file" accept="image/*,.pdf" onChange={handleFileChange} className="hidden" />
             </label>
           )}
@@ -166,22 +166,22 @@ const SendSettlementModal = ({ open, onClose, booking }) => {
 
         {/* Remark */}
         <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-foreground mb-1.5">
+          <label className="flex items-center gap-2 type-primary-body-b2-medium text-foreground mb-1.5">
             <MessageSquare size={14} className="text-muted-foreground" />
-            Remark <span className="text-xs text-muted-foreground font-normal">(optional)</span>
+            Remark <span className="type-primary-body-b3 text-muted-foreground font-normal">(optional)</span>
           </label>
           <textarea
             value={formData.remark}
             onChange={(e) => setFormData({ ...formData, remark: e.target.value })}
             placeholder="Add a note (optional)"
             rows={2}
-            className="w-full px-3 py-2.5 border border-border rounded-lg text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none"
+            className="w-full px-3 py-2.5 border border-border rounded-lg type-primary-body-b2 outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none"
           />
         </div>
 
         {/* Submit Error */}
         {errors.submit && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
+          <div className="p-3 bg-red-50 border border-red-200 rounded-lg type-primary-body-b2 text-red-600">
             {errors.submit}
           </div>
         )}
