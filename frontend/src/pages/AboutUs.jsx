@@ -73,23 +73,23 @@ export default function AboutUs() {
 
   return (
     <PublicLayout>
-      <div className="bg-white min-h-screen">
+      <div className="bg-card min-h-screen">
         {/* Hero Section */}
         <section className="pt-10 lg:pt-0">
           <div className="grid lg:grid-cols-5 items-stretch">
             <div className="lg:col-span-2 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-              <span className="inline-block text-xs font-semibold tracking-wider uppercase text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-4 w-fit">
+              <span className="inline-block type-primary-body-b3-medium tracking-wider uppercase text-primary bg-primary/5 border border-primary/10 rounded-full px-4 py-1.5 mb-4 w-fit">
                 About Us
               </span>
-              <h1 className="font-heading font-bold text-4xl lg:text-5xl text-gray-900 mb-4 leading-tight">
+              <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground mb-4 leading-tight">
                 Your Health, <br />
-                <span className="text-blue-600">Our Priority</span>
+                <span className="text-primary">Our Priority</span>
               </h1>
-              <p className="text-gray-500 text-base lg:text-lg leading-relaxed mb-6 max-w-lg">
+              <p className="text-muted-foreground type-primary-body-b1 leading-relaxed mb-6 max-w-lg">
                 At Checked Up, we believe that accurate diagnostics are the first step towards a healthier life. We are committed to providing reliable, timely and affordable lab tests with a patient-first approach.
               </p>
-              <div className="flex items-center gap-2 text-sm font-semibold text-gray-700 bg-blue-50 border border-blue-100 px-4 py-2.5 rounded-full w-fit">
-                <Shield size={16} className="text-blue-600" />
+              <div className="flex items-center gap-2 type-primary-body-b2-medium text-foreground bg-primary/5 border border-primary/10 px-4 py-2.5 rounded-full w-fit">
+                <Shield size={16} className="text-primary" />
                 <span>NABL Accredited Laboratories</span>
               </div>
             </div>
@@ -105,21 +105,21 @@ export default function AboutUs() {
         </section>
 
         {/* Why Choose Us */}
-        <section className="py-10 lg:py-12 bg-white">
+        <section className="py-10 lg:py-12 bg-card">
           <div className={CONTAINER}>
-            <h2 className="font-heading font-bold text-2xl lg:text-3xl text-gray-900 mb-6">
-              Why Choose Checked Up?
+            <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground mb-6">
+              <span className="text-primary">Why Choose</span> Checked Up?
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {whyChoose.map((item) => {
                 const Icon = item.icon
                 return (
-                  <div key={item.title} className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md transition">
-                    <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                      <Icon size={38} className="text-blue-600" />
+                  <div key={item.title} className="bg-card border border-border rounded-2xl p-6 hover:shadow-md transition">
+                    <div className="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mb-4">
+                      <Icon size={38} className="text-primary" />
                     </div>
-                    <h3 className="font-heading font-bold text-gray-900 mb-2 text-lg">{item.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                    <h3 className="type-primary-body-b1-medium text-foreground mb-2">{item.title}</h3>
+                    <p className="type-primary-body-b2 text-muted-foreground leading-relaxed">{item.desc}</p>
                   </div>
                 )
               })}
@@ -130,16 +130,16 @@ export default function AboutUs() {
         {/* Stats */}
         <section >
           <div className={CONTAINER}>
-            <div className="bg-gray-50 rounded-2xl px-4 py-4">
+            <div className="bg-surface rounded-2xl px-4 py-4">
               <div className="grid grid-cols-2 lg:grid-cols-4">
                 {stats.map((stat, i) => {
                   const Icon = stat.icon
                   return (
-                    <div key={stat.label} className={`flex items-center justify-center gap-4 py-8 px-6 ${i < stats.length - 1 ? 'lg:border-r border-gray-300' : ''} ${i >= 2 ? 'border-t lg:border-t-0 border-gray-300' : ''}`}>
-                      <Icon size={50} className="text-blue-600 flex-shrink-0" />
+                    <div key={stat.label} className={`flex items-center justify-center gap-4 py-8 px-6 ${i < stats.length - 1 ? 'lg:border-r border-border' : ''} ${i >= 2 ? 'border-t lg:border-t-0 border-border' : ''}`}>
+                      <Icon size={50} className="text-primary flex-shrink-0" />
                       <div>
-                        <div className="font-heading font-bold text-3xl text-gray-900">{stat.value}</div>
-                        <div className="text-sm text-gray-500 font-medium">{stat.label}</div>
+                        <div className="type-primary-heading-h1 text-foreground">{stat.value}</div>
+                        <div className="type-primary-body-b2-medium text-muted-foreground">{stat.label}</div>
                       </div>
                     </div>
                   )
@@ -150,10 +150,10 @@ export default function AboutUs() {
         </section>
 
         {/* How We Work */}
-        <section className="py-10 lg:py-12 bg-white">
+        <section className="py-10 lg:py-12 bg-card">
           <div className={CONTAINER}>
-            <h2 className="font-heading font-bold text-2xl lg:text-3xl text-gray-900 mb-10">
-              How We Work
+            <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground mb-10">
+              How We <span className="text-primary">Work</span>
             </h2>
 
             {/* Desktop */}
@@ -166,16 +166,16 @@ export default function AboutUs() {
                     {/* Icon + Number */}
                     <div className="flex items-center gap-3 relative z-10">
                       {/* Icon */}
-                      <div className="w-14 h-14 xl:w-16 xl:h-16 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-14 h-14 xl:w-16 xl:h-16 bg-primary/5 rounded-full flex items-center justify-center flex-shrink-0">
                         <Icon
                           size={26}
                           strokeWidth={1.8}
-                          className="text-blue-600"
+                          className="text-primary"
                         />
                       </div>
 
                       {/* Number */}
-                      <span className="font-heading font-bold text-xl xl:text-2xl text-blue-600">
+                      <span className="type-primary-heading-h3 text-primary">
                         {step.n}
                       </span>
                     </div>
@@ -183,20 +183,20 @@ export default function AboutUs() {
                     {/* Dashed connector with arrow */}
                     {i < steps.length - 1 && (
                       <div className="absolute top-7 left-[145px] right-[-20px] z-0 flex items-center">
-                        <div className="flex-1 border-t-2 border-dashed border-blue-200" />
+                        <div className="flex-1 border-t-2 border-dashed border-primary/20" />
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="flex-shrink-0 ml-1">
-                          <path d="M1 5H9M9 5L6 2M9 5L6 8" stroke="#bfdbfe" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M1 5H9M9 5L6 2M9 5L6 8" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
                     )}
 
                     {/* Content */}
                     <div className="ml-[70px] pr-2">
-                      <h3 className="font-heading font-bold text-gray-900 text-md mb-2">
+                      <h3 className="type-primary-body-b1-medium text-foreground mb-2">
                         {step.title}
                       </h3>
 
-                      <p className="text-sm text-gray-500 leading-relaxed">
+                      <p className="type-primary-body-b2 text-muted-foreground leading-relaxed">
                         {step.desc}
                       </p>
                     </div>
@@ -213,25 +213,25 @@ export default function AboutUs() {
                 return (
                   <div key={step.n} className="relative">
                     <div className="flex items-center gap-3">
-                      <div className="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center flex-shrink-0">
+                      <div className="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center flex-shrink-0">
                         <Icon
                           size={26}
                           strokeWidth={1.8}
-                          className="text-blue-600"
+                          className="text-primary"
                         />
                       </div>
 
-                      <span className="font-heading font-bold text-xl text-blue-600">
+                      <span className="type-primary-heading-h3 text-primary">
                         {step.n}
                       </span>
                     </div>
 
                     <div className="ml-[70px] mt-3">
-                      <h3 className="font-heading font-bold text-gray-900 text-sm mb-2">
+                      <h3 className="type-primary-body-b1-medium text-foreground mb-2">
                         {step.title}
                       </h3>
 
-                      <p className="text-xs text-gray-500 leading-relaxed">
+                      <p className="type-primary-body-b2 text-muted-foreground leading-relaxed">
                         {step.desc}
                       </p>
                     </div>
@@ -246,7 +246,7 @@ export default function AboutUs() {
         {/* Mission & Vision */}
         <section className="pb-10 lg:pb-12">
           <div className={CONTAINER}>
-            <div className="bg-gray-50 rounded-2xl overflow-hidden">
+            <div className="bg-surface rounded-2xl overflow-hidden">
               <div className="grid lg:grid-cols-5 gap-0">
                 <div className="lg:col-span-2 relative max-h-[180px] lg:max-h-[280px] overflow-hidden">
                   <img
@@ -257,15 +257,15 @@ export default function AboutUs() {
                 </div>
                 <div className="lg:col-span-2 p-6 lg:p-8 flex flex-col justify-center">
                   <div className="space-y-5">
-                    <div className="pb-5 border-b border-gray-200">
-                      <h3 className="font-heading font-bold text-lg text-blue-600 mb-1.5">Our Mission</h3>
-                      <p className="text-gray-500 leading-relaxed text-sm">
+                    <div className="pb-5 border-b border-border">
+                      <h3 className="type-primary-body-b1-medium text-primary mb-1.5">Our Mission</h3>
+                      <p className="text-muted-foreground leading-relaxed type-primary-body-b2">
                         To make quality diagnostics accessible to every individual by combining technology, transparency and trust.
                       </p>
                     </div>
                     <div>
-                      <h3 className="font-heading font-bold text-lg text-blue-600 mb-1.5">Our Vision</h3>
-                      <p className="text-gray-500 leading-relaxed text-sm">
+                      <h3 className="type-primary-body-b1-medium text-primary mb-1.5">Our Vision</h3>
+                      <p className="text-muted-foreground leading-relaxed type-primary-body-b2">
                         To be India's most trusted healthcare diagnostics brand, empowering people to live healthier lives.
                       </p>
                     </div>

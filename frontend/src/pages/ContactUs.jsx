@@ -23,7 +23,7 @@ const contactMethods = [
     desc: 'Our support team is available from 7:00 AM to 10:00 PM',
     detail: '+91 98765 43210',
     sub: 'Toll Free: 1800-123-4567',
-    color: 'bg-blue-50 text-blue-600',
+    color: 'bg-primary/5 text-primary',
   },
   {
     icon: Mail,
@@ -31,7 +31,7 @@ const contactMethods = [
     desc: 'We usually respond within 24 hours',
     detail: 'support@checkedup.com',
     sub: null,
-    color: 'bg-blue-50 text-blue-600',
+    color: 'bg-primary/5 text-primary',
   },
   {
     icon: MessageCircle,
@@ -39,7 +39,7 @@ const contactMethods = [
     desc: 'Chat with us on WhatsApp for quick assistance',
     detail: '+91 98765 43210',
     sub: null,
-    color: 'bg-blue-50 text-blue-600',
+    color: 'bg-primary/5 text-primary',
   },
   {
     icon: MapPin,
@@ -47,7 +47,7 @@ const contactMethods = [
     desc: 'Checked Up Diagnostic Labs\n123 Health Street, City Center\nBangalore, Karnataka \u2013 560001',
     detail: 'View on Map',
     sub: null,
-    color: 'bg-blue-50 text-blue-600',
+    color: 'bg-primary/5 text-primary',
     isLink: true,
   },
 ];
@@ -101,19 +101,19 @@ export default function ContactUs() {
 
   return (
     <PublicLayout>
-      <div className="bg-white min-h-screen">
+      <div className="bg-card min-h-screen">
         {/* HERO */}
-        <section className="bg-gray-50 pt-6 lg:pt-10 pb-10 lg:pb-10">
+        <section className="bg-surface pt-6 lg:pt-10 pb-10 lg:pb-10">
           <div className="enterprise-container">
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
               <div className="w-full lg:w-1/2">
-                <span className="inline-block text-xs font-semibold tracking-wider uppercase text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-4">
+                <span className="inline-block type-primary-body-b3-medium tracking-wider uppercase text-primary bg-primary/5 border border-primary/10 rounded-full px-4 py-1.5 mb-4">
                   Contact Us
                 </span>
-                <h1 className="font-heading font-bold text-3xl lg:text-4xl text-gray-900 leading-tight mb-4">
-                  We're Here to <span className="text-blue-600">Help You</span>
+                <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground leading-tight mb-4">
+                  We're Here to <span className="text-primary">Help You</span>
                 </h1>
-                <p className="text-gray-500 text-base leading-relaxed mb-6 max-w-lg">
+                <p className="text-muted-foreground type-primary-body-b1 leading-relaxed mb-6 max-w-lg">
                   Have questions or need assistance? Our support team is ready
                   to help you. Reach out to us through any of the channels
                   below.
@@ -122,8 +122,8 @@ export default function ContactUs() {
                   {['Quick Response', 'Expert Support', 'Patient First Approach'].map(
                     (item) => (
                       <div key={item} className="flex items-center gap-2.5">
-                        <CheckCircle size={18} className="text-blue-600" />
-                        <span className="text-sm font-medium text-gray-700">
+                        <CheckCircle size={18} className="text-primary" />
+                        <span className="type-primary-body-b2-medium text-foreground">
                           {item}
                         </span>
                       </div>
@@ -133,7 +133,7 @@ export default function ContactUs() {
               </div>
 
               <div className="w-full lg:w-1/2">
-                <div className="rounded-2xl overflow-hidden bg-blue-50">
+                <div className="rounded-2xl overflow-hidden bg-primary/5">
                   <img
                     src={contactImg}
                     alt="Checked Up support team"
@@ -149,15 +149,15 @@ export default function ContactUs() {
         <section className="enterprise-container py-10 lg:py-14">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Get in Touch Form */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 lg:p-8">
-              <h2 className="font-heading font-bold text-xl text-gray-900 mb-6">
+            <div className="bg-card rounded-2xl border border-border shadow-sm p-6 lg:p-8">
+              <h2 className="type-primary-body-b1-medium text-foreground mb-6">
                 Get in Touch
               </h2>
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="relative">
                   <User
                     size={16}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                   />
                   <input
                     type="text"
@@ -165,13 +165,13 @@ export default function ContactUs() {
                     placeholder="Full Name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 bg-white text-sm text-gray-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-card type-primary-body-b2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
                   />
                 </div>
                 <div className="relative">
                   <Mail
                     size={16}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                   />
                   <input
                     type="email"
@@ -179,13 +179,13 @@ export default function ContactUs() {
                     placeholder="Email Address"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 bg-white text-sm text-gray-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-card type-primary-body-b2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
                   />
                 </div>
                 <div className="relative">
                   <Phone
                     size={16}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground"
                   />
                   <input
                     type="tel"
@@ -193,7 +193,7 @@ export default function ContactUs() {
                     placeholder="Phone Number"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 bg-white text-sm text-gray-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition"
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-card type-primary-body-b2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"
                   />
                 </div>
                 <Select
@@ -209,16 +209,16 @@ export default function ContactUs() {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-200 bg-white text-sm text-gray-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition resize-none"
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-card type-primary-body-b2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition resize-none"
                 />
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg text-sm font-semibold transition"
+                  className="w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white py-3 rounded-lg type-primary-body-b2-medium transition"
                 >
                   <Send size={16} />
                   Send Message
                 </button>
-                <p className="text-xs text-gray-500 text-center flex items-center justify-center gap-1.5">
+                <p className="type-primary-body-b3 text-muted-foreground text-center flex items-center justify-center gap-1.5">
                   <Shield size={12} />
                   Your information is safe with us. We never share your data.
                 </p>
@@ -227,7 +227,7 @@ export default function ContactUs() {
 
             {/* Other Ways to Contact Us */}
             <div>
-              <h2 className="font-heading font-bold text-xl text-gray-900 mb-6">
+              <h2 className="type-primary-body-b1-medium text-foreground mb-6">
                 Other Ways to Contact Us
               </h2>
               <div className="flex flex-col gap-4">
@@ -236,7 +236,7 @@ export default function ContactUs() {
                   return (
                     <div
                       key={method.title}
-                      className="flex items-start gap-4 p-5 rounded-xl border border-gray-100 hover:shadow-sm transition"
+                      className="flex items-start gap-4 p-5 rounded-xl border border-border hover:shadow-sm transition"
                     >
                       <div
                         className={`w-12 h-12 rounded-full ${method.color} flex items-center justify-center flex-shrink-0`}
@@ -244,25 +244,25 @@ export default function ContactUs() {
                         <Icon size={20} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-heading font-bold text-sm text-gray-900 mb-1">
+                        <h3 className="type-primary-body-b2-medium text-foreground mb-1">
                           {method.title}
                         </h3>
-                        <p className="text-xs text-gray-500 whitespace-pre-line leading-relaxed">
+                        <p className="type-primary-body-b3 text-muted-foreground whitespace-pre-line leading-relaxed">
                           {method.desc}
                         </p>
                       </div>
                       <div className="flex-shrink-0 text-right">
                         {method.isLink ? (
-                          <span className="text-sm font-semibold text-blue-600 cursor-pointer hover:underline flex items-center gap-1">
+                          <span className="type-primary-body-b2-medium text-primary cursor-pointer hover:underline flex items-center gap-1">
                             {method.detail} <ArrowRight size={14} />
                           </span>
                         ) : (
-                          <span className="text-sm font-semibold text-blue-600">
+                          <span className="type-primary-body-b2-medium text-primary">
                             {method.detail}
                           </span>
                         )}
                         {method.sub && (
-                          <p className="text-xs text-gray-500 mt-0.5">
+                          <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
                             {method.sub}
                           </p>
                         )}
@@ -276,13 +276,13 @@ export default function ContactUs() {
         </section>
 
         {/* FAQ */}
-        <section className="bg-gray-50 py-10 lg:py-14">
+        <section className="bg-surface py-10 lg:py-14">
           <div className="enterprise-container">
             <div className="text-center mb-10">
-              <h2 className="font-heading font-bold text-2xl text-gray-900 mb-2">
-                Frequently Asked Questions
+              <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground mb-2">
+                Frequently Asked <span className="text-primary">Questions</span>
               </h2>
-              <p className="text-sm text-gray-500">
+              <p className="type-primary-body-b2 text-muted-foreground">
                 Find quick answers to common questions
               </p>
             </div>
@@ -290,25 +290,25 @@ export default function ContactUs() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl border border-gray-100 overflow-hidden"
+                  className="bg-card rounded-xl border border-border overflow-hidden"
                 >
                   <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                    className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition"
+                    className="w-full flex items-center justify-between p-5 text-left hover:bg-surface transition"
                   >
-                    <span className="text-sm font-medium text-gray-900 pr-4">
+                    <span className="type-primary-body-b2-medium text-foreground pr-4">
                       {faq.q}
                     </span>
                     <ChevronDown
                       size={18}
-                      className={`text-gray-400 flex-shrink-0 transition-transform ${
+                      className={`text-muted-foreground flex-shrink-0 transition-transform ${
                         openFaq === index ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
                   {openFaq === index && (
                     <div className="px-5 pb-5">
-                      <p className="text-sm text-gray-500 leading-relaxed">
+                      <p className="type-primary-body-b2 text-muted-foreground leading-relaxed">
                         {faq.a}
                       </p>
                     </div>
@@ -318,16 +318,16 @@ export default function ContactUs() {
             </div>
 
             {/* STILL HAVE QUESTIONS */}
-            <div className="mt-10 bg-white border border-gray-100 rounded-2xl p-6 lg:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
+            <div className="mt-10 bg-card border border-border rounded-2xl p-6 lg:p-8 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
-                  <Headphones size={22} className="text-blue-600" />
+                <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center flex-shrink-0">
+                  <Headphones size={22} className="text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-bold text-sm text-gray-900">
+                  <h3 className="type-primary-body-b2-medium text-foreground">
                     Still have questions?
                   </h3>
-                  <p className="text-xs text-gray-500">
+                  <p className="type-primary-body-b3 text-muted-foreground">
                     Our support team is here to help you with anything you
                     need.
                   </p>
@@ -335,7 +335,7 @@ export default function ContactUs() {
               </div>
               <a
                 href="tel:+919876543210"
-                className="inline-flex items-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition flex-shrink-0"
+                className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-5 py-2.5 rounded-lg type-primary-body-b2-medium transition flex-shrink-0"
               >
                 <Phone size={16} />
                 Call Us Now
