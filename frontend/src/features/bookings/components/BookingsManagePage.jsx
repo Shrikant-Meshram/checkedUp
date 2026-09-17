@@ -54,23 +54,23 @@ const PAGE_SIZE = 12
 const PAGE_SIZES = [12, 24, 48]
 
 const STATUS_STYLES = {
-  Pending: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-500' },
-  Assigned: { bg: 'bg-blue-50', text: 'text-blue-600', dot: 'bg-blue-500' },
+  Pending: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
+  Assigned: { bg: 'bg-primary/10', text: 'text-primary', dot: 'bg-primary' },
   Reached: { bg: 'bg-indigo-50', text: 'text-indigo-600', dot: 'bg-indigo-500' },
   'Sample Collected': { bg: 'bg-purple-50', text: 'text-purple-600', dot: 'bg-purple-500' },
-  Processing: { bg: 'bg-cyan-50', text: 'text-cyan-600', dot: 'bg-cyan-500' },
+  Processing: { bg: 'bg-primary/10', text: 'text-primary', dot: 'bg-primary' },
   'Report Ready': { bg: 'bg-teal-50', text: 'text-teal-600', dot: 'bg-teal-500' },
-  Completed: { bg: 'bg-emerald-50', text: 'text-emerald-600', dot: 'bg-emerald-500' },
-  Cancelled: { bg: 'bg-red-50', text: 'text-red-600', dot: 'bg-red-500' },
+  Completed: { bg: 'bg-success/10', text: 'text-success', dot: 'bg-success' },
+  Cancelled: { bg: 'bg-destructive/10', text: 'text-destructive', dot: 'bg-destructive' },
   Rescheduled: { bg: 'bg-orange-50', text: 'text-orange-600', dot: 'bg-orange-500' },
 }
 
 const PAYMENT_STYLES = {
-  Paid: { bg: 'bg-emerald-50', text: 'text-emerald-600' },
-  Pending: { bg: 'bg-amber-50', text: 'text-amber-600' },
-  Unpaid: { bg: 'bg-amber-50', text: 'text-amber-600' },
-  Failed: { bg: 'bg-red-50', text: 'text-red-600' },
-  Refunded: { bg: 'bg-gray-50', text: 'text-gray-600' },
+  Paid: { bg: 'bg-success/10', text: 'text-success' },
+  Pending: { bg: 'bg-warning/10', text: 'text-warning' },
+  Unpaid: { bg: 'bg-warning/10', text: 'text-warning' },
+  Failed: { bg: 'bg-destructive/10', text: 'text-destructive' },
+  Refunded: { bg: 'bg-surface text-muted-foreground', text: '' },
 }
 
 const AVATAR_COLORS = [
@@ -94,16 +94,16 @@ const getStatusStyle = (status) => STATUS_STYLES[status] || STATUS_STYLES.Pendin
 const getPaymentStyle = (status) => PAYMENT_STYLES[status] || PAYMENT_STYLES.Pending
 
 const ASSISTANT_STATUS_STYLES = {
-  [BOOKING_STATUS.COMPLETED]: "bg-green-50 text-green-700",
-  [BOOKING_STATUS.PENDING]: "bg-primary/10 text-primary",
-  [BOOKING_STATUS.CANCELLED]: "bg-red-100 text-red-700",
+  [BOOKING_STATUS.COMPLETED]: "bg-success/10 text-success",
+  [BOOKING_STATUS.PENDING]: "bg-warning/10 text-warning",
+  [BOOKING_STATUS.CANCELLED]: "bg-destructive/10 text-destructive",
   [BOOKING_STATUS.RESCHEDULED]: "bg-primary/10 text-primary",
   [BOOKING_STATUS.ASSIGNED]: "bg-primary/10 text-primary",
-  [BOOKING_STATUS.REACHED]: "bg-accent text-secondary",
-  [BOOKING_STATUS.SAMPLE_COLLECTED]: "bg-accent text-secondary",
-  [PAYMENT_STATUS.PAID]: "bg-green-50 text-green-700",
-  [PAYMENT_STATUS.UNPAID]: "bg-red-100 text-red-700",
-  [PAYMENT_STATUS.FAILED]: "bg-red-100 text-red-700",
+  [BOOKING_STATUS.REACHED]: "bg-indigo-50 text-indigo-600",
+  [BOOKING_STATUS.SAMPLE_COLLECTED]: "bg-purple-50 text-purple-600",
+  [PAYMENT_STATUS.PAID]: "bg-success/10 text-success",
+  [PAYMENT_STATUS.UNPAID]: "bg-destructive/10 text-destructive",
+  [PAYMENT_STATUS.FAILED]: "bg-destructive/10 text-destructive",
 }
 
 const AssistantStatusBadge = ({ status }) => (
@@ -136,15 +136,15 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
       {open && (
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+          <div className="absolute left-0 top-full mt-1 bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
             {onHide && (
-              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <EyeOff size={14} /> Hide
               </button>
             )}
@@ -162,13 +162,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -186,86 +186,86 @@ const BookingDetailsModal = ({ booking, onClose }) => {
             {getInitials(booking.patientName)}
           </span>
           <div>
-            <p className="font-semibold text-foreground">{booking.patientName}</p>
-            <p className="text-xs text-muted-foreground">{booking.phone}</p>
+            <p className="type-primary-body-b1-medium text-foreground">{booking.patientName}</p>
+            <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
           </div>
         </div>
         <div className="divide-y divide-border border-t border-border">
-          <div className="py-2 text-sm">
+          <div className="py-2 type-primary-body-b2">
             <span className="text-muted-foreground">Test / Package</span>
             <div className="flex items-center justify-between mt-1">
-              <span className="font-medium text-foreground">{booking.test?.title || booking.package?.title || 'N/A'}</span>
-              <span className="font-mono text-sm font-bold text-primary">₹{(booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</span>
+              <span className="type-primary-body-b2-medium text-foreground">{booking.test?.title || booking.package?.title || 'N/A'}</span>
+              <span className="font-mono type-primary-body-b2-medium text-primary">₹{(booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</span>
             </div>
           </div>
           {booking.additionalTests?.length > 0 && (
-            <div className="py-2 text-sm">
+            <div className="py-2 type-primary-body-b2">
               <span className="text-muted-foreground">Additional Tests</span>
               <div className="mt-1.5 space-y-1.5">
                 {booking.additionalTests.map((at, idx) => (
                   <div key={idx} className="flex items-center justify-between bg-purple-50 rounded-lg px-3 py-2">
                     <div className="flex items-center gap-2">
                       <span className="w-5 h-5 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold">{idx + 1}</span>
-                      <span className="text-foreground text-xs font-medium">{at.test?.title || 'Test'}</span>
+                      <span className="type-primary-body-b3-medium text-foreground">{at.test?.title || 'Test'}</span>
                     </div>
-                    <span className="font-mono text-xs font-bold text-purple-600">₹{at.price}</span>
+                    <span className="font-mono type-primary-body-b3-medium text-purple-600">₹{at.price}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
           {booking.additionalPackages?.length > 0 && (
-            <div className="py-2 text-sm">
+            <div className="py-2 type-primary-body-b2">
               <span className="text-muted-foreground">Additional Packages</span>
               <div className="mt-1.5 space-y-1.5">
                 {booking.additionalPackages.map((ap, idx) => (
                   <div key={idx} className="flex items-center justify-between bg-blue-50 rounded-lg px-3 py-2">
                     <div className="flex items-center gap-2">
                       <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] font-bold">{idx + 1}</span>
-                      <span className="text-foreground text-xs font-medium">{ap.package?.title || 'Package'}</span>
+                      <span className="type-primary-body-b3-medium text-foreground">{ap.package?.title || 'Package'}</span>
                     </div>
-                    <span className="font-mono text-xs font-bold text-blue-600">₹{ap.price}</span>
+                    <span className="font-mono type-primary-body-b3-medium text-blue-600">₹{ap.price}</span>
                   </div>
                 ))}
               </div>
             </div>
           )}
-          <div className="flex justify-between py-2 text-sm">
-            <span className="text-muted-foreground font-medium">Total Amount</span>
-            <span className="font-mono text-base font-bold text-primary">₹{(booking.totalAmount || booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</span>
+          <div className="flex justify-between py-2 type-primary-body-b2">
+            <span className="text-muted-foreground type-primary-body-b2-medium">Total Amount</span>
+            <span className="font-mono type-primary-body-b1-medium text-primary">₹{(booking.totalAmount || booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}</span>
           </div>
-          <div className="flex justify-between py-2 text-sm"><span className="text-muted-foreground">Booking Date</span><span className="font-medium text-foreground">{booking.bookingDate}</span></div>
-          <div className="flex justify-between py-2 text-sm"><span className="text-muted-foreground">Booking Time</span><span className="font-medium text-foreground">{booking.bookingTime}</span></div>
-          <div className="flex justify-between py-2 text-sm">
+          <div className="flex justify-between py-2 type-primary-body-b2"><span className="text-muted-foreground">Booking Date</span><span className="type-primary-body-b2-medium text-foreground">{booking.bookingDate}</span></div>
+          <div className="flex justify-between py-2 type-primary-body-b2"><span className="text-muted-foreground">Booking Time</span><span className="type-primary-body-b2-medium text-foreground">{booking.bookingTime}</span></div>
+          <div className="flex justify-between py-2 type-primary-body-b2">
             <span className="text-muted-foreground">Status</span>
-            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3 ${statusStyle.bg} ${statusStyle.text}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>{booking.status}
             </span>
           </div>
-          <div className="flex justify-between py-2 text-sm">
+          <div className="flex justify-between py-2 type-primary-body-b2">
             <span className="text-muted-foreground">Payment</span>
-            <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
+            <span className={`rounded-md px-2 py-0.5 type-primary-body-b3 ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
           </div>
-          <div className="flex justify-between py-2 text-sm">
+          <div className="flex justify-between py-2 type-primary-body-b2">
             <span className="text-muted-foreground">Assigned Lab</span>
-            <span className={`font-medium text-right ${booking.labOwner ? 'text-foreground' : 'text-muted-foreground'}`}>{booking.labOwner?.name || 'Not Assigned'}</span>
+            <span className={`type-primary-body-b2-medium text-right ${booking.labOwner ? 'text-foreground' : 'text-muted-foreground'}`}>{booking.labOwner?.name || 'Not Assigned'}</span>
           </div>
           {booking.assignedLabAssistant && (
-            <div className="flex justify-between py-2 text-sm">
+            <div className="flex justify-between py-2 type-primary-body-b2">
               <span className="text-muted-foreground">Lab Assistant</span>
-              <span className="font-medium text-foreground text-right">{booking.assignedLabAssistant.name}</span>
+              <span className="type-primary-body-b2-medium text-foreground text-right">{booking.assignedLabAssistant.name}</span>
             </div>
           )}
           {booking.address && (
-            <div className="flex justify-between py-2 text-sm">
+            <div className="flex justify-between py-2 type-primary-body-b2">
               <span className="text-muted-foreground">Address</span>
-              <span className="font-medium text-foreground text-right max-w-[200px]">{booking.address}, {booking.city} - {booking.pincode}</span>
+              <span className="type-primary-body-b2-medium text-foreground text-right max-w-[200px]">{booking.address}, {booking.city} - {booking.pincode}</span>
             </div>
           )}
           {(booking.patientLatitude || booking.location?.latitude) && (
-            <div className="flex justify-between py-2 text-sm">
+            <div className="flex justify-between py-2 type-primary-body-b2">
               <span className="text-muted-foreground">Coordinates</span>
-              <span className="font-medium text-foreground text-right font-mono text-xs">
+              <span className="type-primary-body-b2-medium text-foreground text-right font-mono type-primary-body-b3">
                 {Number(booking.patientLatitude || booking.location?.latitude).toFixed(6)}, {Number(booking.patientLongitude || booking.location?.longitude).toFixed(6)}
               </span>
             </div>
@@ -656,7 +656,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="text-2xl font-bold text-foreground">{isPatient ? 'My Bookings' : 'Bookings'}</h1>
+        <h1 className="type-primary-heading-h0-mobile-medium text-foreground">{isPatient ? 'My Bookings' : 'Bookings'}</h1>
         {isPatient && (
           <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
             <ShoppingCart size={18} className="mr-2" />Book a Test
@@ -667,8 +667,8 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{isPatient ? 'My Bookings' : 'Bookings'}</h1>
-          <p className="mt-1 text-sm text-muted-foreground">{isPatient ? 'Review your upcoming and previous bookings.' : 'Manage all test bookings and their status'}</p>
+          <h1 className="type-primary-heading-h1 !font-medium text-foreground">{isPatient ? 'My Bookings' : 'Bookings'}</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">{isPatient ? 'Review your upcoming and previous bookings.' : 'Manage all test bookings and their status'}</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(event) => { setSearch(event.target.value); setPage(1) }} placeholder="Search by patient, phone, test..." width="w-72" />
@@ -831,11 +831,11 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
 
       {/* Content */}
       {isLoading ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading bookings…</div>
+        <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-muted-foreground">Loading bookings…</div>
       ) : isError ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-destructive">Unable to load bookings. Please try again.</div>
+        <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-destructive">Unable to load bookings. Please try again.</div>
       ) : visibleBookings.length === 0 ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">No bookings match the selected filters.</div>
+        <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-muted-foreground">No bookings match the selected filters.</div>
       ) : view === 'grid' ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visibleBookings.map((booking, index) => {
@@ -874,21 +874,21 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
       ) : (
         /* List View */
         <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-          <div className="rounded-xl border border-border bg-white">
-          <table className="w-full min-w-[900px] text-sm">
+          <div className="rounded-xl border border-border bg-card">
+          <table className="w-full min-w-[900px] type-primary-body-b2">
             <thead className="bg-accent text-left text-muted-foreground sticky top-0">
               <tr>
                 <SortableHeader title={isPatient ? 'Test / Package' : 'Patient'} sortKey={isPatient ? 'test' : 'patient'} sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, [isPatient ? 'test' : 'patient']: true }))} />
                 {isPatient ? (
                   <>
                     <SortableHeader title="Date" sortKey="date" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, date: true }))} />
-                    <th className="px-4 py-3">Time</th>
+                    <th className="px-4 py-3 type-primary-body-b3-medium">Time</th>
                   </>
                 ) : isLabAssistant ? (
                   <>
                     <SortableHeader title="Test" sortKey="test" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, test: true }))} />
                     <SortableHeader title="Date" sortKey="date" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, date: true }))} />
-                    <th className="px-4 py-3">Address</th>
+                    <th className="px-4 py-3 type-primary-body-b3-medium">Address</th>
                   </>
                 ) : (
                   <>
@@ -900,8 +900,8 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                 )}
                 <SortableHeader title="Status" sortKey="status" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, status: true }))} />
                 <SortableHeader title="Payment" sortKey="payment" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, payment: true }))} />
-                {!isLabAssistant && !isPatient && <th className="px-4 py-3">Samples</th>}
-                <th className="px-4 py-3">Actions</th>
+                {!isLabAssistant && !isPatient && <th className="px-4 py-3 type-primary-body-b3-medium">Samples</th>}
+                <th className="px-4 py-3 type-primary-body-b3-medium">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -917,10 +917,10 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         {!hiddenColumns.test && (
                         <td className="px-4 py-3">
                           <div>
-                            <p className="text-sm font-medium text-foreground">
+                            <p className="type-primary-body-b2-medium text-foreground">
                               {booking.test?.title || booking.package?.title || 'N/A'}
                             </p>
-                            <p className="font-mono text-xs font-bold text-primary mt-0.5">
+                            <p className="font-mono type-primary-body-b3-medium text-primary mt-0.5">
                               ₹{(booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}
                             </p>
                           </div>
@@ -928,25 +928,25 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         )}
                         {!hiddenColumns.date && (
                         <td className="px-4 py-3">
-                          <span className="text-sm text-foreground">{booking.bookingDate}</span>
+                          <span className="type-primary-body-b2 text-foreground">{booking.bookingDate}</span>
                         </td>
                         )}
                         <td className="px-4 py-3">
-                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <div className="flex items-center gap-1 type-primary-body-b3 text-muted-foreground">
                             <Clock size={10} />
                             <span>{booking.bookingTime}</span>
                           </div>
                         </td>
                         {!hiddenColumns.status && (
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3 ${statusStyle.bg} ${statusStyle.text}`}>
                             <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>{booking.status}
                           </span>
                         </td>
                         )}
                         {!hiddenColumns.payment && (
                         <td className="px-4 py-3">
-                          <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
+                          <span className={`rounded-md px-2 py-0.5 type-primary-body-b3 ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
                         </td>
                         )}
                       </>
@@ -959,8 +959,8 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                               <CircleUser className="text-primary" size={18} />
                             </div>
                             <div>
-                              <h3 className="text-sm font-medium text-foreground">{booking.patientName}</h3>
-                              <p className="text-[11px] text-muted-foreground">{booking.phone}</p>
+                              <h3 className="type-primary-body-b2-medium text-foreground">{booking.patientName}</h3>
+                              <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
                             </div>
                           </div>
                         </td>
@@ -969,16 +969,16 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         <td className="px-4 py-3">
                           <div>
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <p className="text-sm font-medium text-foreground">
+                              <p className="type-primary-body-b2-medium text-foreground">
                                 {booking.test?.title || booking.package?.title}
                               </p>
                               {(booking.additionalTests?.length > 0 || booking.additionalPackages?.length > 0) && (
-                                <span className="text-[10px] text-purple-700 font-medium bg-purple-50 px-1.5 py-0.5 rounded">
+                                <span className="type-primary-body-b3 text-purple-700 font-medium bg-purple-50 px-1.5 py-0.5 rounded">
                                   +{booking.additionalTests.length + booking.additionalPackages.length}
                                 </span>
                               )}
                             </div>
-                            <p className="font-mono text-xs font-bold text-primary mt-0.5">
+                            <p className="font-mono type-primary-body-b3-medium text-primary mt-0.5">
                               ₹{(booking.totalAmount || booking.test?.price || booking.package?.price || 0).toLocaleString('en-IN')}
                             </p>
                           </div>
@@ -987,15 +987,15 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         {!hiddenColumns.date && (
                         <td className="px-4 py-3">
                           <div>
-                            <p className="text-sm font-medium text-foreground">{booking.bookingDate}</p>
-                            <p className="text-[11px] text-muted-foreground mt-0.5">{booking.bookingTime}</p>
+                            <p className="type-primary-body-b2-medium text-foreground">{booking.bookingDate}</p>
+                            <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{booking.bookingTime}</p>
                           </div>
                         </td>
                         )}
                         <td className="px-4 py-3">
                           <div className="flex gap-1.5 items-start max-w-[200px]">
-                            <MapPin className="text-red-500 mt-0.5 flex-shrink-0" size={14} />
-                            <span className="text-[12px] text-muted-foreground line-clamp-2">
+                            <MapPin className="text-destructive mt-0.5 flex-shrink-0" size={14} />
+                            <span className="type-primary-body-b3 text-muted-foreground line-clamp-2">
                               {booking.address || 'No address'}
                             </span>
                           </div>
@@ -1058,23 +1058,23 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                             />
                           ) : booking.assignedLabAssistant ? (
                             <div>
-                              <p className="text-sm font-medium text-foreground">{booking.assignedLabAssistant.name}</p>
-                              <p className="text-[11px] text-muted-foreground mt-0.5">{booking.assignedLabAssistant.email}</p>
+                              <p className="type-primary-body-b2-medium text-foreground">{booking.assignedLabAssistant.name}</p>
+                              <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{booking.assignedLabAssistant.email}</p>
                             </div>
                           ) : (
-                            <span className="text-xs text-muted-foreground">—</span>
+                            <span className="type-primary-body-b3 text-muted-foreground">—</span>
                           )}
                         </td>
                         {!hiddenColumns.status && (
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3 ${statusStyle.bg} ${statusStyle.text}`}>
                             <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>{booking.status}
                           </span>
                         </td>
                         )}
                         {!hiddenColumns.payment && (
                         <td className="px-4 py-3">
-                          <span className={`rounded-md px-2 py-0.5 text-[11px] font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
+                          <span className={`rounded-md px-2 py-0.5 type-primary-body-b3 ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
                         </td>
                         )}
                         <td className="px-4 py-3">
@@ -1095,7 +1095,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                               )}
                             </div>
                           ) : (
-                            <span className="text-[11px] text-gray-400">No Samples</span>
+                            <span className="type-primary-body-b3 text-muted-foreground">No Samples</span>
                           )}
                         </td>
                       </>
@@ -1119,9 +1119,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
       {/* Sample Images Modal */}
       {sampleImagesModal.open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => setSampleImagesModal({ open: false, images: [], bookingId: null })}>
-          <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-card rounded-2xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between border-b border-border px-6 py-4">
-              <h2 className="text-lg font-semibold text-foreground">Sample Images</h2>
+              <h2 className="type-primary-heading-h3-medium text-foreground">Sample Images</h2>
               <button type="button" onClick={() => setSampleImagesModal({ open: false, images: [], bookingId: null })} className="p-1 rounded hover:bg-accent text-muted-foreground">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12" /></svg>
               </button>
@@ -1131,7 +1131,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                 {sampleImagesModal.images.map((image, index) => (
                   <a key={index} href={image} target="_blank" rel="noreferrer" className="block group">
                     <img src={image} alt={`Sample ${index + 1}`} className="w-full h-40 object-cover rounded-lg border border-border group-hover:scale-[1.02] transition-transform" />
-                    <p className="text-xs text-muted-foreground text-center mt-1.5">Sample {index + 1}</p>
+                    <p className="type-primary-body-b3 text-muted-foreground text-center mt-1.5">Sample {index + 1}</p>
                   </a>
                 ))}
               </div>
@@ -1216,7 +1216,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
       {menuOpen && (
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setMenuOpen(null)} />
-          <div ref={menuRef} className="fixed bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[160px] max-h-[80vh] overflow-y-auto" style={menuOpen.openUp ? { bottom: window.innerHeight - menuOpen.top, left: menuOpen.left } : { top: menuOpen.top, left: menuOpen.left }}>
+          <div ref={menuRef} className="fixed bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[160px] max-h-[80vh] overflow-y-auto" style={menuOpen.openUp ? { bottom: window.innerHeight - menuOpen.top, left: menuOpen.left } : { top: menuOpen.top, left: menuOpen.left }}>
             {isLabAssistant ? (
               <>
                 <button
@@ -1235,9 +1235,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     window.open(url, '_blank')
                     setMenuOpen(null)
                   }}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left"
+                  className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left"
                 >
-                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-red-100 text-red-600">
+                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-destructive/10 text-destructive">
                     <Route size={14} />
                   </span>
                   Navigate
@@ -1250,7 +1250,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     setMenuOpen(null)
                   }}
                   disabled={menuOpen.booking?.status !== BOOKING_STATUS.REACHED}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="inline-flex items-center justify-center size-6 rounded-md bg-purple-100 text-purple-600">
                     <FlaskConical size={14} />
@@ -1264,9 +1264,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     setMenuOpen(null)
                   }}
                   disabled={menuOpen.booking?.status !== BOOKING_STATUS.ASSIGNED || markingReachedId === menuOpen.booking?._id}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-blue-100 text-blue-600">
+                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-primary/10 text-primary">
                     {markingReachedId === menuOpen.booking?._id ? (
                       <svg className="animate-spin size-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -1285,9 +1285,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     setMenuOpen(null)
                   }}
                   disabled={menuOpen.booking?.status !== BOOKING_STATUS.REACHED}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-amber-100 text-amber-600">
+                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-warning/10 text-warning">
                     <Microscope size={14} />
                   </span>
                   Collect Sample
@@ -1299,9 +1299,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     setMenuOpen(null)
                   }}
                   disabled={menuOpen.booking?.status !== BOOKING_STATUS.SAMPLE_COLLECTED || menuOpen.booking?.paymentStatus === PAYMENT_STATUS.PAID}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-green-100 text-green-600">
+                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-success/10 text-success">
                     <Banknote size={14} />
                   </span>
                   Collect Payment
@@ -1315,9 +1315,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     setMenuOpen(null)
                   }}
                   disabled={!menuOpen.booking?.report}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-gray-100 text-gray-600">
+                  <span className="inline-flex items-center justify-center size-6 rounded-md bg-surface text-muted-foreground">
                     <Download size={14} />
                   </span>
                   View Report
@@ -1333,9 +1333,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                       setMenuOpen(null)
                     }}
                     disabled={menuOpen.booking?.status === BOOKING_STATUS.COMPLETED || menuOpen.booking?.status === BOOKING_STATUS.CANCELLED}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Pencil size={14} className="text-amber-500" /> Edit Lab
+                    <Pencil size={14} className="text-warning" /> Edit Lab
                   </button>
                 )}
                 {isLabOwner && (
@@ -1347,9 +1347,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         setMenuOpen(null)
                       }}
                       disabled={!menuOpen.booking?.report}
-                      className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <span className="inline-flex items-center justify-center size-6 rounded-md bg-gray-100 text-gray-600">
+                      <span className="inline-flex items-center justify-center size-6 rounded-md bg-surface text-muted-foreground">
                         <Download size={14} />
                       </span>
                       View Report
@@ -1370,9 +1370,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         setMenuOpen(null)
                       }}
                       disabled={uploadingReportId === menuOpen.booking?._id}
-                      className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <span className="inline-flex items-center justify-center size-6 rounded-md bg-green-100 text-green-600">
+                      <span className="inline-flex items-center justify-center size-6 rounded-md bg-success/10 text-success">
                         {uploadingReportId === menuOpen.booking?._id ? (
                           <svg className="animate-spin size-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -1395,9 +1395,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         setMenuOpen(null)
                       }}
                       disabled={!menuOpen.booking?.report}
-                      className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <span className="inline-flex items-center justify-center size-6 rounded-md bg-gray-100 text-gray-600">
+                      <span className="inline-flex items-center justify-center size-6 rounded-md bg-surface text-muted-foreground">
                         <Download size={14} />
                       </span>
                       View Report
@@ -1409,9 +1409,9 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                           openManageModal(menuOpen.booking)
                           setMenuOpen(null)
                         }}
-                        className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left"
+                        className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left"
                       >
-                        <span className="inline-flex items-center justify-center size-6 rounded-md bg-amber-100 text-amber-600">
+                        <span className="inline-flex items-center justify-center size-6 rounded-md bg-warning/10 text-warning">
                           <Settings size={14} />
                         </span>
                         Manage Booking
@@ -1420,7 +1420,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                   </>
                 )}
                 {!isAdmin && !isLabOwner && !isPatient && (
-                  <button onClick={(e) => { e.stopPropagation(); setSelectedBookingId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+                  <button onClick={(e) => { e.stopPropagation(); setSelectedBookingId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                     <Eye size={14} /> View
                   </button>
                 )}
@@ -1474,12 +1474,12 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
             </div>
           )}
           <div className="mt-6 space-y-2">
-            <p><strong>Amount:</strong> ₹{paymentBooking?.test?.price || paymentBooking?.package?.price}</p>
+            <p className="type-primary-body-b2"><strong>Amount:</strong> ₹{paymentBooking?.test?.price || paymentBooking?.package?.price}</p>
           </div>
           <div className="mt-5">
-            <h3 className="text-lg font-semibold mb-3">Upload Payment Receipt</h3>
+            <h3 className="type-primary-heading-h3-medium mb-3">Upload Payment Receipt</h3>
             <div className="grid grid-cols-2 gap-3">
-              <label className="border-2 border-dashed border-blue-300 rounded-2xl p-4 cursor-pointer hover:bg-blue-50 transition">
+              <label className="border-2 border-dashed border-primary/30 rounded-2xl p-4 cursor-pointer hover:bg-primary/5 transition">
                 <input
                   type="file"
                   accept="image/*"
@@ -1491,10 +1491,10 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                 />
                 <div className="flex flex-col items-center">
                   <div className="text-3xl">📷</div>
-                  <p className="mt-2 text-sm font-semibold">Capture</p>
+                  <p className="mt-2 type-primary-body-b2-medium">Capture</p>
                 </div>
               </label>
-              <label className="border-2 border-dashed border-green-300 rounded-2xl p-4 cursor-pointer hover:bg-green-50 transition">
+              <label className="border-2 border-dashed border-success/30 rounded-2xl p-4 cursor-pointer hover:bg-success/5 transition">
                 <input
                   type="file"
                   accept="image/*,.pdf"
@@ -1505,13 +1505,13 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                 />
                 <div className="flex flex-col items-center">
                   <div className="text-3xl">🖼️</div>
-                  <p className="mt-2 text-sm font-semibold">Upload</p>
+                  <p className="mt-2 type-primary-body-b2-medium">Upload</p>
                 </div>
               </label>
             </div>
             {paymentReceipt && (
-              <div className="mt-4 p-3 rounded-xl bg-blue-50 border">
-                <p className="text-sm font-semibold">{paymentReceipt.name}</p>
+              <div className="mt-4 p-3 rounded-xl bg-primary/5 border">
+                <p className="type-primary-body-b2-medium">{paymentReceipt.name}</p>
                 {paymentReceipt.type.startsWith('image/') && (
                   <img
                     src={URL.createObjectURL(paymentReceipt)}

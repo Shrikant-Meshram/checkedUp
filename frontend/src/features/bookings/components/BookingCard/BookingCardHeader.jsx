@@ -32,10 +32,10 @@ const BookingCardHeader = ({ patientName, phone, variant = 'initials' }) => {
           </span>
         )}
         <div className="min-w-0">
-          <h3 className="font-semibold text-foreground text-sm truncate" title={patientName}>
+          <h3 className="type-primary-body-b2-medium text-foreground truncate" title={patientName}>
             {patientName}
           </h3>
-          <p className="text-xs text-muted-foreground">{phone}</p>
+          <p className="type-primary-body-b3 text-muted-foreground">{phone}</p>
         </div>
       </div>
     </div>

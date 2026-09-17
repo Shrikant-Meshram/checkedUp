@@ -113,13 +113,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="type-primary-body-b2 text-muted-foreground">{title}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
         <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="type-primary-body-b2 text-muted-foreground">{detailTop}</p>
-        <p className="type-primary-body-b2 text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -339,7 +339,7 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="type-primary-heading-h0 !font-medium text-foreground">Packages</h1>
+          <h1 className="type-primary-heading-h1 !font-medium text-foreground">Packages</h1>
           <p className="mt-1 type-primary-body-b2 text-muted-foreground">Manage and view all health-check packages</p>
         </div>
         <div className="flex items-center gap-2">

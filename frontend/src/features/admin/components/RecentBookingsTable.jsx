@@ -8,8 +8,8 @@ const statusStyles = {
   Processing: 'bg-primary/10 text-primary',
   Cancelled: 'bg-destructive/10 text-destructive',
   Assigned: 'bg-primary/10 text-primary',
-  Reached: 'bg-primary/10 text-primary',
-  'Sample Collected': 'bg-primary/10 text-primary',
+  Reached: 'bg-indigo-50 text-indigo-600',
+  'Sample Collected': 'bg-purple-50 text-purple-600',
 }
 
 const RecentBookingsTable = ({ data }) => {

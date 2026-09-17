@@ -6,23 +6,23 @@ const BookingCardContent = ({ testName, testCity, amount, bookingDate, bookingTi
   return (
     <div className="flex flex-col flex-1 p-4 pt-3">
         <div className="flex items-center gap-1.5 flex-wrap">
-          <h4 className="font-medium text-foreground text-sm leading-snug" title={testName}>
+          <h4 className="type-primary-body-b2-medium text-foreground leading-snug" title={testName}>
             {testName}
           </h4>
           {(additionalTests?.length > 0 || additionalPackages?.length > 0) && (
-            <span className="text-[10px] text-purple-700 font-medium bg-purple-50 px-1.5 py-0.5 rounded">
+            <span className="type-primary-body-b3 text-purple-700 font-medium bg-purple-50 px-1.5 py-0.5 rounded">
               +{additionalTests.length + additionalPackages.length}
             </span>
           )}
         </div>
 
       <div className="mt-2">
-        <span className="font-mono text-sm font-bold text-primary">
+        <span className="font-mono type-primary-body-b1-medium text-primary">
           ₹{amount?.toLocaleString('en-IN')}
         </span>
       </div>
 
-      <dl className="mt-3 space-y-1.5 text-xs">
+      <dl className="mt-3 space-y-1.5 type-primary-body-b3">
         <div className="flex items-center gap-2 text-muted-foreground">
           <Calendar size={12} />
           <span>{bookingDate}</span>

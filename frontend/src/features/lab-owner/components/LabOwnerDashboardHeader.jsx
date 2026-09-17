@@ -60,7 +60,7 @@ const LabOwnerDashboardHeader = ({ dateRange, onDateRangeChange }) => {
     <div>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground">
+          <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h1 !font-medium text-foreground">
             Welcome back, Lab Owner 👋
           </h1>
           <p className="type-primary-body-b3 text-muted-foreground mt-1">
