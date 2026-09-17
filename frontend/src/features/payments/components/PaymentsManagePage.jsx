@@ -94,7 +94,7 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
   return (
     <th className="px-4 py-3 relative">
       <div className="flex items-center gap-1">
-        <span>{title}</span>
+        <span className="type-primary-body-b2-medium">{title}</span>
         <button type="button" onClick={() => setOpen(!open)} className="p-0.5 rounded hover:bg-accent">
           {currentSort === 'asc' ? <ArrowUp size={14} /> : currentSort === 'desc' ? <ArrowDown size={14} /> : <ChevronsUpDown size={14} className="text-muted-foreground" />}
         </button>
@@ -103,14 +103,14 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
             {onHide && (
-              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <EyeOff size={14} /> Hide
               </button>
             )}
@@ -128,13 +128,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h2 leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -148,34 +148,34 @@ const PaymentDetailsModal = ({ payment, onClose }) => {
     <Modal open={!!payment} title="Payment Details" onClose={onClose} size="md">
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white font-semibold text-sm`}>
+          <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white type-primary-body-b1-medium`}>
             {getInitials(payment.patientName)}
           </span>
           <div>
-            <p className="font-semibold text-foreground">{payment.patientName}</p>
-            <p className="text-xs text-muted-foreground">{payment.phone}</p>
+            <p className="type-primary-body-b1-medium text-foreground">{payment.patientName}</p>
+            <p className="type-primary-body-b3 text-muted-foreground">{payment.phone}</p>
           </div>
         </div>
         <div className="divide-y divide-border border-t border-border">
-          <div className="flex justify-between py-2 text-sm"><span className="text-muted-foreground">Transaction ID</span><span className="font-medium text-foreground">{payment.transactionId || '—'}</span></div>
-          <div className="flex justify-between py-2 text-sm"><span className="text-muted-foreground">Booking ID</span><span className="font-medium text-foreground">{payment._id || '—'}</span></div>
-          <div className="flex justify-between py-2 text-sm"><span className="text-muted-foreground">Test / Package</span><span className="font-medium text-foreground">{payment.test?.title || payment.package?.title || 'N/A'}</span></div>
-          <div className="flex justify-between py-2 text-sm"><span className="text-muted-foreground">Amount</span><span className="font-bold text-foreground">{formatCurrency(payment.totalAmount || payment.paymentAmount || payment.test?.price || payment.package?.price)}</span></div>
-          <div className="flex justify-between py-2 text-sm">
+          <div className="flex justify-between py-2 type-primary-body-b2"><span className="text-muted-foreground">Transaction ID</span><span className="type-primary-body-b2-medium text-foreground">{payment.transactionId || '—'}</span></div>
+          <div className="flex justify-between py-2 type-primary-body-b2"><span className="text-muted-foreground">Booking ID</span><span className="type-primary-body-b2-medium text-foreground">{payment._id || '—'}</span></div>
+          <div className="flex justify-between py-2 type-primary-body-b2"><span className="text-muted-foreground">Test / Package</span><span className="type-primary-body-b2-medium text-foreground">{payment.test?.title || payment.package?.title || 'N/A'}</span></div>
+          <div className="flex justify-between py-2 type-primary-body-b2"><span className="text-muted-foreground">Amount</span><span className="type-primary-heading-h3 text-foreground">{formatCurrency(payment.totalAmount || payment.paymentAmount || payment.test?.price || payment.package?.price)}</span></div>
+          <div className="flex justify-between py-2 type-primary-body-b2">
             <span className="text-muted-foreground">Payment Method</span>
-            <span className="font-medium text-foreground">{methodStyle.label}</span>
+            <span className="type-primary-body-b2-medium text-foreground">{methodStyle.label}</span>
           </div>
-          <div className="flex justify-between py-2 text-sm">
+          <div className="flex justify-between py-2 type-primary-body-b2">
             <span className="text-muted-foreground">Status</span>
-            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3-medium ${statusStyle.bg} ${statusStyle.text}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>{payment.paymentStatus}
             </span>
           </div>
-          <div className="flex justify-between py-2 text-sm"><span className="text-muted-foreground">Payment Date</span><span className="font-medium text-foreground">{formatDate(payment.paidAt || payment.createdAt)} {formatTime(payment.paidAt || payment.createdAt)}</span></div>
+          <div className="flex justify-between py-2 type-primary-body-b2"><span className="text-muted-foreground">Payment Date</span><span className="type-primary-body-b2-medium text-foreground">{formatDate(payment.paidAt || payment.createdAt)} {formatTime(payment.paidAt || payment.createdAt)}</span></div>
           {payment.labOwner && (
-            <div className="flex justify-between py-2 text-sm">
+            <div className="flex justify-between py-2 type-primary-body-b2">
               <span className="text-muted-foreground">Lab</span>
-              <span className="font-medium text-foreground text-right">{payment.labOwner.name}</span>
+              <span className="type-primary-body-b2-medium text-foreground text-right">{payment.labOwner.name}</span>
             </div>
           )}
         </div>
@@ -340,14 +340,14 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="text-2xl font-bold text-foreground">Payments</h1>
+        <h1 className="type-primary-heading-h1 text-foreground">Payments</h1>
       </div>
 
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Payments</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Track and manage all payments and transactions</p>
+          <h1 className="type-primary-heading-h1 text-foreground">Payments</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">Track and manage all payments and transactions</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(event) => { setSearch(event.target.value); setPage(1) }} placeholder="Search by transaction ID, booking ID, customer..." width="w-72" />
@@ -456,11 +456,11 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
 
       {/* Content */}
       {isLoading ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading payments…</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">Loading payments…</div>
       ) : isError ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-destructive">Unable to load payments. Please try again.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-destructive">Unable to load payments. Please try again.</div>
       ) : visiblePayments.length === 0 ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">No payments match the selected filters.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">No payments match the selected filters.</div>
       ) : view === 'grid' ? (
         /* Grid View */
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -474,15 +474,15 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white font-semibold text-xs`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white type-primary-body-b3-medium`}>
                         {getInitials(payment.patientName)}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-semibold text-foreground text-sm truncate" title={payment.patientName}>{payment.patientName}</h3>
-                        <p className="text-xs text-muted-foreground">{payment.phone}</p>
+                        <h3 className="type-primary-body-b1-medium text-foreground truncate" title={payment.patientName}>{payment.patientName}</h3>
+                        <p className="type-primary-body-b3 text-muted-foreground">{payment.phone}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b4-medium ${statusStyle.bg} ${statusStyle.text}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                       {payment.paymentStatus === 'Paid' ? 'Success' : payment.paymentStatus}
                     </span>
@@ -490,22 +490,22 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                 </div>
                 <div className="flex flex-col p-4 pt-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-foreground">{formatCurrency(amount)}</span>
-                    <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <span className="type-primary-heading-h3 text-foreground">{formatCurrency(amount)}</span>
+                    <span className="inline-flex items-center gap-1.5 type-primary-body-b3 text-muted-foreground">
                       <span className={`flex h-5 w-5 items-center justify-center rounded ${methodStyle.bg}`}>
                         <CreditCard size={10} className={methodStyle.icon} />
                       </span>
                       {methodStyle.label}
                     </span>
                   </div>
-                  <dl className="mt-3 space-y-1.5 text-xs">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b3">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Transaction ID</span>
-                      <span className="font-medium text-primary">{payment.transactionId || '—'}</span>
+                      <span className="type-primary-body-b3-medium text-primary">{payment.transactionId || '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Booking ID</span>
-                      <span className="font-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
+                      <span className="type-primary-body-b3-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Payment Date</span>
@@ -513,7 +513,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-body-b3 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -542,7 +542,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                 <SortableHeader title="Payment Method" sortKey="method" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, method: true }))} />
                 <SortableHeader title="Status" sortKey="status" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, status: true }))} />
                 <SortableHeader title="Payment Date" sortKey="date" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, date: true }))} />
-                <th className="px-4 py-3 font-semibold">Actions</th>
+                <th className="px-4 py-3 type-primary-body-b2-medium">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -555,33 +555,33 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                   <tr key={id} onClick={() => setSelectedPaymentId(id)} className="cursor-pointer border-t border-border transition hover:bg-accent/40">
                     {!hiddenColumns.transaction && (
                     <td className="px-4 py-3">
-                      <span className="font-medium text-primary">{payment.transactionId || '—'}</span>
+                      <span className="type-primary-body-b2-medium text-primary">{payment.transactionId || '—'}</span>
                     </td>
                     )}
                     {!hiddenColumns.booking && (
                     <td className="px-4 py-3">
-                      <span className="font-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
+                      <span className="type-primary-body-b2-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
                     </td>
                     )}
                     {!hiddenColumns.customer && (
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2.5">
-                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${getAvatarColor(payment.patientName)} text-white font-semibold text-[10px]`}>
+                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${getAvatarColor(payment.patientName)} text-white type-primary-body-b4-medium`}>
                           {getInitials(payment.patientName)}
                         </span>
                         <div>
-                          <p className="font-medium text-foreground">{payment.patientName}</p>
-                          <p className="text-xs text-muted-foreground">{payment.phone}</p>
+                          <p className="type-primary-body-b2-medium text-foreground">{payment.patientName}</p>
+                          <p className="type-primary-body-b3 text-muted-foreground">{payment.phone}</p>
                         </div>
                       </div>
                     </td>
                     )}
                     {!hiddenColumns.amount && (
-                    <td className="px-4 py-3 font-medium text-foreground">{formatCurrency(amount)}</td>
+                    <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">{formatCurrency(amount)}</td>
                     )}
                     {!hiddenColumns.method && (
                     <td className="px-4 py-3">
-                      <span className="inline-flex items-center gap-1.5 text-sm text-foreground">
+                      <span className="inline-flex items-center gap-1.5 type-primary-body-b2 text-foreground">
                         <span className={`flex h-6 w-6 items-center justify-center rounded ${methodStyle.bg}`}>
                           <CreditCard size={12} className={methodStyle.icon} />
                         </span>
@@ -591,7 +591,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                     )}
                     {!hiddenColumns.status && (
                     <td className="px-4 py-3">
-                      <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                      <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3-medium ${statusStyle.bg} ${statusStyle.text}`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                         {payment.paymentStatus === 'Paid' ? 'Success' : payment.paymentStatus}
                       </span>
@@ -599,8 +599,8 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                     )}
                     {!hiddenColumns.date && (
                     <td className="px-4 py-3">
-                      <span className="text-foreground">{formatDate(payment.paidAt || payment.createdAt)}</span>
-                      {(payment.paidAt || payment.createdAt) && <><br /><span className="text-xs text-muted-foreground">{formatTime(payment.paidAt || payment.createdAt)}</span></>}
+                      <span className="type-primary-body-b2 text-foreground">{formatDate(payment.paidAt || payment.createdAt)}</span>
+                      {(payment.paidAt || payment.createdAt) && <><br /><span className="type-primary-body-b3 text-muted-foreground">{formatTime(payment.paidAt || payment.createdAt)}</span></>}
                     </td>
                     )}
                     <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
@@ -668,10 +668,10 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setMenuOpen(null)} />
           <div className="fixed bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]" style={{ top: menuOpen.top, left: menuOpen.left }}>
-            <button onClick={(e) => { e.stopPropagation(); setSelectedPaymentId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={(e) => { e.stopPropagation(); setSelectedPaymentId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <Eye size={14} /> View
             </button>
-            <button onClick={(e) => { e.stopPropagation(); toast.info('Download receipt coming soon'); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={(e) => { e.stopPropagation(); toast.info('Download receipt coming soon'); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <Download size={14} /> Download Receipt
             </button>
           </div>
@@ -693,7 +693,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
           className="space-y-6"
         >
           <div>
-            <label className="block mb-2 font-semibold">QR Code</label>
+            <label className="block mb-2 type-primary-body-b1-medium">QR Code</label>
             <input
               type="file"
               accept="image/*"
@@ -703,13 +703,13 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
           </div>
           {qrImage && (
             <div className="space-y-2">
-              <p className="font-semibold text-sm">Selected File</p>
+              <p className="type-primary-body-b2-medium">Selected File</p>
               <img src={URL.createObjectURL(qrImage)} alt="QR Code Preview" className="w-64 rounded-xl border" />
             </div>
           )}
           {payment?.qrImage && (
             <div className="space-y-3">
-              <p className="font-semibold text-sm">Current QR Code</p>
+              <p className="type-primary-body-b2-medium">Current QR Code</p>
               <img src={payment.qrImage} alt="" className="w-64 rounded-xl border" />
             </div>
           )}

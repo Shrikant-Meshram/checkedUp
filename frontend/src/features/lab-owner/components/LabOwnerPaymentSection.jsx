@@ -16,7 +16,7 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
         </div>
       ) : error ? (
         <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-5 text-center">
-          <p className="text-destructive text-xs font-medium">Failed to load payment stats.</p>
+          <p className="type-primary-body-b3-medium text-destructive">Failed to load payment stats.</p>
         </div>
       ) : (
         <>
@@ -25,8 +25,8 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
             <div className="bg-card rounded-xl p-4 shadow-sm border border-border">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">Total Revenue</p>
-                  <h3 className="font-mono font-bold text-foreground text-xl mt-1.5">
+                  <p className="type-primary-body-b3-medium text-muted-foreground uppercase tracking-wider">Total Revenue</p>
+                  <h3 className="font-mono type-primary-heading-h3-medium text-foreground mt-1.5">
                     {formatCurrency(stats?.totalRevenue)}
                   </h3>
                 </div>
@@ -39,8 +39,8 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
             <div className="bg-card rounded-xl p-4 shadow-sm border border-border">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">Today</p>
-                  <h3 className="font-mono font-bold text-foreground text-xl mt-1.5">
+                  <p className="type-primary-body-b3-medium text-muted-foreground uppercase tracking-wider">Today</p>
+                  <h3 className="font-mono type-primary-heading-h3-medium text-foreground mt-1.5">
                     {formatCurrency(stats?.todayRevenue)}
                   </h3>
                 </div>
@@ -53,8 +53,8 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
             <div className="bg-card rounded-xl p-4 shadow-sm border border-border">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">This Month</p>
-                  <h3 className="font-mono font-bold text-foreground text-xl mt-1.5">
+                  <p className="type-primary-body-b3-medium text-muted-foreground uppercase tracking-wider">This Month</p>
+                  <h3 className="font-mono type-primary-heading-h3-medium text-foreground mt-1.5">
                     {formatCurrency(stats?.monthRevenue)}
                   </h3>
                 </div>
@@ -67,8 +67,8 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
             <div className="bg-card rounded-xl p-4 shadow-sm border border-border">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-xs font-semibold uppercase tracking-wider">Pending</p>
-                  <h3 className="font-mono font-bold text-foreground text-xl mt-1.5">
+                  <p className="type-primary-body-b3-medium text-muted-foreground uppercase tracking-wider">Pending</p>
+                  <h3 className="font-mono type-primary-heading-h3-medium text-foreground mt-1.5">
                     {stats?.pendingPayments ?? 0}
                   </h3>
                 </div>
@@ -82,16 +82,16 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
           {/* Summary Row */}
           <div className="flex flex-wrap gap-3 type-primary-body-b3 text-muted-foreground">
             <div className="bg-surface rounded-lg px-3 py-2">
-              <span className="font-medium">Paid Bookings:</span>{' '}
-              <span className="font-bold text-foreground">{stats?.totalPaidBookings ?? 0}</span>
+              <span className="type-primary-body-b3-medium">Paid Bookings:</span>{' '}
+              <span className="type-primary-body-b3-medium text-foreground">{stats?.totalPaidBookings ?? 0}</span>
             </div>
             <div className="bg-surface rounded-lg px-3 py-2">
-              <span className="font-medium">Test Revenue:</span>{' '}
-              <span className="font-bold text-foreground">{formatCurrency(stats?.testRevenue)}</span>
+              <span className="type-primary-body-b3-medium">Test Revenue:</span>{' '}
+              <span className="type-primary-body-b3-medium text-foreground">{formatCurrency(stats?.testRevenue)}</span>
             </div>
             <div className="bg-surface rounded-lg px-3 py-2">
-              <span className="font-medium">Package Revenue:</span>{' '}
-              <span className="font-bold text-foreground">{formatCurrency(stats?.packageRevenue)}</span>
+              <span className="type-primary-body-b3-medium">Package Revenue:</span>{' '}
+              <span className="type-primary-body-b3-medium text-foreground">{formatCurrency(stats?.packageRevenue)}</span>
             </div>
           </div>
         </>
