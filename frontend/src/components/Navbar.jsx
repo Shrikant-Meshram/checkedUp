@@ -346,19 +346,19 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
-              className="relative bg-white w-[85%] max-w-[320px] h-screen shadow-2xl overflow-y-auto flex flex-col"
+              className="relative bg-card w-[85%] max-w-[320px] h-screen shadow-2xl overflow-y-auto flex flex-col"
             >
               {/* User Profile Header */}
               {user && (
                 <div className="p-6 pb-4 border-b border-border">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground type-primary-body-b1-medium">
                         {user.name?.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground">{user.name}</p>
-                        <p className="text-xs text-muted-foreground capitalize">{user.role?.replace('_', ' ')}</p>
+                        <p className="type-primary-body-b2-medium text-foreground">{user.name}</p>
+                        <p className="type-primary-body-b2 text-muted-foreground capitalize">{user.role?.replace('_', ' ')}</p>
                       </div>
                     </div>
                     <button
@@ -462,7 +462,7 @@ const Navbar = () => {
                       className={`flex items-center gap-3 py-3 transition ${isActive(item.route) ? 'text-primary font-bold' : 'text-foreground hover:text-primary'}`}
                     >
                       <item.icon size={18} className={isActive(item.route) ? 'text-primary' : 'text-muted-foreground'} />
-                      <span className="text-sm font-medium">{item.label}</span>
+                      <span className="type-primary-body-b2-medium">{item.label}</span>
                     </Link>
                   ))}
                 </div>
@@ -485,7 +485,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleLogout}
-                    className="flex items-center gap-3 w-full py-3 text-red-500 hover:text-red-600 transition font-semibold text-sm"
+                    className="flex items-center gap-3 w-full py-3 text-destructive hover:text-red-600 transition type-primary-body-b2-medium"
                   >
                     <LogOut size={18} />
                     <span>Logout</span>

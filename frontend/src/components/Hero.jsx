@@ -81,18 +81,18 @@ const Hero = () => {
       <div className="enterprise-container relative z-10">
         <div className="flex flex-row gap-4 lg:gap-8 items-center">
           {/* Left Content */}
-          <div className="w-[55%] lg:w-[35%] xl:w-[35%]">
+          <div className="w-[75%] lg:w-[35%] xl:w-[35%]">
             {/* Badge */}
             <div className="inline-flex items-center gap-1.5 lg:gap-2 bg-blue-50 border border-blue-200 rounded-full px-2.5 py-1 lg:px-3 lg:py-1 mb-3 lg:mb-4">
               <ShieldCheck size={14} className="text-primary lg:hidden" />
               <ShieldCheck size={18} className="text-primary hidden lg:block" />
-              <span className="text-[10px] lg:type-primary-body-b3-medium tracking-wide">
+              <span className="type-primary-body-b2-medium tracking-wide">
                 Trusted by 10,000+ Customers
               </span>
             </div>
 
             {/* Heading */}
-            <h1 className="type-primary text-[24px] md:text-[35px] lg:text-[45px] !font-bold text-foreground leading-tight mb-2">
+            <h1 className="type-primary-heading-h1 md:type-primary-heading-h0-large !font-bold text-foreground leading-tight mb-2">
               Accurate Tests,
               <br />
               Reliable Results,
@@ -101,7 +101,7 @@ const Hero = () => {
             </h1>
 
             {/* Subtext */}
-            <p className="text-muted-foreground text-xs lg:type-primary-body-b2 leading-relaxed mt-2 hidden lg:block">
+            <p className="type-primary-body-b2 text-muted-foreground leading-relaxed mt-2 hidden lg:block">
               Book lab tests online from the comfort of your home.
               <br />
               Fast, reliable and affordable diagnostics for you and your family.
@@ -112,7 +112,7 @@ const Hero = () => {
               {isPatient && (
                 <button
                   onClick={() => navigate(ROUTES.TESTS)}
-                  className="inline-flex items-center gap-1.5 lg:gap-2 bg-primary hover:bg-primary/90 text-white px-3 py-2 lg:px-5 lg:py-2.5 rounded-lg font-semibold text-xs lg:text-sm transition"
+                  className="inline-flex items-center gap-1.5 lg:gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-2 lg:px-5 lg:py-2.5 rounded-lg type-primary-button-c2 md:type-primary-button-c1 transition"
                 >
                   <Calendar size={14} />
                   Book a Test
@@ -120,7 +120,7 @@ const Hero = () => {
               )}
               <button
                 onClick={() => navigate(ROUTES.TESTS)}
-                className="inline-flex items-center gap-1.5 lg:gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white px-3 py-2 lg:px-5 lg:py-2.5 rounded-lg font-semibold text-xs lg:text-sm transition"
+                className="inline-flex items-center gap-1.5 lg:gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-3 py-2 lg:px-5 lg:py-2.5 rounded-lg type-primary-button-c2 md:type-primary-button-c1 transition"
               >
                 <FlaskConical size={14} />
                 Explore Tests
@@ -137,10 +137,10 @@ const Hero = () => {
                     {React.cloneElement(item.icon, { size: 14 })}
                   </div>
                   <div>
-                    <p className="text-foreground text-[10px] lg:text-xs font-semibold leading-tight">
+                    <p className="type-primary-body-b3-medium text-foreground leading-tight">
                       {item.title}
                     </p>
-                    <p className="text-muted-foreground text-[8px] lg:text-[10px] hidden lg:block">{item.desc}</p>
+                    <p className="type-primary-body-b3 text-muted-foreground hidden lg:block">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -158,8 +158,8 @@ const Hero = () => {
 
           {/* Why Choose Card - Desktop only */}
           <div className="hidden lg:block w-full lg:w-[20%] xl:w-[20%] flex-shrink-0 lg:-ml-6">
-            <div className="bg-white rounded-2xl shadow-lg p-4 lg:p-5">
-              <h3 className="font-heading font-bold text-foreground text-sm mb-4">
+            <div className="bg-card rounded-2xl shadow-lg p-4 lg:p-5">
+              <h3 className="type-primary-label-l1Medium text-foreground mb-4">
                 Why Choose Checked Up?
               </h3>
               <div className="space-y-3">
@@ -169,10 +169,10 @@ const Hero = () => {
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-foreground text-xs font-semibold leading-tight">
+                      <p className="type-primary-body-b3-medium text-foreground leading-tight">
                         {item.title}
                       </p>
-                      <p className="text-muted-foreground text-[11px] mt-0.5">
+                      <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
                         {item.desc}
                       </p>
                     </div>

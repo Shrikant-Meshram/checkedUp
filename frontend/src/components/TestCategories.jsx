@@ -110,17 +110,17 @@ const TestCategories = () => {
 
   if (categoriesLoading) {
     return (
-      <section className="bg-white py-10 border-b border-border">
+      <section className="bg-card py-10 border-b border-border">
         <div className="enterprise-container">
-          <h2 className="font-heading font-bold text-xl lg:text-2xl text-foreground text-center mb-8">
-            Popular Health Test Categories
+          <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground text-center mb-8">
+            Popular Health <span className="text-primary">Test Categories</span>
           </h2>
           <div className="-mx-4 px-4 flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide lg:mx-0 lg:px-0 lg:justify-center lg:flex-wrap lg:gap-4 lg:snap-none">
             {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="flex-shrink-0 w-[120px] lg:w-[155px] bg-gray-50 border border-gray-100 rounded-2xl p-4 lg:p-5 animate-pulse">
-                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-gray-200 mx-auto mb-3"></div>
-                <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto mb-2"></div>
-                <div className="h-3 bg-gray-200 rounded w-1/2 mx-auto"></div>
+              <div key={i} className="flex-shrink-0 w-[120px] lg:w-[155px] bg-surface border border-border rounded-2xl p-4 lg:p-5 animate-pulse">
+                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-surface mx-auto mb-3"></div>
+                <div className="h-4 bg-surface rounded w-3/4 mx-auto mb-2"></div>
+                <div className="h-3 bg-surface rounded w-1/2 mx-auto"></div>
               </div>
             ))}
           </div>
@@ -134,10 +134,10 @@ const TestCategories = () => {
   }
 
   return (
-    <section className="bg-white py-10 border-b border-border">
+    <section className="bg-card py-10 border-b border-border">
       <div className="enterprise-container">
-        <h2 className="font-heading font-bold text-xl lg:text-2xl text-foreground text-center mb-8">
-          Popular Health Test Categories
+        <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground text-center mb-8">
+          Popular Health <span className="text-primary">Test Categories</span>
         </h2>
 
         <div className="relative">
@@ -145,7 +145,7 @@ const TestCategories = () => {
           {canScrollLeft && (
             <button
               onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/90 hover:bg-white shadow-md rounded-full flex items-center justify-center border border-gray-200 transition lg:hidden"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-card/90 hover:bg-card shadow-md rounded-full flex items-center justify-center border border-border transition lg:hidden"
             >
               <ChevronLeft size={16} className="text-foreground" />
             </button>
@@ -155,7 +155,7 @@ const TestCategories = () => {
           {canScrollRight && (
             <button
               onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-white/90 hover:bg-white shadow-md rounded-full flex items-center justify-center border border-gray-200 transition lg:hidden"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 bg-card/90 hover:bg-card shadow-md rounded-full flex items-center justify-center border border-border transition lg:hidden"
             >
               <ChevronRight size={16} className="text-foreground" />
             </button>
@@ -174,7 +174,7 @@ const TestCategories = () => {
                 <div
                   key={cat._id}
                   onClick={() => handleCategoryClick(cat.name)}
-                  className="flex-shrink-0 w-[120px] lg:w-[155px] bg-gray-50 hover:bg-primary/5 border border-gray-100 hover:border-primary/20 rounded-2xl p-4 lg:p-5 cursor-pointer transition group text-center snap-start"
+                  className="flex-shrink-0 w-[120px] lg:w-[155px] bg-surface hover:bg-primary/5 border border-border hover:border-primary/20 rounded-2xl p-4 lg:p-5 cursor-pointer transition group text-center snap-start"
                 >
                   <div
                     className={`w-12 h-12 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition overflow-hidden ${cat.customIcon ? 'bg-primary/10' : bgColor}`}
@@ -188,10 +188,10 @@ const TestCategories = () => {
                       </>
                     )}
                   </div>
-                  <h3 className="font-semibold text-xs lg:text-sm text-foreground mb-1 truncate">
+                  <h3 className="type-primary-body-b3-medium capitalize text-foreground mb-1 truncate">
                     {cat.name}
                   </h3>
-                  <div className="flex items-center justify-center gap-1 text-[10px] lg:text-xs text-muted-foreground">
+                  <div className="flex items-center justify-center gap-1 type-primary-body-b3 text-muted-foreground">
                     <span>{cat.testCount}+ Tests</span>
                     <ChevronRight size={10} className="lg:hidden text-muted-foreground group-hover:text-primary transition" />
                   </div>

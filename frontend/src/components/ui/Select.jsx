@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
-import { createPortal } from 'react-dom'
 import { ChevronDown, Check } from 'lucide-react'
 
 const Select = ({
@@ -30,7 +29,6 @@ const Select = ({
   const containerRef = useRef(null)
   const dropdownRef = useRef(null)
   const buttonRef = useRef(null)
-  const dropdownRef = useRef(null)
 
   const generatedId = React.useId()
   const selectId = idProp || (name ? `select-${name}` : generatedId)
