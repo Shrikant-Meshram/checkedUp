@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes'
 
 const statusStyles = {
-  active: 'bg-green-50 text-green-700',
-  inactive: 'bg-red-50 text-red-600',
+  active: 'bg-success/10 text-success',
+  inactive: 'bg-destructive/10 text-destructive',
 }
 
 const LabOwnerAssistantsTable = ({ data, view = 'table' }) => {
@@ -12,9 +12,9 @@ const LabOwnerAssistantsTable = ({ data, view = 'table' }) => {
   const list = data || []
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Lab Assistants</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Lab Assistants</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_OWNER_ASSISTANTS)}
           className="text-xs font-semibold text-primary hover:underline"
@@ -65,7 +65,7 @@ const LabOwnerAssistantsTable = ({ data, view = 'table' }) => {
             const initials = assistant.name?.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2) || 'AS'
             const isActive = assistant.isActive
             return (
-              <article key={assistant._id} className="flex flex-col rounded-xl border border-border bg-white shadow-sm transition hover:shadow-md overflow-hidden">
+              <article key={assistant._id} className="flex flex-col rounded-xl border border-border bg-card shadow-sm transition hover:shadow-md overflow-hidden">
                 <div className="p-3 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
@@ -78,7 +78,7 @@ const LabOwnerAssistantsTable = ({ data, view = 'table' }) => {
                       </div>
                     </div>
                     <span className={`inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-medium ${isActive ? statusStyles.active : statusStyles.inactive}`}>
-                      <span className={`w-1 h-1 rounded-full ${isActive ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                      <span className={`w-1 h-1 rounded-full ${isActive ? 'bg-success' : 'bg-destructive'}`}></span>
                       {isActive ? 'Active' : 'Inactive'}
                     </span>
                   </div>

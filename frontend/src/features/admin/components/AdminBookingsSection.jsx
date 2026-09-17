@@ -51,7 +51,7 @@ const AdminBookingsSection = ({
   )
 
   return (
-    <div ref={tableRef} className="bg-white border border-border rounded-xl shadow-card mt-8 p-5 md:p-6">
+    <div ref={tableRef} className="bg-card border border-border rounded-xl shadow-card mt-8 p-5 md:p-6">
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <DashboardSectionHeader title="Recent Bookings" subtitle="Latest patient booking activity" />
         <ViewToggle value={view} onChange={setView} />
@@ -59,8 +59,8 @@ const AdminBookingsSection = ({
       {loading ? (
         <Spinner />
       ) : fetchError ? (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-5 text-center mt-4">
-          <p className="text-red-600 text-xs font-medium">{fetchError}</p>
+        <div className="bg-destructive/5 border border-destructive/20 rounded-xl p-5 text-center mt-4">
+          <p className="type-primary-body-b3-medium text-destructive">{fetchError}</p>
           <Button onClick={onRetry} variant="outline" className="mt-3" size="sm">
             Retry
           </Button>

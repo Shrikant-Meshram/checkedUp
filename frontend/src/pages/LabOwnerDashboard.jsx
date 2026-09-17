@@ -272,8 +272,8 @@ const LabOwnerDashboard = () => {
             <Spinner />
           </div>
         ) : dashboardError ? (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-5 text-center">
-            <p className="text-red-600 text-xs font-medium">Failed to load dashboard data. Please try again.</p>
+          <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-5 text-center">
+            <p className="text-destructive text-xs font-medium">Failed to load dashboard data. Please try again.</p>
           </div>
         ) : (
           <>
@@ -394,7 +394,7 @@ const LabOwnerDashboard = () => {
             <div className="space-y-3">
               <p className="text-sm font-medium text-foreground">Documents</p>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+                <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                   <div className="p-3 pb-0">
                     <span className="text-xs font-medium text-muted-foreground">ID Proof</span>
                   </div>
@@ -419,7 +419,7 @@ const LabOwnerDashboard = () => {
                     </div>
                   )}
                 </div>
-                <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+                <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                   <div className="p-3 pb-0">
                     <span className="text-xs font-medium text-muted-foreground">Other Documents (max 5)</span>
                   </div>

@@ -4,20 +4,20 @@ import { ROUTES } from '@/constants/routes'
 import { formatCurrency } from '@/utils/formatCurrency'
 
 const paymentStyles = {
-  Success: 'bg-green-50 text-green-700',
-  Paid: 'bg-green-50 text-green-700',
-  Pending: 'bg-amber-50 text-amber-600',
-  Failed: 'bg-red-100 text-red-700',
-  Refunded: 'bg-gray-50 text-gray-600',
+  Success: 'bg-success/10 text-success',
+  Paid: 'bg-success/10 text-success',
+  Pending: 'bg-warning/10 text-warning',
+  Failed: 'bg-destructive/10 text-destructive',
+  Refunded: 'bg-surface text-muted-foreground',
 }
 
 const LabOwnerRecentPaymentsTable = ({ data }) => {
   const navigate = useNavigate()
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Recent Payments</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Recent Payments</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_OWNER_PAYMENTS)}
           className="text-xs font-semibold text-primary hover:underline"

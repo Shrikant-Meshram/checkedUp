@@ -4,9 +4,9 @@ const CATEGORY_COLORS = ['#2563EB', '#22C55E', '#F59E0B', '#8B5CF6', '#EC4899', 
 
 const LabOwnerTopTestsTable = ({ data }) => {
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Top Tests This Week</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Top Tests This Week</h3>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -22,8 +22,8 @@ const LabOwnerTopTestsTable = ({ data }) => {
               {idx + 1}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="font-semibold text-foreground text-sm truncate">{test.name}</p>
-              <p className="text-xs text-muted-foreground">{test.count} bookings</p>
+              <p className="type-primary-body-b2-medium text-foreground truncate">{test.name}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">{test.count} bookings</p>
             </div>
           </div>
         ))}

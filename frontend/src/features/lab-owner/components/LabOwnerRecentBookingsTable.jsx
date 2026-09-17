@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes'
 
 const statusStyles = {
-  Completed: 'bg-green-50 text-green-700',
-  Pending: 'bg-amber-50 text-amber-600',
-  Processing: 'bg-blue-50 text-blue-600',
-  Cancelled: 'bg-red-100 text-red-700',
+  Completed: 'bg-success/10 text-success',
+  Pending: 'bg-warning/10 text-warning',
+  Processing: 'bg-primary/10 text-primary',
+  Cancelled: 'bg-destructive/10 text-destructive',
   Assigned: 'bg-purple-50 text-purple-600',
   Reached: 'bg-indigo-50 text-indigo-600',
   'Sample Collected': 'bg-violet-50 text-violet-600',
@@ -16,9 +16,9 @@ const LabOwnerRecentBookingsTable = ({ data }) => {
   const navigate = useNavigate()
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Recent Bookings</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Recent Bookings</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_OWNER_BOOKINGS)}
           className="text-xs font-semibold text-primary hover:underline"

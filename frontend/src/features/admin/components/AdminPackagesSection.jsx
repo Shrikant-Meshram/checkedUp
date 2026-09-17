@@ -79,11 +79,11 @@ const AdminPackagesSection = ({ open, onClose, onCreated, allTests }) => {
         </div>
 
         {/* Test selection box */}
-        <div className="bg-white border border-border rounded-xl p-5">
+        <div className="bg-card border border-border rounded-xl p-5">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
             <div>
-              <h3 className="text-xs font-medium text-foreground">Select Tests</h3>
-              <p className="text-[10px] text-muted-foreground mt-0.5">Choose tests to include in package</p>
+              <h3 className="type-primary-body-b3-medium text-foreground">Select Tests</h3>
+              <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Choose tests to include in package</p>
             </div>
             <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-semibold w-fit">
               {packageData.testsIncluded.length} Tests Selected
@@ -120,8 +120,8 @@ const AdminPackagesSection = ({ open, onClose, onCreated, allTests }) => {
                   className="bg-primary/10 border border-border rounded-lg px-3 py-2 flex items-center justify-between gap-3 min-w-[150px]"
                 >
                   <div>
-                    <h4 className="text-xs font-medium text-foreground">{test.title}</h4>
-                    <p className="text-[10px] text-muted-foreground mt-0.5">₹{test.price}</p>
+                    <h4 className="type-primary-body-b3-medium text-foreground">{test.title}</h4>
+                    <p className="type-primary-body-b3 text-muted-foreground mt-0.5">₹{test.price}</p>
                   </div>
                   <button
                     type="button"

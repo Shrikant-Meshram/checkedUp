@@ -23,9 +23,9 @@ const BookingsByStatusChart = ({ statusCounts }) => {
   const total = data.reduce((sum, d) => sum + d.value, 0)
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="mb-4 sm:mb-5">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Bookings by Status</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Bookings by Status</h3>
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
@@ -57,8 +57,8 @@ const BookingsByStatusChart = ({ statusCounts }) => {
             </PieChart>
           </ResponsiveContainer>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-mono font-bold text-lg sm:text-2xl text-foreground">{total.toLocaleString('en-IN')}</span>
-            <span className="text-[10px] sm:text-[11px] text-muted-foreground">Total</span>
+            <span className="font-mono type-primary-heading-h3-medium text-foreground">{total.toLocaleString('en-IN')}</span>
+            <span className="type-primary-body-b3 text-muted-foreground">Total</span>
           </div>
         </div>
 
@@ -69,11 +69,11 @@ const BookingsByStatusChart = ({ statusCounts }) => {
               <div key={item.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }}></span>
-                  <span className="text-xs sm:text-sm text-foreground font-medium">{item.name}</span>
+                  <span className="type-primary-body-b2 text-foreground">{item.name}</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <span className="text-xs sm:text-sm font-semibold text-foreground">{item.value}</span>
-                  <span className="text-[10px] sm:text-[11px] text-muted-foreground w-10 sm:w-12 text-right">{pct}%</span>
+                  <span className="type-primary-body-b2-medium text-foreground">{item.value}</span>
+                  <span className="type-primary-body-b3 text-muted-foreground w-10 sm:w-12 text-right">{pct}%</span>
                 </div>
               </div>
             )

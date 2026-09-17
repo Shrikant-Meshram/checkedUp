@@ -49,8 +49,8 @@ const LabAssistantDashboard = () => {
             <Spinner />
           </div>
         ) : dashboardError ? (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-5 text-center">
-            <p className="text-red-600 text-xs font-medium">Failed to load dashboard data. Please try again.</p>
+          <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-5 text-center">
+            <p className="text-destructive text-xs font-medium">Failed to load dashboard data. Please try again.</p>
           </div>
         ) : (
           <>

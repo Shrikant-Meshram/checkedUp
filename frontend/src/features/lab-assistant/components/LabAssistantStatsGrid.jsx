@@ -36,9 +36,9 @@ const LabAssistantStatsGrid = ({ bookings, activeSection, setActiveSection }) =>
         <div className="snap-start min-w-[220px] shrink-0">
           <StatCard
             icon={FlaskConical}
-            borderColor="border-blue-200"
-            iconColor="text-blue-500"
-            cardBg="bg-blue-50"
+            borderColor="border-primary/20"
+            iconColor="text-primary"
+            cardBg="bg-primary/5"
             title="Total Tests"
             value={totalTests}
             detailTop="All"
@@ -50,9 +50,9 @@ const LabAssistantStatsGrid = ({ bookings, activeSection, setActiveSection }) =>
         <div className="snap-start min-w-[220px] shrink-0">
           <StatCard
             icon={ClipboardList}
-            borderColor="border-amber-200"
-            iconColor="text-amber-500"
-            cardBg="bg-amber-50"
+            borderColor="border-warning/20"
+            iconColor="text-warning"
+            cardBg="bg-warning/5"
             title="Pending Reports"
             value={pendingReports}
             detailTop="Awaiting"
@@ -64,9 +64,9 @@ const LabAssistantStatsGrid = ({ bookings, activeSection, setActiveSection }) =>
         <div className="snap-start min-w-[220px] shrink-0">
           <StatCard
             icon={CircleCheckBig}
-            borderColor="border-emerald-200"
-            iconColor="text-emerald-500"
-            cardBg="bg-emerald-50"
+            borderColor="border-success/20"
+            iconColor="text-success"
+            cardBg="bg-success/5"
             title="Completed"
             value={completed}
             detailTop="Done"

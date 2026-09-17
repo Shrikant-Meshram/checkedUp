@@ -26,12 +26,12 @@ const LabAssistantBookingMobileCard = ({
       {filteredBookings.map((item) => (
         <div
           key={item._id}
-          className="bg-white border border-border rounded-[10px] overflow-hidden"
+          className="bg-card border border-border rounded-[10px] overflow-hidden"
         >
           <div
             className={`h-1.5 ${
               item.status === BOOKING_STATUS.COMPLETED
-                ? 'bg-green-600'
+                ? 'bg-success'
                 : item.status === BOOKING_STATUS.SAMPLE_COLLECTED
                 ? 'bg-primary'
                 : 'bg-primary'
@@ -137,13 +137,13 @@ const LabAssistantBookingMobileCard = ({
               {item.report ? (
                 <button
                   onClick={() => setPreviewReport(item.report)}
-                  className="w-full flex items-center justify-center gap-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg py-2 text-xs font-medium transition"
+                  className="w-full flex items-center justify-center gap-1.5 bg-success hover:bg-success/90 text-white rounded-lg py-2 type-primary-body-b2-medium transition"
                 >
                   <FileText size={13} />
                   View Report
                 </button>
               ) : item.paymentStatus !== PAYMENT_STATUS.PAID ? (
-                <div className="bg-red-50 text-red-600 rounded-lg py-2 text-center text-xs font-medium">
+                <div className="bg-destructive/10 text-destructive rounded-lg py-2 text-center type-primary-body-b2-medium">
                   Payment Pending
                 </div>
               ) : (

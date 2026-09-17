@@ -9,20 +9,20 @@ const PAGE_SIZE = 10
 const PAGE_SIZES = [10, 25, 50]
 
 const STATUS_STYLES = {
-  Pending: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-500' },
-  Assigned: { bg: 'bg-blue-50', text: 'text-blue-600', dot: 'bg-blue-500' },
+  Pending: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
+  Assigned: { bg: 'bg-primary/10', text: 'text-primary', dot: 'bg-primary' },
   Reached: { bg: 'bg-indigo-50', text: 'text-indigo-600', dot: 'bg-indigo-500' },
   'Sample Collected': { bg: 'bg-purple-50', text: 'text-purple-600', dot: 'bg-purple-500' },
-  Completed: { bg: 'bg-emerald-50', text: 'text-emerald-600', dot: 'bg-emerald-500' },
-  Cancelled: { bg: 'bg-red-50', text: 'text-red-600', dot: 'bg-red-500' },
+  Completed: { bg: 'bg-success/10', text: 'text-success', dot: 'bg-success' },
+  Cancelled: { bg: 'bg-destructive/10', text: 'text-destructive', dot: 'bg-destructive' },
   Rescheduled: { bg: 'bg-orange-50', text: 'text-orange-600', dot: 'bg-orange-500' },
 }
 
 const PAYMENT_STYLES = {
-  Paid: { bg: 'bg-emerald-50', text: 'text-emerald-600', dot: 'bg-emerald-500' },
-  Pending: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-500' },
-  Unpaid: { bg: 'bg-amber-50', text: 'text-amber-600', dot: 'bg-amber-500' },
-  Failed: { bg: 'bg-red-50', text: 'text-red-600', dot: 'bg-red-500' },
+  Paid: { bg: 'bg-success/10', text: 'text-success', dot: 'bg-success' },
+  Pending: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
+  Unpaid: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
+  Failed: { bg: 'bg-destructive/10', text: 'text-destructive', dot: 'bg-destructive' },
 }
 
 const AVATAR_COLORS = [
@@ -62,7 +62,7 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
       {open && (
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
+          <div className="absolute left-0 top-full mt-1 bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
             <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
@@ -89,7 +89,7 @@ const MobileBookingCard = ({ booking, handleReached, openSampleModal, openNaviga
   const isPayDisabled = booking.status !== BOOKING_STATUS.SAMPLE_COLLECTED || booking.paymentStatus === PAYMENT_STATUS.PAID
 
   return (
-    <article className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+    <article className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
       <div className="p-4 pb-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
@@ -237,7 +237,7 @@ const LabAssistantBookingsTable = ({
 
           {/* Desktop Table View */}
           <div className="hidden sm:block overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-            <div className="rounded-xl border border-border bg-white">
+            <div className="rounded-xl border border-border bg-card">
               <table className="w-full min-w-[900px] text-sm">
                 <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                   <tr>

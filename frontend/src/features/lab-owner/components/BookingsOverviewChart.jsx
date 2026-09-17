@@ -10,9 +10,9 @@ const BookingsOverviewChart = ({ data, filter, onFilterChange }) => {
   const dropRef = useClickOutside(() => setOpen(false))
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-4 gap-2">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Bookings Overview</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Bookings Overview</h3>
         <div className="relative shrink-0" ref={dropRef}>
           <button
             onClick={() => setOpen(!open)}
@@ -22,7 +22,7 @@ const BookingsOverviewChart = ({ data, filter, onFilterChange }) => {
             <ChevronDown size={14} className={`text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
           </button>
           {open && (
-            <div className="absolute right-0 top-full mt-1 z-50 bg-white border border-border rounded-lg shadow-lg py-1 min-w-[140px]">
+            <div className="absolute right-0 top-full mt-1 z-50 bg-card border border-border rounded-lg shadow-lg py-1 min-w-[140px]">
               {filters.map((f) => (
                 <button
                   key={f}

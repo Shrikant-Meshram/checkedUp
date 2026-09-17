@@ -7,32 +7,32 @@ const statConfig = [
     key: 'totalBookings',
     title: 'Total Bookings',
     icon: CalendarCheck,
-    iconClass: 'bg-blue-50 text-blue-600',
+    iconClass: 'bg-primary/10 text-primary',
   },
   {
     key: 'samplesCollected',
     title: 'Samples Collected',
     icon: FlaskConical,
-    iconClass: 'bg-emerald-50 text-emerald-600',
+    iconClass: 'bg-success/10 text-success',
   },
   {
     key: 'testsCompleted',
     title: 'Tests Completed',
     icon: TestTube,
-    iconClass: 'bg-blue-50 text-blue-600',
+    iconClass: 'bg-primary/10 text-primary',
   },
   {
     key: 'totalRevenue',
     title: 'Total Revenue',
     icon: IndianRupee,
-    iconClass: 'bg-amber-50 text-amber-600',
+    iconClass: 'bg-warning/10 text-warning',
     isCurrency: true,
   },
   {
     key: 'pendingReports',
     title: 'Pending Reports',
     icon: Clock,
-    iconClass: 'bg-rose-50 text-rose-600',
+    iconClass: 'bg-destructive/10 text-destructive',
   },
 ]
 
@@ -47,15 +47,15 @@ const LabOwnerStatsGrid = ({ stats }) => {
         return (
           <div
             key={s.key}
-            className="rounded-xl border border-border bg-white p-3 shadow-sm sm:p-4"
+            className="rounded-xl border border-border bg-card p-3 shadow-sm sm:p-4"
           >
             <div className="flex items-center gap-3">
               <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${s.iconClass}`}>
                 <Icon size={20} />
               </span>
               <div>
-                <p className="text-xs text-muted-foreground">{s.title}</p>
-                <p className="mt-0.5 text-xl font-bold text-foreground">
+                <p className="type-primary-body-b3 text-muted-foreground">{s.title}</p>
+                <p className="mt-0.5 type-primary-heading-h3-medium text-foreground">
                   {s.isCurrency ? formatCurrency(value) : value.toLocaleString('en-IN')}
                 </p>
               </div>

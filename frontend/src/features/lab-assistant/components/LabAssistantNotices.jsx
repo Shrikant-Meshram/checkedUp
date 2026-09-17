@@ -6,9 +6,9 @@ const LabAssistantNotices = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Important Notices</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Important Notices</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_ASSISTANT)}
           className="text-xs font-semibold text-primary hover:underline"
@@ -22,8 +22,8 @@ const LabAssistantNotices = () => {
           <div className="flex items-start gap-2">
             <span className="text-amber-600 text-sm mt-0.5">⏰</span>
             <div>
-              <p className="text-sm font-medium text-amber-800">Timely Sample Delivery</p>
-              <p className="text-xs text-amber-700 mt-1">
+              <p className="type-primary-body-b2-medium text-amber-800">Timely Sample Delivery</p>
+              <p className="type-primary-body-b3 text-amber-700 mt-1">
                 Please ensure all collected samples are delivered to the lab within the scheduled time to maintain test accuracy.
               </p>
             </div>
@@ -34,8 +34,8 @@ const LabAssistantNotices = () => {
           <div className="flex items-start gap-2">
             <span className="text-blue-600 text-sm mt-0.5">📋</span>
             <div>
-              <p className="text-sm font-medium text-blue-800">New Test Procedures</p>
-              <p className="text-xs text-blue-700 mt-1">
+              <p className="type-primary-body-b2-medium text-blue-800">New Test Procedures</p>
+              <p className="type-primary-body-b3 text-blue-700 mt-1">
                 Updated sample collection procedures for Thyroid Profile tests. Please review before next collection.
               </p>
             </div>
@@ -46,8 +46,8 @@ const LabAssistantNotices = () => {
           <div className="flex items-start gap-2">
             <span className="text-rose-600 text-sm mt-0.5">⚠️</span>
             <div>
-              <p className="text-sm font-medium text-rose-800">Inventory Alert</p>
-              <p className="text-xs text-rose-700 mt-1">
+              <p className="type-primary-body-b2-medium text-rose-800">Inventory Alert</p>
+              <p className="type-primary-body-b3 text-rose-700 mt-1">
                 Blood collection supplies are running low. Please report to inventory manager before next shift.
               </p>
             </div>

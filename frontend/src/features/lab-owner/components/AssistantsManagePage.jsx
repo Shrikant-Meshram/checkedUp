@@ -326,7 +326,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setMenuOpen(null)} />
           <div
-            className="fixed bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]"
+            className="fixed bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]"
             style={{ top: openMenu.top, left: openMenu.left }}
           >
             <button onClick={(e) => { e.stopPropagation(); handleView(openMenu.assistant) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
@@ -396,9 +396,9 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
           <div className="snap-start min-w-[220px] shrink-0">
             <StatCard
               icon={Users}
-              borderColor="border-blue-200"
-              iconColor="text-blue-500"
-              cardBg="bg-blue-50"
+              borderColor="border-primary/20"
+              iconColor="text-primary"
+              cardBg="bg-primary/5"
               title="Total Assistants"
               value={stats.total}
               detailTop={`${stats.active} active`}
@@ -408,9 +408,9 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
           <div className="snap-start min-w-[220px] shrink-0">
             <StatCard
               icon={Shield}
-              borderColor="border-emerald-200"
-              iconColor="text-emerald-500"
-              cardBg="bg-emerald-50"
+              borderColor="border-success/20"
+              iconColor="text-success"
+              cardBg="bg-success/5"
               title="Active"
               value={stats.active}
               detailTop={`${stats.total > 0 ? Math.round((stats.active / stats.total) * 100) : 0}%`}
@@ -420,9 +420,9 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
           <div className="snap-start min-w-[220px] shrink-0">
             <StatCard
               icon={Shield}
-              borderColor="border-amber-200"
-              iconColor="text-amber-500"
-              cardBg="bg-amber-50"
+              borderColor="border-warning/20"
+              iconColor="text-warning"
+              cardBg="bg-warning/5"
               title="Inactive"
               value={stats.inactive}
               detailTop={`${stats.total > 0 ? Math.round((stats.inactive / stats.total) * 100) : 0}%`}
@@ -434,9 +434,9 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
 
       {/* Assistants Table / Grid */}
       {isLoading ? (
-        <div className="bg-white border border-border rounded-xl p-12 flex justify-center"><Spinner /></div>
+        <div className="bg-card border border-border rounded-xl p-12 flex justify-center"><Spinner /></div>
       ) : isError ? (
-        <div className="bg-white border border-border rounded-xl p-8 text-center text-sm text-destructive">Unable to load assistants. Please try again.</div>
+      <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-8 text-center type-primary-body-b2 text-destructive">Unable to load assistants. Please try again.</div>
       ) : filteredAssistants.length === 0 ? (
         <EmptyState
           title="No assistants found"
@@ -446,8 +446,8 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
         />
       ) : view === 'list' ? (
         <>
-          <div className="bg-white border border-border rounded-xl">
-            <DataTable columns={columnsWithActions} data={filteredAssistants} enablePagination={true} enableSorting={true} pageSize={10} rowClassName="hover:bg-blue-50/50" />
+            <div className="bg-card border border-border rounded-xl">
+            <DataTable columns={columnsWithActions} data={filteredAssistants} enablePagination={true} enableSorting={true} pageSize={10} rowClassName="hover:bg-primary/5" />
           </div>
           <p className="text-xs text-muted-foreground">Showing 1 to {Math.min(10, filteredAssistants.length)} of {filteredAssistants.length} assistants</p>
         </>
@@ -460,7 +460,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               ? new Date(assistant.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
               : '—'
             return (
-              <article key={assistant._id} onClick={() => { setSelectedAssistant(assistant); setShowViewModal(true) }} className="flex flex-col rounded-xl border border-border bg-white shadow-sm transition hover:shadow-md overflow-hidden cursor-pointer">
+              <article key={assistant._id} onClick={() => { setSelectedAssistant(assistant); setShowViewModal(true) }} className="flex flex-col rounded-xl border border-border bg-card shadow-sm transition hover:shadow-md overflow-hidden cursor-pointer">
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
@@ -472,8 +472,8 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                         <p className="text-xs text-muted-foreground">{assistant.email}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${isActive ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-600'}`}>
-                      <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-green-500' : 'bg-red-500'}`}></span>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${isActive ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-success' : 'bg-destructive'}`}></span>
                       {isActive ? 'Active' : 'Inactive'}
                     </span>
                   </div>
@@ -507,7 +507,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                       </Can>
                       <Can resource="lab_assistants" action="delete">
                         <Tooltip title="Delete" arrow placement="top">
-                          <button type="button" onClick={(e) => { e.stopPropagation(); setSelectedAssistant(assistant); setShowDeleteModal(true) }} className="rounded p-1 text-muted-foreground hover:text-red-500 hover:bg-red-50 transition"><Trash2 size={14} /></button>
+                            <button type="button" onClick={(e) => { e.stopPropagation(); setSelectedAssistant(assistant); setShowDeleteModal(true) }} className="rounded p-1 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition"><Trash2 size={14} /></button>
                         </Tooltip>
                       </Can>
                     </div>
@@ -522,11 +522,11 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
       {/* Add Assistant Modal */}
       {showAddModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
-                <h3 className="font-semibold text-foreground">Add Assistant</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">Create a new lab assistant account.</p>
+                <h3 className="type-primary-body-b1-medium text-foreground">Add Assistant</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Create a new lab assistant account.</p>
               </div>
               <button onClick={handleCloseAdd} className="p-1 text-muted-foreground hover:text-foreground"><X size={20} /></button>
             </div>
@@ -539,7 +539,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               <div className="space-y-3">
                 <p className="text-sm font-medium text-foreground">Documents</p>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+                  <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
                       <span className="text-xs font-medium text-muted-foreground">ID Proof</span>
                     </div>
@@ -564,7 +564,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                       </div>
                     )}
                   </div>
-                  <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+                  <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
                       <span className="text-xs font-medium text-muted-foreground">Other Documents (max 5)</span>
                     </div>
@@ -614,11 +614,11 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
       {/* View Assistant Modal */}
       {showViewModal && selectedAssistant && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
-                <h3 className="font-semibold text-foreground">Assistant Details</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">View assistant information.</p>
+                <h3 className="type-primary-body-b1-medium text-foreground">Assistant Details</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">View assistant information.</p>
               </div>
               <button onClick={() => { setShowViewModal(false); setSelectedAssistant(null) }} className="p-1 text-muted-foreground hover:text-foreground"><X size={20} /></button>
             </div>
@@ -697,11 +697,11 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
       {/* Edit Assistant Modal */}
       {showEditModal && selectedAssistant && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+          <div className="bg-card rounded-xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
-                <h3 className="font-semibold text-foreground">Edit Assistant</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">Update assistant details.</p>
+                <h3 className="type-primary-body-b1-medium text-foreground">Edit Assistant</h3>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Update assistant details.</p>
               </div>
               <button onClick={handleCloseEdit} className="p-1 text-muted-foreground hover:text-foreground"><X size={20} /></button>
             </div>
@@ -713,7 +713,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               <div className="space-y-3">
                 <p className="text-sm font-medium text-foreground">Documents</p>
                 {selectedAssistant.idProof && !editIdProofFile && (
-                  <div className="rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+                    <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
                       <span className="text-xs font-medium text-muted-foreground">ID Proof (current)</span>
                     </div>
@@ -730,9 +730,9 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                     </div>
                   </div>
                 )}
-                <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
-                  <div className="p-3 pb-0">
-                    <span className="text-xs font-medium text-muted-foreground">{selectedAssistant.idProof ? 'Replace ID Proof' : 'ID Proof'}</span>
+                  <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
+                    <div className="p-3 pb-0">
+                      <span className="text-xs font-medium text-muted-foreground">{selectedAssistant.idProof ? 'Replace ID Proof' : 'ID Proof'}</span>
                   </div>
                   <div className="p-3 pt-2">
                     <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -756,7 +756,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                   )}
                 </div>
                 {selectedAssistant.otherDocuments?.length > 0 && (
-                  <div className="rounded-xl border border-border bg-white shadow-sm overflow-hidden">
+                    <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
                       <span className="text-xs font-medium text-muted-foreground">Other Documents (current)</span>
                     </div>
@@ -778,9 +778,9 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                     </div>
                   </div>
                 )}
-                <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
-                  <div className="p-3 pb-0">
-                    <span className="text-xs font-medium text-muted-foreground">Add Other Documents (max 5)</span>
+                  <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
+                    <div className="p-3 pb-0">
+                      <span className="text-xs font-medium text-muted-foreground">Add Other Documents (max 5)</span>
                   </div>
                   <div className="p-3 pt-2">
                     <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">

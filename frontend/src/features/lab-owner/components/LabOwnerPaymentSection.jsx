@@ -15,8 +15,8 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
           <Spinner />
         </div>
       ) : error ? (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-5 text-center">
-          <p className="text-red-600 text-xs font-medium">Failed to load payment stats.</p>
+        <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-5 text-center">
+          <p className="text-destructive text-xs font-medium">Failed to load payment stats.</p>
         </div>
       ) : (
         <>
@@ -44,8 +44,8 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
                     {formatCurrency(stats?.todayRevenue)}
                   </h3>
                 </div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-green-500 bg-green-500/10">
-                  <Calendar size={16} className="text-green-600" />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-success bg-success/10">
+                  <Calendar size={16} className="text-success" />
                 </div>
               </div>
             </div>
@@ -58,8 +58,8 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
                     {formatCurrency(stats?.monthRevenue)}
                   </h3>
                 </div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-blue-500 bg-blue-500/10">
-                  <TrendingUp size={16} className="text-blue-600" />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-primary bg-primary/10">
+                  <TrendingUp size={16} className="text-primary" />
                 </div>
               </div>
             </div>
@@ -72,24 +72,24 @@ const LabOwnerPaymentSection = ({ open, onClose }) => {
                     {stats?.pendingPayments ?? 0}
                   </h3>
                 </div>
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-yellow-500 bg-yellow-500/10">
-                  <Clock size={16} className="text-yellow-600" />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-warning bg-warning/10">
+                  <Clock size={16} className="text-warning" />
                 </div>
               </div>
             </div>
           </div>
 
           {/* Summary Row */}
-          <div className="flex flex-wrap gap-3 text-xs text-gray-600">
-            <div className="bg-gray-50 rounded-lg px-3 py-2">
+          <div className="flex flex-wrap gap-3 type-primary-body-b3 text-muted-foreground">
+            <div className="bg-surface rounded-lg px-3 py-2">
               <span className="font-medium">Paid Bookings:</span>{' '}
               <span className="font-bold text-foreground">{stats?.totalPaidBookings ?? 0}</span>
             </div>
-            <div className="bg-gray-50 rounded-lg px-3 py-2">
+            <div className="bg-surface rounded-lg px-3 py-2">
               <span className="font-medium">Test Revenue:</span>{' '}
               <span className="font-bold text-foreground">{formatCurrency(stats?.testRevenue)}</span>
             </div>
-            <div className="bg-gray-50 rounded-lg px-3 py-2">
+            <div className="bg-surface rounded-lg px-3 py-2">
               <span className="font-medium">Package Revenue:</span>{' '}
               <span className="font-bold text-foreground">{formatCurrency(stats?.packageRevenue)}</span>
             </div>

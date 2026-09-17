@@ -19,11 +19,11 @@ const LabOwnerBookingMobileCard = ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
       {filteredBookings.map((booking) => (
-        <div key={booking._id} className="bg-white border border-border rounded-[10px] overflow-hidden">
+        <div key={booking._id} className="bg-card border border-border rounded-[10px] overflow-hidden">
           <div
             className={`h-1.5 ${
               booking.status === 'completed'
-                ? 'bg-green-600'
+                ? 'bg-success'
                 : booking.status === 'sample_collected'
                 ? 'bg-primary'
                 : 'bg-primary'
@@ -90,7 +90,7 @@ const LabOwnerBookingMobileCard = ({
                 {booking.assignedLabAssistant && <Badge variant="success">Assigned</Badge>}
               </div>
               {booking.assignedLabAssistant ? (
-                <div className="bg-white rounded-lg p-2.5 border border-border">
+                <div className="bg-card rounded-lg p-2.5 border border-border">
                   <h3 className="text-xs font-medium text-foreground">
                     {booking.assignedLabAssistant.name}
                   </h3>
@@ -100,7 +100,7 @@ const LabOwnerBookingMobileCard = ({
                 </div>
               ) : (
                 <div>
-                  <p className="text-[10px] text-red-500 mb-2">No Assistant Assigned</p>
+                  <p className="text-[10px] text-destructive mb-2">No Assistant Assigned</p>
                   <Select onChange={(e) => handleAssignAssistant(booking._id, e.target.value)}>
                     <option value="">Select Assistant</option>
                     {assistants.map((assistant) => (
@@ -133,16 +133,16 @@ const LabOwnerBookingMobileCard = ({
             )}
 
             {booking.report ? (
-              <div className="mt-3 bg-green-50 border border-green-200 rounded-lg p-3">
+              <div className="mt-3 bg-success/10 border border-success/20 rounded-lg p-3">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs font-medium text-green-700 flex items-center gap-1.5">
+                  <p className="type-primary-body-b2-medium text-success flex items-center gap-1.5">
                     <CircleCheckBig size={13} /> Report Uploaded
                   </p>
                   <Badge variant="success">Ready</Badge>
                 </div>
                 <button
                   onClick={() => setPreviewReport(booking.report)}
-                  className="mt-2 w-full flex items-center justify-center gap-1.5 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-xs font-medium transition"
+                  className="mt-2 w-full flex items-center justify-center gap-1.5 bg-success hover:bg-success/90 text-white py-2 rounded-lg type-primary-body-b2-medium transition"
                 >
                   <Download size={12} />
                   View Report
@@ -183,8 +183,8 @@ const LabOwnerBookingMobileCard = ({
               </div>
             ) : (
               <div className="mt-3 bg-accent rounded-lg p-3 text-center">
-                <p className="text-orange-700 text-xs font-medium">Payment Pending</p>
-                <p className="text-muted-foreground text-[10px] mt-0.5">
+                <p className="text-orange-700 type-primary-body-b2-medium">Payment Pending</p>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
                   Report can be uploaded only after payment.
                 </p>
               </div>

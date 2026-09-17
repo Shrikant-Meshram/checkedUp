@@ -42,8 +42,8 @@ const LabAssistantSampleModal = ({
             <div className="w-12 h-12 rounded-[10px] bg-primary/10 group-hover:bg-primary transition flex items-center justify-center text-primary group-hover:text-white mb-3">
               <Camera size={22} />
             </div>
-            <h2 className="text-sm font-serif text-foreground">Capture Sample</h2>
-            <p className="text-muted-foreground text-[10px] mt-1 leading-relaxed">
+            <h2 className="type-primary-body-b2-medium text-foreground">Capture Sample</h2>
+            <p className="text-muted-foreground type-primary-label-l2 mt-1 leading-relaxed">
               Open camera and capture blood tube image
             </p>
           </label>
@@ -61,8 +61,8 @@ const LabAssistantSampleModal = ({
             <div className="w-12 h-12 rounded-[10px] bg-primary/10 group-hover:bg-primary transition flex items-center justify-center text-primary group-hover:text-white mb-3">
               <Image size={22} />
             </div>
-            <h2 className="text-sm font-serif text-foreground">Upload Images</h2>
-            <p className="text-muted-foreground text-[10px] mt-1 leading-relaxed">
+            <h2 className="type-primary-body-b2-medium text-foreground">Upload Images</h2>
+            <p className="text-muted-foreground type-primary-label-l2 mt-1 leading-relaxed">
               Select multiple sample images from gallery
             </p>
           </label>

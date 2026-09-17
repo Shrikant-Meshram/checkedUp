@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes'
 
 const activityIcons = {
-  'Sample collected': 'bg-green-100 text-green-600',
-  'Sample handed to lab': 'bg-blue-100 text-blue-600',
+  'Sample collected': 'bg-success/10 text-success',
+  'Sample handed to lab': 'bg-primary/10 text-primary',
   'Report uploaded': 'bg-purple-100 text-purple-600',
-  'Booking assigned': 'bg-amber-100 text-amber-600',
+  'Booking assigned': 'bg-warning/10 text-warning',
 }
 
 const LabAssistantRecentActivity = ({ data }) => {
@@ -24,9 +24,9 @@ const LabAssistantRecentActivity = ({ data }) => {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="flex items-center justify-between mb-3 sm:mb-4">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Recent Activity</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Recent Activity</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_ASSISTANT_SAMPLE_PICKUPS)}
           className="text-xs font-semibold text-primary hover:underline"
@@ -42,7 +42,7 @@ const LabAssistantRecentActivity = ({ data }) => {
               <span className="text-xs font-bold">{item.type?.charAt(0) || 'A'}</span>
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm text-foreground">
+              <p className="type-primary-body-b2 text-foreground">
                 <span className="font-medium">{item.type}</span>
                 {item.bookingId && (
                   <span className="text-muted-foreground"> - Booking ID: {item.bookingId}</span>
@@ -51,7 +51,7 @@ const LabAssistantRecentActivity = ({ data }) => {
                   <span className="text-muted-foreground"> for {item.patientName}</span>
                 )}
               </p>
-              <p className="text-xs text-muted-foreground mt-0.5">{formatTime(item.time)}</p>
+              <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{formatTime(item.time)}</p>
             </div>
           </div>
         ))}
