@@ -45,8 +45,8 @@ const SettingsOverview = ({ onSelect }) => {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-foreground">Settings</h1>
-        <p className="text-muted-foreground text-sm mt-1">
+        <h1 className="type-primary-heading-h1-medium text-foreground">Settings</h1>
+        <p className="text-muted-foreground type-primary-body-b2 mt-1">
           Configure your application settings. Select a section below to get started.
         </p>
       </div>
@@ -63,8 +63,8 @@ const SettingsOverview = ({ onSelect }) => {
               <div className={`w-12 h-12 rounded-lg ${item.color} flex items-center justify-center mb-4 group-hover:scale-110 transition`}>
                 <Icon size={24} className="text-white" />
               </div>
-              <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
+              <h3 className="font-semibold text-foreground type-primary-body-b1-medium mb-1">{item.title}</h3>
+              <p className="type-primary-body-b2 text-muted-foreground">{item.description}</p>
             </button>
           )
         })}
@@ -75,8 +75,8 @@ const SettingsOverview = ({ onSelect }) => {
 
 const PlaceholderPage = ({ title, description }) => (
   <div>
-    <h1 className="text-2xl font-bold text-foreground">{title}</h1>
-    <p className="text-muted-foreground mt-2">{description}</p>
+    <h1 className="type-primary-heading-h1-medium text-foreground">{title}</h1>
+    <p className="text-muted-foreground type-primary-body-b3 mt-2">{description}</p>
   </div>
 )
 
@@ -115,7 +115,7 @@ const AdminSettings = () => {
         <div className="mb-4">
           <button
             onClick={() => navigate('/admin/settings')}
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition"
+            className="inline-flex items-center gap-2 type-primary-body-b3 text-muted-foreground hover:text-foreground transition"
           >
             <ArrowLeft size={16} />
             Back to Settings

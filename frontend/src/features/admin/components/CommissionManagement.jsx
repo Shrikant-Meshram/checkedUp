@@ -118,9 +118,9 @@ const CommissionManagement = () => {
           >
             <ArrowLeft size={20} />
           </button>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">Commission Settings</h1>
+          <h1 className="type-primary-heading-h1-medium tracking-tight text-foreground">Commission Settings</h1>
         </div>
-        <p className="mt-1.5 text-sm text-muted-foreground ml-7">Set the active platform commission and review every change.</p>
+        <p className="mt-1.5 type-primary-body-b2 text-muted-foreground ml-7">Set the active platform commission and review every change.</p>
       </div>
 
       <section className="rounded-2xl border border-border bg-white p-6 shadow-sm sm:p-8">
@@ -128,9 +128,9 @@ const CommissionManagement = () => {
           <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary sm:h-24 sm:w-24"><BadgePercent size={30} strokeWidth={1.8} className="sm:hidden" /><BadgePercent size={42} strokeWidth={1.8} className="hidden sm:block" /></div>
           <div className="flex-1">
             <h2 className="font-semibold text-foreground">Active Commission</h2>
-            {loading ? <p className="mt-3 text-sm text-muted-foreground">Loading commission settings…</p> : commission ? (
-              <><p className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{formatCommission(commission.commissionType, commission.commissionValue)}</p><p className="mt-2 text-sm text-muted-foreground">This is the active commission applied across the platform.</p></>
-            ) : <><p className="mt-2 text-sm text-muted-foreground">No active commission has been configured.</p><Can resource="commissions" action="create"><Button className="mt-4" onClick={openCreate}><Plus size={16} className="mr-2" />Create Commission</Button></Can></>}
+            {loading ? <p className="mt-3 type-primary-body-b3 text-muted-foreground">Loading commission settings…</p> : commission ? (
+              <><p className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">{formatCommission(commission.commissionType, commission.commissionValue)}</p><p className="mt-2 type-primary-body-b2 text-muted-foreground">This is the active commission applied across the platform.</p></>
+            ) : <><p className="mt-2 type-primary-body-b3 text-muted-foreground">No active commission has been configured.</p><Can resource="commissions" action="create"><Button className="mt-4" onClick={openCreate}><Plus size={16} className="mr-2" />Create Commission</Button></Can></>}
           </div>
           {commission && <Can resource="commissions" action="update"><Button variant="outline" onClick={openEdit}><Pencil size={16} className="mr-2" />Edit</Button></Can>}
         </div>
@@ -157,16 +157,16 @@ const CommissionManagement = () => {
       <section className="overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-sm sm:p-6">
         <div className="flex items-center gap-4 pb-5">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"><Clock3 size={23} /></div>
-          <div><h2 className="font-semibold text-foreground">Commission History</h2><p className="mt-0.5 text-sm text-muted-foreground">Changes to the active commission.</p></div>
+          <div><h2 className="font-semibold text-foreground">Commission History</h2><p className="mt-0.5 type-primary-body-b2 text-muted-foreground">Changes to the active commission.</p></div>
         </div>
-        {loading ? <p className="p-8 text-center text-sm text-muted-foreground">Loading history…</p> : history.length === 0 ? <p className="p-8 text-center text-sm text-muted-foreground">No commission changes recorded yet.</p> : (
+        {loading ? <p className="p-8 text-center type-primary-body-b3 text-muted-foreground">Loading history…</p> : history.length === 0 ? <p className="p-8 text-center type-primary-body-b3 text-muted-foreground">No commission changes recorded yet.</p> : (
           <>
-            <div className="overflow-x-auto rounded-xl border border-border"><table className="w-full min-w-[760px] text-sm"><thead className="bg-primary/5 text-left text-muted-foreground"><tr><th className="px-4 py-4 font-semibold">Previous {valueLabel}</th><th className="px-4 py-4 font-semibold">New {valueLabel}</th><th className="px-4 py-4 font-semibold">Changed by</th><th className="px-4 py-4 font-semibold">Reason</th><th className="px-4 py-4 font-semibold">Date</th></tr></thead><tbody>{visibleHistory.map((item) => {
+            <div className="overflow-x-auto rounded-xl border border-border"><table className="w-full min-w-[760px] type-primary-body-b2"><thead className="bg-primary/5 text-left text-muted-foreground"><tr><th className="px-4 py-4 font-semibold">Previous {valueLabel}</th><th className="px-4 py-4 font-semibold">New {valueLabel}</th><th className="px-4 py-4 font-semibold">Changed by</th><th className="px-4 py-4 font-semibold">Reason</th><th className="px-4 py-4 font-semibold">Date</th></tr></thead><tbody>{visibleHistory.map((item) => {
               const person = item.changedBy?.name || item.changedBy?.email || '—'
               const initials = person === '—' ? '—' : person.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase()
-              return <tr key={item._id} className="border-t border-border"><td className="px-4 py-4">{formatCommission(item.oldCommissionType, item.oldCommissionValue)}</td><td className="px-4 py-4 font-medium text-foreground">{formatCommission(item.newCommissionType, item.newCommissionValue)}</td><td className="px-4 py-4"><div className="flex items-center gap-2.5"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 text-xs font-semibold text-primary">{initials}</span><span>{person}</span></div></td><td className="px-4 py-4">{item.reason || '—'}</td><td className="px-4 py-4 whitespace-nowrap">{formatDateTime(item.createdAt)}</td></tr>
+              return <tr key={item._id} className="border-t border-border"><td className="px-4 py-4">{formatCommission(item.oldCommissionType, item.oldCommissionValue)}</td><td className="px-4 py-4 font-medium text-foreground">{formatCommission(item.newCommissionType, item.newCommissionValue)}</td><td className="px-4 py-4"><div className="flex items-center gap-2.5"><span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/15 type-primary-body-b3-medium font-semibold text-primary">{initials}</span><span>{person}</span></div></td><td className="px-4 py-4">{item.reason || '—'}</td><td className="px-4 py-4 whitespace-nowrap">{formatDateTime(item.createdAt)}</td></tr>
             })}</tbody></table></div>
-            <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><p>Showing {(historyPage - 1) * HISTORY_PAGE_SIZE + 1} to {Math.min(historyPage * HISTORY_PAGE_SIZE, history.length)} of {history.length} entries</p><div className="flex items-center gap-2"><button aria-label="Previous page" onClick={() => setHistoryPage((page) => Math.max(1, page - 1))} disabled={historyPage === 1} className="rounded-lg border border-border p-2 text-muted-foreground transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40"><ChevronLeft size={17} /></button><span className="flex h-9 min-w-9 items-center justify-center rounded-lg bg-primary px-3 font-semibold text-white">{historyPage}</span><button aria-label="Next page" onClick={() => setHistoryPage((page) => Math.min(totalHistoryPages, page + 1))} disabled={historyPage === totalHistoryPages} className="rounded-lg border border-border p-2 text-muted-foreground transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40"><ChevronRight size={17} /></button></div></div>
+            <div className="mt-4 flex flex-col gap-3 type-primary-body-b2 text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><p>Showing {(historyPage - 1) * HISTORY_PAGE_SIZE + 1} to {Math.min(historyPage * HISTORY_PAGE_SIZE, history.length)} of {history.length} entries</p><div className="flex items-center gap-2"><button aria-label="Previous page" onClick={() => setHistoryPage((page) => Math.max(1, page - 1))} disabled={historyPage === 1} className="rounded-lg border border-border p-2 text-muted-foreground transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40"><ChevronLeft size={17} /></button><span className="flex h-9 min-w-9 items-center justify-center rounded-lg bg-primary px-3 font-semibold text-white">{historyPage}</span><button aria-label="Next page" onClick={() => setHistoryPage((page) => Math.min(totalHistoryPages, page + 1))} disabled={historyPage === totalHistoryPages} className="rounded-lg border border-border p-2 text-muted-foreground transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-40"><ChevronRight size={17} /></button></div></div>
           </>
         )}
       </section>
