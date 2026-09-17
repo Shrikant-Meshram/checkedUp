@@ -135,7 +135,6 @@ const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
             <p className="font-semibold text-foreground">{getTitle(test)}</p>
             <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${isActive(test) ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>{isActive(test) ? 'Active' : 'Inactive'}</span>
           </div>
-          <p className="mt-0.5 text-xs text-muted-foreground">Test Code: {test.code || test.testCode || '—'}</p>
           <span className={`mt-1.5 inline-block rounded-md px-2 py-0.5 text-xs font-medium ${catColor.bg} ${catColor.text}`}>{getCategory(test)}</span>
         </div>
       </div>
@@ -152,8 +151,8 @@ const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
         </div>
       )}
       <div className="mt-3 divide-y divide-border border-t border-border">
-        <DetailRow label="Created On" value={getValue(test, ['createdAt', 'createdOn'])} />
-        <DetailRow label="Last Updated" value={getValue(test, ['updatedAt', 'lastUpdated'])} />
+        <DetailRow label="Created On" value={new Date(getValue(test, ['createdAt', 'createdOn'])).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })} />
+        <DetailRow label="Last Updated" value={new Date(getValue(test, ['updatedAt', 'lastUpdated'])).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })} />
       </div>
     </Modal>
   )
@@ -517,7 +516,6 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   <SortableHeader title="Test Name" sortKey="name" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, name: true }))} />
-                  <SortableHeader title="Test Code" sortKey="code" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, code: true }))} />
                   <SortableHeader title="Category" sortKey="category" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, category: true }))} />
                   <SortableHeader title="Sample Type" sortKey="sampleType" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, sampleType: true }))} />
                   <SortableHeader title="Price (₹)" sortKey="price" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, price: true }))} />
@@ -533,7 +531,6 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
                   return (
                     <tr key={id} onClick={() => setSelectedTestId(id)} className={`cursor-pointer border-t border-border transition hover:bg-accent/40 ${selectedTestId === id ? 'bg-primary/5' : ''}`}>
                       {!hiddenColumns.name && <td className="px-4 py-3 font-medium text-foreground">{getTitle(test)}</td>}
-                      {!hiddenColumns.code && <td className="px-4 py-3 text-muted-foreground">{test.code || test.testCode || '—'}</td>}
                       {!hiddenColumns.category && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 text-xs font-medium ${catColor.bg} ${catColor.text}`}>{getCategory(test)}</span></td>}
                       {!hiddenColumns.sampleType && <td className="px-4 py-3">{getValue(test, ['sampleType', 'sample'])}</td>}
                       {!hiddenColumns.price && <td className="px-4 py-3">{getValue(test, ['price'], null) != null ? Number(getValue(test, ['price'], null)).toLocaleString('en-IN') : '—'}</td>}

@@ -36,6 +36,7 @@ import Modal from '@/components/ui/Modal'
 import FilterPanel from '@/components/ui/FilterPanel'
 import FilterButton from '@/components/ui/FilterButton'
 import Pagination from '@/components/ui/Pagination'
+import Select from '@/components/ui/Select'
 import useAuth from '@/hooks/useAuth'
 import { ROLES } from '@/constants/roles'
 import { ROUTES } from '@/constants/routes'
@@ -291,6 +292,14 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
   const [activeFilters, setActiveFilters] = useState({})
   const [filterPanelOpen, setFilterPanelOpen] = useState(null)
   const [menuOpen, setMenuOpen] = useState(null)
+  const menuRef = React.useRef(null)
+
+  React.useEffect(() => {
+    if (menuOpen && menuRef.current) {
+      const lastItem = menuRef.current.querySelector('button:last-child')
+      if (lastItem) lastItem.scrollIntoView({ block: 'nearest' })
+    }
+  }, [menuOpen])
   const [sampleImagesModal, setSampleImagesModal] = useState({ open: false, images: [], bookingId: null })
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null })
   const [hiddenColumns, setHiddenColumns] = useState({})
@@ -848,7 +857,13 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     setMenuOpen(null)
                   } else {
                     const rect = e.currentTarget.getBoundingClientRect()
-                    setMenuOpen({ id: cardId, booking: b, top: rect.bottom + 4, left: rect.right - 180 })
+                    const estimatedHeight = 200
+                    const spaceBelow = window.innerHeight - rect.bottom
+                    const spaceAbove = rect.top
+                    const top = spaceBelow < estimatedHeight && spaceAbove > spaceBelow
+                      ? rect.top - 4
+                      : rect.bottom + 4
+                    setMenuOpen({ id: cardId, booking: b, top, left: Math.min(rect.right - 160, window.innerWidth - 170), openUp: spaceBelow < estimatedHeight && spaceAbove > spaceBelow })
                   }
                 }}
                 menuOpen={menuOpen}
@@ -1033,19 +1048,14 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         )}
                         <td className="px-4 py-3">
                           {(booking.status === 'Assigned' || booking.status === 'Pending') ? (
-                            <select
-                              onClick={(e) => e.stopPropagation()}
+                            <Select
                               value={booking.assignedLabAssistant?._id || ""}
                               onChange={(e) => { e.stopPropagation(); handleAssignAssistant(booking._id, e.target.value) }}
-                              className="text-xs py-1.5 h-8 min-w-[140px] border border-border rounded-lg px-3 outline-none focus:border-primary focus:ring-1 focus:ring-primary text-foreground bg-card"
-                            >
-                              <option value="">Assign</option>
-                              {assistants.map((assistant) => (
-                                <option key={assistant._id} value={assistant._id}>
-                                  {assistant.name}
-                                </option>
-                              ))}
-                            </select>
+                              onClick={(e) => e.stopPropagation()}
+                              placeholder="Assign"
+                              options={assistants.map((assistant) => ({ value: assistant._id, label: assistant.name }))}
+                              size="sm"
+                            />
                           ) : booking.assignedLabAssistant ? (
                             <div>
                               <p className="text-sm font-medium text-foreground">{booking.assignedLabAssistant.name}</p>
@@ -1092,7 +1102,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     )}
                     <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
                       <div className="relative">
-                        <button type="button" onClick={(e) => { e.stopPropagation(); if (menuOpen?.id === id) { setMenuOpen(null) } else { const rect = e.currentTarget.getBoundingClientRect(); setMenuOpen({ id, booking, top: rect.bottom + 4, left: rect.right - 140 }) } }} className="p-1.5 text-muted-foreground hover:text-foreground rounded transition">
+                        <button type="button" onClick={(e) => { e.stopPropagation(); if (menuOpen?.id === id) { setMenuOpen(null) } else { const rect = e.currentTarget.getBoundingClientRect(); const estimatedHeight = 200; const spaceBelow = window.innerHeight - rect.bottom; const spaceAbove = rect.top; const openUp = spaceBelow < estimatedHeight && spaceAbove > spaceBelow; const top = openUp ? rect.top - 4 : rect.bottom + 4; setMenuOpen({ id, booking, top, left: Math.min(rect.right - 160, window.innerWidth - 170), openUp }) } }} className="p-1.5 text-muted-foreground hover:text-foreground rounded transition">
                           <MoreVertical size={16} />
                         </button>
                       </div>
@@ -1175,17 +1185,13 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
         <Modal open={showEditModal} onClose={() => { setShowEditModal(false); setSelectedBookingForEdit(null); setSelectedLab('') }} title="Edit Assigned Lab">
           <div className="space-y-4">
             <div>
-              <label className="block mb-2 text-sm font-medium text-foreground">Select Lab Owner</label>
-              <select
+              <Select
+                label="Select Lab Owner"
                 value={selectedLab}
                 onChange={(e) => setSelectedLab(e.target.value)}
-                className="w-full border border-border rounded-lg px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
-              >
-                <option value="">Select a lab owner</option>
-                {labOwners.map((owner) => (
-                  <option key={owner._id} value={owner._id}>{owner.name}</option>
-                ))}
-              </select>
+                placeholder="Select a lab owner"
+                options={labOwners.map((owner) => ({ value: owner._id, label: owner.name }))}
+              />
             </div>
             <div className="flex gap-3 justify-end">
               <Button
@@ -1210,7 +1216,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
       {menuOpen && (
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setMenuOpen(null)} />
-          <div className="fixed bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[160px]" style={{ top: menuOpen.top, left: menuOpen.left }}>
+          <div ref={menuRef} className="fixed bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[160px] max-h-[80vh] overflow-y-auto" style={menuOpen.openUp ? { bottom: window.innerHeight - menuOpen.top, left: menuOpen.left } : { top: menuOpen.top, left: menuOpen.left }}>
             {isLabAssistant ? (
               <>
                 <button

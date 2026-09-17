@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
+import { createPortal } from 'react-dom'
 import { ChevronDown, Check } from 'lucide-react'
 
 const Select = ({
@@ -19,12 +20,15 @@ const Select = ({
   options = [],
   size = 'default',
   disabled = false,
+  onClick: onClickProp,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValue, setSelectedValue] = useState(value ?? defaultValue ?? '')
   const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0 })
+  const [dropdownStyle, setDropdownStyle] = useState({})
   const containerRef = useRef(null)
+  const dropdownRef = useRef(null)
   const buttonRef = useRef(null)
   const dropdownRef = useRef(null)
 
@@ -36,6 +40,17 @@ const Select = ({
       setSelectedValue(value)
     }
   }, [value])
+
+  useEffect(() => {
+    if (isOpen && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect()
+      setDropdownStyle({
+        top: rect.bottom + 4,
+        left: rect.left,
+        minWidth: rect.width,
+      })
+    }
+  }, [isOpen])
 
   const allOptions = React.useMemo(() => {
     if (options.length > 0) return options
@@ -52,7 +67,7 @@ const Select = ({
 
   const sizeClasses = {
     sm: 'h-7 text-xs px-2.5 pr-7',
-    default: 'h-10 text-sm px-3 pr-8',
+    default: 'h-12 text-sm px-3 pr-8',
   }
 
   const handleSelect = useCallback(
@@ -100,8 +115,12 @@ const Select = ({
   useEffect(() => {
     if (!isOpen) return
     const handleScroll = (e) => {
-      if (dropdownRef.current && dropdownRef.current.contains(e.target)) return
-      setIsOpen(false)
+      if (
+        containerRef.current && !containerRef.current.contains(e.target) &&
+        dropdownRef.current && !dropdownRef.current.contains(e.target)
+      ) {
+        setIsOpen(false)
+      }
     }
     window.addEventListener('scroll', handleScroll, true)
     return () => window.removeEventListener('scroll', handleScroll, true)
@@ -117,15 +136,6 @@ const Select = ({
 
   return (
     <div className={containerClassName} ref={containerRef}>
-      {label && (
-        <label
-          htmlFor={selectId}
-          className={`text-sm font-medium text-foreground mb-1.5 block ${error ? 'text-destructive' : ''}`}
-        >
-          {label}
-          {required && <span className="ml-0.5 text-destructive">*</span>}
-        </label>
-      )}
       <div className="relative">
         {Icon && (
           <span className="absolute left-3 top-1/2 z-10 -translate-y-1/2 text-muted-foreground">
@@ -144,11 +154,12 @@ const Select = ({
             }
           }}
           className={`
-            w-full flex items-center justify-between border rounded-lg bg-white text-left
+            peer w-full flex items-center justify-between border rounded-lg bg-white text-left
             outline-none focus:border-primary focus:ring-1 focus:ring-primary
             transition
             ${sizeClasses[size] || sizeClasses.default}
             ${Icon ? 'pl-9' : ''}
+            ${label ? 'pt-4 pb-2' : ''}
             ${error ? 'border-destructive focus:border-destructive focus:ring-destructive' : 'border-border'}
             ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
             ${!selectedOption ? 'text-muted-foreground' : 'text-foreground'}
@@ -160,6 +171,20 @@ const Select = ({
         >
           <span className="truncate">{displayText}</span>
         </button>
+        {label && (
+          <label
+            htmlFor={selectId}
+            className={`
+              pointer-events-none absolute z-10 bg-white px-1 type-primary-body-b3 text-muted-foreground transition-all
+              ${Icon ? 'left-9' : 'left-3'}
+              ${selectedOption ? 'top-0 -translate-y-1/2 text-primary' : 'top-1/2 -translate-y-1/2 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-primary'}
+              ${error ? 'text-destructive peer-focus:text-destructive' : ''}
+            `}
+          >
+            {label}
+            {required && <span className="ml-0.5">*</span>}
+          </label>
+        )}
         <ChevronDown
           size={16}
           className={`absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none z-10 transition-transform ${isOpen ? 'rotate-180' : ''}`}
@@ -168,8 +193,8 @@ const Select = ({
         {isOpen && createPortal(
           <div
             ref={dropdownRef}
-            className="fixed z-[9999] bg-white border border-border rounded-lg shadow-lg max-h-60 overflow-auto"
-            style={{ top: dropdownPos.top, left: dropdownPos.left, width: dropdownPos.width }}
+            className="fixed z-[9999] bg-white border border-border rounded-lg shadow-lg max-h-60 overflow-auto animate-in fade-in-0 zoom-in-95"
+            style={dropdownStyle}
           >
             <ul role="listbox" className="py-1">
               {allOptions.length === 0 ? (
