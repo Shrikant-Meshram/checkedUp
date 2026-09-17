@@ -16,7 +16,7 @@ const LabOwnerTopTestsTable = ({ data }) => {
             className="flex items-center gap-3 p-3 rounded-xl border border-border bg-card hover:shadow-md transition-all duration-200 cursor-default"
           >
             <div
-              className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
+              className="w-10 h-10 rounded-full flex items-center justify-center text-white type-primary-body-b1-medium shrink-0"
               style={{ backgroundColor: CATEGORY_COLORS[idx % CATEGORY_COLORS.length] }}
             >
               {idx + 1}
@@ -28,7 +28,7 @@ const LabOwnerTopTestsTable = ({ data }) => {
           </div>
         ))}
         {(!data || data.length === 0) && (
-          <div className="col-span-2 py-6 text-center text-muted-foreground text-xs">No test data available</div>
+          <div className="col-span-2 py-6 text-center text-muted-foreground type-primary-body-b3">No test data available</div>
         )}
       </div>
     </div>

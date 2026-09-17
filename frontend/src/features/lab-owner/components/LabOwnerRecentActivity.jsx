@@ -60,7 +60,7 @@ const LabOwnerRecentActivity = ({ data }) => {
           )
         })}
         {(!data || data.length === 0) && (
-          <div className="py-8 text-center text-muted-foreground text-xs">No recent activity</div>
+          <div className="py-8 text-center text-muted-foreground type-primary-body-b3">No recent activity</div>
         )}
       </div>
     </div>

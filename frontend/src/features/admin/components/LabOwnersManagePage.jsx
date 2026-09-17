@@ -685,34 +685,34 @@ const LabOwnersManagePage = ({ labOwners, isLoading, isError, onRefresh }) => {
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${avatarColor} text-white font-semibold text-xs`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${avatarColor} text-white type-primary-body-b3-medium`}>
                         {initials}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-semibold text-foreground text-sm truncate" title={owner.name}>{owner.name}</h3>
-                        <p className="text-xs text-muted-foreground">{owner.email}</p>
+                        <h3 className="font-semibold text-foreground type-primary-body-b2 md:type-primary-body-b1-medium truncate" title={owner.name}>{owner.name}</h3>
+                        <p className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground">{owner.email}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`}></span>
                       {isActive ? 'Active' : 'Inactive'}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col p-4 pt-3">
-                  <dl className="space-y-1.5 text-xs">
+                  <dl className="space-y-1.5 type-primary-body-b2 md:type-primary-body-b3">
                     <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Phone</span>
+                      <span className="type-primary-label-l2 text-muted-foreground">Phone</span>
                       <span className="font-medium text-foreground">{owner.phone || '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Location</span>
+                      <span className="type-primary-label-l2 text-muted-foreground">Location</span>
                       <span className="text-foreground truncate max-w-[150px]" title={owner.labAddress}>{owner.labAddress || '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Service Areas</span>
+                      <span className="type-primary-label-l2 text-muted-foreground">Service Areas</span>
                       {owner.servicePincodes?.length > 0 ? (
-                        <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-2 py-0.5 rounded-full text-[10px] font-semibold">
+                        <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-2 py-0.5 rounded-full type-primary-label-l2 font-semibold">
                           {owner.servicePincodes.length} Area{owner.servicePincodes.length !== 1 ? 's' : ''}
                         </span>
                       ) : (
@@ -721,7 +721,7 @@ const LabOwnersManagePage = ({ labOwners, isLoading, isError, onRefresh }) => {
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-label-l2 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -1020,28 +1020,28 @@ const LabOwnersManagePage = ({ labOwners, isLoading, isError, onRefresh }) => {
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Phone size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Phone</p><p className="text-sm text-foreground">{selectedOwner.phone || '—'}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Phone</p><p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedOwner.phone || '—'}</p></div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <MapPin size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Lab Address</p><p className="text-sm text-foreground">{selectedOwner.labAddress || '—'}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Lab Address</p><p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedOwner.labAddress || '—'}</p></div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Building2 size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Service Areas</p><p className="text-sm text-foreground">{selectedOwner.servicePincodes?.join(', ') || '—'}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Service Areas</p><p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedOwner.servicePincodes?.join(', ') || '—'}</p></div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Calendar size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Registered On</p><p className="text-sm text-foreground">{selectedOwner.createdAt ? new Date(selectedOwner.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Registered On</p><p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedOwner.createdAt ? new Date(selectedOwner.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</p></div>
                 </div>
                 {/* Documents */}
                 {(selectedOwner.labCertificate || selectedOwner.labRegistration || selectedOwner.otherDocuments?.length > 0) && (
                   <div className="p-3 bg-accent/50 rounded-lg">
-                    <p className="text-[10px] text-muted-foreground mb-2">Documents</p>
+                    <p className="type-primary-label-l2 text-muted-foreground mb-2">Documents</p>
                     <div className="space-y-3">
                       {selectedOwner.labCertificate && (
                         <div>
-                          <p className="text-[11px] font-medium text-foreground mb-1">Lab Certificate</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">Lab Certificate</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(selectedOwner.labCertificate) ? (
                             <button type="button" onClick={() => setLightbox(selectedOwner.labCertificate)} className="block">
                               <img src={selectedOwner.labCertificate} alt="Lab Certificate" className="h-16 w-16 object-cover rounded-lg border border-border cursor-pointer hover:opacity-80 transition" />

@@ -16,7 +16,7 @@ const BookingsOverviewChart = ({ data, filter, onFilterChange }) => {
         <div className="relative shrink-0" ref={dropRef}>
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
+            className="flex items-center gap-2 type-primary-label-l2 font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
           >
             {filter}
             <ChevronDown size={14} className={`text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
@@ -27,7 +27,7 @@ const BookingsOverviewChart = ({ data, filter, onFilterChange }) => {
                 <button
                   key={f}
                   onClick={() => { onFilterChange(f); setOpen(false) }}
-                  className="flex items-center justify-between w-full px-3 py-2 text-xs text-foreground hover:bg-accent transition"
+                  className="flex items-center justify-between w-full px-3 py-2 type-primary-label-l2 text-foreground hover:bg-accent transition"
                 >
                   {f}
                   {filter === f && <Check size={14} className="text-primary" />}
@@ -38,7 +38,7 @@ const BookingsOverviewChart = ({ data, filter, onFilterChange }) => {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-4 mb-4 text-xs">
+      <div className="flex flex-wrap items-center gap-4 mb-4 type-primary-body-b3">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
           <span className="text-muted-foreground font-medium">Total Bookings</span>

@@ -21,7 +21,7 @@ const LabOwnerRecentBookingsTable = ({ data }) => {
         <h3 className="type-primary-heading-h3-medium text-foreground">Recent Bookings</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_OWNER_BOOKINGS)}
-          className="text-xs font-semibold text-primary hover:underline"
+          className="type-primary-button-b2 text-primary hover:underline"
         >
           View All
         </button>

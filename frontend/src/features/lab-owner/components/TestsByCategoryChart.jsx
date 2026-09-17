@@ -25,7 +25,7 @@ const TestsByCategoryChart = ({ data, filter, onFilterChange }) => {
         <div className="relative shrink-0" ref={dropRef}>
           <button
             onClick={() => setOpen(!open)}
-            className="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
+            className="flex items-center gap-2 type-primary-label-l2 font-medium px-3 py-1.5 rounded-lg border border-border bg-accent hover:bg-accent/80 transition"
           >
             {filter}
             <ChevronDown size={14} className={`text-muted-foreground transition-transform ${open ? 'rotate-180' : ''}`} />
@@ -36,7 +36,7 @@ const TestsByCategoryChart = ({ data, filter, onFilterChange }) => {
                 <button
                   key={f}
                   onClick={() => { onFilterChange(f); setOpen(false) }}
-                  className="flex items-center justify-between w-full px-3 py-2 text-xs text-foreground hover:bg-accent transition"
+                  className="flex items-center justify-between w-full px-3 py-2 type-primary-label-l2 text-foreground hover:bg-accent transition"
                 >
                   {f}
                   {filter === f && <Check size={14} className="text-primary" />}

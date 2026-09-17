@@ -25,13 +25,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-label-l2 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h2-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-label-l2 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-label-l2 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -329,13 +329,13 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
             className="fixed bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]"
             style={{ top: openMenu.top, left: openMenu.left }}
           >
-            <button onClick={(e) => { e.stopPropagation(); handleView(openMenu.assistant) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={(e) => { e.stopPropagation(); handleView(openMenu.assistant) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <Eye size={14} /> View
             </button>
-            <button onClick={(e) => { e.stopPropagation(); handleEdit(openMenu.assistant) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={(e) => { e.stopPropagation(); handleEdit(openMenu.assistant) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <Pencil size={14} /> Edit
             </button>
-            <button onClick={(e) => { e.stopPropagation(); handleDelete(openMenu.assistant) }} className="flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 w-full text-left">
+            <button onClick={(e) => { e.stopPropagation(); handleDelete(openMenu.assistant) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-red-500 hover:bg-red-50 w-full text-left">
               <Trash2 size={14} /> Delete
             </button>
           </div>
@@ -344,7 +344,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
 
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="text-2xl font-bold text-foreground">Assistants</h1>
+        <h1 className="type-primary-heading-h1-medium text-foreground">Assistants</h1>
         <Can resource="lab_assistants" action="create">
           <Button size="sm" onClick={() => setShowAddModal(true)}>
             <Plus size={16} />
@@ -355,8 +355,8 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Assistants</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Manage your lab assistants and their assignments.</p>
+          <h1 className="type-primary-heading-h1-medium text-foreground">Assistants</h1>
+          <p className="mt-1 type-primary-body-b3 text-muted-foreground">Manage your lab assistants and their assignments.</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search assistant, email or phone..." />
@@ -449,7 +449,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
             <div className="bg-card border border-border rounded-xl">
             <DataTable columns={columnsWithActions} data={filteredAssistants} enablePagination={true} enableSorting={true} pageSize={10} rowClassName="hover:bg-primary/5" />
           </div>
-          <p className="text-xs text-muted-foreground">Showing 1 to {Math.min(10, filteredAssistants.length)} of {filteredAssistants.length} assistants</p>
+          <p className="type-primary-label-l2 text-muted-foreground">Showing 1 to {Math.min(10, filteredAssistants.length)} of {filteredAssistants.length} assistants</p>
         </>
       ) : (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -464,22 +464,22 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-white font-semibold text-xs">
-                        {initials}
-                      </span>
-                      <div className="min-w-0">
-                        <h3 className="font-semibold text-foreground text-sm truncate" title={assistant.name}>{assistant.name}</h3>
-                        <p className="text-xs text-muted-foreground">{assistant.email}</p>
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-white type-primary-body-b3-medium">
+                          {initials}
+                        </span>
+                        <div className="min-w-0">
+                          <h3 className="font-semibold text-foreground type-primary-body-b1-medium truncate" title={assistant.name}>{assistant.name}</h3>
+                          <p className="type-primary-body-b3 text-muted-foreground">{assistant.email}</p>
+                        </div>
                       </div>
-                    </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-medium ${isActive ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>
+                      <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${isActive ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-success' : 'bg-destructive'}`}></span>
                       {isActive ? 'Active' : 'Inactive'}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col flex-1 p-4 pt-3">
-                  <dl className="mt-3 space-y-1.5 text-xs">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b3">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Phone</span>
                       <span className="font-medium text-foreground">{assistant.phone || '—'}</span>
@@ -490,7 +490,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="text-[11px] text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-label-l2 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -537,11 +537,11 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               <Input label="Password" name="password" type="password" value={form.password} onChange={(e) => handleChange('password', e.target.value)} placeholder="Min 6 characters" error={errors.password} required />
               {/* Document Uploads */}
               <div className="space-y-3">
-                <p className="text-sm font-medium text-foreground">Documents</p>
+                <p className="type-primary-body-b2-medium text-foreground">Documents</p>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
-                      <span className="text-xs font-medium text-muted-foreground">ID Proof</span>
+                      <span className="type-primary-label-l2 font-medium text-muted-foreground">ID Proof</span>
                     </div>
                     <div className="p-3 pt-2">
                       <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -552,21 +552,21 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                           onChange={(e) => setIdProofFile(e.target.files?.[0] || null)}
                         />
                         <Upload size={16} className="text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">
+                        <span className="type-primary-body-b3 text-muted-foreground">
                           {idProofFile ? idProofFile.name : 'Upload ID proof'}
                         </span>
                       </label>
                     </div>
                     {idProofFile && (
                       <div className="px-3 pb-3 pt-0 flex items-center justify-between border-t border-border mt-1">
-                        <span className="text-[10px] text-muted-foreground truncate">{idProofFile.name}</span>
-                        <button onClick={() => setIdProofFile(null)} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                        <span className="type-primary-label-l2 text-muted-foreground truncate">{idProofFile.name}</span>
+                        <button onClick={() => setIdProofFile(null)} className="type-primary-label-l2 text-red-500 hover:underline shrink-0">Remove</button>
                       </div>
                     )}
                   </div>
                   <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
-                      <span className="text-xs font-medium text-muted-foreground">Other Documents (max 5)</span>
+                      <span className="type-primary-label-l2 font-medium text-muted-foreground">Other Documents (max 5)</span>
                     </div>
                     <div className="p-3 pt-2">
                       <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -584,7 +584,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                           }}
                         />
                         <Upload size={16} className="text-muted-foreground" />
-                        <span className="text-xs text-muted-foreground">
+                        <span className="type-primary-body-b3 text-muted-foreground">
                           {otherDocsFiles.length > 0 ? `${otherDocsFiles.length}/5 file(s) selected` : 'Upload documents'}
                         </span>
                       </label>
@@ -593,8 +593,8 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                       <div className="px-3 pb-3 pt-0 border-t border-border mt-1 space-y-1.5">
                         {otherDocsFiles.map((f, i) => (
                           <div key={i} className="flex items-center justify-between">
-                            <span className="text-[10px] text-muted-foreground truncate">{f.name}</span>
-                            <button onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                            <span className="type-primary-label-l2 text-muted-foreground truncate">{f.name}</span>
+                            <button onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="type-primary-label-l2 text-red-500 hover:underline shrink-0">Remove</button>
                           </div>
                         ))}
                       </div>
@@ -604,7 +604,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               </div>
             </div>
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
-              <button onClick={handleCloseAdd} className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
+              <button onClick={handleCloseAdd} className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
               <Button onClick={handleSave} disabled={saving} loading={saving}>Create</Button>
             </div>
           </div>
@@ -624,45 +624,45 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
             </div>
             <div className="p-4 space-y-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl">
+                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white type-primary-heading-h2-medium">
                   {selectedAssistant.name?.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2) || 'AS'}
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground text-lg">{selectedAssistant.name}</h4>
-                  <p className="text-xs text-muted-foreground">ID: {selectedAssistant._id.slice(-6)}</p>
+                  <h4 className="font-semibold text-foreground type-primary-heading-h4-medium">{selectedAssistant.name}</h4>
+                  <p className="type-primary-body-b3 text-muted-foreground">ID: {selectedAssistant._id.slice(-6)}</p>
                 </div>
               </div>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Mail size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Email</p><p className="text-sm text-foreground">{selectedAssistant.email}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Email</p><p className="type-primary-body-b2 text-foreground">{selectedAssistant.email}</p></div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Phone size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Phone</p><p className="text-sm text-foreground">{selectedAssistant.phone || '—'}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Phone</p><p className="type-primary-body-b2 text-foreground">{selectedAssistant.phone || '—'}</p></div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Shield size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Status</p><p className="text-sm text-foreground">{selectedAssistant.role !== 'inactive' ? 'Active' : 'Inactive'}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Status</p><p className="type-primary-body-b2 text-foreground">{selectedAssistant.role !== 'inactive' ? 'Active' : 'Inactive'}</p></div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Calendar size={16} className="text-muted-foreground" />
-                  <div><p className="text-[10px] text-muted-foreground">Registered On</p><p className="text-sm text-foreground">{selectedAssistant.createdAt ? new Date(selectedAssistant.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</p></div>
+                  <div><p className="type-primary-label-l2 text-muted-foreground">Registered On</p><p className="type-primary-body-b2 text-foreground">{selectedAssistant.createdAt ? new Date(selectedAssistant.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}</p></div>
                 </div>
                 {/* Documents */}
                 {(selectedAssistant.idProof || selectedAssistant.otherDocuments?.length > 0) && (
                   <div className="p-3 bg-accent/50 rounded-lg">
-                    <p className="text-[10px] text-muted-foreground mb-2">Documents</p>
+                    <p className="type-primary-label-l2 text-muted-foreground mb-2">Documents</p>
                     <div className="space-y-3">
                       {selectedAssistant.idProof && (
                         <div>
-                          <p className="text-[11px] font-medium text-foreground mb-1">ID Proof</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">ID Proof</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(selectedAssistant.idProof) ? (
                             <button type="button" onClick={() => setLightbox(selectedAssistant.idProof)} className="block">
                               <img src={selectedAssistant.idProof} alt="ID Proof" className="h-16 w-16 object-cover rounded-lg border border-border cursor-pointer hover:opacity-80 transition" />
                             </button>
                           ) : (
-                            <a href={selectedAssistant.idProof} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                            <a href={selectedAssistant.idProof} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                               <FileText size={12} /> View Document
                             </a>
                           )}
@@ -670,13 +670,13 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                       )}
                       {selectedAssistant.otherDocuments?.map((doc, i) => (
                         <div key={i}>
-                          <p className="text-[11px] font-medium text-foreground mb-1">{doc.name || 'Document'}</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">{doc.name || 'Document'}</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(doc.url) ? (
                             <button type="button" onClick={() => setLightbox(doc.url)} className="block">
                               <img src={doc.url} alt={doc.name || 'Document'} className="h-16 w-16 object-cover rounded-lg border border-border cursor-pointer hover:opacity-80 transition" />
                             </button>
                           ) : (
-                            <a href={doc.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                            <a href={doc.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                               <FileText size={12} /> {doc.name || 'View Document'}
                             </a>
                           )}
@@ -688,7 +688,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               </div>
             </div>
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
-              <button onClick={() => { setShowViewModal(false); setSelectedAssistant(null) }} className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition">Close</button>
+              <button onClick={() => { setShowViewModal(false); setSelectedAssistant(null) }} className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition">Close</button>
             </div>
           </div>
         </div>
@@ -711,11 +711,11 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               <Input label="Phone" name="phone" value={form.phone} onChange={(e) => handleChange('phone', e.target.value)} placeholder="e.g. 9876543210" inputMode="numeric" maxLength={10} error={errors.phone} required />
               {/* Document Uploads */}
               <div className="space-y-3">
-                <p className="text-sm font-medium text-foreground">Documents</p>
+                <p className="type-primary-body-b2-medium text-foreground">Documents</p>
                 {selectedAssistant.idProof && !editIdProofFile && (
                     <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
-                      <span className="text-xs font-medium text-muted-foreground">ID Proof (current)</span>
+                      <span className="type-primary-label-l2 font-medium text-muted-foreground">ID Proof (current)</span>
                     </div>
                     <div className="p-3 pt-2">
                       {/\.(jpg|jpeg|png|webp)$/i.test(selectedAssistant.idProof) ? (
@@ -723,7 +723,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                           <img src={selectedAssistant.idProof} alt="ID Proof" className="w-full max-h-32 object-cover rounded-lg border border-border" />
                         </a>
                       ) : (
-                        <a href={selectedAssistant.idProof} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                        <a href={selectedAssistant.idProof} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                           <FileText size={12} /> View Document
                         </a>
                       )}
@@ -732,7 +732,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                 )}
                   <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
-                      <span className="text-xs font-medium text-muted-foreground">{selectedAssistant.idProof ? 'Replace ID Proof' : 'ID Proof'}</span>
+                      <span className="type-primary-label-l2 font-medium text-muted-foreground">{selectedAssistant.idProof ? 'Replace ID Proof' : 'ID Proof'}</span>
                   </div>
                   <div className="p-3 pt-2">
                     <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -743,33 +743,33 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                         onChange={(e) => setEditIdProofFile(e.target.files?.[0] || null)}
                       />
                       <Upload size={16} className="text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground">
+                      <span className="type-primary-body-b3 text-muted-foreground">
                         {editIdProofFile ? editIdProofFile.name : 'Upload ID proof'}
                       </span>
                     </label>
                   </div>
                   {editIdProofFile && (
                     <div className="px-3 pb-3 pt-0 flex items-center justify-between border-t border-border mt-1">
-                      <span className="text-[10px] text-muted-foreground truncate">{editIdProofFile.name}</span>
-                      <button onClick={() => setEditIdProofFile(null)} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                      <span className="type-primary-label-l2 text-muted-foreground truncate">{editIdProofFile.name}</span>
+                      <button onClick={() => setEditIdProofFile(null)} className="type-primary-label-l2 text-red-500 hover:underline shrink-0">Remove</button>
                     </div>
                   )}
                 </div>
                 {selectedAssistant.otherDocuments?.length > 0 && (
                     <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
-                      <span className="text-xs font-medium text-muted-foreground">Other Documents (current)</span>
+                      <span className="type-primary-label-l2 font-medium text-muted-foreground">Other Documents (current)</span>
                     </div>
                     <div className="p-3 pt-2 space-y-2">
                       {selectedAssistant.otherDocuments.map((doc, i) => (
                         <div key={i}>
-                          <p className="text-[11px] font-medium text-foreground mb-1">{doc.name || 'Document'}</p>
+                          <p className="type-primary-body-b3 font-medium text-foreground mb-1">{doc.name || 'Document'}</p>
                           {/\.(jpg|jpeg|png|webp)$/i.test(doc.url) ? (
                             <a href={doc.url} target="_blank" rel="noreferrer">
                               <img src={doc.url} alt={doc.name || 'Document'} className="w-full max-h-32 object-cover rounded-lg border border-border" />
                             </a>
                           ) : (
-                            <a href={doc.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-xs text-primary hover:underline">
+                            <a href={doc.url} target="_blank" rel="noreferrer" className="flex items-center gap-2 type-primary-body-b3 text-primary hover:underline">
                               <FileText size={12} /> View Document
                             </a>
                           )}
@@ -780,7 +780,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                 )}
                   <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                     <div className="p-3 pb-0">
-                      <span className="text-xs font-medium text-muted-foreground">Add Other Documents (max 5)</span>
+                      <span className="type-primary-label-l2 font-medium text-muted-foreground">Add Other Documents (max 5)</span>
                   </div>
                   <div className="p-3 pt-2">
                     <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -798,7 +798,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                         }}
                       />
                       <Upload size={16} className="text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground">
+                      <span className="type-primary-body-b3 text-muted-foreground">
                         {editOtherDocsFiles.length > 0 ? `${editOtherDocsFiles.length}/5 file(s) selected` : 'Upload documents'}
                       </span>
                     </label>
@@ -807,8 +807,8 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
                     <div className="px-3 pb-3 pt-0 space-y-1 border-t border-border mt-1">
                       {editOtherDocsFiles.map((file, i) => (
                         <div key={i} className="flex items-center justify-between">
-                          <span className="text-[10px] text-muted-foreground truncate">{file.name}</span>
-                          <button onClick={() => setEditOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                          <span className="type-primary-label-l2 text-muted-foreground truncate">{file.name}</span>
+                          <button onClick={() => setEditOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="type-primary-label-l2 text-red-500 hover:underline shrink-0">Remove</button>
                         </div>
                       ))}
                     </div>
@@ -817,7 +817,7 @@ const AssistantsManagePage = ({ assistants, isLoading, isError, onRefresh }) => 
               </div>
             </div>
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
-              <button onClick={handleCloseEdit} className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
+              <button onClick={handleCloseEdit} className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
               <Button onClick={handleEditSave} disabled={saving} loading={saving}>Update</Button>
             </div>
           </div>

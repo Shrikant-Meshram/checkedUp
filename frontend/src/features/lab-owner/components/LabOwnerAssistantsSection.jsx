@@ -48,7 +48,7 @@ const LabOwnerAssistantsSection = ({
                       }
                       `}
                 >
-                  <div className="w-10 h-10 rounded-[10px] bg-success/10 text-success flex items-center justify-center font-bold text-sm">
+                  <div className="w-10 h-10 rounded-[10px] bg-success/10 text-success flex items-center justify-center type-primary-body-b1-medium">
                     <Users size={18} />
                   </div>
                   <h3 className="type-primary-heading-h4-medium text-foreground mt-3">{assistant.name}</h3>
