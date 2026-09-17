@@ -474,15 +474,15 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white type-primary-body-b2-medium md:type-primary-body-b3-medium`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(payment.patientName)} text-white type-primary-body-b3`}>
                         {getInitials(payment.patientName)}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="type-primary-body-b1-medium text-foreground truncate" title={payment.patientName}>{payment.patientName}</h3>
-                        <p className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground">{payment.phone}</p>
+                        <h3 className="type-primary-body-b1-medium md:type-primary-body-b2-medium text-foreground truncate" title={payment.patientName}>{payment.patientName}</h3>
+                        <p className="type-primary-body-b3 text-muted-foreground">{payment.phone}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b4-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${statusStyle.bg} ${statusStyle.text}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                       {payment.paymentStatus === 'Paid' ? 'Success' : payment.paymentStatus}
                     </span>
@@ -498,14 +498,14 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                       {methodStyle.label}
                     </span>
                   </div>
-                  <dl className="mt-3 space-y-1.5 type-primary-body-b2 md:type-primary-body-b3">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b1 md:type-primary-body-b2">
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Transaction ID</span>
-                      <span className="type-primary-body-b2-medium md:type-primary-body-b3-medium text-primary">{payment.transactionId || '—'}</span>
+                      <span className="type-primary-body-b2-medium text-primary">{payment.transactionId || '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Booking ID</span>
-                      <span className="type-primary-body-b2-medium md:type-primary-body-b3-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
+                      <span className="type-primary-body-b2-medium text-primary">{payment._id ? `BKD-${String(payment._id).slice(-6).toUpperCase()}` : '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-muted-foreground">Payment Date</span>
@@ -513,7 +513,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="type-primary-body-b3 md:type-primary-body-b4 text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -532,7 +532,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
         /* Table View */
         <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
           <div className="rounded-xl border border-border bg-white">
-          <table className="w-full min-w-[1000px] text-sm">
+          <table className="w-full min-w-[1000px] type-primary-body-b2">
             <thead className="bg-accent text-left text-muted-foreground sticky top-0">
               <tr>
                 <SortableHeader title="Transaction ID" sortKey="transaction" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, transaction: true }))} />
@@ -566,7 +566,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                     {!hiddenColumns.customer && (
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2.5">
-                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${getAvatarColor(payment.patientName)} text-white type-primary-body-b4-medium`}>
+                        <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${getAvatarColor(payment.patientName)} text-white type-primary-body-b3`}>
                           {getInitials(payment.patientName)}
                         </span>
                         <div>
@@ -591,7 +591,7 @@ const PaymentsManagePage = ({ payments, isLoading, isError, onRefresh }) => {
                     )}
                     {!hiddenColumns.status && (
                     <td className="px-4 py-3">
-                      <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                      <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${statusStyle.bg} ${statusStyle.text}`}>
                         <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                         {payment.paymentStatus === 'Paid' ? 'Success' : payment.paymentStatus}
                       </span>

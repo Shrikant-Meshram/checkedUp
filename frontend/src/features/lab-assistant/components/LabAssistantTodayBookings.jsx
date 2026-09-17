@@ -20,14 +20,14 @@ const LabAssistantTodayBookings = ({ data }) => {
         <h3 className="type-primary-heading-h3-medium text-foreground">Today's Bookings</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_ASSISTANT_BOOKINGS)}
-          className="text-xs font-semibold text-primary hover:underline"
+          className="type-primary-body-b3-medium text-primary hover:underline"
         >
           View All
         </button>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full type-primary-body-b2">
           <thead>
             <tr className="border-b border-border">
               <th className="text-left py-2.5 type-primary-body-b3-medium uppercase tracking-wider">Time</th>

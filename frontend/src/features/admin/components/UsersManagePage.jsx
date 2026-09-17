@@ -68,7 +68,7 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
       </span>
       <div className="min-w-0 flex-1 space-y-0">
         <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
-        <p className="type-primary-heading-h2-medium leading-tight text-foreground">{value}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
@@ -445,7 +445,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
       )}
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="type-primary-heading-h1-medium text-foreground">Users</h1>
+          <h1 className="type-primary-heading-h1 !font-medium text-foreground">Users</h1>
         <Can resource="users" action="create">
           <Button size="sm" onClick={() => setShowAddModal(true)}>
             <UserPlus size={16} />
@@ -456,8 +456,8 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="type-primary-heading-h1-medium text-foreground">Users</h1>
-          <p className="mt-1 type-primary-body-b3 text-muted-foreground">Manage all users and their access</p>
+        <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Users</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">Manage all users and their access</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by name, email or phone..." />
@@ -566,9 +566,9 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
 
       {/* Users Table / Grid */}
       {isLoading ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b3 text-muted-foreground">Loading users…</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">Loading users…</div>
       ) : isError ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b3 text-destructive">Unable to load users. Please try again.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-destructive">Unable to load users. Please try again.</div>
       ) : filteredUsers.length === 0 ? (
         <EmptyState
           title="No users found"
@@ -579,7 +579,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
       ) : view === 'list' ? (
         <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
           <div className="rounded-xl border border-border bg-white">
-            <table className="w-full min-w-[900px] text-sm">
+            <table className="w-full min-w-[900px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   <SortableHeader title="User" sortKey="name" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, name: true }))} />
@@ -630,7 +630,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       {!hiddenColumns.name && (
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-3">
-                            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${avatarColor} text-white type-primary-body-b3-medium`}>
+                            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${avatarColor} text-white type-primary-body-b3`}>
                               {initials}
                             </span>
                             <div>
@@ -642,7 +642,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       )}
                       {!hiddenColumns.role && (
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center px-2.5 py-1 rounded-full type-primary-label-l2 font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
+                          <span className={`inline-flex items-center px-2.5 py-1 rounded-full type-primary-body-b3 font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
                             {user.role?.replace(/_/g, ' ')}
                           </span>
                         </td>
@@ -654,7 +654,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       )}
                       {!hiddenColumns.status && (
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                          <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
                             <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`}></span>
                             {isActive ? 'Active' : 'Inactive'}
                           </span>
@@ -736,43 +736,43 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${avatarColor} text-white type-primary-body-b3-medium`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${avatarColor} text-white type-primary-body-b3`}>
                         {initials}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-semibold text-foreground type-primary-body-b2 md:type-primary-body-b1-medium truncate" title={user.name}>{user.name}</h3>
-                        <p className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground">{user.email}</p>
+                        <h3 className="type-primary-body-b1-medium md:type-primary-body-b2-medium text-foreground truncate" title={user.name}>{user.name}</h3>
+                        <p className="type-primary-body-b3 text-muted-foreground">{user.email}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${isActive ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-500' : 'bg-red-500'}`}></span>
                       {isActive ? 'Active' : 'Inactive'}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col flex-1 p-4 pt-3">
-                  <dl className="mt-3 space-y-1.5 type-primary-body-b2 md:type-primary-body-b3">
+                  <dl className="mt-3 space-y-1.5 type-primary-body-b1 md:type-primary-body-b2">
                     <div className="flex items-center justify-between">
-                      <span className="type-primary-label-l2 text-muted-foreground">Role</span>
-                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full type-primary-label-l2 font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
+                      <span className="text-muted-foreground">Role</span>
+                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full type-primary-body-b3 font-semibold capitalize ${roleBadgeColor[user.role] || 'bg-gray-100 text-gray-600'}`}>
                         {user.role?.replace(/_/g, ' ')}
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="type-primary-label-l2 text-muted-foreground">Phone</span>
+                      <span className="text-muted-foreground">Phone</span>
                       <span className="font-medium text-foreground">{user.phone || '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="type-primary-label-l2 text-muted-foreground">Registered</span>
+                      <span className="text-muted-foreground">Registered</span>
                       <span className="text-foreground">{formatDate(user.createdAt)}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="type-primary-label-l2 text-muted-foreground">Last Login</span>
+                      <span className="text-muted-foreground">Last Login</span>
                       <span className="text-foreground">{formatLastLogin(user.updatedAt)}</span>
                     </div>
                   </dl>
                   <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                    <span className="type-primary-label-l2 text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -822,7 +822,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
                 <h3 className="type-primary-body-b1-medium text-foreground">Add User</h3>
-                <p className="type-primary-label-l2 text-muted-foreground mt-0.5">Create a new user account.</p>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Create a new user account.</p>
               </div>
               <button onClick={handleCloseModal} className="p-1 text-muted-foreground hover:text-foreground">
                 <X size={20} />
@@ -851,7 +851,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                   <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                     <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
                       <div className="p-3 pb-0">
-                        <span className="type-primary-label-l2 font-medium text-muted-foreground">ID Proof</span>
+                        <span className="type-primary-body-b3 font-medium text-muted-foreground">ID Proof</span>
                       </div>
                       <div className="p-3 pt-2">
                         <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -869,14 +869,14 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                       </div>
                       {idProofFile && (
                         <div className="px-3 pb-3 pt-0 flex items-center justify-between border-t border-border mt-1">
-                          <span className="type-primary-label-l2 text-muted-foreground truncate">{idProofFile.name}</span>
-                          <button onClick={() => setIdProofFile(null)} className="type-primary-label-l2 text-red-500 hover:underline shrink-0">Remove</button>
+                          <span className="type-primary-body-b3 text-muted-foreground truncate">{idProofFile.name}</span>
+                          <button onClick={() => setIdProofFile(null)} className="type-primary-body-b3 text-red-500 hover:underline shrink-0">Remove</button>
                         </div>
                       )}
                     </div>
                     <div className="flex flex-col rounded-xl border border-border bg-white shadow-sm overflow-hidden">
                       <div className="p-3 pb-0">
-                        <span className="type-primary-label-l2 font-medium text-muted-foreground">Other Documents (max 5)</span>
+                        <span className="type-primary-body-b3 font-medium text-muted-foreground">Other Documents (max 5)</span>
                       </div>
                       <div className="p-3 pt-2">
                         <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -903,8 +903,8 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                         <div className="px-3 pb-3 pt-0 border-t border-border mt-1 space-y-1.5">
                           {otherDocsFiles.map((f, i) => (
                             <div key={i} className="flex items-center justify-between">
-                              <span className="type-primary-label-l2 text-muted-foreground truncate">{f.name}</span>
-                              <button onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="type-primary-label-l2 text-red-500 hover:underline shrink-0">Remove</button>
+                              <span className="type-primary-body-b3 text-muted-foreground truncate">{f.name}</span>
+                              <button onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="type-primary-body-b3 text-red-500 hover:underline shrink-0">Remove</button>
                             </div>
                           ))}
                         </div>
@@ -929,7 +929,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
                 <h3 className="type-primary-body-b1-medium text-foreground">User Details</h3>
-                <p className="type-primary-label-l2 text-muted-foreground mt-0.5">View user account information.</p>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">View user account information.</p>
               </div>
               <button onClick={() => { setShowViewModal(false); setSelectedUser(null) }} className="p-1 text-muted-foreground hover:text-foreground">
                 <X size={20} />
@@ -937,12 +937,12 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
             </div>
             <div className="p-4 space-y-4">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white type-primary-heading-h2-medium">
+                <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-white type-primary-heading-h3-medium">
                   {selectedUser.name?.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2) || 'U'}
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground type-primary-heading-h4-medium">{selectedUser.name}</h4>
-                  <span className={`inline-block px-2.5 py-0.5 rounded-full type-primary-label-l2 font-semibold capitalize mt-1 ${roleBadgeColor[selectedUser.role] || 'bg-gray-100 text-gray-600'}`}>
+                  <span className={`inline-block px-2.5 py-0.5 rounded-full type-primary-body-b3 font-semibold capitalize mt-1 ${roleBadgeColor[selectedUser.role] || 'bg-gray-100 text-gray-600'}`}>
                     {selectedUser.role?.replace(/_/g, ' ')}
                   </span>
                 </div>
@@ -951,28 +951,28 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Mail size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="type-primary-label-l2 text-muted-foreground">Email</p>
+                    <p className="text-muted-foreground">Email</p>
                     <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedUser.email}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Phone size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="type-primary-label-l2 text-muted-foreground">Phone</p>
+                    <p className="text-muted-foreground">Phone</p>
                     <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">{selectedUser.phone || '—'}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Shield size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="type-primary-label-l2 text-muted-foreground">Role</p>
+                    <p className="text-muted-foreground">Role</p>
                     <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground capitalize">{selectedUser.role?.replace(/_/g, ' ')}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-accent/50 rounded-lg">
                   <Calendar size={16} className="text-muted-foreground" />
                   <div>
-                    <p className="type-primary-label-l2 text-muted-foreground">Registered On</p>
+                    <p className="text-muted-foreground">Registered On</p>
                     <p className="type-primary-body-b2 md:type-primary-body-b3 text-foreground">
                       {selectedUser.createdAt ? new Date(selectedUser.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'}
                     </p>
@@ -981,7 +981,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 {/* Documents */}
                 {(selectedUser.idProof || selectedUser.otherDocuments?.length > 0 || selectedUser.labCertificate || selectedUser.labRegistration) && (
                   <div className="p-3 bg-accent/50 rounded-lg">
-                    <p className="type-primary-label-l2 text-muted-foreground mb-2">Documents</p>
+                    <p className="text-muted-foreground mb-2">Documents</p>
                     <div className="space-y-3">
                       {selectedUser.idProof && (
                         <div>
@@ -1063,7 +1063,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
             <div className="flex items-center justify-between p-4 border-b border-border">
               <div>
                 <h3 className="type-primary-body-b1-medium text-foreground">Edit User</h3>
-                <p className="type-primary-label-l2 text-muted-foreground mt-0.5">Update user account details.</p>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Update user account details.</p>
               </div>
               <button onClick={() => { setShowEditModal(false); setSelectedUser(null) }} className="p-1 text-muted-foreground hover:text-foreground">
                 <X size={20} />
@@ -1110,7 +1110,7 @@ const UsersManagePage = ({ users, isLoading, isError, onRefresh }) => {
                 error={errors.password}
               />
               <div>
-                <label className="block type-primary-label-l2 font-medium text-muted-foreground mb-1.5">Role</label>
+                <label className="block type-primary-body-b2 font-medium text-muted-foreground mb-1.5">Role</label>
                 <select
                   value={form.role}
                   onChange={(e) => handleChange('role', e.target.value)}

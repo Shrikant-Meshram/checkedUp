@@ -56,7 +56,7 @@ export default function DatePicker({ selectedDate, onDateChange, minDate }) {
 
   return (
     <div className="space-y-3">
-      <label className="text-sm font-semibold text-foreground flex items-center gap-2">
+      <label className="type-primary-body-b2 font-semibold text-foreground flex items-center gap-2">
         <CalendarDays size={18} className="text-primary" />
         Select Date
       </label>
@@ -72,8 +72,8 @@ export default function DatePicker({ selectedDate, onDateChange, minDate }) {
             <ChevronLeft size={18} className="text-foreground" />
           </button>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-foreground">{MONTHS[month]}</span>
-            <span className="text-sm font-bold text-foreground">{year}</span>
+            <span className="type-primary-body-b2 font-bold text-foreground">{MONTHS[month]}</span>
+            <span className="type-primary-body-b2 font-bold text-foreground">{year}</span>
           </div>
           <button
             type="button"
@@ -87,7 +87,7 @@ export default function DatePicker({ selectedDate, onDateChange, minDate }) {
         {/* Day Headers */}
         <div className="grid grid-cols-7">
           {SHORT_DAYS.map((d, i) => (
-            <div key={i} className="text-center text-xs font-semibold text-muted-foreground py-2">
+            <div key={i} className="text-center type-primary-body-b3 font-semibold text-muted-foreground py-2">
               {d}
             </div>
           ))}
@@ -102,7 +102,7 @@ export default function DatePicker({ selectedDate, onDateChange, minDate }) {
               disabled={!cell.currentMonth || cell.isPast}
               onClick={() => cell.currentMonth && !cell.isPast && onDateChange(cell.dateStr)}
               className={`
-                relative h-10 w-full text-sm font-medium rounded-lg transition-all duration-150
+                relative h-10 w-full type-primary-body-b2 font-medium rounded-lg transition-all duration-150
                 ${!cell.currentMonth
                   ? 'text-muted-foreground/25'
                   : cell.isPast
@@ -136,13 +136,13 @@ export default function DatePicker({ selectedDate, onDateChange, minDate }) {
           <div className="px-4 py-3 border-t border-border bg-primary/5">
             <div className="flex items-center gap-2">
               <CalendarDays size={14} className="text-primary" />
-              <span className="text-sm font-medium text-foreground">{formatSelectedDate(selectedDate)}</span>
+              <span className="type-primary-body-b2 font-medium text-foreground">{formatSelectedDate(selectedDate)}</span>
             </div>
           </div>
         )}
 
         {/* Legend */}
-        <div className="px-4 py-2 border-t border-border flex items-center justify-center gap-5 text-xs text-muted-foreground">
+        <div className="px-4 py-2 border-t border-border flex items-center justify-center gap-5 type-primary-body-b3 text-muted-foreground">
           <span className="flex items-center gap-1.5">
             <span className="relative w-2.5 h-2.5">
               <span className="absolute inset-0 rounded-full bg-primary/20"></span>

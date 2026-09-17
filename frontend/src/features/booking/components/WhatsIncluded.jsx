@@ -36,8 +36,8 @@ export default function WhatsIncluded() {
                 <Icon size={20} />
               </span>
               <div>
-                <p className="text-sm font-medium text-foreground">{f.title}</p>
-                <p className="text-xs text-muted-foreground mt-0.5">{f.description}</p>
+                <p className="type-primary-body-b2 font-medium text-foreground">{f.title}</p>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{f.description}</p>
               </div>
             </div>
           )

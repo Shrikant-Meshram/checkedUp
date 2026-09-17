@@ -71,8 +71,8 @@ const LabAssistantSampleModal = ({
         {sampleImages.length > 0 && (
           <div className="mt-4">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xs font-medium text-foreground">Selected Images</h3>
-              <span className="text-[10px] bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">
+              <h3 className="type-primary-body-b3-medium text-foreground">Selected Images</h3>
+              <span className="type-primary-body-b3 bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">
                 {sampleImages.length} Images
               </span>
             </div>
@@ -93,7 +93,7 @@ const LabAssistantSampleModal = ({
                     }}
                     className="absolute top-0 right-0 w-4 h-4 rounded-full flex items-center justify-center p-0"
                   >
-                    <span className="text-[10px] leading-none">✕</span>
+                    <span className="type-primary-body-b3 leading-none">✕</span>
                   </Button>
                 </div>
               ))}
@@ -102,7 +102,7 @@ const LabAssistantSampleModal = ({
               type="button"
               variant="ghost"
               onClick={() => setSampleImages([])}
-              className="mt-2 text-red-600 text-xs font-medium"
+              className="mt-2 text-red-600 type-primary-body-b3-medium"
             >
               Remove All
             </Button>

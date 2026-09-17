@@ -63,14 +63,14 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-full mt-1 bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
             {onHide && (
-              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <EyeOff size={14} /> Hide
               </button>
             )}
@@ -93,7 +93,7 @@ const MobileBookingCard = ({ booking, handleReached, openSampleModal, openNaviga
       <div className="p-4 pb-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white font-semibold text-xs`}>
+            <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3`}>
               {getInitials(booking.patientName)}
             </span>
             <div className="min-w-0">
@@ -262,7 +262,7 @@ const LabAssistantBookingsTable = ({
                         {!hiddenColumns.patient && (
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-3">
-                              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${getAvatarColor(booking.patientName)} text-white font-semibold text-[10px]`}>
+                              <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3`}>
                                 {getInitials(booking.patientName)}
                               </span>
                               <div>

@@ -25,7 +25,7 @@ const LabOwnerAssistantsTable = ({ data, view = 'table' }) => {
 
       {view === 'list' ? (
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full type-primary-body-b2">
             <thead>
               <tr className="border-b border-border">
                 <th className="text-left py-2.5 type-primary-label-l2 uppercase tracking-wider">Assistant</th>

@@ -27,7 +27,7 @@ const BookingCardHeader = ({ patientName, phone, variant = 'initials' }) => {
             <CircleUser className="text-primary" size={20} />
           </div>
         ) : (
-          <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(patientName)} text-white font-semibold text-xs`}>
+          <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(patientName)} text-white type-primary-body-b3`}>
             {getInitials(patientName)}
           </span>
         )}

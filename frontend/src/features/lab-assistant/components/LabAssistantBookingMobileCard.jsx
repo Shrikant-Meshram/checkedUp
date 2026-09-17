@@ -44,31 +44,31 @@ const LabAssistantBookingMobileCard = ({
                   <CircleUser className="text-primary" size={18} />
                 </div>
                 <div>
-                  <h2 className="text-xs font-medium text-foreground">{item.patientName}</h2>
-                  <p className="text-[10px] text-muted-foreground flex items-center gap-1 mt-0.5">
+                  <h2 className="type-primary-body-b3 font-medium text-foreground">{item.patientName}</h2>
+                  <p className="type-primary-body-b3 text-muted-foreground flex items-center gap-1 mt-0.5">
                     <Phone size={11} /> {item.phone}
                   </p>
                 </div>
               </div>
               <div className="flex flex-col gap-1.5 items-end">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] text-muted-foreground">Status:</span>
+                  <span className="type-primary-body-b3 text-muted-foreground">Status:</span>
                   <Badge status={item.status}>{item.status}</Badge>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] text-muted-foreground">Payment:</span>
+                  <span className="type-primary-body-b3 text-muted-foreground">Payment:</span>
                   <Badge status={item.paymentStatus}>{item.paymentStatus}</Badge>
                 </div>
               </div>
             </div>
 
             <div className="mt-3 bg-accent rounded-lg p-3">
-              <p className="text-[10px] text-muted-foreground mb-1">Test / Package</p>
+              <p className="type-primary-body-b3 text-muted-foreground mb-1">Test / Package</p>
               <div className="flex justify-between items-center gap-3">
-                <h3 className="text-xs font-medium text-foreground">
+                <h3 className="type-primary-body-b3 font-medium text-foreground">
                   {item?.test?.title || item?.package?.title || 'N/A'}
                 </h3>
-                <p className="font-mono font-bold text-primary text-sm whitespace-nowrap">
+                <p className="font-mono font-bold text-primary type-primary-body-b2 whitespace-nowrap">
                   ₹{item?.test?.price || item?.package?.price || 0}
                 </p>
               </div>
@@ -76,12 +76,12 @@ const LabAssistantBookingMobileCard = ({
 
             <div className="grid grid-cols-2 gap-2 mt-2">
               <div className="bg-primary/10 rounded-lg p-2.5">
-                <p className="text-[10px] text-muted-foreground">Date</p>
-                <p className="text-xs font-medium text-foreground mt-0.5">{item.bookingDate}</p>
+                <p className="type-primary-body-b3 text-muted-foreground">Date</p>
+                <p className="type-primary-body-b3 font-medium text-foreground mt-0.5">{item.bookingDate}</p>
               </div>
               <div className="bg-primary/10 rounded-lg p-2.5">
-                <p className="text-[10px] text-muted-foreground">Time</p>
-                <p className="text-xs font-medium text-foreground mt-0.5">{item.bookingTime}</p>
+                <p className="type-primary-body-b3 text-muted-foreground">Time</p>
+                <p className="type-primary-body-b3 font-medium text-foreground mt-0.5">{item.bookingTime}</p>
               </div>
             </div>
 
@@ -89,8 +89,8 @@ const LabAssistantBookingMobileCard = ({
               <div className="flex gap-2 items-start">
                 <MapPin className="text-red-500 mt-0.5 flex-shrink-0" size={12} />
                 <div>
-                  <p className="text-[10px] text-muted-foreground">Address</p>
-                  <p className="text-[11px] text-foreground mt-0.5">{item.address}</p>
+                  <p className="type-primary-body-b3 text-muted-foreground">Address</p>
+                  <p className="type-primary-body-b3 text-foreground mt-0.5">{item.address}</p>
                 </div>
               </div>
             </div>

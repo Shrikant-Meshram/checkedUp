@@ -173,7 +173,7 @@ const SettlementPendingTable = ({
       ) : (
         <div className="rounded-xl border border-border bg-white">
           <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-            <table className="w-full min-w-[1100px] text-sm">
+            <table className="w-full min-w-[1100px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   {isAdmin && (

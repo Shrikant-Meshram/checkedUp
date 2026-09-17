@@ -69,13 +69,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="type-primary-label-l2 text-muted-foreground">{title}</p>
-        <p className="type-primary-heading-h2-medium leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className={`type-primary-label-l2 ${detailColor || 'text-muted-foreground'}`}>{detailTop}</p>
-        <p className="type-primary-label-l2 text-muted-foreground">{detailBottom}</p>
+        <p className={`type-primary-body-b3 ${detailColor || 'text-muted-foreground'}`}>{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
@@ -230,14 +230,14 @@ const UploadReportsManagePage = ({ bookings, isLoading, isError, onRefresh }) =>
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="type-primary-heading-h1-medium text-foreground">Upload Reports</h1>
+        <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Upload Reports</h1>
       </div>
 
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="type-primary-heading-h1-medium text-foreground">Upload Reports</h1>
-          <p className="mt-1 type-primary-body-b3 text-muted-foreground">Select a booking to upload its laboratory report.</p>
+          <h1 className="type-primary-heading-h1 !font-medium text-foreground">Upload Reports</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">Select a booking to upload its laboratory report.</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }} placeholder="Search upload reports..." />
@@ -341,11 +341,11 @@ const UploadReportsManagePage = ({ bookings, isLoading, isError, onRefresh }) =>
 
       {/* Content */}
       {isLoading ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b3 text-muted-foreground">Loading upload reports…</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">Loading upload reports…</div>
       ) : isError ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b3 text-destructive">Unable to load upload reports. Please try again.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-destructive">Unable to load upload reports. Please try again.</div>
       ) : sorted.length === 0 ? (
-        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b3 text-muted-foreground">No bookings match the selected filters.</div>
+        <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">No bookings match the selected filters.</div>
       ) : view === 'grid' ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visibleBookings.map((booking) => {
@@ -357,47 +357,47 @@ const UploadReportsManagePage = ({ bookings, isLoading, isError, onRefresh }) =>
                 <div className="p-4 pb-0">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3-medium`}>
+                      <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3`}>
                         {getInitials(booking.patientName)}
                       </span>
                       <div className="min-w-0">
-                        <h3 className="font-semibold text-foreground type-primary-body-b2 md:type-primary-body-b1-medium truncate" title={booking.patientName}>{booking.patientName}</h3>
-                        <p className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground">{booking.test?.title || booking.package?.title || '—'}</p>
+                        <h3 className="type-primary-body-b1-medium md:type-primary-body-b2-medium text-foreground truncate" title={booking.patientName}>{booking.patientName}</h3>
+                        <p className="type-primary-body-b3 text-muted-foreground">{booking.test?.title || booking.package?.title || '—'}</p>
                       </div>
                     </div>
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${statusStyle.bg} ${statusStyle.text}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                       {booking.status}
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-col flex-1 p-4 pt-3">
-                  <dl className="space-y-1.5 type-primary-body-b2 md:type-primary-body-b3">
+                  <dl className="space-y-1.5 type-primary-body-b1 md:type-primary-body-b2">
                     <div className="flex items-center justify-between">
-                      <span className="type-primary-label-l2 text-muted-foreground">Payment</span>
-                      <span className={`rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
+                      <span className="text-muted-foreground">Payment</span>
+                      <span className={`rounded-md px-2 py-0.5 type-primary-body-b2 ${paymentStyle.bg} ${paymentStyle.text}`}>{booking.paymentStatus}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="type-primary-label-l2 text-muted-foreground">Booking Date</span>
+                      <span className="text-muted-foreground">Booking Date</span>
                       <span className="font-medium text-foreground">{booking.bookingDate || '—'}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="type-primary-label-l2 text-muted-foreground">Report</span>
+                      <span className="text-muted-foreground">Report</span>
                       {hasReport ? (
                         <span className="inline-flex items-center gap-1 text-emerald-600">
                           <FileText size={12} />
-                          <span className="type-primary-label-l2 font-medium">Uploaded</span>
+                          <span className="type-primary-body-b2 font-medium">Uploaded</span>
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1 text-amber-600">
                           <Clock size={12} />
-                          <span className="type-primary-label-l2 font-medium">Pending</span>
+                          <span className="type-primary-body-b2 font-medium">Pending</span>
                         </span>
                       )}
                     </div>
                   </dl>
                   <div className="mt-auto pt-3 border-t border-border flex items-center justify-between">
-                    <span className="type-primary-label-l2 text-muted-foreground flex items-center gap-1">
+                    <span className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground flex items-center gap-1">
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       NABL Accredited Labs
                     </span>
@@ -426,7 +426,7 @@ const UploadReportsManagePage = ({ bookings, isLoading, isError, onRefresh }) =>
       ) : (
         <div className="rounded-xl border border-border bg-white">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[900px] text-sm">
+            <table className="w-full min-w-[900px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Patient Name</th>
@@ -448,13 +448,13 @@ const UploadReportsManagePage = ({ bookings, isLoading, isError, onRefresh }) =>
                       <td className="px-4 py-3 font-medium text-foreground">{booking.patientName || '—'}</td>
                       <td className="px-4 py-3 text-foreground">{booking.test?.title || booking.package?.title || '—'}</td>
                       <td className="px-4 py-3">
-                        <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                        <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2 ${statusStyle.bg} ${statusStyle.text}`}>
                           <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                           {booking.status}
                         </span>
                       </td>
                       <td className="px-4 py-3">
-                        <span className={`rounded-md px-2 py-0.5 type-primary-label-l2 font-medium ${paymentStyle.bg} ${paymentStyle.text}`}>
+                        <span className={`rounded-md px-2 py-0.5 type-primary-body-b2 ${paymentStyle.bg} ${paymentStyle.text}`}>
                           {booking.paymentStatus}
                         </span>
                       </td>
@@ -464,16 +464,16 @@ const UploadReportsManagePage = ({ bookings, isLoading, isError, onRefresh }) =>
                           <div className="flex items-center gap-1.5">
                             <span className="text-emerald-500"><FileText size={14} /></span>
                             <div>
-                              <p className="type-primary-body-b3 font-medium text-emerald-600">Uploaded</p>
-                              <p className="type-primary-label-l2 text-muted-foreground">{formatDate(booking.updatedAt || booking.createdAt)}</p>
+                              <p className="type-primary-body-b2 font-medium text-emerald-600">Uploaded</p>
+                              <p className="type-primary-body-b2 text-muted-foreground">{formatDate(booking.updatedAt || booking.createdAt)}</p>
                             </div>
                           </div>
                         ) : (
                           <div className="flex items-center gap-1.5">
                             <span className="text-amber-500"><Clock size={14} /></span>
                             <div>
-                              <p className="type-primary-body-b3 font-medium text-amber-600">Pending</p>
-                              <p className="type-primary-label-l2 text-muted-foreground">Upload pending</p>
+                              <p className="type-primary-body-b2 font-medium text-amber-600">Pending</p>
+                              <p className="type-primary-body-b2 text-muted-foreground">Upload pending</p>
                             </div>
                           </div>
                         )}
@@ -559,13 +559,13 @@ const UploadReportsManagePage = ({ bookings, isLoading, isError, onRefresh }) =>
             <CloudUpload size={36} className="text-muted-foreground" />
             {uploadFile ? (
               <div>
-                <p className="type-primary-body-b2 font-medium text-foreground">{uploadFile.name}</p>
-                <p className="type-primary-label-l2 text-muted-foreground mt-1">{(uploadFile.size / 1024 / 1024).toFixed(2)} MB</p>
+                <p className="type-primary-body-b2 text-foreground">{uploadFile.name}</p>
+                <p className="type-primary-body-b2 text-muted-foreground mt-1">{(uploadFile.size / 1024 / 1024).toFixed(2)} MB</p>
               </div>
             ) : (
               <div>
                 <p className="type-primary-body-b2 text-foreground">Click to upload or drag and drop</p>
-                <p className="type-primary-label-l2 text-muted-foreground mt-1">PDF, JPG, PNG up to 10MB</p>
+                <p className="type-primary-body-b2 text-muted-foreground mt-1">PDF, JPG, PNG up to 10MB</p>
               </div>
             )}
           </div>

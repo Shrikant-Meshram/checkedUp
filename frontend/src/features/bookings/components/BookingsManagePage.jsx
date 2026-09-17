@@ -108,7 +108,7 @@ const ASSISTANT_STATUS_STYLES = {
 
 const AssistantStatusBadge = ({ status }) => (
   <span
-    className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold inline-block ${
+    className={`px-2.5 py-0.5 rounded-full type-primary-body-b2 font-semibold inline-block ${
       ASSISTANT_STATUS_STYLES[status] || "bg-primary/10 text-muted-foreground"
     }`}
   >
@@ -182,7 +182,7 @@ const BookingDetailsModal = ({ booking, onClose }) => {
     <Modal open={!!booking} title="Booking Details" onClose={onClose} size="md">
       <div className="space-y-4">
         <div className="flex items-center gap-3">
-          <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white font-semibold text-sm`}>
+          <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${getAvatarColor(booking.patientName)} text-white type-primary-body-b2-medium`}>
             {getInitials(booking.patientName)}
           </span>
           <div>
@@ -205,7 +205,7 @@ const BookingDetailsModal = ({ booking, onClose }) => {
                 {booking.additionalTests.map((at, idx) => (
                   <div key={idx} className="flex items-center justify-between bg-purple-50 rounded-lg px-3 py-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold">{idx + 1}</span>
+                      <span className="w-5 h-5 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center type-primary-body-b3 font-bold">{idx + 1}</span>
                       <span className="type-primary-body-b3-medium text-foreground">{at.test?.title || 'Test'}</span>
                     </div>
                     <span className="font-mono type-primary-body-b3-medium text-purple-600">₹{at.price}</span>
@@ -221,7 +221,7 @@ const BookingDetailsModal = ({ booking, onClose }) => {
                 {booking.additionalPackages.map((ap, idx) => (
                   <div key={idx} className="flex items-center justify-between bg-blue-50 rounded-lg px-3 py-2">
                     <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[10px] font-bold">{idx + 1}</span>
+                      <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center type-primary-body-b3 font-bold">{idx + 1}</span>
                       <span className="type-primary-body-b3-medium text-foreground">{ap.package?.title || 'Package'}</span>
                     </div>
                     <span className="font-mono type-primary-body-b3-medium text-blue-600">₹{ap.price}</span>
@@ -1016,21 +1016,21 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         {!hiddenColumns.patient && (
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-2.5">
-                            <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${getAvatarColor(booking.patientName)} text-white font-semibold text-[10px]`}>
+                            <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${getAvatarColor(booking.patientName)} text-white type-primary-body-b3`}>
                               {getInitials(booking.patientName)}
                             </span>
                             <div>
                               <p className="font-medium text-foreground">{booking.patientName}</p>
-                              <p className="text-xs text-muted-foreground">{booking.phone}</p>
+                              <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
                             </div>
                           </div>
                         </td>
                         )}
                         {!hiddenColumns.test && (
                         <td className="px-4 py-3">
-                          <span className="text-sm font-semibold text-foreground">{booking.test?.title || booking.package?.title || 'N/A'}</span>
+                          <span className="type-primary-body-b2-medium text-foreground">{booking.test?.title || booking.package?.title || 'N/A'}</span>
                           {(booking.test?.city || booking.package?.city) && (
-                            <p className="text-xs text-muted-foreground">{booking.test?.city || booking.package?.city}</p>
+                            <p className="type-primary-body-b3 text-muted-foreground">{booking.test?.city || booking.package?.city}</p>
                           )}
                         </td>
                         )}
@@ -1039,8 +1039,8 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         )}
                         {!hiddenColumns.date && (
                         <td className="px-4 py-3">
-                          <span className="text-sm text-foreground">{booking.bookingDate}</span>
-                          <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
+                          <span className="type-primary-body-b2 text-foreground">{booking.bookingDate}</span>
+                          <div className="flex items-center gap-1 type-primary-body-b3 text-muted-foreground mt-0.5">
                             <Clock size={10} />
                             <span>{booking.bookingTime}</span>
                           </div>
@@ -1088,7 +1088,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                                     e.stopPropagation()
                                     setSampleImagesModal({ open: true, images: booking.sampleImages, bookingId: id })
                                   }}
-                                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-primary text-white rounded-full flex items-center justify-center text-[10px] font-bold shadow hover:bg-primary/90 transition"
+                                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-primary text-white rounded-full flex items-center justify-center type-primary-body-b3 font-bold shadow hover:bg-primary/90 transition"
                                 >
                                   +{booking.sampleImages.length - 1}
                                 </button>

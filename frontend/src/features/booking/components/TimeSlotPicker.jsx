@@ -52,8 +52,8 @@ export default function TimeSlotPicker({ selectedTime, onTimeChange }) {
       {sections.map(({ label, icon, slots }) => (
         <div key={label}>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-xs">{icon}</span>
-            <span className="text-xs font-semibold text-foreground">{label}</span>
+            <span className="type-primary-body-b3">{icon}</span>
+            <span className="type-primary-body-b3 font-semibold text-foreground">{label}</span>
           </div>
           <div className="grid grid-cols-4 gap-1.5">
             {slots.map(({ time }) => (
@@ -61,7 +61,7 @@ export default function TimeSlotPicker({ selectedTime, onTimeChange }) {
                 key={time}
                 type="button"
                 onClick={() => onTimeChange(time)}
-                className={`py-1.5 px-2 rounded-lg border text-[11px] font-medium transition
+                className={`py-1.5 px-2 rounded-lg border type-primary-body-b3 font-medium transition
                   ${selectedTime === time
                     ? 'bg-primary text-primary-foreground border-primary'
                     : 'border-border hover:border-primary/40 text-foreground'
