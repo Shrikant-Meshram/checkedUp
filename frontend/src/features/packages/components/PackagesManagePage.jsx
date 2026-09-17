@@ -87,15 +87,15 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort, onHide }) => {
       {open && (
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
-          <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+          <div className="absolute left-0 top-full mt-1 bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
             {onHide && (
-              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={() => { onHide(); setOpen(false) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <EyeOff size={14} /> Hide
               </button>
             )}
@@ -113,22 +113,22 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b2 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b2 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b2 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>
 )
 
 const DetailRow = ({ label, value, valueClass = 'text-foreground' }) => (
-  <div className="flex items-center justify-between py-2 text-sm">
+  <div className="flex items-center justify-between py-2 type-primary-body-b2">
     <span className="text-muted-foreground">{label}</span>
-    <span className={`font-medium ${valueClass}`}>{value}</span>
+    <span className={`type-primary-body-b2-medium ${valueClass}`}>{value}</span>
   </div>
 )
 
@@ -138,19 +138,19 @@ const PackageDetailsPanel = ({ pkg, onClose }) => {
   return (
     <Modal open={!!pkg} title="Package Details" onClose={onClose} size="md">
       <div className="flex items-start gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-500"><Package size={22} /></span>
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-success/10 text-success"><Package size={22} /></span>
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <p className="font-semibold text-foreground">{getTitle(pkg)}</p>
-            <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${isActive(pkg) ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>{isActive(pkg) ? 'Active' : 'Inactive'}</span>
+            <p className="type-primary-body-b1-medium text-foreground">{getTitle(pkg)}</p>
+            <span className={`rounded-md px-2 py-0.5 type-primary-body-b2 ${isActive(pkg) ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>{isActive(pkg) ? 'Active' : 'Inactive'}</span>
           </div>
-          <span className={`mt-1.5 inline-block rounded-md px-2 py-0.5 text-xs font-medium ${catColor.bg} ${catColor.text}`}>{getCategory(pkg)}</span>
+          <span className={`mt-1.5 inline-block rounded-md px-2 py-0.5 type-primary-body-b2 ${catColor.bg} ${catColor.text}`}>{getCategory(pkg)}</span>
         </div>
       </div>
       <div className="mt-4 divide-y divide-border border-t border-border">
         <DetailRow label="Price" value={formatPrice(pkg.price)} />
         <DetailRow label="Tests Included" value={pkg.testsIncluded?.length || 0} />
-        <div className="py-2 text-sm">
+        <div className="py-2 type-primary-body-b2">
           <span className="text-muted-foreground">Description</span>
           <p className="mt-1 text-foreground">{pkg.description || '—'}</p>
         </div>
@@ -322,7 +322,7 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
-        <h1 className="text-2xl font-bold text-foreground">Packages</h1>
+        <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Packages</h1>
         {isPatient ? (
           <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
             <ShoppingCart size={18} className="mr-2" />Book a Test
@@ -339,8 +339,8 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
       {/* Desktop Header */}
       <div className="hidden sm:flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Packages</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Manage and view all health-check packages</p>
+          <h1 className="type-primary-heading-h0 !font-medium text-foreground">Packages</h1>
+          <p className="mt-1 type-primary-body-b2 text-muted-foreground">Manage and view all health-check packages</p>
         </div>
         <div className="flex items-center gap-2">
           <SearchInput value={search} onChange={(event) => { setSearch(event.target.value); setPage(1) }} placeholder="Search packages by name..." />
@@ -443,7 +443,7 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
       </>
       )}
 
-      {isLoading ? <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading packages…</div> : isError ? <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-destructive">Unable to load packages. Please try again.</div> : visiblePackages.length === 0 ? <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">No packages match the selected filters.</div> : view === 'grid' ? (
+      {isLoading ? <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-muted-foreground">Loading packages…</div> : isError ? <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-destructive">Unable to load packages. Please try again.</div> : visiblePackages.length === 0 ? <div className="rounded-xl border border-border bg-card p-12 text-center type-primary-body-b2 text-muted-foreground">No packages match the selected filters.</div> : view === 'grid' ? (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visiblePackages.map((pkg, index) => {
             const id = getPackageId(pkg, index)
@@ -462,8 +462,8 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
         </div>
       ) : (
         <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-          <div className="rounded-xl border border-border bg-white">
-            <table className="w-full min-w-[820px] text-sm">
+          <div className="rounded-xl border border-border bg-card">
+            <table className="w-full min-w-[820px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   <SortableHeader title="Package Name" sortKey="name" sortConfig={sortConfig} onSort={handleSort} onHide={() => setHiddenColumns(prev => ({ ...prev, name: true }))} />
@@ -480,11 +480,11 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
                   const catColor = getCategoryColor(getCategory(pkg))
                   return (
                     <tr key={id} onClick={() => setSelectedPackageId(id)} className={`cursor-pointer border-t border-border transition hover:bg-accent/40 ${selectedPackageId === id ? 'bg-primary/5' : ''}`}>
-                      {!hiddenColumns.name && <td className="px-4 py-3 font-medium text-foreground">{getTitle(pkg)}</td>}
-                      {!hiddenColumns.category && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 text-xs font-medium ${catColor.bg} ${catColor.text}`}>{getCategory(pkg)}</span></td>}
+                      {!hiddenColumns.name && <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">{getTitle(pkg)}</td>}
+                      {!hiddenColumns.category && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 type-primary-body-b2 ${catColor.bg} ${catColor.text}`}>{getCategory(pkg)}</span></td>}
                       {!hiddenColumns.tests && <td className="px-4 py-3">{pkg.testsIncluded?.length || 0} tests</td>}
                       {!hiddenColumns.price && <td className="px-4 py-3">{pkg.price != null ? Number(pkg.price).toLocaleString('en-IN') : '—'}</td>}
-                      {!hiddenColumns.status && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 text-xs ${isActive(pkg) ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>{isActive(pkg) ? 'Active' : 'Inactive'}</span></td>}
+                      {!hiddenColumns.status && <td className="px-4 py-3"><span className={`rounded-md px-2 py-1 type-primary-body-b2 ${isActive(pkg) ? 'bg-success/10 text-success' : 'bg-destructive/10 text-destructive'}`}>{isActive(pkg) ? 'Active' : 'Inactive'}</span></td>}
                       <td className="px-4 py-3" onClick={(event) => event.stopPropagation()}>
                         <div className="relative">
                           <button
@@ -565,24 +565,24 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setMenuOpen(null)} />
           <div
-            className="fixed bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]"
+            className="fixed bg-card border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[140px]"
             style={{ top: menuOpen.top, left: menuOpen.left }}
           >
-            <button onClick={(e) => { e.stopPropagation(); setSelectedPackageId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={(e) => { e.stopPropagation(); setSelectedPackageId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <Eye size={14} /> View
             </button>
             <Can resource="packages" action="update">
-              <button onClick={(e) => { e.stopPropagation(); handleEdit(menuOpen.pkg); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={(e) => { e.stopPropagation(); handleEdit(menuOpen.pkg); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <Pencil size={14} /> Edit
               </button>
             </Can>
             <Can resource="packages" action="create">
-              <button onClick={(e) => { e.stopPropagation(); handleDuplicate(menuOpen.pkg); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+              <button onClick={(e) => { e.stopPropagation(); handleDuplicate(menuOpen.pkg); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <Copy size={14} /> Duplicate
               </button>
             </Can>
             <Can resource="packages" action="delete">
-              <button onClick={(e) => { e.stopPropagation(); handleDelete(menuOpen.pkg); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 w-full text-left">
+              <button onClick={(e) => { e.stopPropagation(); handleDelete(menuOpen.pkg); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-destructive hover:bg-destructive/10 w-full text-left">
                 <Trash2 size={14} /> Delete
               </button>
             </Can>
