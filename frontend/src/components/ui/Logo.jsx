@@ -12,7 +12,7 @@ const Logo = ({ variant = 'default', className = '' }) => {
         <FlaskConical size={18} className={isWhite ? 'text-primary' : 'text-white'} />
       </div>
       <div className="flex flex-col leading-none">
-        <span className={`font-heading font-bold text-lg leading-tight ${isWhite ? 'text-white' : 'text-foreground'}`}>
+        <span className={`font-heading font-bold type-primary-heading-h2 leading-tight ${isWhite ? 'text-white' : 'text-foreground'}`}>
           Checked <span className={isWhite ? 'text-primary' : 'text-primary'}>Up</span>
         </span>
         <span className={`text-[9px] font-semibold tracking-wider uppercase ${isWhite ? 'text-primary' : 'text-primary'}`}>

@@ -29,7 +29,7 @@ const LabAssistantRecentActivity = ({ data }) => {
         <h3 className="type-primary-heading-h3-medium text-foreground">Recent Activity</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_ASSISTANT_SAMPLE_PICKUPS)}
-          className="text-xs font-semibold text-primary hover:underline"
+          className="type-primary-body-b3-medium text-primary hover:underline"
         >
           View All
         </button>
@@ -39,7 +39,7 @@ const LabAssistantRecentActivity = ({ data }) => {
         {(data || []).map((item) => (
           <div key={item._id} className="flex items-start gap-3">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${activityIcons[item.type] || 'bg-gray-100 text-gray-600'}`}>
-              <span className="text-xs font-bold">{item.type?.charAt(0) || 'A'}</span>
+              <span className="type-primary-body-b3-medium">{item.type?.charAt(0) || 'A'}</span>
             </div>
             <div className="min-w-0 flex-1">
               <p className="type-primary-body-b2 text-foreground">
@@ -56,7 +56,7 @@ const LabAssistantRecentActivity = ({ data }) => {
           </div>
         ))}
         {(!data || data.length === 0) && (
-          <p className="text-center text-muted-foreground text-xs py-4">No recent activity</p>
+          <p className="text-center text-muted-foreground type-primary-body-b3 py-4">No recent activity</p>
         )}
       </div>
     </div>

@@ -37,7 +37,7 @@ const AdminDashboard = () => {
         <Spinner />
       ) : error ? (
         <div className="bg-red-50 border border-red-200 rounded-xl p-5 text-center mt-4">
-          <p className="text-red-600 text-xs font-medium">Failed to load dashboard data.</p>
+          <p className="text-red-600 type-primary-body-b3-medium">Failed to load dashboard data.</p>
           <Button onClick={() => refetch()} variant="outline" className="mt-3" size="sm">Retry</Button>
         </div>
       ) : (

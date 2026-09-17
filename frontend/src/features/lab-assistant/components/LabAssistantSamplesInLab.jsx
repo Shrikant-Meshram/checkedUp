@@ -53,7 +53,7 @@ const LabAssistantSamplesInLab = ({ data }) => {
                   }) : 'N/A'}
                 </td>
                 <td className="py-2.5 sm:py-3">
-                  <span className={`px-2 sm:px-2.5 py-0.5 rounded-md type-primary-body-b3 sm:text-[11px] font-medium ${statusStyles[item.status] || 'bg-gray-50 text-gray-600'}`}>
+                  <span className={`px-2 sm:px-2.5 py-0.5 rounded-md type-primary-body-b3 sm:type-primary-body-b3 font-medium ${statusStyles[item.status] || 'bg-gray-50 text-gray-600'}`}>
                     {item.status}
                   </span>
                 </td>

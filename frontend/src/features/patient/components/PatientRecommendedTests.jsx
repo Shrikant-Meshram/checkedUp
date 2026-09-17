@@ -33,7 +33,7 @@ const PatientRecommendedTests = ({ data }) => {
               className="rounded-xl border border-border p-4 hover:shadow-md transition-all duration-200"
             >
               <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-3">
-                <span className="text-xl">{testIcons[index % testIcons.length]}</span>
+                <span className="type-primary-heading-h3-medium">{testIcons[index % testIcons.length]}</span>
               </div>
               <p className="type-primary-body-b2-medium text-foreground truncate">{test.title}</p>
               <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Includes {test.testsCount} Test{test.testsCount > 1 ? 's' : ''}</p>

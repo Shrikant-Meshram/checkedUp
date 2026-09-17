@@ -19,9 +19,9 @@ const EmptyState = ({
           <img src={emptyPageImg} alt="Empty state" className="w-full h-full object-contain" />
         )}
       </div>
-      <h3 className="font-heading font-bold text-xl text-gray-900 mb-2">{title}</h3>
+      <h3 className="font-heading font-bold type-primary-heading-h3-medium text-gray-900 mb-2">{title}</h3>
       {description && (
-        <p className="text-gray-500 text-sm text-center max-w-md mb-6">{description}</p>
+        <p className="text-gray-500 type-primary-body-b2 text-center max-w-md mb-6">{description}</p>
       )}
       {actionLabel && onAction && (
         <button

@@ -273,7 +273,7 @@ const LabOwnerDashboard = () => {
           </div>
         ) : dashboardError ? (
           <div className="bg-destructive/10 border border-destructive/20 rounded-xl p-5 text-center">
-            <p className="text-destructive text-xs font-medium">Failed to load dashboard data. Please try again.</p>
+            <p className="text-destructive type-primary-body-b3-medium">Failed to load dashboard data. Please try again.</p>
           </div>
         ) : (
           <>
@@ -392,11 +392,11 @@ const LabOwnerDashboard = () => {
             />
             {/* Document Uploads */}
             <div className="space-y-3">
-              <p className="text-sm font-medium text-foreground">Documents</p>
+              <p className="type-primary-body-b2 font-medium text-foreground">Documents</p>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                   <div className="p-3 pb-0">
-                    <span className="text-xs font-medium text-muted-foreground">ID Proof</span>
+                    <span className="type-primary-body-b3-medium text-muted-foreground">ID Proof</span>
                   </div>
                   <div className="p-3 pt-2">
                     <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -407,21 +407,21 @@ const LabOwnerDashboard = () => {
                         onChange={(e) => setIdProofFile(e.target.files?.[0] || null)}
                       />
                       <Upload size={16} className="text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground">
+                      <span className="type-primary-body-b3 text-muted-foreground">
                         {idProofFile ? idProofFile.name : 'Upload ID proof'}
                       </span>
                     </label>
                   </div>
                   {idProofFile && (
                     <div className="px-3 pb-3 pt-0 flex items-center justify-between border-t border-border mt-1">
-                      <span className="text-[10px] text-muted-foreground truncate">{idProofFile.name}</span>
-                      <button type="button" onClick={() => setIdProofFile(null)} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                      <span className="type-primary-body-b3 text-muted-foreground truncate">{idProofFile.name}</span>
+                      <button type="button" onClick={() => setIdProofFile(null)} className="type-primary-body-b3 text-red-500 hover:underline shrink-0">Remove</button>
                     </div>
                   )}
                 </div>
                 <div className="flex flex-col rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                   <div className="p-3 pb-0">
-                    <span className="text-xs font-medium text-muted-foreground">Other Documents (max 5)</span>
+                    <span className="type-primary-body-b3-medium text-muted-foreground">Other Documents (max 5)</span>
                   </div>
                   <div className="p-3 pt-2">
                     <label className="flex items-center gap-2 border-2 border-dashed border-border rounded-lg p-3 cursor-pointer hover:bg-accent/50 transition">
@@ -439,7 +439,7 @@ const LabOwnerDashboard = () => {
                         }}
                       />
                       <Upload size={16} className="text-muted-foreground" />
-                      <span className="text-xs text-muted-foreground">
+                      <span className="type-primary-body-b3 text-muted-foreground">
                         {otherDocsFiles.length > 0 ? `${otherDocsFiles.length}/5 file(s) selected` : 'Upload documents'}
                       </span>
                     </label>
@@ -448,8 +448,8 @@ const LabOwnerDashboard = () => {
                     <div className="px-3 pb-3 pt-0 border-t border-border mt-1 space-y-1.5">
                       {otherDocsFiles.map((f, i) => (
                         <div key={i} className="flex items-center justify-between">
-                          <span className="text-[10px] text-muted-foreground truncate">{f.name}</span>
-                          <button type="button" onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="text-[10px] text-red-500 hover:underline shrink-0">Remove</button>
+                          <span className="type-primary-body-b3 text-muted-foreground truncate">{f.name}</span>
+                          <button type="button" onClick={() => setOtherDocsFiles((prev) => prev.filter((_, idx) => idx !== i))} className="type-primary-body-b3 text-red-500 hover:underline shrink-0">Remove</button>
                         </div>
                       ))}
                     </div>

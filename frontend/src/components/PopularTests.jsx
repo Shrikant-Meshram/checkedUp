@@ -210,7 +210,7 @@ const PopularTests = () => {
           <div className="mt-6 sm:hidden">
             <button
               onClick={() => navigate(ROUTES.TESTS)}
-              className="flex items-center justify-center gap-1 w-full text-sm font-semibold text-primary border border-primary rounded-lg py-2 hover:bg-primary hover:text-white transition"
+              className="flex items-center justify-center gap-1 w-full type-primary-body-b2 font-semibold text-primary border border-primary rounded-lg py-2 hover:bg-primary hover:text-white transition"
             >
               View all tests
               <ArrowRight size={16} />

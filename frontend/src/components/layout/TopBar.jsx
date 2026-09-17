@@ -41,7 +41,7 @@ const TopBar = ({ onToggleSidebar }) => {
           <input
             type="text"
             placeholder="Search tests, packages, bookings..."
-            className="bg-transparent text-sm text-foreground placeholder-muted-foreground outline-none w-full"
+            className="bg-transparent type-primary-body-b2 text-foreground placeholder-muted-foreground outline-none w-full"
           />
         </div> */}
       </div>

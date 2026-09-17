@@ -85,7 +85,7 @@ const AdminPackagesSection = ({ open, onClose, onCreated, allTests }) => {
               <h3 className="type-primary-body-b3-medium text-foreground">Select Tests</h3>
               <p className="type-primary-body-b3 text-muted-foreground mt-0.5">Choose tests to include in package</p>
             </div>
-            <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-semibold w-fit">
+            <div className="bg-primary/10 text-primary px-3 py-1 rounded-full type-primary-body-b3 font-semibold w-fit">
               {packageData.testsIncluded.length} Tests Selected
             </div>
           </div>
@@ -131,7 +131,7 @@ const AdminPackagesSection = ({ open, onClose, onCreated, allTests }) => {
                         testsIncluded: packageData.testsIncluded.filter((item) => item !== id),
                       })
                     }}
-                    className="text-red-500 hover:text-red-700 text-sm font-bold"
+                    className="text-red-500 hover:text-red-700 type-primary-body-b2 font-bold"
                   >
                     ×
                   </button>

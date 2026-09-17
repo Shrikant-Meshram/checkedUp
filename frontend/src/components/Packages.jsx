@@ -252,7 +252,7 @@ const PackageTableRow = ({ item, handleBookNow, onViewDetails }) => {
             <img src={item.image} alt={item.title} className="w-10 h-10 rounded-lg object-cover border border-border" />
           ) : (
             <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
-              <span className="text-lg">🩺</span>
+              <span className="type-primary-heading-h2">🩺</span>
             </div>
           )}
           <span className="type-primary-body-b2-medium text-foreground">{item.title}</span>
@@ -520,7 +520,7 @@ const Packages = ({ showAllPackages = false }) => {
               {activeFilterCount > 0 && (
                 <button
                   onClick={clearFilters}
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm text-primary hover:bg-primary/5 rounded-lg transition"
+                  className="flex items-center gap-2 px-4 py-2.5 type-primary-body-b2 text-primary hover:bg-primary/5 rounded-lg transition"
                 >
                   <RefreshCw size={16} />
                   <span>Clear</span>
@@ -556,7 +556,7 @@ const Packages = ({ showAllPackages = false }) => {
                 ))
               ) : (
                   <div className="bg-card border border-border rounded-xl overflow-hidden">
-                  <table className="w-full min-w-[800px] text-sm">
+                  <table className="w-full min-w-[800px] type-primary-body-b2">
                     <thead className="bg-accent text-left text-muted-foreground">
                       <tr>
                         <th className="px-4 py-3 type-primary-body-b3-medium">Package Name</th>
@@ -599,7 +599,7 @@ const Packages = ({ showAllPackages = false }) => {
           ) : (
             <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[800px] text-sm">
+                <table className="w-full min-w-[800px] type-primary-body-b2">
                   <thead className="bg-accent text-left text-muted-foreground">
                     <tr>
                       {[

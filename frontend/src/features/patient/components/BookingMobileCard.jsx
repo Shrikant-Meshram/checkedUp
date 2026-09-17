@@ -19,8 +19,8 @@ const BookingMobileCard = ({ booking, openManageModal, setPreviewReport }) => {
       <div className="p-4">
         <div className="flex justify-between items-start">
           <div>
-            <h2 className="text-xs font-medium text-foreground">{booking.patientName}</h2>
-            <p className="text-[10px] text-muted-foreground mt-0.5 flex items-center gap-1">
+            <h2 className="type-primary-body-b3-medium text-foreground">{booking.patientName}</h2>
+            <p className="type-primary-body-b3 text-muted-foreground mt-0.5 flex items-center gap-1">
               <Phone size={11} /> {booking.phone}
             </p>
           </div>
@@ -28,12 +28,12 @@ const BookingMobileCard = ({ booking, openManageModal, setPreviewReport }) => {
         </div>
 
         <div className="mt-3 bg-accent rounded-lg p-3">
-          <p className="text-[10px] text-muted-foreground mb-1">Test / Package</p>
+          <p className="type-primary-body-b3 text-muted-foreground mb-1">Test / Package</p>
           <div className="flex justify-between items-center gap-3">
-            <h3 className="text-xs font-medium text-foreground">
+            <h3 className="type-primary-body-b3-medium text-foreground">
               {booking?.test?.title || booking?.package?.title || 'N/A'}
             </h3>
-            <p className="font-mono font-bold text-primary text-sm whitespace-nowrap">
+            <p className="font-mono font-bold text-primary type-primary-body-b2 whitespace-nowrap">
               ₹{booking?.test?.price || booking?.package?.price || 0}
             </p>
           </div>
@@ -41,18 +41,18 @@ const BookingMobileCard = ({ booking, openManageModal, setPreviewReport }) => {
 
         <div className="grid grid-cols-2 gap-2 mt-2">
           <div className="bg-primary/10 rounded-lg p-3">
-            <p className="text-[10px] text-muted-foreground">Date</p>
-            <h3 className="text-xs font-medium text-foreground mt-0.5">{booking.bookingDate}</h3>
+            <p className="type-primary-body-b3 text-muted-foreground">Date</p>
+            <h3 className="type-primary-body-b3-medium text-foreground mt-0.5">{booking.bookingDate}</h3>
           </div>
           <div className="bg-primary/10 rounded-lg p-3">
-            <p className="text-[10px] text-muted-foreground">Time</p>
-            <h3 className="text-xs font-medium text-foreground mt-0.5">{booking.bookingTime}</h3>
+            <p className="type-primary-body-b3 text-muted-foreground">Time</p>
+            <h3 className="type-primary-body-b3-medium text-foreground mt-0.5">{booking.bookingTime}</h3>
           </div>
         </div>
 
         <div className="mt-2 bg-primary/10 rounded-lg p-3">
           <div className="flex justify-between items-center">
-            <span className="text-[10px] text-muted-foreground">Payment Status</span>
+            <span className="type-primary-body-b3 text-muted-foreground">Payment Status</span>
             <Badge
               status={
                 booking.paymentStatus === PAYMENT_STATUS.PAID
@@ -66,8 +66,8 @@ const BookingMobileCard = ({ booking, openManageModal, setPreviewReport }) => {
         </div>
 
         <div className="mt-2 bg-accent rounded-lg p-3">
-          <p className="text-[10px] text-muted-foreground">Service Address</p>
-          <p className="text-[11px] text-foreground mt-1">
+          <p className="type-primary-body-b3 text-muted-foreground">Service Address</p>
+          <p className="type-primary-body-b3 text-foreground mt-1">
             {booking.flatNo}, {booking.address}, {booking.city}
             {' - '}
             {booking.pincode}
@@ -77,7 +77,7 @@ const BookingMobileCard = ({ booking, openManageModal, setPreviewReport }) => {
         {booking.report && (
           <button
             onClick={() => setPreviewReport(booking.report)}
-            className="mt-3 w-full flex justify-center bg-primary hover:bg-primary/90 text-primary-foreground py-2 rounded-lg font-medium text-xs transition"
+            className="mt-3 w-full flex justify-center bg-primary hover:bg-primary/90 text-primary-foreground py-2 rounded-lg type-primary-body-b3-medium transition"
           >
             <FileText className="inline mr-1.5" size={13} />
             View Report

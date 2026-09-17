@@ -11,7 +11,7 @@ const LabAssistantNotices = () => {
         <h3 className="type-primary-heading-h3-medium text-foreground">Important Notices</h3>
         <button
           onClick={() => navigate(ROUTES.LAB_ASSISTANT)}
-          className="text-xs font-semibold text-primary hover:underline"
+          className="type-primary-body-b3-medium text-primary hover:underline"
         >
           View All Notices
         </button>
@@ -20,7 +20,7 @@ const LabAssistantNotices = () => {
       <div className="space-y-3">
         <div className="p-3 rounded-lg bg-amber-50 border border-amber-200">
           <div className="flex items-start gap-2">
-            <span className="text-amber-600 text-sm mt-0.5">⏰</span>
+            <span className="text-amber-600 type-primary-body-b2 mt-0.5">⏰</span>
             <div>
               <p className="type-primary-body-b2-medium text-amber-800">Timely Sample Delivery</p>
               <p className="type-primary-body-b3 text-amber-700 mt-1">
@@ -32,7 +32,7 @@ const LabAssistantNotices = () => {
 
         <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
           <div className="flex items-start gap-2">
-            <span className="text-blue-600 text-sm mt-0.5">📋</span>
+            <span className="text-blue-600 type-primary-body-b2 mt-0.5">📋</span>
             <div>
               <p className="type-primary-body-b2-medium text-blue-800">New Test Procedures</p>
               <p className="type-primary-body-b3 text-blue-700 mt-1">
@@ -44,7 +44,7 @@ const LabAssistantNotices = () => {
 
         <div className="p-3 rounded-lg bg-rose-50 border border-rose-200">
           <div className="flex items-start gap-2">
-            <span className="text-rose-600 text-sm mt-0.5">⚠️</span>
+            <span className="text-rose-600 type-primary-body-b2 mt-0.5">⚠️</span>
             <div>
               <p className="type-primary-body-b2-medium text-rose-800">Inventory Alert</p>
               <p className="type-primary-body-b3 text-rose-700 mt-1">

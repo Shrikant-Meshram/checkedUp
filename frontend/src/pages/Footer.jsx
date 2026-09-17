@@ -217,7 +217,7 @@ export default function Footer() {
                 <stat.icon size={18} className={stat.iconColor} />
               </div>
               <div>
-                <p className="type-primary-body-b1-medium md:text-lg md:font-bold text-foreground">{stat.value}</p>
+                <p className="type-primary-body-b1-medium md:type-primary-heading-h2 md:font-bold text-foreground">{stat.value}</p>
                 <p className="type-primary-body-b2 text-muted-foreground">{stat.label}</p>
               </div>
             </div>

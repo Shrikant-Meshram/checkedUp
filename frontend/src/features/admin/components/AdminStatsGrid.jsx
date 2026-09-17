@@ -106,7 +106,7 @@ const AdminStatsGrid = ({
               </div>
               <div>
                 <h3 className="font-primary text-base text-foreground">Create Test</h3>
-                <p className="text-muted-foreground text-[11px] mt-0.5">Add laboratory tests</p>
+                <p className="text-muted-foreground type-primary-body-b3 mt-0.5">Add laboratory tests</p>
               </div>
             </div>
           </button>

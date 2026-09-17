@@ -412,7 +412,7 @@ const TestsPage = () => {
             /* Table View */
             <div className="rounded-xl border border-border bg-card">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[820px] text-sm">
+                <table className="w-full min-w-[820px] type-primary-body-b2">
                   <thead className="bg-accent text-left text-muted-foreground">
                     <tr>
                       {[

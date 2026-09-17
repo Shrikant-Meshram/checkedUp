@@ -59,7 +59,7 @@ const BookingsTable = ({
 
   const SortHeader = ({ label, sortKey }) => (
     <th 
-      className="text-left px-5 py-4 text-xs font-semibold text-muted-foreground cursor-pointer hover:bg-accent transition-colors select-none group"
+      className="text-left px-5 py-4 type-primary-body-b3-medium text-muted-foreground cursor-pointer hover:bg-accent transition-colors select-none group"
       onClick={() => handleSort(sortKey)}
     >
       <div className="flex items-center gap-1.5">
@@ -84,19 +84,19 @@ const BookingsTable = ({
               <SortHeader label="Test/Package" sortKey="testTitle" />
               {showPatient && <SortHeader label="Patient" sortKey="patientName" />}
               <SortHeader label="Date" sortKey="bookingDate" />
-              <th className="text-left px-5 py-4 text-xs font-semibold text-muted-foreground">Time</th>
+              <th className="text-left px-5 py-4 type-primary-body-b3-medium text-muted-foreground">Time</th>
               <SortHeader label="Status" sortKey="status" />
               {isAdmin && (
-                <th className="text-left px-5 py-4 text-xs font-semibold text-muted-foreground">Assigned Lab</th>
+                <th className="text-left px-5 py-4 type-primary-body-b3-medium text-muted-foreground">Assigned Lab</th>
               )}
               {showPayment && <SortHeader label="Payment" sortKey="paymentStatus" />}
               {showAssistant && (
-                <th className="text-left px-5 py-4 text-xs font-semibold text-muted-foreground">Assistant</th>
+                <th className="text-left px-5 py-4 type-primary-body-b3-medium text-muted-foreground">Assistant</th>
               )}
               {showReport && (
-                <th className="text-left px-5 py-4 text-xs font-semibold text-muted-foreground">Report</th>
+                <th className="text-left px-5 py-4 type-primary-body-b3-medium text-muted-foreground">Report</th>
               )}
-              <th className="text-left px-5 py-4 text-xs font-semibold text-muted-foreground w-24">
+              <th className="text-left px-5 py-4 type-primary-body-b3-medium text-muted-foreground w-24">
                 {isAdmin ? 'Edit' : 'Actions'}
               </th>
             </tr>
@@ -104,19 +104,19 @@ const BookingsTable = ({
           <tbody className="divide-y divide-border">
             {sortedBookings.map((item) => (
               <tr key={item._id} className="hover:bg-accent/50 transition-colors group">
-                <td className="px-5 py-4 text-sm font-semibold text-foreground">
+                <td className="px-5 py-4 type-primary-body-b2 text-foreground">
                   {item?.test?.title || item?.package?.title}
                 </td>
                 
                 {showPatient && (
                   <td className="px-5 py-4">
-                    <div className="font-semibold text-foreground text-sm">{item.patientName}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">{item.phone}</div>
+                    <div className="type-primary-body-b2 text-foreground">{item.patientName}</div>
+                    <div className="type-primary-body-b3 text-muted-foreground mt-0.5">{item.phone}</div>
                   </td>
                 )}
                 
-                <td className="px-5 py-4 text-sm text-muted-foreground">{item.bookingDate}</td>
-                <td className="px-5 py-4 text-sm text-muted-foreground">{item.bookingTime}</td>
+                <td className="px-5 py-4 type-primary-body-b2 text-muted-foreground">{item.bookingDate}</td>
+                <td className="px-5 py-4 type-primary-body-b2 text-muted-foreground">{item.bookingTime}</td>
                 
                 <td className="px-5 py-4">
                   <Badge status={item.status}>{item.status}</Badge>
@@ -124,17 +124,17 @@ const BookingsTable = ({
                 
                 {isAdmin && (
                   <td className="px-5 py-4">
-                    <div className="text-sm font-semibold text-foreground">
+                    <div className="type-primary-body-b2 text-foreground">
                       {item.labOwner?.name || <span className="text-muted-foreground font-normal">Not Assigned</span>}
                     </div>
                     {item.labOwner?.labAddress && (
                       <div className="flex items-center gap-1.5 mt-0.5">
                         <div className="group/tooltip relative">
-                          <p className="text-xs text-muted-foreground cursor-pointer flex items-center max-w-[180px]">
+                          <p className="type-primary-body-b3 text-muted-foreground cursor-pointer flex items-center max-w-[180px]">
                             <MapPin size={12} className="mr-1 shrink-0" />
                             <span className="truncate">{item.labOwner.labAddress}</span>
                           </p>
-                          <div className="absolute hidden group-hover/tooltip:block z-50 bg-foreground text-background text-xs rounded-lg p-2.5 w-64 left-0 top-5 shadow-xl">
+                          <div className="absolute hidden group-hover/tooltip:block z-50 bg-foreground text-background type-primary-body-b3 rounded-lg p-2.5 w-64 left-0 top-5 shadow-xl">
                             {item.labOwner.labAddress}
                           </div>
                         </div>
@@ -154,15 +154,15 @@ const BookingsTable = ({
                   <td className="px-5 py-4">
                     {item.assignedLabAssistant ? (
                       <>
-                        <div className="text-sm font-semibold text-foreground">
+<div className="type-primary-body-b2 text-foreground">
                           {item.assignedLabAssistant.name}
                         </div>
-                        <div className="text-xs text-muted-foreground mt-0.5">
+                        <div className="type-primary-body-b3 text-muted-foreground mt-0.5">
                           {item.assignedLabAssistant.email}
                         </div>
                       </>
                     ) : (
-                      <span className="text-muted-foreground text-sm">Unassigned</span>
+                      <span className="text-muted-foreground type-primary-body-b2">Unassigned</span>
                     )}
                   </td>
                 )}
@@ -177,7 +177,7 @@ const BookingsTable = ({
                         onClick={() => setPreviewReport(item.report)}
                       />
                     ) : (
-                      <span className="text-muted-foreground text-sm">Pending</span>
+                      <span className="text-muted-foreground type-primary-body-b2">Pending</span>
                     )}
                   </td>
                 )}
@@ -199,7 +199,7 @@ const BookingsTable = ({
                           expandableLabel="Manage"
                         />
                       ) : item.status === BOOKING_STATUS.CANCELLED ? (
-                        <span className="bg-red-50 text-red-600 px-2.5 py-1 rounded-md text-[11px] font-semibold">
+                        <span className="bg-red-50 text-red-600 px-2.5 py-1 rounded-md type-primary-body-b3-medium">
                           Cancelled
                         </span>
                       ) : null}
