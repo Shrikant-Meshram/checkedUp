@@ -42,8 +42,8 @@ const LabAssistantSampleModal = ({
             <div className="w-12 h-12 rounded-[10px] bg-primary/10 group-hover:bg-primary transition flex items-center justify-center text-primary group-hover:text-white mb-3">
               <Camera size={22} />
             </div>
-            <h2 className="text-sm font-serif text-foreground">Capture Sample</h2>
-            <p className="text-muted-foreground text-[10px] mt-1 leading-relaxed">
+            <h2 className="type-primary-body-b2-medium text-foreground">Capture Sample</h2>
+            <p className="text-muted-foreground type-primary-label-l2 mt-1 leading-relaxed">
               Open camera and capture blood tube image
             </p>
           </label>
@@ -61,8 +61,8 @@ const LabAssistantSampleModal = ({
             <div className="w-12 h-12 rounded-[10px] bg-primary/10 group-hover:bg-primary transition flex items-center justify-center text-primary group-hover:text-white mb-3">
               <Image size={22} />
             </div>
-            <h2 className="text-sm font-serif text-foreground">Upload Images</h2>
-            <p className="text-muted-foreground text-[10px] mt-1 leading-relaxed">
+            <h2 className="type-primary-body-b2-medium text-foreground">Upload Images</h2>
+            <p className="text-muted-foreground type-primary-label-l2 mt-1 leading-relaxed">
               Select multiple sample images from gallery
             </p>
           </label>
@@ -71,8 +71,8 @@ const LabAssistantSampleModal = ({
         {sampleImages.length > 0 && (
           <div className="mt-4">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xs font-medium text-foreground">Selected Images</h3>
-              <span className="text-[10px] bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">
+              <h3 className="type-primary-body-b3-medium text-foreground">Selected Images</h3>
+              <span className="type-primary-body-b3 bg-primary/10 text-primary px-2.5 py-0.5 rounded-full">
                 {sampleImages.length} Images
               </span>
             </div>
@@ -93,7 +93,7 @@ const LabAssistantSampleModal = ({
                     }}
                     className="absolute top-0 right-0 w-4 h-4 rounded-full flex items-center justify-center p-0"
                   >
-                    <span className="text-[10px] leading-none">✕</span>
+                    <span className="type-primary-body-b3 leading-none">✕</span>
                   </Button>
                 </div>
               ))}
@@ -102,7 +102,7 @@ const LabAssistantSampleModal = ({
               type="button"
               variant="ghost"
               onClick={() => setSampleImages([])}
-              className="mt-2 text-red-600 text-xs font-medium"
+              className="mt-2 text-red-600 type-primary-body-b3-medium"
             >
               Remove All
             </Button>

@@ -76,12 +76,12 @@ export const userColumns: ColumnDef<UserRecord, any>[] = [
         : "U"
       return (
         <div className="flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center font-bold text-xs shrink-0`}>
+          <div className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center font-bold type-primary-body-b3 shrink-0`}>
             {initials}
           </div>
           <div>
-            <h3 className="text-xs font-medium text-foreground">{user.name}</h3>
-            <p className="text-[10px] text-muted-foreground mt-0.5">{user.email}</p>
+            <h3 className="type-primary-body-b3-medium text-foreground">{user.name}</h3>
+            <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{user.email}</p>
           </div>
         </div>
       )
@@ -98,7 +98,7 @@ export const userColumns: ColumnDef<UserRecord, any>[] = [
       const displayRole = role?.replace(/_/g, " ")
       const colorClass = roleBadgeColor[role] || "bg-gray-100 text-gray-600"
       return (
-        <span className={`${colorClass} px-2.5 py-1 rounded-full text-[10px] font-semibold capitalize`}>
+        <span className={`${colorClass} px-2.5 py-1 rounded-full type-primary-body-b3 font-semibold capitalize`}>
           {displayRole}
         </span>
       )
@@ -111,7 +111,7 @@ export const userColumns: ColumnDef<UserRecord, any>[] = [
       <DataTableColumnHeader column={column} title="Phone" />
     ),
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground">{row.getValue("phone") || "—"}</span>
+      <span className="type-primary-body-b3 text-muted-foreground">{row.getValue("phone") || "—"}</span>
     ),
   },
   {
@@ -124,7 +124,7 @@ export const userColumns: ColumnDef<UserRecord, any>[] = [
       const user = row.original
       const isActive = user.role !== "inactive"
       return (
-        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold ${isActive ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}>
+        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full type-primary-body-b3 font-semibold ${isActive ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}>
           <span className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-green-500" : "bg-red-500"}`}></span>
           {isActive ? "Active" : "Inactive"}
         </div>
@@ -138,7 +138,7 @@ export const userColumns: ColumnDef<UserRecord, any>[] = [
       <DataTableColumnHeader column={column} title="Registered On" />
     ),
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground">{formatDate(row.getValue("createdAt"))}</span>
+      <span className="type-primary-body-b3 text-muted-foreground">{formatDate(row.getValue("createdAt"))}</span>
     ),
   },
   {
@@ -148,7 +148,7 @@ export const userColumns: ColumnDef<UserRecord, any>[] = [
       <DataTableColumnHeader column={column} title="Last Login" />
     ),
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground">{formatLastLogin(row.getValue("updatedAt"))}</span>
+      <span className="type-primary-body-b3 text-muted-foreground">{formatLastLogin(row.getValue("updatedAt"))}</span>
     ),
   },
 ]

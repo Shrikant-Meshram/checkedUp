@@ -67,7 +67,7 @@ const BookingDateTime = ({ formData, errors, handleChange }) => {
         ))}
       </Select>
       {formData.bookingDate && getAvailableTimeSlots().length === 0 && (
-        <p className="text-red-500 text-xs col-span-full">
+        <p className="text-red-500 type-primary-body-b3 col-span-full">
           Today's booking slots are over. Please select another date.
         </p>
       )}

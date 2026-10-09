@@ -25,18 +25,18 @@ const TestCardContent = ({ category, sampleType, method, price, reportTime }) =>
   return (
     <div className="flex flex-col flex-1 p-4 pt-3">
       <div>
-        <span className={`inline-block rounded-md px-2 py-0.5 text-xs font-medium ${catColor.bg} ${catColor.text}`}>
+        <span className={`inline-block rounded-md px-2 py-0.5 type-primary-body-b2 md:type-primary-body-b3 ${catColor.bg} ${catColor.text}`}>
           {category || 'Uncategorised'}
         </span>
       </div>
 
       <div className="mt-2">
-        <span className="font-mono text-sm font-bold text-primary">
+        <span className="font-mono type-primary-body-b1-medium text-primary">
           {price != null ? `₹${Number(price).toLocaleString('en-IN')}` : '—'}
         </span>
       </div>
 
-      <dl className="mt-3 space-y-1.5 text-xs">
+      <dl className="mt-3 space-y-1.5 type-primary-body-b1 md:type-primary-body-b2">
         <div className="flex items-center gap-2 text-muted-foreground">
           <Droplet size={12} className="shrink-0" />
           <span className="truncate">{sampleType || 'Blood'}</span>

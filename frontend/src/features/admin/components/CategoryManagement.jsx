@@ -268,16 +268,16 @@ const CategoryManagement = () => {
               >
                 <ArrowLeft size={20} />
               </button>
-              <h1 className="text-2xl font-bold text-foreground">Category Management</h1>
+              <h1 className="type-primary-heading-h1-medium text-foreground">Category Management</h1>
             </div>
-            <p className="text-muted-foreground text-sm mt-1 ml-7">
+            <p className="text-muted-foreground type-primary-body-b2 mt-1 ml-7">
               Create and manage test categories and their subcategories.
             </p>
           </div>
           <Can resource="categories" action="create">
             <button
               onClick={() => { setEditingCategory(null); setCategoryForm({ name: '', description: '', icon: 'flask', customIcon: null, isActive: true }); setShowCategoryModal(true) }}
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2.5 rounded-lg font-semibold text-sm transition flex-shrink-0"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2.5 rounded-lg font-semibold type-primary-body-b2 transition flex-shrink-0"
             >
               <Plus size={16} />
               Add Category
@@ -293,7 +293,7 @@ const CategoryManagement = () => {
             <div className="p-4 border-b border-border">
               <div className="flex items-center gap-2 mb-3">
                 <h3 className="font-semibold text-foreground">Categories</h3>
-                <span className="bg-primary/10 text-primary text-xs font-semibold px-2 py-0.5 rounded-full">
+                <span className="bg-primary/10 text-primary type-primary-label-l2 font-semibold px-2 py-0.5 rounded-full">
                   {categories.length} Total
                 </span>
               </div>
@@ -302,7 +302,7 @@ const CategoryManagement = () => {
 
             <div className="max-h-[500px] overflow-y-auto">
               {loading ? (
-                <div className="p-8 text-center text-muted-foreground text-sm">Loading...</div>
+                <div className="p-8 text-center text-muted-foreground type-primary-body-b3">Loading...</div>
               ) : filteredCategories.length === 0 ? (
                 <EmptyState
                   title="No categories found"
@@ -334,14 +334,14 @@ const CategoryManagement = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <p className="text-sm font-semibold text-foreground truncate">{category.name}</p>
+                        <p className="type-primary-body-b2 font-semibold text-foreground truncate">{category.name}</p>
                         {!category.isActive && (
-                          <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                          <span className="type-primary-label-l2 font-semibold px-1.5 py-0.5 rounded-full bg-gray-100 text-gray-500">
                             Inactive
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="type-primary-body-b3 text-muted-foreground">
                         {category.subcategoryCount || 0} Subcategories &nbsp;&middot;&nbsp; {category.testCount || 0} Tests
                       </p>
                     </div>
@@ -369,7 +369,7 @@ const CategoryManagement = () => {
                                 setShowCategoryModal(true)
                                 setMenuOpen(null)
                               }}
-                              className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left"
+                              className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left"
                             >
                               <Edit2 size={14} /> Edit
                             </button>
@@ -377,7 +377,7 @@ const CategoryManagement = () => {
                           <Can resource="categories" action="update">
                             <button
                               onClick={(e) => { e.stopPropagation(); handleToggleCategoryStatus(category._id); setMenuOpen(null) }}
-                              className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left"
+                              className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left"
                             >
                               {category.isActive !== false ? <ToggleRight size={14} /> : <ToggleLeft size={14} />}
                               {category.isActive !== false ? 'Deactivate' : 'Activate'}
@@ -386,7 +386,7 @@ const CategoryManagement = () => {
                           <Can resource="categories" action="delete">
                             <button
                               onClick={(e) => { e.stopPropagation(); handleDeleteCategory(category._id); setMenuOpen(null) }}
-                              className="flex items-center gap-2 px-3 py-2 text-sm text-red-500 hover:bg-red-50 w-full text-left"
+                              className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-red-500 hover:bg-red-50 w-full text-left"
                             >
                               <Trash2 size={14} /> Delete
                             </button>
@@ -403,7 +403,7 @@ const CategoryManagement = () => {
               <Can resource="categories" action="create">
                 <button
                   onClick={() => { setEditingCategory(null); setCategoryForm({ name: '', description: '', icon: 'flask', customIcon: null, isActive: true }); setShowCategoryModal(true) }}
-                  className="flex items-center gap-2 text-sm text-primary font-semibold hover:underline"
+                  className="flex items-center gap-2 type-primary-body-b3 text-primary font-semibold hover:underline"
                 >
                   <Plus size={14} /> Add New Category
                 </button>
@@ -433,20 +433,20 @@ const CategoryManagement = () => {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
-                        <h2 className="text-lg font-bold text-foreground">{selectedCategory.name}</h2>
-                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                        <h2 className="type-primary-heading-h4-medium text-foreground">{selectedCategory.name}</h2>
+                        <span className={`type-primary-label-l2 font-semibold px-2 py-0.5 rounded-full ${
                           selectedCategory.isActive !== false ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
                         }`}>
                           {selectedCategory.isActive !== false ? 'Active' : 'Inactive'}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground mt-1">
+                      <div className="flex items-center gap-3 type-primary-body-b3 text-muted-foreground mt-1">
                         <span>{subcategories.length} Subcategories</span>
                         <span>&middot;</span>
                         <span>{selectedCategory.testCount || 0} Tests</span>
                       </div>
                       {selectedCategory.description && (
-                        <p className="text-sm text-muted-foreground mt-1">{selectedCategory.description}</p>
+                        <p className="type-primary-body-b2 text-muted-foreground mt-1">{selectedCategory.description}</p>
                       )}
                     </div>
                   </div>
@@ -463,7 +463,7 @@ const CategoryManagement = () => {
                         })
                         setShowCategoryModal(true)
                       }}
-                      className="inline-flex items-center gap-2 border border-border text-foreground hover:bg-accent px-3 py-2 rounded-lg text-sm font-medium transition flex-shrink-0"
+                      className="inline-flex items-center gap-2 border border-border text-foreground hover:bg-accent px-3 py-2 rounded-lg type-primary-body-b2 font-medium transition flex-shrink-0"
                     >
                       <Edit2 size={14} /> Edit
                     </button>
@@ -477,17 +477,17 @@ const CategoryManagement = () => {
                   <div className="flex">
                     <button
                       onClick={() => setActiveTab('subcategories')}
-                      className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
+                      className={`px-4 py-3 type-primary-body-b2 font-medium border-b-2 transition ${
                         activeTab === 'subcategories'
                           ? 'border-primary text-primary'
                           : 'border-transparent text-muted-foreground hover:text-foreground'
                       }`}
                     >
-                      Subcategories <span className="ml-1 text-xs bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">{subcategories.length}</span>
+                      Subcategories <span className="ml-1 type-primary-label-l2 bg-primary/10 text-primary px-1.5 py-0.5 rounded-full">{subcategories.length}</span>
                     </button>
                     <button
                       onClick={() => setActiveTab('details')}
-                      className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
+                      className={`px-4 py-3 type-primary-body-b2 font-medium border-b-2 transition ${
                         activeTab === 'details'
                           ? 'border-primary text-primary'
                           : 'border-transparent text-muted-foreground hover:text-foreground'
@@ -497,7 +497,7 @@ const CategoryManagement = () => {
                     </button>
                     <button
                       onClick={() => setActiveTab('icon')}
-                      className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
+                      className={`px-4 py-3 type-primary-body-b2 font-medium border-b-2 transition ${
                         activeTab === 'icon'
                           ? 'border-primary text-primary'
                           : 'border-transparent text-muted-foreground hover:text-foreground'
@@ -507,7 +507,7 @@ const CategoryManagement = () => {
                     </button>
                     <button
                       onClick={() => setActiveTab('settings')}
-                      className={`px-4 py-3 text-sm font-medium border-b-2 transition ${
+                      className={`px-4 py-3 type-primary-body-b2 font-medium border-b-2 transition ${
                         activeTab === 'settings'
                           ? 'border-primary text-primary'
                           : 'border-transparent text-muted-foreground hover:text-foreground'
@@ -523,7 +523,7 @@ const CategoryManagement = () => {
                     <div className="p-4 border-b border-border flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <h3 className="font-semibold text-foreground">Subcategories</h3>
-                        <span className="bg-primary/10 text-primary text-xs font-semibold px-2 py-0.5 rounded-full">
+                <span className="bg-primary/10 text-primary type-primary-label-l2 font-semibold px-2 py-0.5 rounded-full">
                           {subcategories.length}
                         </span>
                       </div>
@@ -534,7 +534,7 @@ const CategoryManagement = () => {
                         <Can resource="subcategories" action="create">
                           <button
                             onClick={() => { setEditingSubcategory(null); setSubcategoryForm({ name: '', description: '', isActive: true }); setShowSubcategoryModal(true) }}
-                            className="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:underline"
+                            className="inline-flex items-center gap-2 text-primary type-primary-body-b2 font-semibold hover:underline"
                           >
                             <Plus size={14} /> Add Subcategory
                           </button>
@@ -545,7 +545,7 @@ const CategoryManagement = () => {
                     {/* Mobile Card Layout */}
                     <div className="sm:hidden">
                       {paginatedSubcategories.length === 0 ? (
-                        <div className="px-4 py-8 text-center text-muted-foreground text-sm">
+                        <div className="px-4 py-8 text-center text-muted-foreground type-primary-body-b3">
                           No subcategories found
                         </div>
                       ) : (
@@ -554,17 +554,17 @@ const CategoryManagement = () => {
                             <div className="flex items-center justify-between">
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2">
-                                  <p className="text-sm font-medium text-foreground">{sub.name}</p>
-                                  <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${
+                                  <p className="type-primary-body-b2 font-medium text-foreground">{sub.name}</p>
+                                  <span className={`type-primary-label-l2 font-semibold px-1.5 py-0.5 rounded-full ${
                                     sub.isActive !== false ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
                                   }`}>
                                     {sub.isActive !== false ? 'Active' : 'Inactive'}
                                   </span>
                                 </div>
                                 {sub.description && (
-                                  <p className="text-xs text-muted-foreground mt-0.5 truncate">{sub.description}</p>
+                                  <p className="type-primary-body-b3 text-muted-foreground mt-0.5 truncate">{sub.description}</p>
                                 )}
-                                <p className="text-xs text-muted-foreground mt-1">
+                                <p className="type-primary-body-b3 text-muted-foreground mt-1">
                                   <span className="inline-flex items-center gap-1">
                                     <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                       <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -597,7 +597,7 @@ const CategoryManagement = () => {
                         ))
                       )}
                       {filteredSubcategories.length > 5 && (
-                        <button className="w-full px-4 py-3 text-sm text-primary font-semibold hover:bg-accent transition border-t border-border">
+                        <button className="w-full px-4 py-3 type-primary-body-b2 text-primary font-semibold hover:bg-accent transition border-t border-border">
                           View All {filteredSubcategories.length} Subcategories
                         </button>
                       )}
@@ -609,16 +609,16 @@ const CategoryManagement = () => {
                       <table className="w-full">
                         <thead>
                           <tr className="border-b border-border bg-gray-50/50 text-left">
-                            <th className="px-4 py-3 text-xs font-semibold text-muted-foreground">Subcategory Name</th>
-                            <th className="px-4 py-3 text-xs font-semibold text-muted-foreground">Tests</th>
-                            <th className="px-4 py-3 text-xs font-semibold text-muted-foreground">Status</th>
-                            <th className="px-4 py-3 text-xs font-semibold text-muted-foreground text-right">Actions</th>
+                            <th className="px-4 py-3 type-primary-label-l2 font-semibold text-muted-foreground">Subcategory Name</th>
+                            <th className="px-4 py-3 type-primary-label-l2 font-semibold text-muted-foreground">Tests</th>
+                            <th className="px-4 py-3 type-primary-label-l2 font-semibold text-muted-foreground">Status</th>
+                            <th className="px-4 py-3 type-primary-label-l2 font-semibold text-muted-foreground text-right">Actions</th>
                           </tr>
                         </thead>
                         <tbody>
                           {paginatedSubcategories.length === 0 ? (
                             <tr>
-                              <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground text-sm">
+                              <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground type-primary-body-b3">
                                 No subcategories found
                               </td>
                             </tr>
@@ -627,20 +627,20 @@ const CategoryManagement = () => {
                               <tr key={sub._id} className="border-b border-border hover:bg-accent/50 transition">
                                 <td className="px-4 py-3">
                                   <div>
-                                    <p className="text-sm font-medium text-foreground">{sub.name}</p>
+                                    <p className="type-primary-body-b2 font-medium text-foreground">{sub.name}</p>
                                     {sub.description && (
-                                      <p className="text-xs text-muted-foreground mt-0.5">{sub.description}</p>
+                                      <p className="type-primary-body-b3 text-muted-foreground mt-0.5">{sub.description}</p>
                                     )}
                                   </div>
                                 </td>
                                 <td className="px-4 py-3">
-                                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                                  <div className="flex items-center gap-1.5 type-primary-body-b2 text-muted-foreground">
                                     <FlaskConical size={14} />
                                     <span>{sub.testCount || 0} Tests</span>
                                   </div>
                                 </td>
                                 <td className="px-4 py-3">
-                                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
+                                  <span className={`type-primary-label-l2 font-semibold px-2.5 py-1 rounded-full ${
                                     sub.isActive !== false ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
                                   }`}>
                                     {sub.isActive !== false ? 'Active' : 'Inactive'}
@@ -683,7 +683,7 @@ const CategoryManagement = () => {
                       {/* Pagination */}
                       {totalPages > 1 && (
                         <div className="px-4 py-3 border-t border-border flex items-center justify-between">
-                          <p className="text-sm text-muted-foreground">
+                          <p className="type-primary-body-b3 text-muted-foreground">
                             Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1} to{' '}
                             {Math.min(currentPage * ITEMS_PER_PAGE, filteredSubcategories.length)} of{' '}
                             {filteredSubcategories.length} subcategories
@@ -700,7 +700,7 @@ const CategoryManagement = () => {
                               <button
                                 key={page}
                                 onClick={() => setCurrentPage(page)}
-                                className={`w-8 h-8 rounded text-sm font-medium transition ${
+                                className={`w-8 h-8 rounded type-primary-body-b2 font-medium transition ${
                                   currentPage === page
                                     ? 'bg-primary text-white'
                                     : 'border border-border hover:bg-accent text-foreground'
@@ -727,7 +727,7 @@ const CategoryManagement = () => {
                 {activeTab === 'details' && (
                   <div className="p-6">
                     <h3 className="font-semibold text-foreground mb-2">Description</h3>
-                    <p className="text-sm text-muted-foreground">{selectedCategory.description || 'No description provided.'}</p>
+                    <p className="type-primary-body-b3 text-muted-foreground">{selectedCategory.description || 'No description provided.'}</p>
                   </div>
                 )}
 
@@ -747,8 +747,8 @@ const CategoryManagement = () => {
                         )}
                       </div>
                       <div>
-                        <p className="text-sm text-foreground font-medium">{selectedCategory.customIcon ? 'Custom Icon' : selectedCategory.icon || 'flask'}</p>
-                        <p className="text-xs text-muted-foreground">{selectedCategory.customIcon ? 'Uploaded image' : 'Icon identifier'}</p>
+                        <p className="type-primary-body-b2 text-foreground font-medium">{selectedCategory.customIcon ? 'Custom Icon' : selectedCategory.icon || 'flask'}</p>
+                        <p className="type-primary-body-b3 text-muted-foreground">{selectedCategory.customIcon ? 'Uploaded image' : 'Icon identifier'}</p>
                       </div>
                     </div>
                   </div>
@@ -759,20 +759,20 @@ const CategoryManagement = () => {
                     <h3 className="font-semibold text-foreground mb-2">Category Settings</h3>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Status</span>
-                        <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                        <span className="type-primary-body-b2 text-muted-foreground">Status</span>
+                        <span className={`type-primary-label-l2 font-semibold px-2 py-0.5 rounded-full ${
                           selectedCategory.isActive !== false ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
                         }`}>
                           {selectedCategory.isActive !== false ? 'Active' : 'Inactive'}
                         </span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Total Subcategories</span>
-                        <span className="text-sm font-medium text-foreground">{subcategories.length}</span>
+                        <span className="type-primary-body-b2 text-muted-foreground">Total Subcategories</span>
+                        <span className="type-primary-body-b2 font-medium text-foreground">{subcategories.length}</span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-muted-foreground">Total Tests</span>
-                        <span className="text-sm font-medium text-foreground">{selectedCategory.testCount || 0}</span>
+                        <span className="type-primary-body-b2 text-muted-foreground">Total Tests</span>
+                        <span className="type-primary-body-b2 font-medium text-foreground">{selectedCategory.testCount || 0}</span>
                       </div>
                     </div>
                   </div>
@@ -813,27 +813,27 @@ const CategoryManagement = () => {
             </div>
             <div className="p-4 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Name</label>
+                <label className="block type-primary-body-b2 font-medium text-foreground mb-1">Name</label>
                 <input
                   type="text"
                   value={subcategoryForm.name}
                   onChange={(e) => setSubcategoryForm({ ...subcategoryForm, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-border rounded-lg text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                  className="w-full px-3 py-2 border border-border rounded-lg type-primary-body-b3 outline-none focus:border-primary focus:ring-1 focus:ring-primary"
                   placeholder="Subcategory name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Description</label>
+                <label className="block type-primary-body-b2 font-medium text-foreground mb-1">Description</label>
                 <textarea
                   value={subcategoryForm.description}
                   onChange={(e) => setSubcategoryForm({ ...subcategoryForm, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-border rounded-lg text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
+                  className="w-full px-3 py-2 border border-border rounded-lg type-primary-body-b3 outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
                   rows={3}
                   placeholder="Description (optional)"
                 />
               </div>
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-foreground">Active</label>
+                <label className="type-primary-body-b2 font-medium text-foreground">Active</label>
                 <button
                   type="button"
                   onClick={() => setSubcategoryForm({ ...subcategoryForm, isActive: !subcategoryForm.isActive })}
@@ -848,7 +848,7 @@ const CategoryManagement = () => {
               </div>
             </div>
             <div className="flex items-center justify-end gap-3 p-4 border-t border-border">
-              <button onClick={() => { setShowSubcategoryModal(false); setEditingSubcategory(null) }} className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition">
+              <button onClick={() => { setShowSubcategoryModal(false); setEditingSubcategory(null) }} className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition">
                 Cancel
               </button>
               <Button

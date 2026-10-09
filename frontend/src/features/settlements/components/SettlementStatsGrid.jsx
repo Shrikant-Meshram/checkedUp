@@ -10,13 +10,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </div>

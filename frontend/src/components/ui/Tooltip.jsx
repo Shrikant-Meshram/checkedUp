@@ -39,7 +39,7 @@ const Tooltip = ({ children, content, position = 'bottom', delay = 200 }) => {
       {children}
       {show && content && (
         <div className={`absolute z-50 pointer-events-none ${positionClasses[position]}`}>
-          <div className="px-2.5 py-1.5 bg-foreground text-white text-xs font-medium rounded-md whitespace-nowrap shadow-md">
+          <div className="px-2.5 py-1.5 bg-foreground text-white type-primary-body-b3-medium rounded-md whitespace-nowrap shadow-md">
             {content}
           </div>
           <div className={`absolute w-0 h-0 border-4 ${arrowClasses[position]}`} />

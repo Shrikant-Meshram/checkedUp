@@ -32,7 +32,7 @@ const HomePackageCard = ({ pkg, onClick }) => {
   return (
     <article
       onClick={onClick}
-      className="flex-shrink-0 w-[300px] flex flex-col rounded-xl border border-border bg-white shadow-sm transition hover:shadow-md cursor-pointer overflow-hidden snap-start"
+      className="flex-shrink-0 w-[300px] flex flex-col rounded-xl border border-border bg-card shadow-sm transition hover:shadow-md cursor-pointer overflow-hidden snap-start"
     >
       {/* Header */}
       <div className="relative h-44 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
@@ -43,7 +43,7 @@ const HomePackageCard = ({ pkg, onClick }) => {
             <Package size={48} className="text-blue-200" />
           </div>
         )}
-        <span className="absolute top-2.5 left-2.5 rounded-md px-2 py-0.5 text-[10px] font-semibold bg-emerald-500 text-white">
+        <span className="absolute top-2.5 left-2.5 rounded-md px-2 py-0.5 type-primary-body-b3-medium bg-emerald-500 text-white">
           Active
         </span>
       </div>
@@ -51,20 +51,20 @@ const HomePackageCard = ({ pkg, onClick }) => {
       {/* Content */}
       <div className="flex flex-col flex-1 p-4">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-foreground text-sm leading-snug" title={title}>
+          <h3 className="type-primary-body-b2-medium text-foreground leading-snug" title={title}>
             {title}
           </h3>
-          <span className={`shrink-0 rounded-md px-1.5 py-0.5 text-[10px] font-medium ${catColor.bg} ${catColor.text}`}>
+          <span className={`shrink-0 rounded-md px-1.5 py-0.5 type-primary-body-b3-medium ${catColor.bg} ${catColor.text}`}>
             {category}
           </span>
         </div>
 
         <div className="mt-2 flex items-baseline gap-1">
-          <span className="text-lg font-bold text-foreground">₹</span>
-          <span className="text-xl font-bold text-foreground">{pkg.price?.toLocaleString('en-IN') || '0'}</span>
+          <span className="type-primary-body-b1-medium text-foreground">₹</span>
+          <span className="type-primary-body-b1-medium text-foreground">{pkg.price?.toLocaleString('en-IN') || '0'}</span>
         </div>
 
-        <div className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
+        <div className="mt-1 flex items-center gap-1.5 type-primary-body-b3 text-muted-foreground">
           <ListChecks size={14} className="text-primary" />
           <span>{testCount} Tests Included</span>
         </div>
@@ -72,7 +72,7 @@ const HomePackageCard = ({ pkg, onClick }) => {
         {testsList.length > 0 && (
           <ul className="mt-3 space-y-1.5 flex-1">
             {testsList.map((test, i) => (
-              <li key={test?._id || i} className="flex items-center gap-2 text-xs text-foreground">
+              <li key={test?._id || i} className="flex items-center gap-2 type-primary-body-b3 text-foreground">
                 <span className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" className="text-primary" /></svg>
                 </span>
@@ -80,12 +80,12 @@ const HomePackageCard = ({ pkg, onClick }) => {
               </li>
             ))}
             {testCount > 4 && (
-              <li className="text-xs text-primary font-medium pl-6">+{testCount - 4} more tests</li>
+              <li className="type-primary-body-b3-medium text-primary pl-6">+{testCount - 4} more tests</li>
             )}
           </ul>
         )}
 
-        <div className="mt-3 pt-3 border-t border-border flex items-center gap-1.5 text-xs text-muted-foreground">
+        <div className="mt-3 pt-3 border-t border-border flex items-center gap-1.5 type-primary-body-b3 text-muted-foreground">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
           NABL Accredited Labs
         </div>
@@ -162,19 +162,19 @@ const PopularPackages = () => {
 
   if (isLoading) {
     return (
-      <section className="bg-white py-12">
+      <section className="bg-card py-12">
         <div className="enterprise-container">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-10">
-            Popular Health Packages
+          <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground text-center mb-10">
+            Popular Health <span className="text-primary">Packages</span>
           </h2>
           <div className="flex gap-6 overflow-x-auto pb-4">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex-shrink-0 w-[300px] bg-gray-50 border border-gray-100 rounded-xl overflow-hidden animate-pulse">
-                <div className="h-44 bg-gray-200"></div>
+              <div key={i} className="flex-shrink-0 w-[300px] bg-surface border border-border rounded-xl overflow-hidden animate-pulse">
+                <div className="h-44 bg-surface"></div>
                 <div className="p-4 space-y-3">
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+                  <div className="h-4 bg-surface rounded w-3/4"></div>
+                  <div className="h-3 bg-surface rounded w-1/2"></div>
+                  <div className="h-3 bg-surface rounded w-2/3"></div>
                 </div>
               </div>
             ))}
@@ -189,11 +189,11 @@ const PopularPackages = () => {
   }
 
   return (
-    <section className="bg-white py-12">
+    <section className="bg-card py-12">
       <div className="enterprise-container">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-10">
-          Popular Health Packages
-        </h2>
+          <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground text-center mb-10">
+            Popular Health <span className="text-primary">Packages</span>
+          </h2>
 
         <div className="relative group/scroll">
           <div
@@ -212,7 +212,7 @@ const PopularPackages = () => {
           {canScrollLeft && (
             <button
               onClick={scrollLeft}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white shadow-md rounded-full flex items-center justify-center border border-gray-200 transition"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-card/90 hover:bg-card shadow-md rounded-full flex items-center justify-center border border-border transition"
             >
               <ChevronLeft size={20} className="text-foreground" />
             </button>
@@ -221,7 +221,7 @@ const PopularPackages = () => {
           {canScrollRight && (
             <button
               onClick={scrollRight}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white shadow-md rounded-full flex items-center justify-center border border-gray-200 transition"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-card/90 hover:bg-card shadow-md rounded-full flex items-center justify-center border border-border transition"
             >
               <ChevronRight size={20} className="text-foreground" />
             </button>

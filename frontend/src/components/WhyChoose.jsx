@@ -40,24 +40,24 @@ const WhyChoose = () => {
   ]
 
   return (
-    <section className="bg-gray-50 py-12 md:py-16">
+    <section className="bg-surface py-12 md:py-16">
       <div className="enterprise-container">
         <div className="grid lg:grid-cols-[1fr_1.5fr] gap-10 lg:gap-12 items-start">
           {/* Left Side */}
           <div className="space-y-4">
-            <p className="text-primary font-semibold text-xs tracking-wider uppercase">
+            <p className="type-primary-body-b3-medium text-primary tracking-wider uppercase">
               Why Choose Checked Up
             </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-snug">
-              Trusted care. Accurate results. Always.
+            <h2 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0 !font-medium text-foreground leading-snug">
+              Trusted care. Accurate results. <span className="text-primary">Always.</span>
             </h2>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="type-primary-body-b2 text-muted-foreground leading-relaxed">
               We are committed to delivering precise diagnostics with a seamless experience.
             </p>
             <div className="pt-2">
               <Link
                 to={ROUTES.ABOUT}
-                className="inline-block px-5 py-2.5 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors text-sm"
+                className="inline-block px-5 py-2.5 border-2 border-primary text-primary type-primary-button-c2 md:type-primary-button-c1 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 Know More About Us
               </Link>
@@ -72,17 +72,17 @@ const WhyChoose = () => {
                 <div 
                   key={index} 
                   className={`flex items-start gap-3 px-5 py-4 ${
-                    index < 2 ? 'border-r border-gray-200' : ''
+                    index < 2 ? 'border-r border-border' : ''
                   }`}
                 >
                   <div className="text-foreground flex-shrink-0 mt-0.5">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="font-bold text-foreground text-sm mb-1">
+                    <h3 className="type-primary-body-b2-medium md:type-primary-body-b1-medium text-foreground mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-muted-foreground text-xs leading-relaxed">
+                    <p className="type-primary-body-b3 text-muted-foreground leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
@@ -90,24 +90,24 @@ const WhyChoose = () => {
               ))}
             </div>
             {/* Horizontal divider with gap */}
-            <div className="border-t border-gray-200 my-3"></div>
+            <div className="border-t border-border my-3"></div>
             {/* Row 2 */}
             <div className="grid grid-cols-3">
               {features.slice(3, 6).map((item, index) => (
                 <div 
                   key={index + 3} 
                   className={`flex items-start gap-3 px-5 py-4 ${
-                    index < 2 ? 'border-r border-gray-200' : ''
+                    index < 2 ? 'border-r border-border' : ''
                   }`}
                 >
                   <div className="text-foreground flex-shrink-0 mt-0.5">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="font-bold text-foreground text-sm mb-1">
+                    <h3 className="type-primary-body-b2-medium md:type-primary-body-b1-medium text-foreground mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-muted-foreground text-xs leading-relaxed">
+                    <p className="type-primary-body-b3 text-muted-foreground leading-relaxed">
                       {item.desc}
                     </p>
                   </div>

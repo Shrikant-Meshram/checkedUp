@@ -4,37 +4,37 @@ import { CalendarCheck, CreditCard, Users, FlaskConical, PackageOpen, Clock } fr
 const activityConfig = {
   booking: {
     icon: CalendarCheck,
-    bgColor: 'bg-blue-100',
-    iconColor: 'text-blue-600',
+    bgColor: 'bg-primary/10',
+    iconColor: 'text-primary',
   },
   payment: {
     icon: CreditCard,
-    bgColor: 'bg-green-100',
-    iconColor: 'text-green-600',
+    bgColor: 'bg-success/10',
+    iconColor: 'text-success',
   },
   user: {
     icon: Users,
-    bgColor: 'bg-amber-100',
-    iconColor: 'text-amber-600',
+    bgColor: 'bg-warning/10',
+    iconColor: 'text-warning',
   },
   test: {
     icon: FlaskConical,
-    bgColor: 'bg-purple-100',
-    iconColor: 'text-purple-600',
+    bgColor: 'bg-primary/10',
+    iconColor: 'text-primary',
   },
   package: {
     icon: PackageOpen,
-    bgColor: 'bg-rose-100',
-    iconColor: 'text-rose-600',
+    bgColor: 'bg-primary/10',
+    iconColor: 'text-primary',
   },
 }
 
 const AdminRecentActivity = ({ data }) => {
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="font-serif text-lg font-bold text-foreground">Recent Activity</h3>
-        <button className="text-xs font-semibold text-primary hover:underline">View All</button>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Recent Activity</h3>
+        <button className="type-primary-body-b3-medium text-primary hover:underline">View All</button>
       </div>
 
       <div className="space-y-1">
@@ -50,10 +50,10 @@ const AdminRecentActivity = ({ data }) => {
                 <Icon size={16} className={config.iconColor} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-foreground leading-tight">{activity.title}</p>
-                <p className="text-xs text-muted-foreground mt-0.5 truncate">{activity.description}</p>
+                <p className="type-primary-body-b2-medium text-foreground leading-tight">{activity.title}</p>
+                <p className="type-primary-body-b3 text-muted-foreground mt-0.5 truncate">{activity.description}</p>
               </div>
-              <div className="flex items-center gap-1 text-[11px] text-muted-foreground flex-shrink-0">
+              <div className="flex items-center gap-1 type-primary-body-b3 text-muted-foreground flex-shrink-0">
                 <Clock size={10} />
                 <span>{activity.timeAgo}</span>
               </div>
@@ -61,7 +61,7 @@ const AdminRecentActivity = ({ data }) => {
           )
         })}
         {(!data || data.length === 0) && (
-          <div className="py-8 text-center text-muted-foreground text-xs">No recent activity</div>
+          <div className="py-8 text-center text-muted-foreground type-primary-body-b3">No recent activity</div>
         )}
       </div>
     </div>

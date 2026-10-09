@@ -5,7 +5,7 @@ export default function BookingTestSelect({ tests, packages, formData, errors, h
     <div>
       <div className="flex items-center gap-2 mb-3">
         <FlaskConical size={14} className="text-primary" />
-        <span className="text-xs font-semibold text-primary uppercase tracking-wide">Selected Test / Package</span>
+        <span className="type-primary-body-b3 font-semibold text-primary uppercase tracking-wide">Selected Test / Package</span>
       </div>
       <div className="relative">
         <select
@@ -16,7 +16,7 @@ export default function BookingTestSelect({ tests, packages, formData, errors, h
           className={`
             w-full border border-border rounded-xl px-4 py-3.5 pr-10
             outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 
-            text-sm text-foreground bg-card transition appearance-none
+            type-primary-body-b2 text-foreground bg-card transition appearance-none
             ${errors.test ? 'border-destructive focus:border-destructive focus:ring-destructive/20' : ''}
           `}
         >
@@ -46,7 +46,7 @@ export default function BookingTestSelect({ tests, packages, formData, errors, h
           </svg>
         </div>
       </div>
-      {errors.test && <p className="text-destructive text-xs mt-1.5 font-medium">{errors.test}</p>}
+      {errors.test && <p className="text-destructive type-primary-body-b3 mt-1.5 font-medium">{errors.test}</p>}
     </div>
   )
 }

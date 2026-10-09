@@ -221,7 +221,7 @@ const AddPackageModal = ({ open, onClose, onCreated, initialData, packageId, mod
               <Package size={16} />
             </span>
             <h3 className="font-semibold text-gray-900">Tests Included</h3>
-            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold ml-auto">
+            <span className="bg-primary/10 text-primary px-3 py-1 rounded-full type-primary-body-b3-medium ml-auto">
               {packageData.testsIncluded.length} Selected
             </span>
           </div>
@@ -233,12 +233,12 @@ const AddPackageModal = ({ open, onClose, onCreated, initialData, packageId, mod
                 placeholder="Search tests to add..."
                 value={testSearch}
                 onChange={(e) => setTestSearch(e.target.value)}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2.5 type-primary-body-b2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {errors.testsIncluded && (
-              <span className="text-xs text-red-500">{errors.testsIncluded}</span>
+              <span className="type-primary-body-b3 text-red-500">{errors.testsIncluded}</span>
             )}
 
             {/* Selected tests chips */}
@@ -253,13 +253,13 @@ const AddPackageModal = ({ open, onClose, onCreated, initialData, packageId, mod
                       className="bg-primary/10 border border-border rounded-lg px-3 py-2 flex items-center justify-between gap-3 min-w-[150px]"
                     >
                       <div>
-                        <h4 className="text-xs font-medium text-foreground">{test.title || test.name}</h4>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">₹{test.price}</p>
+                        <h4 className="type-primary-body-b3-medium text-foreground">{test.title || test.name}</h4>
+                        <p className="type-primary-body-b3 text-muted-foreground mt-0.5">₹{test.price}</p>
                       </div>
                       <button
                         type="button"
                         onClick={() => handleToggleTest(id)}
-                        className="text-red-500 hover:text-red-700 text-sm font-bold"
+                        className="text-red-500 hover:text-red-700 type-primary-body-b2 font-bold"
                       >
                         ×
                       </button>
@@ -272,7 +272,7 @@ const AddPackageModal = ({ open, onClose, onCreated, initialData, packageId, mod
             {/* Available tests list */}
             <div className="border border-gray-200 rounded-lg max-h-[200px] overflow-y-auto">
               {filteredTests.length === 0 ? (
-                <p className="p-4 text-center text-sm text-gray-400">No tests found</p>
+                <p className="p-4 text-center type-primary-body-b2 text-gray-400">No tests found</p>
               ) : (
                 filteredTests.map((test) => {
                   const isSelected = packageData.testsIncluded.includes(test._id)
@@ -281,15 +281,15 @@ const AddPackageModal = ({ open, onClose, onCreated, initialData, packageId, mod
                       key={test._id}
                       type="button"
                       onClick={() => handleToggleTest(test._id)}
-                      className={`w-full flex items-center justify-between px-4 py-2.5 text-sm text-left border-b border-gray-100 last:border-0 transition-colors ${
+                      className={`w-full flex items-center justify-between px-4 py-2.5 type-primary-body-b2 text-left border-b border-gray-100 last:border-0 transition-colors ${
                         isSelected ? 'bg-primary/5 text-primary' : 'hover:bg-gray-50 text-gray-700'
                       }`}
                     >
                       <div>
                         <span className="font-medium">{test.title || test.name}</span>
-                        <span className="ml-2 text-xs text-gray-400">₹{test.price}</span>
+                        <span className="ml-2 type-primary-body-b3 text-gray-400">₹{test.price}</span>
                       </div>
-                      {isSelected && <span className="text-primary text-xs font-semibold">✓ Selected</span>}
+                        {isSelected && <span className="text-primary type-primary-body-b3-medium">✓ Selected</span>}
                     </button>
                   )
                 })

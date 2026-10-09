@@ -19,9 +19,9 @@ const RevenueByPaymentMethodChart = ({ paymentMethods, totalPaidAmount }) => {
   }))
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
       <div className="mb-4 sm:mb-5">
-        <h3 className="font-serif text-base sm:text-lg font-bold text-foreground">Revenue by Payment Method</h3>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Revenue by Payment Method</h3>
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
@@ -53,8 +53,8 @@ const RevenueByPaymentMethodChart = ({ paymentMethods, totalPaidAmount }) => {
             </PieChart>
           </ResponsiveContainer>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="font-mono font-bold text-base sm:text-xl text-foreground">{formatCurrency(totalPaidAmount)}</span>
-            <span className="text-[10px] sm:text-[11px] text-muted-foreground">Total</span>
+            <span className="font-mono type-primary-body-b1-medium text-foreground">{formatCurrency(totalPaidAmount)}</span>
+            <span className="type-primary-body-b3 text-muted-foreground">Total</span>
           </div>
         </div>
 
@@ -63,11 +63,11 @@ const RevenueByPaymentMethodChart = ({ paymentMethods, totalPaidAmount }) => {
             <div key={item.name} className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }}></span>
-                <span className="text-xs sm:text-sm text-foreground font-medium">{item.name}</span>
+                <span className="type-primary-body-b2 text-foreground">{item.name}</span>
               </div>
               <div className="flex items-center gap-2 sm:gap-3">
-                <span className="text-[10px] sm:text-[11px] text-muted-foreground">{item.percentage}%</span>
-                <span className="text-xs sm:text-sm font-semibold text-foreground w-16 sm:w-20 text-right">{formatCurrency(item.value)}</span>
+                <span className="type-primary-body-b3 text-muted-foreground">{item.percentage}%</span>
+                <span className="type-primary-body-b2-medium text-foreground w-16 sm:w-20 text-right">{formatCurrency(item.value)}</span>
               </div>
             </div>
           ))}

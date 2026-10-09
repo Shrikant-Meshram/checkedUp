@@ -37,8 +37,8 @@ const ConfirmModal = ({
               <AlertTriangle size={20} />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="text-lg font-semibold text-foreground">{title}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{message}</p>
+              <h3 className="type-primary-heading-h2 font-semibold text-foreground">{title}</h3>
+              <p className="type-primary-body-b2 text-muted-foreground mt-1">{message}</p>
             </div>
             <button onClick={onClose} className="p-1 text-muted-foreground hover:text-foreground">
               <X size={18} />
@@ -49,7 +49,7 @@ const ConfirmModal = ({
           <button
             onClick={onClose}
             disabled={loading}
-            className="px-4 py-2 text-sm font-medium text-foreground border border-border hover:bg-accent rounded-lg transition disabled:opacity-50"
+            className="px-4 py-2 type-primary-body-b2-medium text-foreground border border-border hover:bg-accent rounded-lg transition disabled:opacity-50"
           >
             {cancelText}
           </button>

@@ -144,9 +144,9 @@ const AdminUsersSection = ({
           <Input required type="password" name="password" placeholder="Password" value={labOwnerData.password} onChange={handleChange} error={errors.password} />
           <Input required type="text" name="servicePincodes" placeholder="411033, 411044" value={labOwnerData.servicePincodes} onChange={handleChange} error={errors.servicePincodes} />
           <div>
-            <label className="text-sm font-semibold text-foreground mb-3 block">Lab Location *</label>
+            <label className="type-primary-body-b2 font-semibold text-foreground mb-3 block">Lab Location *</label>
             <fieldset className="border border-border rounded-xl p-5">
-              <legend className="text-sm font-semibold text-foreground px-2">Select Location</legend>
+              <legend className="type-primary-body-b2 font-semibold text-foreground px-2">Select Location</legend>
               <div className="grid sm:grid-cols-2 gap-3">
                 <button
                   type="button"
@@ -175,8 +175,8 @@ const AdminUsersSection = ({
                 >
                   <MapPin size={24} className="text-primary" />
                   <div className="text-center">
-                    <p className="text-sm font-semibold text-foreground">Use Current Location</p>
-                    <p className="text-xs text-muted-foreground">Detect my location</p>
+                    <p className="type-primary-body-b2 font-semibold text-foreground">Use Current Location</p>
+                    <p className="type-primary-body-b3 text-muted-foreground">Detect my location</p>
                   </div>
                 </button>
                 <button
@@ -186,8 +186,8 @@ const AdminUsersSection = ({
                 >
                   <Map size={24} className="text-primary" />
                   <div className="text-center">
-                    <p className="text-sm font-semibold text-foreground">Select on Map</p>
-                    <p className="text-xs text-muted-foreground">Pick lab location on map</p>
+                    <p className="type-primary-body-b2 font-semibold text-foreground">Select on Map</p>
+                    <p className="type-primary-body-b3 text-muted-foreground">Pick lab location on map</p>
                   </div>
                 </button>
               </div>
@@ -196,23 +196,23 @@ const AdminUsersSection = ({
               <div className="bg-primary/5 border border-primary/20 rounded-xl p-4 flex items-start gap-3 mt-3">
                 <MapPin size={20} className="text-primary mt-0.5 shrink-0" />
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold text-foreground mb-0.5">Selected Location</p>
-                  <p className="text-sm text-muted-foreground">{labOwnerData.labAddress || 'Location selected'}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">
+                  <p className="type-primary-body-b3 font-semibold text-foreground mb-0.5">Selected Location</p>
+                  <p className="type-primary-body-b2 text-muted-foreground">{labOwnerData.labAddress || 'Location selected'}</p>
+                  <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
                     Lat: {Number(labOwnerData.latitude).toFixed(4)}, Long: {Number(labOwnerData.longitude).toFixed(4)}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowLabMap(true)}
-                  className="flex items-center gap-1 text-xs font-medium text-primary hover:text-primary/80 shrink-0"
+                  className="flex items-center gap-1 type-primary-body-b3 font-medium text-primary hover:text-primary/80 shrink-0"
                 >
                   <Pencil size={12} /> Change
                 </button>
               </div>
             )}
             {errors.labAddress && (
-              <p className="text-destructive text-xs mt-1.5 font-medium">{errors.labAddress}</p>
+              <p className="text-destructive type-primary-body-b3 mt-1.5 font-medium">{errors.labAddress}</p>
             )}
             <Modal
               open={showLabMap}

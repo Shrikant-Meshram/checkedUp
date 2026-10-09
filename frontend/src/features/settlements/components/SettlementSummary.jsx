@@ -24,13 +24,13 @@ const SettlementSummary = ({ statistics, isLoading }) => {
 
   return (
     <div className="rounded-xl border border-border bg-white p-6">
-      <h3 className="text-lg font-semibold text-foreground mb-4">Settlement Summary</h3>
+      <h3 className="type-primary-heading-h3-medium text-foreground mb-4">Settlement Summary</h3>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div className="space-y-2">
-          <p className="text-xs text-muted-foreground">Completion Rate</p>
+          <p className="type-primary-body-b3 text-muted-foreground">Completion Rate</p>
           <div className="flex items-end gap-2">
-            <p className="text-2xl font-bold text-foreground">{completionRate}%</p>
+            <p className="type-primary-heading-h1 text-foreground">{completionRate}%</p>
           </div>
           <div className="w-full bg-muted/30 rounded-full h-2">
             <div
@@ -41,21 +41,21 @@ const SettlementSummary = ({ statistics, isLoading }) => {
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs text-muted-foreground">Pending Payouts</p>
-          <p className="text-2xl font-bold text-foreground">{statistics?.pendingPayouts || 0}</p>
-          <p className="text-xs text-amber-600">Awaiting settlement</p>
+          <p className="type-primary-body-b3 text-muted-foreground">Pending Payouts</p>
+          <p className="type-primary-heading-h1 text-foreground">{statistics?.pendingPayouts || 0}</p>
+          <p className="type-primary-body-b3 text-amber-600">Awaiting settlement</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs text-muted-foreground">This Month</p>
-          <p className="text-2xl font-bold text-foreground">{formatCurrency(statistics?.thisMonthSettled)}</p>
-          <p className="text-xs text-emerald-600">Settled this month</p>
+          <p className="type-primary-body-b3 text-muted-foreground">This Month</p>
+          <p className="type-primary-heading-h1 text-foreground">{formatCurrency(statistics?.thisMonthSettled)}</p>
+          <p className="type-primary-body-b3 text-emerald-600">Settled this month</p>
         </div>
 
         <div className="space-y-2">
-          <p className="text-xs text-muted-foreground">Avg. Settlement Time</p>
-          <p className="text-2xl font-bold text-foreground">{statistics?.avgSettlementDays || 0}d</p>
-          <p className="text-xs text-muted-foreground">Business days</p>
+          <p className="type-primary-body-b3 text-muted-foreground">Avg. Settlement Time</p>
+          <p className="type-primary-heading-h1 text-foreground">{statistics?.avgSettlementDays || 0}d</p>
+          <p className="type-primary-body-b3 text-muted-foreground">Business days</p>
         </div>
       </div>
     </div>

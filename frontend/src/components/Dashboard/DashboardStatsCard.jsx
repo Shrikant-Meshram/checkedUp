@@ -13,8 +13,8 @@ const DashboardStatsCard = ({ title, value, icon, active, onClick }) => {
     >
       <div className="flex items-center justify-between w-full">
         <div>
-          <p className="text-muted-foreground text-sm font-semibold uppercase tracking-wider">{title}</p>
-          <h2 className="font-mono font-bold text-foreground text-3xl mt-2">
+          <p className="type-primary-body-b3-medium text-muted-foreground uppercase tracking-wider">{title}</p>
+          <h2 className="font-mono type-primary-heading-h1 text-foreground mt-2">
             {value}
           </h2>
         </div>

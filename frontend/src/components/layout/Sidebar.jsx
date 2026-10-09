@@ -75,11 +75,11 @@ const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
         `}
       >
         {/* Logo Header */}
-        <div className={`h-16 flex bg-white items-center border-border flex-shrink-0 ${isCollapsed ? 'justify-center px-2' : 'px-5 justify-between'}`}>
+        <div className={`h-16 flex bg-card items-center border-border flex-shrink-0 ${isCollapsed ? 'justify-center px-2' : 'px-5 justify-between'}`}>
           {!isCollapsed && <Logo />}
           {isCollapsed && (
             <Link to={ROUTES.HOME} className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">CU</span>
+              <span className="text-primary-foreground type-primary-body-b2-medium">CU</span>
             </Link>
           )}
           {/* Close button (mobile only) */}
@@ -92,7 +92,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 overflow-y-auto py-4 px-3 bg-white md:rounded-md md:ml-3 md:my-3">
+        <nav className="flex-1 overflow-y-auto py-4 px-3 bg-card md:rounded-md md:ml-3 md:my-3">
           <ul className="space-y-1">
             {menuItems.map((item) => {
               const Icon = item.icon
@@ -106,7 +106,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
                     <>
                       <button
                         onClick={() => toggleExpand(item.label)}
-                        className={`w-full flex items-center gap-3 rounded-lg transition text-sm font-medium
+                        className={`w-full flex items-center gap-3 rounded-lg transition type-primary-body-b2-medium
                           ${isCollapsed ? 'justify-center px-2 py-2.5' : 'px-3 py-2.5'}
                           ${active
                             ? 'bg-primary/10 text-primary'
@@ -139,9 +139,9 @@ const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
                               <li key={child.route}>
                                 <Link
                                   to={child.route}
-                                  className={`block px-3 py-2 rounded-lg text-sm transition
+                                  className={`block px-3 py-2 rounded-lg type-primary-body-b2 transition
                                     ${location.pathname === child.route
-                                      ? 'bg-primary/10 text-primary font-medium'
+                                      ? 'bg-primary/10 text-primary type-primary-body-b2-medium'
                                       : 'text-muted-foreground hover:bg-accent hover:text-foreground'
                                     }
                                   `}
@@ -157,7 +157,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose }) => {
                   ) : (
                     <Link
                       to={item.route}
-                      className={`flex items-center gap-3 rounded-lg transition text-sm font-medium
+                      className={`flex items-center gap-3 rounded-lg transition type-primary-body-b2-medium
                         ${isCollapsed ? 'justify-center px-2 py-2.5' : 'px-3 py-2.5'}
                         ${active
                           ? 'bg-primary/10 text-primary'

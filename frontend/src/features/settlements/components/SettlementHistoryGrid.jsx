@@ -90,8 +90,8 @@ const SettlementHistoryGrid = ({ history, isLoading, activeFilters, onViewDetail
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-foreground">Recent Settlement History</h3>
-        <button className="text-sm text-primary hover:underline">View All</button>
+        <h3 className="type-primary-heading-h3-medium text-foreground">Recent Settlement History</h3>
+        <button className="type-primary-body-b2 text-primary hover:underline">View All</button>
       </div>
 
       {filteredHistory.length === 0 ? (
@@ -113,25 +113,25 @@ const SettlementHistoryGrid = ({ history, isLoading, activeFilters, onViewDetail
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-primary truncate">{item.settlementBatchId || '—'}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{item.labOwner?.name || '—'}</p>
+                    <p className="type-primary-body-b2-medium text-primary truncate">{item.settlementBatchId || '—'}</p>
+                    <p className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground mt-0.5">{item.labOwner?.name || '—'}</p>
                   </div>
-                  <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium shrink-0 ml-2 ${statusStyle.bg} ${statusStyle.text}`}>
+                  <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2-medium md:type-primary-body-b3-medium shrink-0 ml-2 ${statusStyle.bg} ${statusStyle.text}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                     {item.status}
                   </span>
                 </div>
 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center justify-between type-primary-body-b2 md:type-primary-body-b3">
                     <span className="text-muted-foreground">Paid On</span>
                     <span className="text-foreground">{formatDate(item.paidAt || item.settledAt)}</span>
                   </div>
-                  <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center justify-between type-primary-body-b2 md:type-primary-body-b3">
                     <span className="text-muted-foreground">UTR</span>
-                    <span className="text-foreground font-mono text-[11px] truncate ml-2">{item.settlementUTR || item.utr || '—'}</span>
+                    <span className="text-foreground font-mono type-primary-body-b4 truncate ml-2">{item.settlementUTR || item.utr || '—'}</span>
                   </div>
-                  <div className="flex items-center justify-between text-xs">
+                  <div className="flex items-center justify-between type-primary-body-b2 md:type-primary-body-b3">
                     <span className="text-muted-foreground">Bookings</span>
                     <span className="text-foreground">{item.totalBookings || 0}</span>
                   </div>
@@ -140,17 +140,17 @@ const SettlementHistoryGrid = ({ history, isLoading, activeFilters, onViewDetail
                 <div className="border-t border-border pt-3 mb-3">
                   <div className="grid grid-cols-3 gap-2 text-center">
                     <div>
-                      <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Total</p>
-                      <p className="text-sm font-bold text-foreground">{formatCurrency(item.totalAmount)}</p>
+                      <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground uppercase tracking-wide">Total</p>
+                      <p className="type-primary-body-b2-medium text-foreground">{formatCurrency(item.totalAmount)}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Commission</p>
-                      <p className="text-sm font-bold text-amber-600">{formatCurrency(item.commission)}</p>
-                      <p className="text-[10px] text-muted-foreground">{commissionPct}</p>
+                      <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground uppercase tracking-wide">Commission</p>
+                      <p className="type-primary-body-b2-medium text-amber-600">{formatCurrency(item.commission)}</p>
+                      <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground">{commissionPct}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Net Payable</p>
-                      <p className="text-sm font-bold text-emerald-600">{formatCurrency(item.netPayable || item.labShare)}</p>
+                      <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground uppercase tracking-wide">Net Payable</p>
+                      <p className="type-primary-body-b2-medium text-emerald-600">{formatCurrency(item.netPayable || item.labShare)}</p>
                     </div>
                   </div>
                 </div>

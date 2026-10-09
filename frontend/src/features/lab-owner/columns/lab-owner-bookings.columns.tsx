@@ -19,7 +19,7 @@ const statusStyles: Record<string, string> = {
 
 const StatusBadge = ({ status }: { status: string }) => (
   <span
-    className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold inline-block ${
+    className={`px-2.5 py-0.5 rounded-full type-primary-body-b2 font-semibold inline-block ${
       statusStyles[status] || "bg-primary/10 text-muted-foreground"
     }`}
   >
@@ -63,10 +63,10 @@ export function createLabOwnerBookingsColumns({
         const booking = row.original
         return (
           <div>
-            <div className="font-medium text-foreground text-sm">
+            <div className="type-primary-body-b2-medium text-foreground">
               {booking.patientName}
             </div>
-            <div className="text-[11px] text-muted-foreground mt-0.5">
+            <div className="type-primary-body-b3 text-muted-foreground mt-0.5">
               {booking.phone}
             </div>
           </div>
@@ -83,10 +83,10 @@ export function createLabOwnerBookingsColumns({
         const booking = row.original
         return (
           <div>
-            <div className="font-medium text-foreground text-sm">
+            <div className="type-primary-body-b2-medium text-foreground">
               {booking.test?.title || booking.package?.title}
             </div>
-            <div className="text-[11px] text-muted-foreground mt-0.5">
+            <div className="type-primary-body-b3 text-muted-foreground mt-0.5">
               {booking.city}
             </div>
           </div>
@@ -102,7 +102,7 @@ export function createLabOwnerBookingsColumns({
       cell: ({ row }) => {
         const amount = row.original.test?.price || row.original.package?.price
         return (
-          <span className="font-mono font-bold text-sm text-primary">
+          <span className="font-mono type-primary-body-b2-medium text-primary">
             ₹{amount}
           </span>
         )
@@ -118,8 +118,8 @@ export function createLabOwnerBookingsColumns({
         const booking = row.original
         return (
           <div>
-            <div className="text-sm text-foreground">{booking.bookingDate}</div>
-            <div className="text-[11px] text-muted-foreground mt-0.5">
+            <div className="type-primary-body-b2 text-foreground">{booking.bookingDate}</div>
+            <div className="type-primary-body-b3 text-muted-foreground mt-0.5">
               {booking.bookingTime}
             </div>
           </div>
@@ -135,10 +135,10 @@ export function createLabOwnerBookingsColumns({
         if (booking.assignedLabAssistant) {
           return (
             <div>
-              <p className="text-sm font-medium text-foreground">
+              <p className="type-primary-body-b2-medium text-foreground">
                 {booking.assignedLabAssistant.name}
               </p>
-              <p className="text-[11px] text-muted-foreground mt-0.5">
+              <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
                 {booking.assignedLabAssistant.email}
               </p>
             </div>
@@ -181,7 +181,7 @@ export function createLabOwnerBookingsColumns({
       cell: ({ row }) => {
         const images = row.original.sampleImages
         if (!images?.length) {
-          return <span className="text-[11px] text-gray-400">No Samples</span>
+          return <span className="type-primary-body-b3 text-muted-foreground">No Samples</span>
         }
         return (
           <div className="flex items-center gap-1.5 flex-wrap max-w-[160px]">
@@ -201,7 +201,7 @@ export function createLabOwnerBookingsColumns({
               </a>
             ))}
             {images.length > 3 && (
-              <span className="w-10 h-10 bg-primary/10 border border-border rounded-md flex items-center justify-center text-[10px] font-medium text-primary">
+              <span className="w-10 h-10 bg-primary/10 border border-border rounded-md flex items-center justify-center type-primary-body-b3 font-medium text-primary">
                 +{images.length - 3}
               </span>
             )}

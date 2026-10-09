@@ -100,7 +100,7 @@ const Pagination = ({
   if (totalItems === 0) return null
 
   return (
-    <div className="flex flex-col gap-3 pb-2 text-sm text-muted-foreground">
+    <div className="flex flex-col gap-3 pb-2 type-primary-body-b2 text-muted-foreground">
       {/* Mobile: Row 1 - text + dropdown, Row 2 - pagination */}
       <div className="flex items-center justify-between sm:hidden">
         {showingText}

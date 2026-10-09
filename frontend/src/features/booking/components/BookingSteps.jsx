@@ -23,7 +23,7 @@ export default function BookingSteps({ currentStep = 1, onStepClick }) {
               className={`flex items-center gap-2 disabled:cursor-default`}
             >
               <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full type-primary-body-b3 font-bold transition-colors ${
                   isCompleted
                     ? 'bg-white text-primary'
                     : isCurrent
@@ -34,7 +34,7 @@ export default function BookingSteps({ currentStep = 1, onStepClick }) {
                 {isCompleted ? <Check size={16} /> : s.step}
               </span>
               <span
-                className={`text-sm font-medium hidden sm:block ${
+                className={`type-primary-body-b2-medium hidden sm:block ${
                   isCurrent ? 'text-white font-semibold' : isCompleted ? 'text-white' : 'text-white/60'
                 }`}
               >

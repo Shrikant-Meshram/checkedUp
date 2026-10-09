@@ -150,7 +150,7 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
           <button
             type="button"
             onClick={() => setActiveTab('tests')}
-            className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium border-b-2 transition ${
+            className={`flex items-center gap-1.5 px-4 py-2.5 type-primary-body-b2-medium border-b-2 transition ${
               activeTab === 'tests'
                 ? 'border-primary text-primary'
                 : 'border-transparent text-muted-foreground hover:text-foreground'
@@ -159,7 +159,7 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
             <FlaskConical size={14} />
             Tests
             {selectedTests.length > 0 && (
-              <span className="ml-1 bg-primary text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="ml-1 bg-primary text-white type-primary-body-b2 rounded-full w-5 h-5 flex items-center justify-center">
                 {selectedTests.length}
               </span>
             )}
@@ -167,7 +167,7 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
           <button
             type="button"
             onClick={() => setActiveTab('packages')}
-            className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium border-b-2 transition ${
+            className={`flex items-center gap-1.5 px-4 py-2.5 type-primary-body-b2-medium border-b-2 transition ${
               activeTab === 'packages'
                 ? 'border-primary text-primary'
                 : 'border-transparent text-muted-foreground hover:text-foreground'
@@ -176,7 +176,7 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
             <Package size={14} />
             Packages
             {selectedPackages.length > 0 && (
-              <span className="ml-1 bg-primary text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
+              <span className="ml-1 bg-primary text-white type-primary-body-b2 rounded-full w-5 h-5 flex items-center justify-center">
                 {selectedPackages.length}
               </span>
             )}
@@ -184,10 +184,10 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
         </div>
 
         {loading ? (
-          <div className="py-12 text-center text-sm text-muted-foreground">Loading...</div>
+          <div className="py-12 text-center type-primary-body-b2 text-muted-foreground">Loading...</div>
         ) : activeTab === 'tests' ? (
           filteredTests.length === 0 ? (
-            <div className="py-12 text-center text-sm text-muted-foreground">
+            <div className="py-12 text-center type-primary-body-b2 text-muted-foreground">
               {search ? 'No tests match your search' : 'No available tests to add'}
             </div>
           ) : (
@@ -214,12 +214,12 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
                       {isSelected && <Check size={12} />}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground truncate">{test.title}</p>
+                      <p className="type-primary-body-b2-medium text-foreground truncate">{test.title}</p>
                       {test.shortName && (
-                        <p className="text-[11px] text-muted-foreground">{test.shortName}</p>
+                        <p className="type-primary-body-b2 text-muted-foreground">{test.shortName}</p>
                       )}
                     </div>
-                    <span className="text-sm font-mono font-bold text-primary whitespace-nowrap">
+                    <span className="type-primary-body-b2-medium font-mono text-primary whitespace-nowrap">
                       ₹{price.toLocaleString('en-IN')}
                     </span>
                   </button>
@@ -228,7 +228,7 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
             </div>
           )
         ) : filteredPackages.length === 0 ? (
-          <div className="py-12 text-center text-sm text-muted-foreground">
+          <div className="py-12 text-center type-primary-body-b2 text-muted-foreground">
             {search ? 'No packages match your search' : 'No available packages to add'}
           </div>
         ) : (
@@ -254,12 +254,12 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
                     {isSelected && <Check size={12} />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-foreground truncate">{pkg.title}</p>
+                    <p className="type-primary-body-b2-medium text-foreground truncate">{pkg.title}</p>
                     {pkg.testsIncluded?.length > 0 && (
-                      <p className="text-[11px] text-muted-foreground">{pkg.testsIncluded.length} tests included</p>
+                      <p className="type-primary-body-b2 text-muted-foreground">{pkg.testsIncluded.length} tests included</p>
                     )}
                   </div>
-                  <span className="text-sm font-mono font-bold text-primary whitespace-nowrap">
+                  <span className="type-primary-body-b2-medium font-mono text-primary whitespace-nowrap">
                     ₹{pkg.price.toLocaleString('en-IN')}
                   </span>
                 </button>
@@ -270,10 +270,10 @@ const AddTestsToBookingModal = ({ open, onClose, booking, onTestsAdded }) => {
 
         {totalCount > 0 && (
           <div className="flex items-center justify-between p-3 bg-primary/5 rounded-lg border border-primary/20">
-            <span className="text-sm text-foreground">
+            <span className="type-primary-body-b2 text-foreground">
               {totalCount} item{totalCount > 1 ? 's' : ''} selected
             </span>
-            <span className="text-sm font-bold font-mono text-primary">
+            <span className="type-primary-body-b2-medium font-mono text-primary">
               +₹{selectedTotal.toLocaleString('en-IN')}
             </span>
           </div>

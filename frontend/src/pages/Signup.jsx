@@ -231,7 +231,7 @@ const Signup = () => {
         <div className="flex flex-col items-center justify-center z-10 w-full mt-4">
           <OrbitAnimation />
           <div className="text-center mt-6 mb-5">
-            <h2 className="font-heading font-bold text-white mb-2 type-primary-heading-h2-regular">
+            <h2 className="text-white type-primary-heading-h2-regular mb-2">
               Join 50,000+ patients
             </h2>
             <p className="type-primary-body-b3 text-white/50">
@@ -244,25 +244,25 @@ const Signup = () => {
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">NABL Certified Labs</span>
+              <span className="text-white type-primary-body-b2-medium">NABL Certified Labs</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">Reports in 24 Hours</span>
+              <span className="text-white type-primary-body-b2-medium">Reports in 24 Hours</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">Home Sample Collection</span>
+              <span className="text-white type-primary-body-b2-medium">Home Sample Collection</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck size={12} className="text-white" />
               </div>
-              <span className="text-white type-primary-body-b2 font-medium">100% Accurate Results</span>
+              <span className="text-white type-primary-body-b2-medium">100% Accurate Results</span>
             </div>
           </div>
         </div>
@@ -270,18 +270,18 @@ const Signup = () => {
         {/* Bottom: Stat Boxes */}
         <div className="flex justify-between items-center z-10 w-full max-w-[320px] mx-auto mt-6">
           <div className="text-center">
-            <h4 className="text-white font-bold text-lg">50k+</h4>
-            <p className="text-white/60 text-xs">Patients</p>
+            <h4 className="text-white type-primary-body-b1-medium">50k+</h4>
+            <p className="text-white/60 type-primary-body-b3">Patients</p>
           </div>
           <div className="w-[1px] h-8 bg-white/20"></div>
           <div className="text-center">
-            <h4 className="text-white font-bold text-lg">1200+</h4>
-            <p className="text-white/60 text-xs">Cities</p>
+            <h4 className="text-white type-primary-body-b1-medium">1200+</h4>
+            <p className="text-white/60 type-primary-body-b3">Cities</p>
           </div>
           <div className="w-[1px] h-8 bg-white/20"></div>
           <div className="text-center">
-            <h4 className="text-white font-bold text-lg">5.0</h4>
-            <p className="text-white/60 text-xs">Rating</p>
+            <h4 className="text-white type-primary-body-b1-medium">5.0</h4>
+            <p className="text-white/60 type-primary-body-b3">Rating</p>
           </div>
         </div>
       </div>
@@ -310,7 +310,7 @@ const Signup = () => {
           ))}
         </div>
 
-        <div className="w-full max-w-[440px] bg-white p-[40px] border border-border rounded-[10px] shadow-sm relative z-10">
+        <div className="w-full max-w-[440px] bg-card p-[40px] border border-border rounded-[10px] shadow-sm relative z-10">
           <div className="text-center md:text-left mb-6">
             <h2 className="type-primary-heading-h0-mobile lg:type-primary-heading-h0 text-foreground">Create your account</h2>
             <p className="text-muted-foreground mt-2 type-primary-body-b2 md:type-primary-body-b1">
@@ -382,9 +382,9 @@ const Signup = () => {
               />
               <span className="type-primary-body-b3 md:type-primary-body-b2 text-muted-foreground leading-relaxed">
                 I confirm that I have read and agree to Checked Up's{' '}
-                <span className="text-primary font-semibold cursor-pointer hover:underline">Terms of Service</span>{' '}
+                <span className="text-primary type-primary-body-b3-medium cursor-pointer hover:underline">Terms of Service</span>{' '}
                 and{' '}
-                <span className="text-primary font-semibold cursor-pointer hover:underline">Privacy Policy</span>.
+                <span className="text-primary type-primary-body-b3-medium cursor-pointer hover:underline">Privacy Policy</span>.
               </span>
             </label>
             {errors.agreeToTerms && (
@@ -398,7 +398,7 @@ const Signup = () => {
 
           <p className="mt-6 text-muted-foreground text-center type-primary-body-b2 md:type-primary-body-b1">
             Already have an account?{' '}
-            <Link to={ROUTES.LOGIN} className="text-primary font-bold hover:underline">
+            <Link to={ROUTES.LOGIN} className="text-primary type-primary-body-b2-medium hover:underline">
               Sign in
             </Link>
           </p>
@@ -409,7 +409,7 @@ const Signup = () => {
       {/* Mobile: Floating Card Overlay — mobile only */}
       {!isDesktop && (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/5 backdrop-blur-[2px]">
-        <div className="w-full max-w-[400px] bg-white p-[32px] rounded-[16px] shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="w-full max-w-[400px] bg-card p-[32px] rounded-[16px] shadow-2xl relative max-h-[90vh] overflow-y-auto">
           <button
             onClick={() => navigate(ROUTES.HOME)}
             className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition z-10"
@@ -445,8 +445,8 @@ const Signup = () => {
               <input type="checkbox" {...register('agreeToTerms')} className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-primary accent-primary cursor-pointer" />
               <span className="type-primary-body-b3 text-muted-foreground leading-relaxed">
                 I confirm that I have read and agree to Checked Up's{' '}
-                <span className="text-primary font-semibold cursor-pointer hover:underline">Terms of Service</span>{' '}and{' '}
-                <span className="text-primary font-semibold cursor-pointer hover:underline">Privacy Policy</span>.
+                <span className="text-primary type-primary-body-b3-medium cursor-pointer hover:underline">Terms of Service</span>{' '}and{' '}
+                <span className="text-primary type-primary-body-b3-medium cursor-pointer hover:underline">Privacy Policy</span>.
               </span>
             </label>
             {errors.agreeToTerms && <p className="text-destructive type-primary-body-b3 mt-1">{errors.agreeToTerms.message}</p>}
@@ -457,7 +457,7 @@ const Signup = () => {
 
           <p className="mt-6 text-muted-foreground text-center type-primary-body-b2">
             Already have an account?{' '}
-            <Link to={ROUTES.LOGIN} className="text-primary font-bold hover:underline">Sign in</Link>
+            <Link to={ROUTES.LOGIN} className="text-primary type-primary-body-b2-medium hover:underline">Sign in</Link>
           </p>
         </div>
       </div>

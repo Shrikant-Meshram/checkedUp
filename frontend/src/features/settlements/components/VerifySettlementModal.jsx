@@ -35,7 +35,7 @@ const VerifySettlementModal = ({ open, onClose, booking }) => {
         {/* Warning */}
         <div className="flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
           <AlertTriangle size={18} className="text-amber-600 mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-amber-700">
+          <p className="type-primary-body-b2 text-amber-700">
             By verifying, you confirm that the payment has been received in your bank account. This action cannot be undone.
           </p>
         </div>
@@ -44,12 +44,12 @@ const VerifySettlementModal = ({ open, onClose, booking }) => {
         <div className="p-4 bg-accent rounded-lg space-y-3">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <p className="text-xs text-muted-foreground">Patient</p>
-              <p className="text-sm font-medium">{booking.patientName || booking.user?.name || '—'}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Patient</p>
+              <p className="type-primary-body-b2-medium">{booking.patientName || booking.user?.name || '—'}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Test / Package</p>
-              <p className="text-sm font-medium">{booking.test?.title || booking.package?.title || '—'}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Test / Package</p>
+              <p className="type-primary-body-b2-medium">{booking.test?.title || booking.package?.title || '—'}</p>
             </div>
           </div>
 
@@ -57,15 +57,15 @@ const VerifySettlementModal = ({ open, onClose, booking }) => {
             <div className="flex items-start gap-2">
               <Banknote size={14} className="text-muted-foreground mt-0.5" />
               <div>
-                <p className="text-xs text-muted-foreground">Amount Paid</p>
-                <p className="text-sm font-semibold text-green-600">{formatCurrency(booking.labShare)}</p>
+                <p className="type-primary-body-b3 text-muted-foreground">Amount Paid</p>
+                <p className="type-primary-body-b2-medium text-green-600">{formatCurrency(booking.labShare)}</p>
               </div>
             </div>
             <div className="flex items-start gap-2">
               <Calendar size={14} className="text-muted-foreground mt-0.5" />
               <div>
-                <p className="text-xs text-muted-foreground">Sent On</p>
-                <p className="text-sm font-medium">{formatDate(booking.labPaidAt)}</p>
+                <p className="type-primary-body-b3 text-muted-foreground">Sent On</p>
+                <p className="type-primary-body-b2-medium">{formatDate(booking.labPaidAt)}</p>
               </div>
             </div>
           </div>
@@ -74,20 +74,20 @@ const VerifySettlementModal = ({ open, onClose, booking }) => {
             <div className="flex items-start gap-2">
               <Building2 size={14} className="text-muted-foreground mt-0.5" />
               <div>
-                <p className="text-xs text-muted-foreground">Bank</p>
-                <p className="text-sm font-medium">{booking.bankName || '—'}</p>
+                <p className="type-primary-body-b3 text-muted-foreground">Bank</p>
+                <p className="type-primary-body-b2-medium">{booking.bankName || '—'}</p>
               </div>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">UTR Number</p>
-              <p className="text-sm font-medium font-mono">{booking.settlementUTR || '—'}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">UTR Number</p>
+              <p className="type-primary-body-b2-medium font-mono">{booking.settlementUTR || '—'}</p>
             </div>
           </div>
 
           {booking.settlementBatchId && (
             <div>
-              <p className="text-xs text-muted-foreground">Batch ID</p>
-              <p className="text-sm font-medium font-mono">{booking.settlementBatchId}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Batch ID</p>
+              <p className="type-primary-body-b2-medium font-mono">{booking.settlementBatchId}</p>
             </div>
           )}
         </div>
@@ -95,7 +95,7 @@ const VerifySettlementModal = ({ open, onClose, booking }) => {
         {/* Payment Proof */}
         {booking.paymentProof && (
           <div>
-            <p className="text-sm font-medium text-foreground mb-2 flex items-center gap-2">
+            <p className="type-primary-body-b2-medium text-foreground mb-2 flex items-center gap-2">
               <Image size={14} className="text-muted-foreground" />
               Payment Proof
             </p>
@@ -143,7 +143,7 @@ const VerifySettlementModal = ({ open, onClose, booking }) => {
 
         {/* Error */}
         {mutation.isError && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-600">
+          <div className="p-3 bg-red-50 border border-red-200 rounded-lg type-primary-body-b2 text-red-600">
             {mutation.error?.response?.data?.message || 'Failed to verify settlement'}
           </div>
         )}

@@ -47,21 +47,21 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
   return (
     <Modal open={open} onClose={onClose} title="Settlement Details" subtitle={batchId ? `Batch: ${batchId}` : 'Pending Settlement'} size="lg">
       {isLoading ? (
-        <div className="py-8 text-center text-sm text-muted-foreground">Loading details…</div>
+        <div className="py-8 text-center type-primary-body-b2 text-muted-foreground">Loading details…</div>
       ) : (
         <div className="space-y-5">
           {/* Summary */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             <div>
-              <p className="text-xs text-muted-foreground">Lab Owner</p>
-              <p className="text-sm font-medium">{displaySummary.labOwner || '—'}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Lab Owner</p>
+              <p className="type-primary-body-b2-medium">{displaySummary.labOwner || '—'}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Status</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Status</p>
               {(() => {
                 const statusStyle = STATUS_STYLES[displaySummary.status] || STATUS_STYLES.Pending
                 return (
-                  <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                  <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3-medium ${statusStyle.bg} ${statusStyle.text}`}>
                     <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                     {displaySummary.status || '—'}
                   </span>
@@ -69,23 +69,23 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
               })()}
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Date</p>
-              <p className="text-sm font-medium">{formatDate(displaySummary.settledAt || booking?.createdAt)}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Date</p>
+              <p className="type-primary-body-b2-medium">{formatDate(displaySummary.settledAt || booking?.createdAt)}</p>
             </div>
             {!isPending && (
               <>
                 <div>
-                  <p className="text-xs text-muted-foreground">Bank Name</p>
-                  <p className="text-sm font-medium">{displaySummary.bankName || '—'}</p>
+                  <p className="type-primary-body-b3 text-muted-foreground">Bank Name</p>
+                  <p className="type-primary-body-b2-medium">{displaySummary.bankName || '—'}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-muted-foreground">UTR Number</p>
-                  <p className="text-sm font-medium">{displaySummary.utr || '—'}</p>
+                  <p className="type-primary-body-b3 text-muted-foreground">UTR Number</p>
+                  <p className="type-primary-body-b2-medium">{displaySummary.utr || '—'}</p>
                 </div>
                 {displaySummary.remark && (
                   <div>
-                    <p className="text-xs text-muted-foreground">Remark</p>
-                    <p className="text-sm font-medium">{displaySummary.remark}</p>
+                    <p className="type-primary-body-b3 text-muted-foreground">Remark</p>
+                    <p className="type-primary-body-b2-medium">{displaySummary.remark}</p>
                   </div>
                 )}
               </>
@@ -95,27 +95,27 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
           {/* Totals */}
           <div className="flex flex-wrap gap-4 p-3 bg-accent rounded-lg">
             <div>
-              <p className="text-xs text-muted-foreground">Total Bookings</p>
-              <p className="text-sm font-semibold">{displaySummary.totalBookings || 0}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Total Bookings</p>
+              <p className="type-primary-body-b2-medium">{displaySummary.totalBookings || 0}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Total Amount</p>
-              <p className="text-sm font-semibold">{formatCurrency(displaySummary.totalAmount)}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Total Amount</p>
+              <p className="type-primary-body-b2-medium">{formatCurrency(displaySummary.totalAmount)}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Lab Share</p>
-              <p className="text-sm font-semibold">{formatCurrency(displaySummary.labShare)}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Lab Share</p>
+              <p className="type-primary-body-b2-medium">{formatCurrency(displaySummary.labShare)}</p>
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Commission</p>
-              <p className="text-sm font-semibold">{formatCurrency(displaySummary.commission)}</p>
+              <p className="type-primary-body-b3 text-muted-foreground">Commission</p>
+              <p className="type-primary-body-b2-medium">{formatCurrency(displaySummary.commission)}</p>
             </div>
           </div>
 
           {/* Payment Proof */}
           {!isPending && (displaySummary.paymentProof || displayBookings[0]?.paymentProof) && (
             <div>
-              <h4 className="text-sm font-medium mb-2">Payment Proof</h4>
+              <h4 className="type-primary-body-b2-medium mb-2">Payment Proof</h4>
               <div className="border border-border rounded-lg overflow-hidden inline-block">
                 <img
                   src={displaySummary.paymentProof || displayBookings[0]?.paymentProof}
@@ -130,24 +130,24 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
           {/* Bookings Table */}
           {displayBookings.length > 0 && (
             <div>
-              <h4 className="text-sm font-medium mb-2">Bookings</h4>
+              <h4 className="type-primary-body-b2-medium mb-2">Bookings</h4>
               <div className="border border-border rounded-lg overflow-hidden">
-                <table className="w-full text-sm">
+                <table className="w-full type-primary-body-b2">
                   <thead className="bg-accent text-left text-muted-foreground">
                     <tr>
-                      <th className="px-3 py-2">Patient</th>
-                      <th className="px-3 py-2">Test / Package</th>
-                      <th className="px-3 py-2 text-right">Amount</th>
-                      <th className="px-3 py-2 text-right">Lab Share</th>
-                      <th className="px-3 py-2 text-right">Commission</th>
+                      <th className="px-3 py-2 type-primary-body-b3-medium">Patient</th>
+                      <th className="px-3 py-2 type-primary-body-b3-medium">Test / Package</th>
+                      <th className="px-3 py-2 type-primary-body-b3-medium text-right">Amount</th>
+                      <th className="px-3 py-2 type-primary-body-b3-medium text-right">Lab Share</th>
+                      <th className="px-3 py-2 type-primary-body-b3-medium text-right">Commission</th>
                     </tr>
                   </thead>
                   <tbody>
                     {displayBookings.map((b) => (
                       <tr key={b._id} className="border-t border-border">
                         <td className="px-3 py-2">
-                          <p className="font-medium">{b.patientName || b.user?.name || '—'}</p>
-                          <p className="text-xs text-muted-foreground">{b.phone}</p>
+                          <p className="type-primary-body-b2-medium">{b.patientName || b.user?.name || '—'}</p>
+                          <p className="type-primary-body-b3 text-muted-foreground">{b.phone}</p>
                         </td>
                         <td className="px-3 py-2">{b.test?.title || b.package?.title || '—'}</td>
                         <td className="px-3 py-2 text-right">{formatCurrency(b.paymentAmount)}</td>

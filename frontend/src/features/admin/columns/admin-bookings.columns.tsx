@@ -27,7 +27,7 @@ const statusDots: Record<string, string> = {
 
 const StatusBadge = ({ status }: { status: string }) => (
   <span
-    className={`px-2.5 py-0.5 rounded-md text-[11px] font-medium inline-flex items-center gap-1.5 ${
+    className={`px-2.5 py-0.5 rounded-md type-primary-body-b3 font-medium inline-flex items-center gap-1.5 ${
       statusStyles[status] || "bg-primary/10 text-muted-foreground"
     }`}
   >
@@ -46,7 +46,7 @@ const paymentStyles: Record<string, string> = {
 
 const PaymentBadge = ({ status }: { status: string }) => (
   <span
-    className={`px-2.5 py-0.5 rounded-md text-[11px] font-medium inline-block ${
+    className={`px-2.5 py-0.5 rounded-md type-primary-body-b3 font-medium inline-block ${
       paymentStyles[status] || "bg-primary/10 text-muted-foreground"
     }`}
   >
@@ -88,10 +88,10 @@ export function createAdminBookingsColumns({
       ),
       cell: ({ row }) => (
         <div>
-          <div className="font-semibold text-foreground text-sm">
+          <div className="font-semibold text-foreground type-primary-body-b2">
             {row.original.patientName}
           </div>
-          <div className="text-xs text-muted-foreground mt-0.5">
+          <div className="type-primary-body-b3 text-muted-foreground mt-0.5">
             {row.original.phone}
           </div>
         </div>
@@ -110,11 +110,11 @@ export function createAdminBookingsColumns({
         const city = test?.city || pkg?.city
         return (
           <div>
-            <span className="text-sm font-semibold text-foreground block">
+            <span className="type-primary-body-b2 font-semibold text-foreground block">
               {title}
             </span>
             {city && (
-              <span className="text-xs text-muted-foreground">{city}</span>
+              <span className="type-primary-body-b3 text-muted-foreground">{city}</span>
             )}
           </div>
         )
@@ -129,7 +129,7 @@ export function createAdminBookingsColumns({
       cell: ({ row }) => {
         const amount = row.original.totalAmount || row.original.test?.price || row.original.package?.price || 0
         return (
-          <span className="text-sm font-semibold text-foreground">
+          <span className="type-primary-body-b2 font-semibold text-foreground">
             ₹{amount.toLocaleString('en-IN')}
           </span>
         )
@@ -143,8 +143,8 @@ export function createAdminBookingsColumns({
       ),
       cell: ({ row }) => (
         <div>
-          <span className="text-sm text-foreground">{row.original.bookingDate}</span>
-          <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
+          <span className="type-primary-body-b2 text-foreground">{row.original.bookingDate}</span>
+          <div className="flex items-center gap-1 type-primary-body-b3 text-muted-foreground mt-0.5">
             <Clock size={10} />
             <span>{row.original.bookingTime}</span>
           </div>
@@ -172,16 +172,16 @@ export function createAdminBookingsColumns({
         if (booking.assignedLabAssistant) {
           return (
             <div>
-              <p className="text-sm font-medium text-foreground">
+              <p className="type-primary-body-b2 font-medium text-foreground">
                 {booking.assignedLabAssistant.name}
               </p>
-              <p className="text-[11px] text-muted-foreground mt-0.5">
+              <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
                 {booking.assignedLabAssistant.email}
               </p>
             </div>
           )
         }
-        return <span className="text-xs text-muted-foreground">—</span>
+        return <span className="type-primary-body-b3 text-muted-foreground">—</span>
       },
     },
     {
@@ -209,7 +209,7 @@ export function createAdminBookingsColumns({
       cell: ({ row }) => {
         const images = row.original.sampleImages
         if (!images?.length) {
-          return <span className="text-[11px] text-gray-400">No Samples</span>
+          return <span className="type-primary-body-b3 text-gray-400">No Samples</span>
         }
         return (
           <div className="flex items-center gap-1.5 flex-wrap max-w-[160px]">
@@ -229,7 +229,7 @@ export function createAdminBookingsColumns({
               </a>
             ))}
             {images.length > 3 && (
-              <span className="w-10 h-10 bg-primary/10 border border-border rounded-md flex items-center justify-center text-[10px] font-medium text-primary">
+              <span className="w-10 h-10 bg-primary/10 border border-border rounded-md flex items-center justify-center type-primary-body-b3 font-medium text-primary">
                 +{images.length - 3}
               </span>
             )}

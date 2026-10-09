@@ -16,7 +16,7 @@ const statusStyles: Record<string, string> = {
 
 const StatusBadge = ({ status }: { status: string }) => (
   <span
-    className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold inline-block ${
+    className={`px-2.5 py-0.5 rounded-full type-primary-body-b3-medium inline-block ${
       statusStyles[status] || "bg-primary/10 text-muted-foreground"
     }`}
   >
@@ -32,7 +32,7 @@ const paymentStyles: Record<string, string> = {
 
 const PaymentBadge = ({ status }: { status: string }) => (
   <span
-    className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold inline-block ${
+    className={`px-2.5 py-0.5 rounded-full type-primary-body-b3-medium inline-block ${
       paymentStyles[status] || "bg-primary/10 text-muted-foreground"
     }`}
   >
@@ -68,7 +68,7 @@ export function createPatientBookingsColumns({
         <DataTableColumnHeader column={column} title="Test/Package" />
       ),
       cell: ({ row }) => (
-        <span className="text-sm font-semibold text-foreground block max-w-[200px] truncate">
+        <span className="type-primary-body-b2 font-semibold text-foreground block max-w-[200px] truncate">
           {row.original.test?.title || row.original.package?.title || "N/A"}
         </span>
       ),
@@ -80,7 +80,7 @@ export function createPatientBookingsColumns({
         <DataTableColumnHeader column={column} title="Date" />
       ),
       cell: ({ row }) => (
-        <span className="text-sm text-muted-foreground">{row.getValue("bookingDate")}</span>
+        <span className="type-primary-body-b2 text-muted-foreground">{row.getValue("bookingDate")}</span>
       ),
     },
     {
@@ -89,7 +89,7 @@ export function createPatientBookingsColumns({
       header: "Time",
       enableSorting: false,
       cell: ({ row }) => (
-        <span className="text-sm text-muted-foreground">{row.getValue("bookingTime")}</span>
+        <span className="type-primary-body-b2 text-muted-foreground">{row.getValue("bookingTime")}</span>
       ),
     },
     {
@@ -120,13 +120,13 @@ export function createPatientBookingsColumns({
         return canManage ? (
           <button
             onClick={() => openManageModal(booking)}
-            className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-warning hover:bg-warning/90 text-white text-xs font-semibold transition-all"
+            className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-warning hover:bg-warning/90 text-white type-primary-body-b3-medium transition-all"
           >
             <Settings size={14} />
             Manage
           </button>
         ) : booking.status === BOOKING_STATUS.CANCELLED ? (
-          <span className="bg-red-50 text-red-600 px-2.5 py-1 rounded-md text-[11px] font-semibold">
+          <span className="bg-red-50 text-red-600 px-2.5 py-1 rounded-md type-primary-body-b3-medium">
             Cancelled
           </span>
         ) : null

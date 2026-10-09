@@ -108,7 +108,7 @@ const SettlementPendingGrid = ({
                 onChange={handleSelectAll}
                 className="rounded border-border"
               />
-              <span className="text-xs text-muted-foreground">
+              <span className="type-primary-body-b3 md:type-primary-body-b4 text-muted-foreground">
                 {allSelected ? 'Deselect all' : 'Select all'} ({filteredBookings.length} items)
               </span>
             </div>
@@ -139,8 +139,8 @@ const SettlementPendingGrid = ({
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="min-w-0 flex-1">
-                      <p className="font-semibold text-foreground truncate">{booking.patientName || booking.user?.name || '—'}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{booking.phone}</p>
+                      <p className="type-primary-body-b1-medium text-foreground truncate">{booking.patientName || booking.user?.name || '—'}</p>
+                      <p className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground mt-0.5">{booking.phone}</p>
                     </div>
                     {isAdmin && (
                       <input
@@ -153,15 +153,15 @@ const SettlementPendingGrid = ({
                   </div>
 
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center justify-between  type-primary-body-b2 md:type-primary-body-b3">
                       <span className="text-muted-foreground">Lab Owner</span>
-                      <span className="text-foreground font-medium truncate ml-2">{booking.labOwner?.name || '—'}</span>
+                      <span className="text-foreground type-primary-body-b2-medium md:type-primary-body-b3-medium truncate ml-2">{booking.labOwner?.name || '—'}</span>
                     </div>
-                    <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center justify-between type-primary-body-b2 md:type-primary-body-b3">
                       <span className="text-muted-foreground">Test / Package</span>
-                      <span className="text-foreground font-medium truncate ml-2">{booking.test?.title || booking.package?.title || '—'}</span>
+                      <span className="text-foreground type-primary-body-b2-medium md:type-primary-body-b3-medium truncate ml-2">{booking.test?.title || booking.package?.title || '—'}</span>
                     </div>
-                    <div className="flex items-center justify-between text-xs">
+                    <div className="flex items-center justify-between type-primary-body-b2 md:type-primary-body-b3">
                       <span className="text-muted-foreground">Date</span>
                       <span className="text-foreground">{formatDate(booking.createdAt)}</span>
                     </div>
@@ -170,24 +170,24 @@ const SettlementPendingGrid = ({
                   <div className="border-t border-border pt-3 mb-3">
                     <div className="grid grid-cols-3 gap-2 text-center">
                       <div>
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Amount</p>
-                        <p className="text-sm font-bold text-foreground">{formatCurrency(booking.paymentAmount)}</p>
+                        <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground uppercase tracking-wide">Amount</p>
+                        <p className="type-primary-body-b2-medium text-foreground">{formatCurrency(booking.paymentAmount)}</p>
                       </div>
                       <div>
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Lab Share</p>
-                        <p className="text-sm font-bold text-emerald-600">{formatCurrency(booking.labShare)}</p>
-                        <p className="text-[10px] text-muted-foreground">{labSharePct}</p>
+                        <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground uppercase tracking-wide">Lab Share</p>
+                        <p className="type-primary-body-b2-medium text-emerald-600">{formatCurrency(booking.labShare)}</p>
+                        <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground">{labSharePct}</p>
                       </div>
                       <div>
-                        <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Commission</p>
-                        <p className="text-sm font-bold text-amber-600">{formatCurrency(booking.systemCommission)}</p>
-                        <p className="text-[10px] text-muted-foreground">{commissionPct}</p>
+                        <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground uppercase tracking-wide">Commission</p>
+                        <p className="type-primary-body-b2-medium text-amber-600">{formatCurrency(booking.systemCommission)}</p>
+                        <p className="type-primary-body-b4 md:type-primary-body-b4 text-muted-foreground">{commissionPct}</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between">
-                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                    <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b2-medium md:type-primary-body-b3-medium ${statusStyle.bg} ${statusStyle.text}`}>
                       <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                       {booking.labPaymentStatus || 'Pending'}
                     </span>

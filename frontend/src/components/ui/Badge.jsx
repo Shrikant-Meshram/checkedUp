@@ -29,7 +29,7 @@ const Badge = ({ children, variant = 'default', status, className = '' }) => {
   return (
     <span
       className={`
-        px-2.5 py-0.5 rounded-full text-[10px] font-semibold inline-block
+        px-2.5 py-0.5 rounded-full type-primary-body-b3 font-semibold inline-block
         ${statusClass || variantStyles[variant] || variantStyles.default}
         ${className}
       `}

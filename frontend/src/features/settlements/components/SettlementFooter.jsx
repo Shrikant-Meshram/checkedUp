@@ -18,9 +18,9 @@ const SettlementFooter = ({ statistics, isAdmin }) => {
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-500">
             <Info size={16} />
           </span>
-          <h3 className="text-sm font-semibold text-foreground">Important Notes</h3>
+          <h3 className="type-primary-body-b2-medium text-foreground">Important Notes</h3>
         </div>
-        <ul className="space-y-2 text-xs text-muted-foreground">
+        <ul className="space-y-2 type-primary-body-b3 text-muted-foreground">
           <li className="flex items-start gap-2">
             <span className="w-1 h-1 rounded-full bg-muted-foreground mt-1.5 shrink-0"></span>
             Settlements are processed every Monday.
@@ -46,17 +46,17 @@ const SettlementFooter = ({ statistics, isAdmin }) => {
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-50 text-amber-500">
             <Clock size={16} />
           </span>
-          <h3 className="text-sm font-semibold text-foreground">Upcoming Settlement</h3>
-          <span className="ml-auto text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">2 Days Left</span>
+          <h3 className="type-primary-body-b2-medium text-foreground">Upcoming Settlement</h3>
+          <span className="ml-auto type-primary-body-b3 bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">2 Days Left</span>
         </div>
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground">Total Amount</span>
-            <span className="text-sm font-bold text-foreground">{formatCurrency(pendingAmount)}</span>
+            <span className="type-primary-body-b3 text-muted-foreground">Total Amount</span>
+            <span className="type-primary-body-b2-medium text-foreground">{formatCurrency(pendingAmount)}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground">Lab Owners</span>
-            <span className="text-sm font-bold text-foreground">{pendingCount}</span>
+            <span className="type-primary-body-b3 text-muted-foreground">Lab Owners</span>
+            <span className="type-primary-body-b2-medium text-foreground">{pendingCount}</span>
           </div>
           <Button variant="outline" size="sm" className="w-full mt-2">
             View Details
@@ -70,9 +70,9 @@ const SettlementFooter = ({ statistics, isAdmin }) => {
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-50 text-purple-500">
             <HelpCircle size={16} />
           </span>
-          <h3 className="text-sm font-semibold text-foreground">Need Help?</h3>
+          <h3 className="type-primary-body-b2-medium text-foreground">Need Help?</h3>
         </div>
-        <p className="text-xs text-muted-foreground mb-3">
+        <p className="type-primary-body-b3 text-muted-foreground mb-3">
           If you have any questions, feel free to contact our support team.
         </p>
         <Button variant="primary" size="sm" className="w-full">

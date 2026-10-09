@@ -120,7 +120,7 @@ const FilterPanel = ({
         <div className="flex items-center justify-between px-4 py-3 border-b border-border shrink-0">
           <h3 className="font-semibold text-foreground">{title}</h3>
           {totalActiveCount > 0 && (
-            <button onClick={clearAll} className="text-xs text-primary hover:underline">Clear all</button>
+            <button onClick={clearAll} className="type-primary-body-b3 text-primary hover:underline">Clear all</button>
           )}
         </div>
 
@@ -134,7 +134,7 @@ const FilterPanel = ({
                 const range = vals
                 if (!range?.start && !range?.end) return null
                 return (
-                  <span key={cat.key} className="flex items-center gap-1 bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                  <span key={cat.key} className="flex items-center gap-1 bg-primary/10 text-primary type-primary-body-b3 px-2 py-1 rounded-full">
                     {range.start || '...'} – {range.end || '...'}
                     <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="hover:text-primary/70">
                       <X size={12} />
@@ -145,7 +145,7 @@ const FilterPanel = ({
               if (cat.type === 'range' && typeof vals === 'object') {
                 if (!vals.min && !vals.max) return null
                 return (
-                  <span key={cat.key} className="flex items-center gap-1 bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                  <span key={cat.key} className="flex items-center gap-1 bg-primary/10 text-primary type-primary-body-b3 px-2 py-1 rounded-full">
                     {vals.min || '0'} – {vals.max || '∞'}
                     <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="hover:text-primary/70">
                       <X size={12} />
@@ -156,7 +156,7 @@ const FilterPanel = ({
               if (cat.type === 'text-search' && typeof vals === 'string') {
                 if (!vals) return null
                 return (
-                  <span key={cat.key} className="flex items-center gap-1 bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                  <span key={cat.key} className="flex items-center gap-1 bg-primary/10 text-primary type-primary-body-b3 px-2 py-1 rounded-full">
                     {vals}
                     <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="hover:text-primary/70">
                       <X size={12} />
@@ -166,7 +166,7 @@ const FilterPanel = ({
               }
               const arr = Array.isArray(vals) ? vals : [vals]
               return arr.map((v) => (
-                <span key={`${cat.key}-${v}`} className="flex items-center gap-1 bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                <span key={`${cat.key}-${v}`} className="flex items-center gap-1 bg-primary/10 text-primary type-primary-body-b3 px-2 py-1 rounded-full">
                   {getOptionLabel(cat.key, v)}
                   <button onClick={() => removeFilter(cat.key, v)} className="hover:text-primary/70">
                     <X size={12} />
@@ -187,7 +187,7 @@ const FilterPanel = ({
                 <button
                   key={cat.key}
                   onClick={() => { setSelectedCategory(cat.key); setCategorySearch('') }}
-                  className={`w-full flex items-center justify-between px-3 py-2.5 text-sm transition ${
+                  className={`w-full flex items-center justify-between px-3 py-2.5 type-primary-body-b2 transition ${
                     selectedCategory === cat.key
                       ? 'bg-primary/10 text-primary font-medium'
                       : 'text-foreground hover:bg-accent'
@@ -195,7 +195,7 @@ const FilterPanel = ({
                 >
                   <span className="truncate">{cat.label}</span>
                   {count > 0 && (
-                    <span className="bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0">
+                    <span className="bg-primary text-primary-foreground type-primary-body-b3 font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0">
                       {count}
                     </span>
                   )}
@@ -214,7 +214,7 @@ const FilterPanel = ({
                   placeholder={activeCat.searchPlaceholder || 'Search...'}
                   value={categorySearch}
                   onChange={(e) => setCategorySearch(e.target.value)}
-                  className="w-full pl-8 pr-3 py-2 border border-border rounded-lg text-sm outline-none focus:border-primary"
+                  className="w-full pl-8 pr-3 py-2 border border-border rounded-lg type-primary-body-b2 outline-none focus:border-primary"
                 />
               </div>
             )}
@@ -222,21 +222,21 @@ const FilterPanel = ({
             {activeCat?.type === 'date-range' && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">From</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">From</label>
                   <input
                     type="date"
                     value={draftFilters[activeCat?.key]?.start || ''}
                     onChange={(e) => setDateRange(activeCat.key, 'start', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">To</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">To</label>
                   <input
                     type="date"
                     value={draftFilters[activeCat?.key]?.end || ''}
                     onChange={(e) => setDateRange(activeCat.key, 'end', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -245,23 +245,23 @@ const FilterPanel = ({
             {activeCat?.type === 'range' && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">Min {activeCat.unit || ''}</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">Min {activeCat.unit || ''}</label>
                   <input
                     type="number"
                     placeholder={activeCat.minPlaceholder || '0'}
                     value={draftFilters[activeCat?.key]?.min || ''}
                     onChange={(e) => setRangeValue(activeCat.key, 'min', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">Max {activeCat.unit || ''}</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">Max {activeCat.unit || ''}</label>
                   <input
                     type="number"
                     placeholder={activeCat.maxPlaceholder || 'No limit'}
                     value={draftFilters[activeCat?.key]?.max || ''}
                     onChange={(e) => setRangeValue(activeCat.key, 'max', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -270,13 +270,13 @@ const FilterPanel = ({
             {activeCat?.type === 'text-search' && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">{activeCat.label}</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">{activeCat.label}</label>
                   <input
                     type="text"
                     placeholder={activeCat.placeholder || 'Search...'}
                     value={draftFilters[activeCat?.key] || ''}
                     onChange={(e) => setTextSearch(activeCat.key, e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -284,7 +284,7 @@ const FilterPanel = ({
 
             {(activeCat?.type === 'checkbox' || activeCat?.type === 'search-checkbox') && (
               filteredOptions.length === 0 ? (
-                <p className="text-sm text-muted-foreground text-center py-8">No options available</p>
+                <p className="type-primary-body-b2 text-muted-foreground text-center py-8">No options available</p>
               ) : (
                 <div className="space-y-1">
                   {filteredOptions.map((opt) => {
@@ -300,7 +300,7 @@ const FilterPanel = ({
                         }`}>
                           {checked && <Check size={12} className="text-white" />}
                         </div>
-                        <span className="text-sm text-foreground">{opt.label}</span>
+                        <span className="type-primary-body-b2 text-foreground">{opt.label}</span>
                       </label>
                     )
                   })}
@@ -312,8 +312,8 @@ const FilterPanel = ({
 
         {/* Footer */}
         <div className="flex items-center gap-3 px-4 py-3 border-t border-border shrink-0">
-          <button onClick={onClose} className="flex-1 px-4 py-2.5 text-sm font-medium text-foreground border border-border rounded-lg hover:bg-accent transition">Cancel</button>
-          <button onClick={handleApply} className="flex-1 px-4 py-2.5 text-sm font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition">Apply</button>
+          <button onClick={onClose} className="flex-1 px-4 py-2.5 type-primary-body-b2 font-medium text-foreground border border-border rounded-lg hover:bg-accent transition">Cancel</button>
+          <button onClick={handleApply} className="flex-1 px-4 py-2.5 type-primary-body-b2 font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition">Apply</button>
         </div>
       </div>
 
@@ -324,9 +324,9 @@ const FilterPanel = ({
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-border">
-          <h3 className="font-semibold text-foreground text-sm">{title}</h3>
+          <h3 className="font-semibold text-foreground type-primary-body-b2">{title}</h3>
           {totalActiveCount > 0 && (
-            <button onClick={clearAll} className="text-xs text-primary hover:underline">Clear all</button>
+            <button onClick={clearAll} className="type-primary-body-b3 text-primary hover:underline">Clear all</button>
           )}
         </div>
 
@@ -340,7 +340,7 @@ const FilterPanel = ({
                 <button
                   key={cat.key}
                   onClick={() => { setSelectedCategory(cat.key); setCategorySearch('') }}
-                  className={`w-full flex items-center justify-between px-4 py-2.5 text-sm transition ${
+                  className={`w-full flex items-center justify-between px-4 py-2.5 type-primary-body-b2 transition ${
                     selectedCategory === cat.key
                       ? 'bg-primary/10 text-primary font-medium'
                       : 'text-foreground hover:bg-accent'
@@ -348,7 +348,7 @@ const FilterPanel = ({
                 >
                   <span>{cat.label}</span>
                   {count > 0 && (
-                    <span className="bg-primary text-primary-foreground text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                    <span className="bg-primary text-primary-foreground type-primary-body-b3 font-bold w-5 h-5 rounded-full flex items-center justify-center">
                       {count}
                     </span>
                   )}
@@ -367,7 +367,7 @@ const FilterPanel = ({
                   placeholder={activeCat.searchPlaceholder || 'Search...'}
                   value={categorySearch}
                   onChange={(e) => setCategorySearch(e.target.value)}
-                  className="w-full pl-8 pr-3 py-2 border border-border rounded-lg text-sm outline-none focus:border-primary"
+                  className="w-full pl-8 pr-3 py-2 border border-border rounded-lg type-primary-body-b2 outline-none focus:border-primary"
                 />
               </div>
             )}
@@ -375,21 +375,21 @@ const FilterPanel = ({
             {activeCat?.type === 'date-range' && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">From</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">From</label>
                   <input
                     type="date"
                     value={draftFilters[activeCat?.key]?.start || ''}
                     onChange={(e) => setDateRange(activeCat.key, 'start', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">To</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">To</label>
                   <input
                     type="date"
                     value={draftFilters[activeCat?.key]?.end || ''}
                     onChange={(e) => setDateRange(activeCat.key, 'end', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -398,23 +398,23 @@ const FilterPanel = ({
             {activeCat?.type === 'range' && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">Min {activeCat.unit || ''}</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">Min {activeCat.unit || ''}</label>
                   <input
                     type="number"
                     placeholder={activeCat.minPlaceholder || '0'}
                     value={draftFilters[activeCat?.key]?.min || ''}
                     onChange={(e) => setRangeValue(activeCat.key, 'min', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">Max {activeCat.unit || ''}</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">Max {activeCat.unit || ''}</label>
                   <input
                     type="number"
                     placeholder={activeCat.maxPlaceholder || 'No limit'}
                     value={draftFilters[activeCat?.key]?.max || ''}
                     onChange={(e) => setRangeValue(activeCat.key, 'max', e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -423,13 +423,13 @@ const FilterPanel = ({
             {activeCat?.type === 'text-search' && (
               <div className="space-y-4">
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1.5 block">{activeCat.label}</label>
+                  <label className="type-primary-body-b3 text-muted-foreground mb-1.5 block">{activeCat.label}</label>
                   <input
                     type="text"
                     placeholder={activeCat.placeholder || 'Search...'}
                     value={draftFilters[activeCat?.key] || ''}
                     onChange={(e) => setTextSearch(activeCat.key, e.target.value)}
-                    className="w-full border border-border rounded-lg px-3 py-2 text-sm outline-none focus:border-primary"
+                    className="w-full border border-border rounded-lg px-3 py-2 type-primary-body-b2 outline-none focus:border-primary"
                   />
                 </div>
               </div>
@@ -437,7 +437,7 @@ const FilterPanel = ({
 
             {(activeCat?.type === 'checkbox' || activeCat?.type === 'search-checkbox') && (
               filteredOptions.length === 0 ? (
-                <p className="text-sm text-muted-foreground text-center py-8">No options available</p>
+                <p className="type-primary-body-b2 text-muted-foreground text-center py-8">No options available</p>
               ) : (
                 <div className="space-y-1">
                   {filteredOptions.map((opt) => {
@@ -453,7 +453,7 @@ const FilterPanel = ({
                         }`}>
                           {checked && <Check size={12} className="text-white" />}
                         </div>
-                        <span className="text-sm text-foreground">{opt.label}</span>
+                        <span className="type-primary-body-b2 text-foreground">{opt.label}</span>
                       </label>
                     )
                   })}
@@ -465,7 +465,7 @@ const FilterPanel = ({
           {/* Right: Selected Summary */}
           <div className="w-52 border-l border-border py-3 px-4 overflow-y-auto shrink-0">
             {totalActiveCount === 0 ? (
-              <p className="text-xs text-muted-foreground text-center py-8">No filters selected</p>
+              <p className="type-primary-body-b3 text-muted-foreground text-center py-8">No filters selected</p>
             ) : (
               <div className="space-y-4">
                 {categories.map((cat) => {
@@ -477,13 +477,13 @@ const FilterPanel = ({
                     return (
                       <div key={cat.key}>
                         <div className="flex items-center justify-between mb-1.5">
-                          <span className="text-xs font-medium text-foreground">{cat.label}</span>
-                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-[10px] text-primary hover:underline">Clear</button>
+                          <span className="type-primary-body-b3-medium text-foreground">{cat.label}</span>
+                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="type-primary-body-b3 text-primary hover:underline">Clear</button>
                         </div>
                         <div className="space-y-1">
                           {vals.start && (
                             <div className="flex items-center justify-between bg-accent/50 rounded px-2 py-1">
-                              <span className="text-xs text-foreground">From: {vals.start}</span>
+                              <span className="type-primary-body-b3 text-foreground">From: {vals.start}</span>
                               <button onClick={() => setDateRange(cat.key, 'start', '')} className="text-muted-foreground hover:text-foreground ml-1 shrink-0">
                                 <X size={12} />
                               </button>
@@ -491,7 +491,7 @@ const FilterPanel = ({
                           )}
                           {vals.end && (
                             <div className="flex items-center justify-between bg-accent/50 rounded px-2 py-1">
-                              <span className="text-xs text-foreground">To: {vals.end}</span>
+                              <span className="type-primary-body-b3 text-foreground">To: {vals.end}</span>
                               <button onClick={() => setDateRange(cat.key, 'end', '')} className="text-muted-foreground hover:text-foreground ml-1 shrink-0">
                                 <X size={12} />
                               </button>
@@ -508,11 +508,11 @@ const FilterPanel = ({
                     return (
                       <div key={cat.key}>
                         <div className="flex items-center justify-between mb-1.5">
-                          <span className="text-xs font-medium text-foreground">{cat.label}</span>
-                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-[10px] text-primary hover:underline">Clear</button>
+                          <span className="type-primary-body-b3-medium text-foreground">{cat.label}</span>
+                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="type-primary-body-b3 text-primary hover:underline">Clear</button>
                         </div>
                         <div className="flex items-center justify-between bg-accent/50 rounded px-2 py-1">
-                          <span className="text-xs text-foreground truncate">{range.start || '...'} – {range.end || '...'}</span>
+                          <span className="type-primary-body-b3 text-foreground truncate">{range.start || '...'} – {range.end || '...'}</span>
                           <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-muted-foreground hover:text-foreground ml-1 shrink-0">
                             <X size={12} />
                           </button>
@@ -526,11 +526,11 @@ const FilterPanel = ({
                     return (
                       <div key={cat.key}>
                         <div className="flex items-center justify-between mb-1.5">
-                          <span className="text-xs font-medium text-foreground">{cat.label}</span>
-                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-[10px] text-primary hover:underline">Clear</button>
+                          <span className="type-primary-body-b3-medium text-foreground">{cat.label}</span>
+                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="type-primary-body-b3 text-primary hover:underline">Clear</button>
                         </div>
                         <div className="flex items-center justify-between bg-accent/50 rounded px-2 py-1">
-                          <span className="text-xs text-foreground truncate">{vals.min || '0'} – {vals.max || '∞'}</span>
+                          <span className="type-primary-body-b3 text-foreground truncate">{vals.min || '0'} – {vals.max || '∞'}</span>
                           <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-muted-foreground hover:text-foreground ml-1 shrink-0">
                             <X size={12} />
                           </button>
@@ -544,11 +544,11 @@ const FilterPanel = ({
                     return (
                       <div key={cat.key}>
                         <div className="flex items-center justify-between mb-1.5">
-                          <span className="text-xs font-medium text-foreground">{cat.label}</span>
-                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-[10px] text-primary hover:underline">Clear</button>
+                          <span className="type-primary-body-b3-medium text-foreground">{cat.label}</span>
+                          <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="type-primary-body-b3 text-primary hover:underline">Clear</button>
                         </div>
                         <div className="flex items-center justify-between bg-accent/50 rounded px-2 py-1">
-                          <span className="text-xs text-foreground truncate">{vals}</span>
+                          <span className="type-primary-body-b3 text-foreground truncate">{vals}</span>
                           <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-muted-foreground hover:text-foreground ml-1 shrink-0">
                             <X size={12} />
                           </button>
@@ -562,13 +562,13 @@ const FilterPanel = ({
                   return (
                     <div key={cat.key}>
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className="text-xs font-medium text-foreground">{cat.label}</span>
-                        <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="text-[10px] text-primary hover:underline">Clear</button>
+                        <span className="type-primary-body-b3-medium text-foreground">{cat.label}</span>
+                        <button onClick={() => setDraftFilters((p) => ({ ...p, [cat.key]: undefined }))} className="type-primary-body-b3 text-primary hover:underline">Clear</button>
                       </div>
                       <div className="space-y-1">
                         {arr.map((v) => (
                           <div key={v} className="flex items-center justify-between bg-accent/50 rounded px-2 py-1">
-                            <span className="text-xs text-foreground truncate">{getOptionLabel(cat.key, v)}</span>
+                            <span className="type-primary-body-b3 text-foreground truncate">{getOptionLabel(cat.key, v)}</span>
                             <button onClick={() => removeFilter(cat.key, v)} className="text-muted-foreground hover:text-foreground ml-1 shrink-0">
                               <X size={12} />
                             </button>
@@ -585,8 +585,8 @@ const FilterPanel = ({
 
         {/* Footer */}
         <div className="flex items-center justify-end gap-3 px-5 py-3 border-t border-border">
-          <button onClick={onClose} className="px-4 py-2 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
-          <button onClick={handleApply} className="px-5 py-2 text-sm font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition shadow-sm">Apply</button>
+          <button onClick={onClose} className="px-4 py-2 type-primary-body-b2 font-medium text-foreground hover:bg-accent rounded-lg transition">Cancel</button>
+          <button onClick={handleApply} className="px-5 py-2 type-primary-body-b2 font-semibold bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition shadow-sm">Apply</button>
         </div>
       </div>
     </>

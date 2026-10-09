@@ -10,9 +10,9 @@ const actions = [
     label: 'Add New Test',
     description: 'Create a new test',
     icon: FlaskConical,
-    bgColor: 'bg-blue-50 border-blue-200',
-    iconBg: 'bg-blue-100',
-    iconColor: 'text-blue-600',
+    bgColor: 'bg-primary/5 border-primary/20',
+    iconBg: 'bg-primary/10',
+    iconColor: 'text-primary',
     route: ROUTES.LAB_OWNER,
     permission: { resource: 'tests', action: 'create' },
   },
@@ -32,9 +32,9 @@ const actions = [
     label: 'View Bookings',
     description: 'Manage all bookings',
     icon: Calendar,
-    bgColor: 'bg-green-50 border-green-200',
-    iconBg: 'bg-green-100',
-    iconColor: 'text-green-600',
+    bgColor: 'bg-success/5 border-success/20',
+    iconBg: 'bg-success/10',
+    iconColor: 'text-success',
     route: ROUTES.LAB_OWNER,
     permission: { resource: 'bookings', action: 'read' },
   },
@@ -43,9 +43,9 @@ const actions = [
     label: 'Upload Reports',
     description: 'Upload test reports',
     icon: FileUp,
-    bgColor: 'bg-rose-50 border-rose-200',
-    iconBg: 'bg-rose-100',
-    iconColor: 'text-rose-600',
+    bgColor: 'bg-destructive/5 border-destructive/20',
+    iconBg: 'bg-destructive/10',
+    iconColor: 'text-destructive',
     route: ROUTES.LAB_OWNER,
     permission: { resource: 'reports', action: 'create' },
   },
@@ -54,9 +54,9 @@ const actions = [
     label: 'Sample Collection',
     description: 'Manage collections',
     icon: TestTube,
-    bgColor: 'bg-amber-50 border-amber-200',
-    iconBg: 'bg-amber-100',
-    iconColor: 'text-amber-600',
+    bgColor: 'bg-warning/5 border-warning/20',
+    iconBg: 'bg-warning/10',
+    iconColor: 'text-warning',
     route: ROUTES.LAB_OWNER,
     permission: { resource: 'bookings', action: 'read' },
   },
@@ -83,8 +83,8 @@ const LabOwnerQuickActions = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-border shadow-sm p-4 sm:p-5">
-      <h3 className="font-serif text-base sm:text-lg font-bold text-foreground mb-3 sm:mb-4">Quick Actions</h3>
+    <div className="bg-card rounded-xl border border-border shadow-sm p-4 sm:p-5">
+      <h3 className="type-primary-heading-h3-medium text-foreground mb-3 sm:mb-4">Quick Actions</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {actions.map((action) => {
           const Icon = action.icon
@@ -97,8 +97,8 @@ const LabOwnerQuickActions = () => {
                 <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition ${action.iconBg}`}>
                   <Icon size={16} className={action.iconColor} />
                 </div>
-                <h4 className="font-semibold text-foreground text-xs sm:text-sm leading-tight">{action.label}</h4>
-                <p className="text-[10px] sm:text-[11px] text-muted-foreground mt-0.5">{action.description}</p>
+                <h4 className="type-primary-body-b2-medium text-foreground leading-tight">{action.label}</h4>
+                <p className="type-primary-label-l2 text-muted-foreground mt-0.5">{action.description}</p>
               </button>
             </Can>
           )

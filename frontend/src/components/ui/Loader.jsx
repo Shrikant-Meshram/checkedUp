@@ -18,7 +18,7 @@ export const Spinner = ({ size = 'md', className = '' }) => {
 
 export const InlineLoader = ({ text = 'Loading...' }) => {
   return (
-    <div className="text-center text-sm font-medium text-muted-foreground py-10">{text}</div>
+    <div className="text-center type-primary-body-b2-medium text-muted-foreground py-10">{text}</div>
   )
 }
 

@@ -45,7 +45,7 @@ const LabOwnerBookingsTable = ({
       {
         label: 'View Report',
         icon: <Download size={14} />,
-        iconColor: 'bg-blue-100 text-blue-600',
+        iconColor: 'bg-primary/10 text-primary',
         onClick: (row) => {
           if (row.report) setPreviewReport(row.report)
         },
@@ -54,7 +54,7 @@ const LabOwnerBookingsTable = ({
       {
         label: 'Upload Report',
         icon: <UploadCloud size={14} />,
-        iconColor: 'bg-green-100 text-green-600',
+        iconColor: 'bg-success/10 text-success',
         onClick: (row) => handleUploadClick(row._id),
         disabled: (row) =>
           row.paymentStatus !== PAYMENT_STATUS.PAID || !!row.report || uploadingReport[row._id],
@@ -65,7 +65,7 @@ const LabOwnerBookingsTable = ({
   )
 
   return (
-    <div className="w-full bg-white rounded-xl border border-border shadow-sm overflow-hidden">
+    <div className="w-full bg-card rounded-xl border border-border shadow-sm overflow-hidden">
       <input
         ref={fileInputRef}
         type="file"

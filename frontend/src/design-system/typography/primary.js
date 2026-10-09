@@ -55,6 +55,11 @@ const primaryTypography = {
       fontWeight: 400,
       lineHeight: 1.5,
     },
+    h0Large: {
+      fontSize: 45,
+      fontWeight: 500,
+      lineHeight: 1.2,
+    },
     h0Mobile: {
       fontSize: 28,
       fontWeight: 400,

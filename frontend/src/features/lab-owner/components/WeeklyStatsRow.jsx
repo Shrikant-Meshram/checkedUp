@@ -6,32 +6,32 @@ const statsConfig = [
     key: 'samplesCollected',
     title: 'Samples Collected',
     icon: FlaskConical,
-    iconBg: 'bg-blue-50',
-    iconColor: 'text-blue-600',
+    iconBg: 'bg-primary/10',
+    iconColor: 'text-primary',
     subtitle: 'This Week',
   },
   {
     key: 'reportsCompleted',
     title: 'Reports Completed',
     icon: FileCheck,
-    iconBg: 'bg-green-50',
-    iconColor: 'text-green-600',
+    iconBg: 'bg-success/10',
+    iconColor: 'text-success',
     subtitle: 'This Week',
   },
   {
     key: 'reportsPending',
     title: 'Reports Pending',
     icon: Clock,
-    iconBg: 'bg-amber-50',
-    iconColor: 'text-amber-600',
+    iconBg: 'bg-warning/10',
+    iconColor: 'text-warning',
     subtitle: 'This Week',
   },
   {
     key: 'reportsOverdue',
     title: 'Reports Overdue',
     icon: AlertTriangle,
-    iconBg: 'bg-rose-50',
-    iconColor: 'text-rose-600',
+    iconBg: 'bg-destructive/10',
+    iconColor: 'text-destructive',
     subtitle: 'Requires Attention',
     isWarning: true,
   },
@@ -48,8 +48,8 @@ const WeeklyStatsRow = ({ stats }) => {
         return (
           <div
             key={s.key}
-            className={`bg-white rounded-xl p-4 shadow-sm border transition hover:shadow-md ${
-              s.isWarning ? 'border-rose-200' : 'border-border'
+            className={`bg-card rounded-xl p-4 shadow-sm border transition hover:shadow-md ${
+              s.isWarning ? 'border-destructive/20' : 'border-border'
             }`}
           >
             <div className="flex items-center gap-3 mb-3">
@@ -57,15 +57,15 @@ const WeeklyStatsRow = ({ stats }) => {
                 <Icon size={18} className={s.iconColor} />
               </div>
               <div>
-                <p className="text-muted-foreground text-[11px] font-semibold uppercase tracking-wider leading-tight">
+                <p className="text-muted-foreground type-primary-label-l2 uppercase tracking-wider leading-tight">
                   {s.title}
                 </p>
               </div>
             </div>
-            <p className="font-mono font-bold text-foreground text-2xl">
+            <p className="font-mono type-primary-heading-h2-medium text-foreground">
               {value.toLocaleString('en-IN')}
             </p>
-            <p className={`text-[11px] mt-1 ${s.isWarning ? 'text-rose-500 font-medium' : 'text-muted-foreground'}`}>
+            <p className={`type-primary-label-l2 mt-1 ${s.isWarning ? 'text-destructive font-medium' : 'text-muted-foreground'}`}>
               {s.subtitle}
             </p>
           </div>

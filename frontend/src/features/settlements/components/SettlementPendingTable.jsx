@@ -34,7 +34,7 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort }) => {
   return (
     <th className="px-4 py-3 relative text-left">
       <div className="flex items-center gap-1">
-        <span>{title}</span>
+        <span className="type-primary-body-b2-medium">{title}</span>
         <button type="button" onClick={() => setOpen(!open)} className="p-0.5 rounded hover:bg-accent">
           {currentSort === 'asc' ? <ArrowUp size={14} /> : currentSort === 'desc' ? <ArrowDown size={14} /> : <ChevronsUpDown size={14} className="text-muted-foreground" />}
         </button>
@@ -43,10 +43,10 @@ const SortableHeader = ({ title, sortKey, sortConfig, onSort }) => {
         <>
           <div className="fixed inset-0 z-[99]" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-full mt-1 bg-white border border-border rounded-lg shadow-lg py-1 z-[100] min-w-[120px]">
-            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('asc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowUp size={14} /> Asc
             </button>
-            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-accent w-full text-left">
+            <button onClick={() => handleSort('desc')} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <ArrowDown size={14} /> Desc
             </button>
           </div>
@@ -148,7 +148,7 @@ const SettlementPendingTable = ({
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-border bg-white p-12 text-center text-sm text-muted-foreground">Loading settlements…</div>
+      <div className="rounded-xl border border-border bg-white p-12 text-center type-primary-body-b2 text-muted-foreground">Loading settlements…</div>
     )
   }
 
@@ -173,7 +173,7 @@ const SettlementPendingTable = ({
       ) : (
         <div className="rounded-xl border border-border bg-white">
           <div className="overflow-y-auto max-h-[calc(100vh-250px)] pb-2 pr-1">
-            <table className="w-full min-w-[1100px] text-sm">
+            <table className="w-full min-w-[1100px] type-primary-body-b2">
               <thead className="bg-accent text-left text-muted-foreground sticky top-0">
                 <tr>
                   {isAdmin && (
@@ -216,24 +216,24 @@ const SettlementPendingTable = ({
                       )}
                       <td className="px-4 py-3">
                         <div>
-                          <p className="font-medium text-foreground">{booking.patientName || booking.user?.name || '—'}</p>
-                          <p className="text-xs text-muted-foreground">{booking.phone}</p>
+                          <p className="type-primary-body-b2-medium text-foreground">{booking.patientName || booking.user?.name || '—'}</p>
+                          <p className="type-primary-body-b3 text-muted-foreground">{booking.phone}</p>
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="text-sm text-foreground">{booking.labOwner?.name || '—'}</span>
+                        <span className="type-primary-body-b2 text-foreground">{booking.labOwner?.name || '—'}</span>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="text-sm text-foreground">{booking.test?.title || booking.package?.title || '—'}</span>
+                        <span className="type-primary-body-b2 text-foreground">{booking.test?.title || booking.package?.title || '—'}</span>
                       </td>
                       <td className="px-4 py-3 text-center">
-                        <span className="text-sm text-foreground">1</span>
+                        <span className="type-primary-body-b2 text-foreground">1</span>
                       </td>
-                      <td className="px-4 py-3 font-medium text-foreground">{formatCurrency(booking.paymentAmount)}</td>
+                      <td className="px-4 py-3 type-primary-body-b2-medium text-foreground">{formatCurrency(booking.paymentAmount)}</td>
                       <td className="px-4 py-3">
                         <div>
-                          <span className="font-medium text-foreground">{formatCurrency(booking.labShare)}</span>
-                          <span className="text-xs text-muted-foreground ml-1">
+                          <span className="type-primary-body-b2-medium text-foreground">{formatCurrency(booking.labShare)}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground ml-1">
                             ({booking.commissionType === 'Percentage' 
                               ? `${100 - (booking.commissionValue || 0)}%` 
                               : booking.paymentAmount > 0 
@@ -244,8 +244,8 @@ const SettlementPendingTable = ({
                       </td>
                       <td className="px-4 py-3">
                         <div>
-                          <span className="font-medium text-foreground">{formatCurrency(booking.systemCommission)}</span>
-                          <span className="text-xs text-muted-foreground ml-1">
+                          <span className="type-primary-body-b2-medium text-foreground">{formatCurrency(booking.systemCommission)}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground ml-1">
                             ({booking.commissionType === 'Percentage' 
                               ? `${booking.commissionValue || 0}%` 
                               : booking.paymentAmount > 0 
@@ -255,19 +255,19 @@ const SettlementPendingTable = ({
                         </div>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="text-xs text-muted-foreground">{booking.settlementUTR || '—'}</span>
+                        <span className="type-primary-body-b3 text-muted-foreground">{booking.settlementUTR || '—'}</span>
                       </td>
                       <td className="px-4 py-3">
                         <div>
-                          <span className="text-sm text-foreground">{formatDate(booking.createdAt)}</span>
-                          <span className="text-xs text-muted-foreground block">{formatTime(booking.createdAt)}</span>
+                          <span className="type-primary-body-b2 text-foreground">{formatDate(booking.createdAt)}</span>
+                          <span className="type-primary-body-b3 text-muted-foreground block">{formatTime(booking.createdAt)}</span>
                         </div>
                       </td>
                       <td className="px-4 py-3">
                         {(() => {
                           const statusStyle = STATUS_STYLES[booking.labPaymentStatus] || STATUS_STYLES.Pending
                           return (
-                            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-medium ${statusStyle.bg} ${statusStyle.text}`}>
+                            <span className={`inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 type-primary-body-b3-medium ${statusStyle.bg} ${statusStyle.text}`}>
                               <span className={`w-1.5 h-1.5 rounded-full ${statusStyle.dot}`}></span>
                               {booking.labPaymentStatus || 'Pending'}
                             </span>

@@ -99,8 +99,8 @@ const SidebarPage = ({ page: pageProp }) => {
       <DashboardLayout>
         <div className="max-w-xl mx-auto mt-16 text-center bg-white border border-border rounded-2xl p-8">
           <ShieldAlert className="mx-auto text-destructive mb-4" size={38} />
-          <h1 className="text-xl font-bold text-foreground">Access denied</h1>
-          <p className="text-sm text-muted-foreground mt-2">You do not have permission to view {config.title}.</p>
+          <h1 className="type-primary-heading-h3-medium text-foreground">Access denied</h1>
+          <p className="type-primary-body-b2 text-muted-foreground mt-2">You do not have permission to view {config.title}.</p>
         </div>
       </DashboardLayout>
     )
@@ -193,18 +193,18 @@ const SidebarPage = ({ page: pageProp }) => {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex gap-3">
             <div className="w-11 h-11 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><Icon size={22} /></div>
-            <div><h1 className="text-2xl font-bold text-foreground">{config.title}</h1><p className="mt-1 text-sm text-muted-foreground">{config.description}</p></div>
+            <div><h1 className="type-primary-heading-h1 !font-medium text-foreground">{config.title}</h1><p className="mt-1 type-primary-body-b2 text-muted-foreground">{config.description}</p></div>
           </div>
           <SearchInput value={search} onChange={(event) => setSearch(event.target.value)} placeholder={`Search ${config.title.toLowerCase()}...`} width="w-full sm:w-72" />
         </div>
 
         <div className="bg-white border border-border rounded-xl overflow-hidden">
           {query.isLoading ? <div className="p-12 flex justify-center"><Spinner /></div> : query.isError ? (
-            <p className="p-8 text-center text-sm text-destructive">Unable to load {config.title.toLowerCase()}. Please try again.</p>
+            <p className="p-8 text-center type-primary-body-b2 text-destructive">Unable to load {config.title.toLowerCase()}. Please try again.</p>
           ) : filteredItems.length === 0 ? (
-            <p className="p-12 text-center text-sm text-muted-foreground">{config.emptyMessage || `No ${config.title.toLowerCase()} found.`}</p>
+            <p className="p-12 text-center type-primary-body-b2 text-muted-foreground">{config.emptyMessage || `No ${config.title.toLowerCase()} found.`}</p>
           ) : (
-            <div className="overflow-x-auto"><table className="w-full text-sm"><thead className="bg-accent border-b border-border"><tr>{columns.map((column) => <th key={column} className="px-4 py-3 text-left font-semibold text-muted-foreground capitalize">{column.replace(/([A-Z])/g, ' $1')}</th>)}</tr></thead><tbody>{filteredItems.map((item, index) => <tr key={item._id || item.id || index} className="border-b border-border last:border-0">{columns.map((column) => <td key={column} className="px-4 py-3 text-foreground">{displayValue(item[column])}</td>)}</tr>)}</tbody></table></div>
+            <div className="overflow-x-auto"><table className="w-full type-primary-body-b2"><thead className="bg-accent border-b border-border"><tr>{columns.map((column) => <th key={column} className="px-4 py-3 text-left type-primary-body-b2-medium text-muted-foreground capitalize">{column.replace(/([A-Z])/g, ' $1')}</th>)}</tr></thead><tbody>{filteredItems.map((item, index) => <tr key={item._id || item.id || index} className="border-b border-border last:border-0">{columns.map((column) => <td key={column} className="px-4 py-3 text-foreground">{displayValue(item[column])}</td>)}</tr>)}</tbody></table></div>
           )}
         </div>
       </section>

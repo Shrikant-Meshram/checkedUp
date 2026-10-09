@@ -13,13 +13,13 @@ const StatCard = ({ icon: Icon, borderColor, iconColor, cardBg, title, value, de
         {React.createElement(Icon, { size: 18 })}
       </span>
       <div className="min-w-0 flex-1 space-y-0 text-left">
-        <p className="text-xs text-muted-foreground">{title}</p>
-        <p className="text-xl font-bold leading-tight text-foreground">{value}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{title}</p>
+        <p className="type-primary-heading-h3-medium leading-tight text-foreground">{value}</p>
       </div>
       <div className="h-8 w-px shrink-0 self-stretch my-auto bg-border" />
       <div className="shrink-0 text-right leading-tight">
-        <p className="text-xs text-muted-foreground">{detailTop}</p>
-        <p className="text-xs text-muted-foreground">{detailBottom}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailTop}</p>
+        <p className="type-primary-body-b3 text-muted-foreground">{detailBottom}</p>
       </div>
     </div>
   </button>
@@ -36,9 +36,9 @@ const LabAssistantStatsGrid = ({ bookings, activeSection, setActiveSection }) =>
         <div className="snap-start min-w-[220px] shrink-0">
           <StatCard
             icon={FlaskConical}
-            borderColor="border-blue-200"
-            iconColor="text-blue-500"
-            cardBg="bg-blue-50"
+            borderColor="border-primary/20"
+            iconColor="text-primary"
+            cardBg="bg-primary/5"
             title="Total Tests"
             value={totalTests}
             detailTop="All"
@@ -50,9 +50,9 @@ const LabAssistantStatsGrid = ({ bookings, activeSection, setActiveSection }) =>
         <div className="snap-start min-w-[220px] shrink-0">
           <StatCard
             icon={ClipboardList}
-            borderColor="border-amber-200"
-            iconColor="text-amber-500"
-            cardBg="bg-amber-50"
+            borderColor="border-warning/20"
+            iconColor="text-warning"
+            cardBg="bg-warning/5"
             title="Pending Reports"
             value={pendingReports}
             detailTop="Awaiting"
@@ -64,9 +64,9 @@ const LabAssistantStatsGrid = ({ bookings, activeSection, setActiveSection }) =>
         <div className="snap-start min-w-[220px] shrink-0">
           <StatCard
             icon={CircleCheckBig}
-            borderColor="border-emerald-200"
-            iconColor="text-emerald-500"
-            cardBg="bg-emerald-50"
+            borderColor="border-success/20"
+            iconColor="text-success"
+            cardBg="bg-success/5"
             title="Completed"
             value={completed}
             detailTop="Done"

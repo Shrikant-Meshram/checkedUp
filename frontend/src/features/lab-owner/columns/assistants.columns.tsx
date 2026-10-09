@@ -53,12 +53,12 @@ export const assistantColumns: ColumnDef<AssistantRecord, any>[] = [
         : "AS"
       return (
         <div className="flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center font-bold text-xs shrink-0`}>
+          <div className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center type-primary-body-b3 font-bold shrink-0`}>
             {initials}
           </div>
           <div>
-            <h3 className="text-xs font-medium text-foreground">{assistant.name}</h3>
-            <p className="text-[10px] text-muted-foreground mt-0.5">
+            <h3 className="type-primary-body-b3 font-medium text-foreground">{assistant.name}</h3>
+            <p className="type-primary-body-b3 text-muted-foreground mt-0.5">
               ID: {assistant._id.slice(-6)}
             </p>
           </div>
@@ -73,7 +73,7 @@ export const assistantColumns: ColumnDef<AssistantRecord, any>[] = [
       <DataTableColumnHeader column={column} title="Email" />
     ),
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground">{row.getValue("email")}</span>
+      <span className="type-primary-body-b3 text-muted-foreground">{row.getValue("email")}</span>
     ),
   },
   {
@@ -83,7 +83,7 @@ export const assistantColumns: ColumnDef<AssistantRecord, any>[] = [
       <DataTableColumnHeader column={column} title="Phone" />
     ),
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground">{row.getValue("phone") || "—"}</span>
+      <span className="type-primary-body-b3 text-muted-foreground">{row.getValue("phone") || "—"}</span>
     ),
   },
   {
@@ -96,7 +96,7 @@ export const assistantColumns: ColumnDef<AssistantRecord, any>[] = [
       const role = row.getValue("role") as string
       const isActive = role !== "inactive"
       return (
-        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold ${isActive ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}>
+        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full type-primary-body-b2 font-semibold ${isActive ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}>
           <span className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-green-500" : "bg-red-500"}`}></span>
           {isActive ? "Active" : "Inactive"}
         </div>
@@ -110,7 +110,7 @@ export const assistantColumns: ColumnDef<AssistantRecord, any>[] = [
       <DataTableColumnHeader column={column} title="Created" />
     ),
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground">{formatDate(row.getValue("createdAt"))}</span>
+      <span className="type-primary-body-b3 text-muted-foreground">{formatDate(row.getValue("createdAt"))}</span>
     ),
   },
 ]

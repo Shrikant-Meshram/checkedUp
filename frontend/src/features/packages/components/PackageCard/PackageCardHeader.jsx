@@ -11,7 +11,7 @@ const PackageCardHeader = ({ title, image, isActive }) => {
           <Package size={48} className="text-blue-200" />
         </div>
       )}
-      <span className={`absolute top-2.5 left-2.5 rounded-md px-2 py-0.5 text-[10px] font-semibold ${isActive ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'}`}>
+      <span className={`absolute top-2.5 left-2.5 rounded-md px-2 py-0.5 type-primary-body-b2 md:type-primary-body-b3 ${isActive ? 'bg-success text-white' : 'bg-destructive text-white'}`}>
         {isActive ? 'Active' : 'Inactive'}
       </span>
     </div>

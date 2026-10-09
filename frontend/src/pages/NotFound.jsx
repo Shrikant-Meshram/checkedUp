@@ -12,7 +12,7 @@ export default function NotFound() {
         <div className="absolute top-1/4 -right-20 w-72 h-72 rounded-full border border-border pointer-events-none opacity-50" />
         <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full border border-border pointer-events-none opacity-50" />
         
-        <div className="inline-flex items-center gap-1.5 bg-tertiary px-3 py-1 rounded-full text-[10px] text-tertiary-foreground w-fit mb-6">
+        <div className="inline-flex items-center gap-1.5 bg-tertiary px-3 py-1 rounded-full type-primary-body-b3 text-tertiary-foreground w-fit mb-6">
           <AlertCircle size={12} className="text-secondary" />
           404 Error
         </div>
@@ -22,7 +22,7 @@ export default function NotFound() {
         </h1>
         
         <h2 className="font-serif text-3xl text-tertiary mb-3">Page Not Found</h2>
-        <p className="text-sm text-muted-foreground max-w-sm mx-auto mb-8 leading-relaxed">
+        <p className="type-primary-body-b2 text-muted-foreground max-w-sm mx-auto mb-8 leading-relaxed">
           The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
         </p>
         

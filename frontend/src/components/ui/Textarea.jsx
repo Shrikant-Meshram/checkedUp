@@ -28,7 +28,7 @@ const Textarea = ({
           placeholder={hasFloatingLabel ? ' ' : placeholder}
           className={`
             peer w-full border border-border rounded-lg px-3 py-2.5
-            outline-none focus:border-primary focus:ring-1 focus:ring-primary text-xs text-foreground bg-card resize-none transition
+            outline-none focus:border-primary focus:ring-1 focus:ring-primary type-primary-body-b3 text-foreground bg-card resize-none transition
             ${hasFloatingLabel ? 'pt-4' : ''}
             ${error ? 'border-destructive focus:border-destructive focus:ring-destructive' : ''}
             ${className}
@@ -39,7 +39,7 @@ const Textarea = ({
           <label
             htmlFor={textareaId}
             className={`
-              pointer-events-none absolute left-2.5 top-3 z-10 bg-card px-1 text-xs text-muted-foreground transition-all
+              pointer-events-none absolute left-2.5 top-3 z-10 bg-card px-1 type-primary-body-b3 text-muted-foreground transition-all
               peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-primary
               peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2
               ${error ? 'text-destructive peer-focus:text-destructive' : ''}
@@ -50,7 +50,7 @@ const Textarea = ({
           </label>
         )}
       </div>
-      {error && <p className="text-destructive text-xs mt-1">{error}</p>}
+      {error && <p className="text-destructive type-primary-body-b3 mt-1">{error}</p>}
     </div>
   )
 }
