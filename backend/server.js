@@ -34,6 +34,10 @@ import roleRoutes from "./routes/roleRoutes.js";
 import labOwnerDashboardRoutes from "./routes/labOwnerDashboardRoutes.js";
 import labAssistantDashboardRoutes from "./routes/labAssistantDashboardRoutes.js";
 import patientDashboardRoutes from "./routes/patientDashboardRoutes.js";
+import whatsappRoutes from "./routes/whatsappRoutes.js";
+import whatsappWebhookRoutes from "./routes/whatsappWebhookRoutes.js";
+
+
 
 /* ---------- Env Validation ---------- */
 
@@ -173,6 +177,8 @@ app.use("/api/subcategories", subcategoryRoutes);
 app.use("/api/lab-owner-dashboard", labOwnerDashboardRoutes);
 app.use("/api/lab-assistant-dashboard", labAssistantDashboardRoutes);
 app.use("/api/patient-dashboard", patientDashboardRoutes);
+app.use("/api/whatsapp", whatsappRoutes);
+app.use("/api/whatsapp/webhook",whatsappWebhookRoutes);
 
 /* ---------- 404 ---------- */
 
