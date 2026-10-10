@@ -87,7 +87,7 @@ const TestCardSkeleton = () => (
 
 const TestsPage = () => {
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const { user } = useAuth()
   const [tests, setTests] = useState([])
   const [filteredTests, setFilteredTests] = useState([])
@@ -179,21 +179,43 @@ const TestsPage = () => {
   }, [])
 
   useEffect(() => {
+    const categoryName = searchParams.get('category')
+    const categoryId = searchParams.get('categoryId')
+    if (!categoryName && !categoryId) return
+    if (tests.length === 0) return
+    let name = categoryName
+    if (!name) {
+      const match = tests.find((t) => {
+        const id = typeof t.category === 'object' ? t.category?._id : t.category
+        return id === categoryId
+      })
+      name = typeof match?.category === 'object' ? match?.category?.name : match?.category
+    }
+    if (!name) return
+    setActiveFilters((prev) =>
+      prev.category?.length === 1 && prev.category[0] === name ? prev : { ...prev, category: [name] }
+    )
+  }, [tests, searchParams])
+
+  useEffect(() => {
     if (tests.length > 0) {
       applyFilters(search, activeFilters)
     }
-  }, [tests, searchParams])
+  }, [tests, search, activeFilters, searchParams])
 
   const handleBookNow = (item, type = 'test') => {
+    const redirectTo = `/booking/bookings?book=true&testId=${item._id}`
     if (!user?.token) {
       navigate(ROUTES.LOGIN, {
         state: {
           message: 'Please login to continue booking',
-          redirectTo: '/booking/bookings',
+          redirectTo,
+          selectedItem: item,
+          bookingType: type,
         },
       })
     } else {
-      navigate('/booking/bookings')
+      navigate(redirectTo, { state: { selectedItem: item, bookingType: type } })
     }
   }
 
@@ -205,6 +227,7 @@ const TestsPage = () => {
   }
 
   const clearFilters = () => {
+    setSearchParams({}, { replace: true })
     setSearch('')
     setActiveFilters({})
     setFilteredTests(tests)
@@ -260,7 +283,15 @@ const TestsPage = () => {
             />
           </div>
           <div className="enterprise-container relative z-10">
-            <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground mb-3">All Lab <span className="text-primary">Tests</span></h1>
+            <h1 className="type-primary-heading-h0-mobile-medium md:type-primary-heading-h0-large text-foreground mb-3">
+              {activeFilters.category?.length ? (
+                <>
+                  <span className="capitalize">{activeFilters.category.join(', ')}</span> <span className="text-primary">Tests</span>
+                </>
+              ) : (
+                <>All Lab <span className="text-primary">Tests</span></>
+              )}
+            </h1>
             <p className="type-primary-body-b1 text-muted-foreground max-w-xl mb-4">
               Choose from 1200+ accurate lab tests across multiple health categories.
             </p>
@@ -326,9 +357,7 @@ const TestsPage = () => {
           ) : filteredTests.length === 0 ? (
             <EmptyState
               title="No tests found"
-              description="You haven't added any tests yet. Start by creating a new test to make it available for bookings."
-              actionLabel="+ Add Test"
-              onAction={() => navigate('/admin/tests/new')}
+              description="No tests match your current filters. Try a different search or clear the filters."
             />
           ) : viewMode === 'grid' ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

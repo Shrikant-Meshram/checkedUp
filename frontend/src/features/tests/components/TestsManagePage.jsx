@@ -126,6 +126,7 @@ const DetailRow = ({ label, value, valueClass = 'text-foreground' }) => (
 const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
   if (!test) return null
   const Icon = getTestIcon(test)
+  const description = test.shortDescription || test.description
   return (
     <Modal open={!!test} title="Test Details" onClose={onClose} size="md">
       <div className="flex items-start gap-3">
@@ -144,10 +145,10 @@ const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
         <DetailRow label="Turnaround Time (TAT)" value={getValue(test, ['reportTime', 'tat', 'turnaroundTime'])} />
         <DetailRow label="Method" value={getValue(test, ['method'])} />
       </div>
-      {test.description && (
+      {description && (
         <div className="mt-3 border-t border-border pt-3">
           <p className="type-primary-body-b2 text-muted-foreground">Description</p>
-          <p className="mt-1 type-primary-body-b2 text-foreground">{test.description}</p>
+          <p className="mt-1 type-primary-body-b2 text-foreground">{description}</p>
         </div>
       )}
       <div className="mt-3 divide-y divide-border border-t border-border">

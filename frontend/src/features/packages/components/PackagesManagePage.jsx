@@ -453,9 +453,9 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
                 pkg={pkg}
                 isPatient={isPatient}
                 onView={() => setSelectedPackageId(id)}
-                onEdit={() => handleEdit(pkg)}
-                onDuplicate={() => handleDuplicate(pkg)}
-                onDelete={() => handleDelete(pkg)}
+                onEdit={isPatient ? undefined : () => handleEdit(pkg)}
+                onDuplicate={isPatient ? undefined : () => handleDuplicate(pkg)}
+                onDelete={isPatient ? undefined : () => handleDelete(pkg)}
               />
             )
           })}
