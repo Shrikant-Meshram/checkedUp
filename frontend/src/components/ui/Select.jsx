@@ -19,12 +19,10 @@ const Select = ({
   options = [],
   size = 'default',
   disabled = false,
-  onClick: onClickProp,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValue, setSelectedValue] = useState(value ?? defaultValue ?? '')
-  const [dropdownPos, setDropdownPos] = useState({ top: 0, left: 0, width: 0 })
   const [dropdownStyle, setDropdownStyle] = useState({})
   const containerRef = useRef(null)
   const dropdownRef = useRef(null)
@@ -38,17 +36,6 @@ const Select = ({
       setSelectedValue(value)
     }
   }, [value])
-
-  useEffect(() => {
-    if (isOpen && buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect()
-      setDropdownStyle({
-        top: rect.bottom + 4,
-        left: rect.left,
-        minWidth: rect.width,
-      })
-    }
-  }, [isOpen])
 
   const allOptions = React.useMemo(() => {
     if (options.length > 0) return options
@@ -83,19 +70,32 @@ const Select = ({
   )
 
   const updateDropdownPos = useCallback(() => {
-    if (buttonRef.current) {
-      const rect = buttonRef.current.getBoundingClientRect()
-      const spaceBelow = window.innerHeight - rect.bottom
-      const dropdownHeight = Math.min(allOptions.length * 40 + 8, 240)
-      const openUp = spaceBelow < dropdownHeight + 8 && rect.top > dropdownHeight
-      setDropdownPos({
-        top: openUp ? rect.top + window.scrollY - dropdownHeight - 4 : rect.bottom + window.scrollY + 4,
-        left: rect.left,
-        width: rect.width,
-        openUp,
-      })
+    const button = buttonRef.current
+    if (!button) return
+    const rect = button.getBoundingClientRect()
+    const estimatedHeight = Math.min(allOptions.length * 36 + 8, 240)
+    const spaceBelow = window.innerHeight - rect.bottom
+    const spaceAbove = rect.top
+    const openUp = spaceBelow < estimatedHeight + 8 && spaceAbove > estimatedHeight + 8
+    const style = { left: rect.left, minWidth: rect.width }
+    if (openUp) {
+      style.bottom = window.innerHeight - rect.top + 4
+    } else {
+      style.top = rect.bottom + 4
     }
+    setDropdownStyle(style)
   }, [allOptions.length])
+
+  useEffect(() => {
+    if (isOpen) updateDropdownPos()
+  }, [isOpen, updateDropdownPos])
+
+  useEffect(() => {
+    if (!isOpen) return
+    const handleResize = () => updateDropdownPos()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isOpen, updateDropdownPos])
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -146,10 +146,7 @@ const Select = ({
           type="button"
           disabled={disabled}
           onClick={() => {
-            if (!disabled) {
-              if (!isOpen) updateDropdownPos()
-              setIsOpen(!isOpen)
-            }
+            if (!disabled) setIsOpen(!isOpen)
           }}
           className={`
             peer w-full flex items-center justify-between border rounded-lg bg-white text-left

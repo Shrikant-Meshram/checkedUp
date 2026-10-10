@@ -147,6 +147,14 @@ const Login = () => {
   const bubblesRef = useRef([])
   const posRef = useRef(BUBBLES.map(b => ({ x: b.startX, y: b.startY })))
   const isDesktop = useMediaQuery('(min-width: 768px)')
+  const messageToastShown = useRef(false)
+
+  useEffect(() => {
+    if (location.state?.message && !messageToastShown.current) {
+      messageToastShown.current = true
+      toast.info(location.state.message)
+    }
+  }, [location])
 
   const {
     register,
@@ -195,6 +203,7 @@ const Login = () => {
     try {
       const { data: response } = await loginUser(data)
       login(response)
+      toast.dismiss()
       toast.success('Login Successful')
       if (location.state?.redirectTo) {
         navigate(location.state.redirectTo, {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Eye, Pencil, Copy, Trash2, ShoppingCart } from 'lucide-react'
+import { Eye, Pencil, Copy, Trash2 } from 'lucide-react'
 
 const TestCardFooter = ({ test, isPatient, onView, onEdit, onDuplicate, onDelete, onBook }) => {
   return (
@@ -16,9 +16,9 @@ const TestCardFooter = ({ test, isPatient, onView, onEdit, onDuplicate, onDelete
           <button
             type="button"
             onClick={(e) => { e.stopPropagation(); onBook(test) }}
-            className="rounded p-1 text-muted-foreground hover:text-primary hover:bg-primary/5 transition"
+            className="bg-primary hover:bg-primary/90 text-white rounded-lg px-3 py-1 type-primary-body-b3-medium transition"
           >
-            <ShoppingCart size={14} />
+            Book Now
           </button>
         )}
         <button

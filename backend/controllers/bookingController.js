@@ -8,6 +8,12 @@ import { getDistance } from "geolib";
 import crypto from "crypto";
 import logger from "../Utils/logger.js";
 import MESSAGES from "../Utils/messages.js";
+import {
+  notifyBookingCreated,
+  notifyLabAssigned,
+  notifyAssistantAssigned,
+  notifyReportReady,
+} from "../services/bookingNotificationService.js";
 
 export const createBooking = async (req, res) => {
   try {
@@ -161,6 +167,8 @@ export const createBooking = async (req, res) => {
       }
     }
 
+    notifyBookingCreated(booking, labFound ? nearestLab.phone : null);
+
     res.status(201).json({
       success: true,
       message: labFound
@@ -215,6 +223,11 @@ export const uploadReport = async (req, res) => {
     booking.report = req.file.path;
     booking.status = "Completed";
     await booking.save();
+
+    const reportLabOwner = booking.labOwner
+      ? await User.findById(booking.labOwner).select("phone")
+      : null;
+    notifyReportReady(booking, reportLabOwner?.phone);
 
     res.status(200).json({
       success: true,
@@ -321,6 +334,8 @@ export const assignAssistant = async (req, res) => {
     booking.assignedLabAssistant = assistantId;
     booking.status = "Assigned";
     await booking.save();
+
+    notifyAssistantAssigned(booking, assistant.phone, assistant.name);
 
     res.status(200).json({
       success: true,
@@ -758,6 +773,8 @@ export const updateBookingLab = async (req, res) => {
     }
 
     await booking.save();
+
+    notifyLabAssigned(booking, labOwner.phone, labOwner.name);
 
     res.status(200).json({
       success: true,

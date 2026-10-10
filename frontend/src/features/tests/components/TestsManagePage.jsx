@@ -17,7 +17,6 @@ import {
   Trash2,
   XCircle,
 } from 'lucide-react'
-import Tooltip from '@mui/material/Tooltip'
 import { toast } from 'react-toastify'
 import { useSearchParams } from 'react-router-dom'
 import Can from '@/components/Can'
@@ -126,6 +125,7 @@ const DetailRow = ({ label, value, valueClass = 'text-foreground' }) => (
 const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
   if (!test) return null
   const Icon = getTestIcon(test)
+  const description = test.shortDescription || test.description
   return (
     <Modal open={!!test} title="Test Details" onClose={onClose} size="md">
       <div className="flex items-start gap-3">
@@ -144,10 +144,10 @@ const TestDetailsPanel = ({ test, style, catColor, onClose }) => {
         <DetailRow label="Turnaround Time (TAT)" value={getValue(test, ['reportTime', 'tat', 'turnaroundTime'])} />
         <DetailRow label="Method" value={getValue(test, ['method'])} />
       </div>
-      {test.description && (
+      {description && (
         <div className="mt-3 border-t border-border pt-3">
           <p className="type-primary-body-b2 text-muted-foreground">Description</p>
-          <p className="mt-1 type-primary-body-b2 text-foreground">{test.description}</p>
+          <p className="mt-1 type-primary-body-b2 text-foreground">{description}</p>
         </div>
       )}
       <div className="mt-3 divide-y divide-border border-t border-border">
@@ -374,11 +374,7 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       <div className="flex items-center justify-between gap-3 sm:hidden">
         <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Tests</h1>
-        {isPatient ? (
-          <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
-            <ShoppingCart size={18} className="mr-2" />Book a Test
-          </Button>
-        ) : (
+        {!isPatient && (
           <Can resource="tests" action="create">
             <Button onClick={() => setShowCreate(true)} className="shrink-0">
               <Plus size={18} className="mr-2" />Add Test
@@ -402,11 +398,7 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
             activeCount={activeFilterCount}
           />
           <ViewToggle value={view} onChange={setView} onGridClick={() => setSelectedTestId(null)} />
-          {isPatient ? (
-            <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
-              <ShoppingCart size={18} className="mr-2" />Book a Test
-            </Button>
-          ) : (
+          {!isPatient && (
             <Can resource="tests" action="create">
               <Button onClick={() => setShowCreate(true)} className="shrink-0">
                 <Plus size={18} className="mr-2" />Add Test
@@ -539,15 +531,13 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
                       <td className="px-4 py-3" onClick={(event) => event.stopPropagation()}>
                         <div className="flex items-center gap-1">
                           {isPatient && (
-                            <Tooltip title="Book" arrow placement="top">
-                              <button
-                                type="button"
-                                onClick={(e) => { e.stopPropagation(); setBookModal({ open: true, test }) }}
-                                className="p-1.5 text-primary hover:bg-primary/10 rounded transition"
-                              >
-                                <ShoppingCart size={15} />
-                              </button>
-                            </Tooltip>
+                            <button
+                              type="button"
+                              onClick={(e) => { e.stopPropagation(); setBookModal({ open: true, test }) }}
+                              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-3 py-1 type-primary-body-b3-medium transition"
+                            >
+                              Book Now
+                            </button>
                           )}
                           <button
                             type="button"

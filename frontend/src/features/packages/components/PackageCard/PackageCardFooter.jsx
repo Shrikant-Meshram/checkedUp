@@ -1,7 +1,7 @@
 import React from 'react'
 import { Eye, Pencil, Copy, Trash2 } from 'lucide-react'
 
-const PackageCardFooter = ({ pkg, onView, onEdit, onDuplicate, onDelete }) => {
+const PackageCardFooter = ({ pkg, isPatient, onView, onEdit, onDuplicate, onDelete, onBook }) => {
   return (
     <div className="mt-auto pt-3 border-t border-border flex items-center justify-between px-4 pb-4">
       <span className="type-primary-body-b2 md:type-primary-body-b3 text-muted-foreground flex items-center gap-1">
@@ -12,6 +12,15 @@ const PackageCardFooter = ({ pkg, onView, onEdit, onDuplicate, onDelete }) => {
         NABL Accredited Labs
       </span>
       <div className="flex items-center gap-1">
+        {isPatient && onBook && (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onBook(pkg) }}
+            className="bg-primary hover:bg-primary/90 text-white rounded-lg px-3 py-1 type-primary-body-b3-medium transition"
+          >
+            Book Now
+          </button>
+        )}
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); onView(pkg) }}
