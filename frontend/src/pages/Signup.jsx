@@ -135,6 +135,7 @@ const Signup = () => {
   const bubblesRef = useRef([])
   const posRef = useRef(BUBBLES.map(b => ({ x: b.startX, y: b.startY })))
   const isDesktop = useMediaQuery('(min-width: 768px)')
+  const messageToastShown = useRef(false)
 
   const {
     register,
@@ -190,9 +191,9 @@ const Signup = () => {
       animate()
     }
     
-    if (location.state?.message) {
+    if (location.state?.message && !messageToastShown.current) {
+      messageToastShown.current = true
       toast.info(location.state.message)
-      window.history.replaceState({}, document.title)
     }
 
     return () => {
@@ -204,6 +205,7 @@ const Signup = () => {
     try {
       const { data: response } = await registerUser(data)
       login(response)
+      toast.dismiss()
       toast.success('Account Created Successfully')
       if (location.state?.redirectTo) {
         navigate(location.state.redirectTo, {

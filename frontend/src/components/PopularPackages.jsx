@@ -1,8 +1,10 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Package, ListChecks, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Package, ListChecks, ChevronLeft, ChevronRight, Eye } from 'lucide-react'
 import { ROUTES } from '@/constants/routes'
+import useAuth from '@/hooks/useAuth'
 import { usePackages } from '@/hooks/usePackages'
+import PackageDetailsModal from '@/components/PackageDetailsModal'
 
 const CATEGORY_COLORS = [
   { bg: 'bg-violet-100', text: 'text-violet-700' },
@@ -22,7 +24,7 @@ const getCategoryColor = (name) => {
   return CATEGORY_COLORS[hash % CATEGORY_COLORS.length]
 }
 
-const HomePackageCard = ({ pkg, onClick }) => {
+const HomePackageCard = ({ pkg, onBook, onViewDetails }) => {
   const title = pkg.title || pkg.name || 'Untitled Package'
   const category = pkg.category?.name || pkg.category || 'Uncategorised'
   const catColor = getCategoryColor(category)
@@ -31,7 +33,7 @@ const HomePackageCard = ({ pkg, onClick }) => {
 
   return (
     <article
-      onClick={onClick}
+      onClick={() => onViewDetails(pkg)}
       className="flex-shrink-0 w-[300px] flex flex-col rounded-xl border border-border bg-card shadow-sm transition hover:shadow-md cursor-pointer overflow-hidden snap-start"
     >
       {/* Header */}
@@ -50,8 +52,8 @@ const HomePackageCard = ({ pkg, onClick }) => {
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-4">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="type-primary-body-b2-medium text-foreground leading-snug" title={title}>
+        <div className="flex items-start justify-between gap-2 min-h-[44px]">
+          <h3 className="type-primary-body-b2-medium text-foreground leading-snug line-clamp-2" title={title}>
             {title}
           </h3>
           <span className={`shrink-0 rounded-md px-1.5 py-0.5 type-primary-body-b3-medium ${catColor.bg} ${catColor.text}`}>
@@ -69,25 +71,48 @@ const HomePackageCard = ({ pkg, onClick }) => {
           <span>{testCount} Tests Included</span>
         </div>
 
-        {testsList.length > 0 && (
-          <ul className="mt-3 space-y-1.5 flex-1">
-            {testsList.map((test, i) => (
-              <li key={test?._id || i} className="flex items-center gap-2 type-primary-body-b3 text-foreground">
-                <span className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" className="text-primary" /></svg>
-                </span>
-                <span className="truncate">{test?.name || test?.title || 'Test'}</span>
-              </li>
-            ))}
-            {testCount > 4 && (
-              <li className="type-primary-body-b3-medium text-primary pl-6">+{testCount - 4} more tests</li>
-            )}
-          </ul>
-        )}
+        <ul className="mt-3 space-y-1.5 flex-1">
+          {testsList.map((test, i) => (
+            <li key={test?._id || i} className="flex items-center gap-2 type-primary-body-b3 text-foreground">
+              <span className="w-4 h-4 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" className="text-primary" /></svg>
+              </span>
+              <span className="truncate">{test?.name || test?.title || 'Test'}</span>
+            </li>
+          ))}
+          {testCount > 4 && (
+            <li className="type-primary-body-b3-medium text-primary pl-6">+{testCount - 4} more tests</li>
+          )}
+        </ul>
 
-        <div className="mt-3 pt-3 border-t border-border flex items-center gap-1.5 type-primary-body-b3 text-muted-foreground">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-          NABL Accredited Labs
+        {/* Footer */}
+        <div className="mt-auto pt-3 border-t border-border">
+          <div className="flex items-center gap-1.5 type-primary-body-b3 text-muted-foreground">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            NABL Accredited Labs
+          </div>
+
+          <div className="mt-3 flex items-center gap-2">
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onBook(pkg)
+              }}
+              className="flex-1 bg-primary hover:bg-primary/90 text-white type-primary-body-b2-medium py-1.5 rounded-lg transition"
+            >
+              Book Now
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                onViewDetails(pkg)
+              }}
+              title="View Details"
+              className="w-9 h-9 shrink-0 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center text-primary transition"
+            >
+              <Eye size={18} />
+            </button>
+          </div>
         </div>
       </div>
     </article>
@@ -96,9 +121,11 @@ const HomePackageCard = ({ pkg, onClick }) => {
 
 const PopularPackages = () => {
   const navigate = useNavigate()
+  const { user } = useAuth()
   const scrollRef = useRef(null)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState(null)
 
   const { data: packagesData, isLoading, isError } = usePackages()
 
@@ -108,7 +135,17 @@ const PopularPackages = () => {
   const activePackages = packages.filter((pkg) => pkg.isActive !== false).slice(0, 8)
 
   const handlePackageClick = (pkg) => {
-    navigate(`${ROUTES.PACKAGES}?pkg=${pkg._id}`)
+    const redirectTo = `/booking/bookings?book=true&packageId=${pkg._id}`
+    if (!user?.token) {
+      navigate(ROUTES.LOGIN, {
+        state: {
+          message: 'Please login to continue booking',
+          redirectTo,
+        },
+      })
+    } else {
+      navigate(redirectTo)
+    }
   }
 
   const checkScroll = useCallback(() => {
@@ -204,7 +241,8 @@ const PopularPackages = () => {
               <HomePackageCard
                 key={pkg._id}
                 pkg={pkg}
-                onClick={() => handlePackageClick(pkg)}
+                onBook={handlePackageClick}
+                onViewDetails={setSelectedPackage}
               />
             ))}
           </div>
@@ -228,6 +266,18 @@ const PopularPackages = () => {
           )}
         </div>
       </div>
+
+      {/* Package Details Modal */}
+      {selectedPackage && (
+        <PackageDetailsModal
+          item={selectedPackage}
+          onClose={() => setSelectedPackage(null)}
+          handleBookNow={(pkg) => {
+            setSelectedPackage(null)
+            handlePackageClick(pkg)
+          }}
+        />
+      )}
     </section>
   )
 }

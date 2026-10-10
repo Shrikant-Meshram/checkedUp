@@ -1,5 +1,4 @@
 import React, { useMemo, useState, useCallback, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import {
   ArrowDown,
   ArrowUp,
@@ -12,7 +11,6 @@ import {
   Package,
   Pencil,
   Plus,
-  ShoppingCart,
   Trash2,
   XCircle,
   MoreVertical,
@@ -164,7 +162,6 @@ const PackageDetailsPanel = ({ pkg, onClose }) => {
 }
 
 const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
-  const navigate = useNavigate()
   const { user } = useAuth()
   const isPatient = user?.role === ROLES.PATIENT
   const [searchParams, setSearchParams] = useSearchParams()
@@ -181,7 +178,7 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
   const [filterPanelOpen, setFilterPanelOpen] = useState(null)
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null })
   const [hiddenColumns, setHiddenColumns] = useState({})
-  const [bookModal, setBookModal] = useState({ open: false, test: null })
+  const [bookModal, setBookModal] = useState({ open: false, test: null, pkg: null })
 
   const handleSort = useCallback((key, direction) => {
     setSortConfig((prev) => {
@@ -323,11 +320,7 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
       {/* Mobile Header */}
       <div className="flex items-center justify-between gap-3 sm:hidden">
         <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Packages</h1>
-        {isPatient ? (
-          <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
-            <ShoppingCart size={18} className="mr-2" />Book a Test
-          </Button>
-        ) : (
+        {!isPatient && (
           <Can resource="packages" action="create">
             <Button onClick={() => setShowCreate(true)} className="shrink-0">
               <Plus size={18} className="mr-2" />Add Package
@@ -352,11 +345,7 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
             activeCount={activeFilterCount}
           />
           <ViewToggle value={view} onChange={setView} onGridClick={() => setSelectedPackageId(null)} />
-          {isPatient ? (
-            <Button onClick={() => setBookModal({ open: true, test: null })}>
-              <ShoppingCart size={18} className="mr-2" />Book a Test
-            </Button>
-          ) : (
+          {!isPatient && (
             <Can resource="packages" action="create">
               <Button onClick={() => setShowCreate(true)}>
                 <Plus size={18} className="mr-2" />Add Package
@@ -453,9 +442,10 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
                 pkg={pkg}
                 isPatient={isPatient}
                 onView={() => setSelectedPackageId(id)}
-                onEdit={() => handleEdit(pkg)}
-                onDuplicate={() => handleDuplicate(pkg)}
-                onDelete={() => handleDelete(pkg)}
+                onBook={isPatient ? () => setBookModal({ open: true, test: null, pkg }) : undefined}
+                onEdit={isPatient ? undefined : () => handleEdit(pkg)}
+                onDuplicate={isPatient ? undefined : () => handleDuplicate(pkg)}
+                onDelete={isPatient ? undefined : () => handleDelete(pkg)}
               />
             )
           })}
@@ -571,6 +561,11 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
             <button onClick={(e) => { e.stopPropagation(); setSelectedPackageId(menuOpen.id); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
               <Eye size={14} /> View
             </button>
+            {isPatient && (
+              <button onClick={(e) => { e.stopPropagation(); setBookModal({ open: true, test: null, pkg: menuOpen.pkg }); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2-medium text-primary hover:bg-primary/5 w-full text-left">
+                Book Now
+              </button>
+            )}
             <Can resource="packages" action="update">
               <button onClick={(e) => { e.stopPropagation(); handleEdit(menuOpen.pkg); setMenuOpen(null) }} className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left">
                 <Pencil size={14} /> Edit
@@ -593,8 +588,9 @@ const PackagesManagePage = ({ packages, isLoading, isError, onRefresh }) => {
       {isPatient && (
         <BookTestModal
           open={bookModal.open}
-          onClose={() => setBookModal({ open: false, test: null })}
+          onClose={() => setBookModal({ open: false, test: null, pkg: null })}
           preselectedTest={bookModal.test}
+          preselectedPackage={bookModal.pkg}
           onBooked={onRefresh}
         />
       )}

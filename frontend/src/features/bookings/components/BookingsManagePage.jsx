@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useCallback, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
 import {
   ArrowDown,
   ArrowUp,
@@ -343,6 +343,25 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
   const [cancelling, setCancelling] = useState(false)
   const [rescheduling, setRescheduling] = useState(false)
   const [bookModal, setBookModal] = useState({ open: false, test: null })
+  const [searchParams, setSearchParams] = useSearchParams()
+  const pageLocation = useLocation()
+
+  // Open booking modal when arriving via ?book=true (e.g. from Home categories/packages, Tests page, after login)
+  useEffect(() => {
+    if (searchParams.get('book') !== 'true') return
+    const testId = searchParams.get('testId')
+    const categoryId = searchParams.get('categoryId')
+    const packageId = searchParams.get('packageId')
+    const stateTest = pageLocation.state?.selectedItem?._id ? pageLocation.state.selectedItem : null
+    setBookModal({
+      open: true,
+      test: stateTest || (testId ? { _id: testId } : null),
+      categoryId: categoryId || null,
+      package: packageId ? { _id: packageId } : null,
+    })
+    setSearchParams({}, { replace: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const completedBookings = useMemo(() => bookings.filter((b) => b.status === 'Completed'), [bookings])
   const inProgressBookings = useMemo(() => bookings.filter((b) => !['Completed', 'Cancelled'].includes(b.status)), [bookings])
@@ -1572,6 +1591,8 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
           open={bookModal.open}
           onClose={() => setBookModal({ open: false, test: null })}
           preselectedTest={bookModal.test}
+          preselectedCategory={bookModal.categoryId}
+          preselectedPackage={bookModal.package}
           onBooked={onRefresh}
         />
       )}

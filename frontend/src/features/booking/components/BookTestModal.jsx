@@ -11,7 +11,7 @@ import { createBooking } from '@/services/booking.service'
 import { toast } from 'react-toastify'
 import useBookingFormModal from '../hooks/useBookingFormModal'
 
-export default function BookTestModal({ open, onClose, preselectedTest, onBooked }) {
+export default function BookTestModal({ open, onClose, preselectedTest, preselectedCategory, preselectedPackage, onBooked }) {
   const { errors, validate, onFieldChange, buildErrors } = useBookingFormModal()
 
   const [formData, setFormData] = useState({
@@ -68,6 +68,22 @@ export default function BookTestModal({ open, onClose, preselectedTest, onBooked
     if (!preselectedTest?._id || !open) return
     setFormData((prev) => ({ ...prev, test: preselectedTest._id, package: '' }))
   }, [preselectedTest, open])
+
+  useEffect(() => {
+    if (!preselectedPackage?._id || !open) return
+    setFormData((prev) => ({ ...prev, package: preselectedPackage._id, test: '' }))
+  }, [preselectedPackage, open])
+
+  useEffect(() => {
+    if (!open || !preselectedCategory || preselectedTest?._id || preselectedPackage?._id || tests.length === 0) return
+    const match = tests.find((t) => {
+      const testCategory = typeof t.category === 'object' ? t.category?._id : t.category
+      return testCategory === preselectedCategory
+    })
+    if (match) {
+      setFormData((prev) => ({ ...prev, test: match._id, package: '' }))
+    }
+  }, [open, tests, preselectedCategory, preselectedTest, preselectedPackage])
 
   const handleChange = (e) => {
     const { name, value } = e.target

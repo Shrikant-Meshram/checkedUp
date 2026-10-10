@@ -104,8 +104,8 @@ const TestCategories = () => {
     el.scrollBy({ left: direction === 'left' ? -amount : amount, behavior: 'smooth' })
   }
 
-  const handleCategoryClick = (categoryName) => {
-    navigate(`${ROUTES.TESTS}?category=${encodeURIComponent(categoryName)}`)
+  const handleCategoryClick = (category) => {
+    navigate(`${ROUTES.TESTS}?categoryId=${category._id}&category=${encodeURIComponent(category.name)}`)
   }
 
   if (categoriesLoading) {
@@ -173,7 +173,7 @@ const TestCategories = () => {
               return (
                 <div
                   key={cat._id}
-                  onClick={() => handleCategoryClick(cat.name)}
+                  onClick={() => handleCategoryClick(cat)}
                   className="flex-shrink-0 w-[120px] lg:w-[155px] bg-surface hover:bg-primary/5 border border-border hover:border-primary/20 rounded-2xl p-4 lg:p-5 cursor-pointer transition group text-center snap-start"
                 >
                   <div

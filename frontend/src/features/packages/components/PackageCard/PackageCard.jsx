@@ -15,6 +15,7 @@ const PackageCard = ({
   onEdit,
   onDuplicate,
   onDelete,
+  onBook,
 }) => {
   const title = getTitle(pkg)
   const category = getCategory(pkg)
@@ -42,10 +43,12 @@ const PackageCard = ({
 
       <PackageCardFooter
         pkg={pkg}
+        isPatient={isPatient}
         onView={onView}
         onEdit={onEdit}
         onDuplicate={onDuplicate}
         onDelete={onDelete}
+        onBook={onBook}
       />
     </article>
   )
