@@ -17,7 +17,6 @@ import {
   Trash2,
   XCircle,
 } from 'lucide-react'
-import Tooltip from '@mui/material/Tooltip'
 import { toast } from 'react-toastify'
 import { useSearchParams } from 'react-router-dom'
 import Can from '@/components/Can'
@@ -375,11 +374,7 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
     <section className="mx-auto max-w-[1500px] space-y-4 lg:space-y-5">
       <div className="flex items-center justify-between gap-3 sm:hidden">
         <h1 className="type-primary-heading-h0-mobile-medium text-foreground">Tests</h1>
-        {isPatient ? (
-          <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
-            <ShoppingCart size={18} className="mr-2" />Book a Test
-          </Button>
-        ) : (
+        {!isPatient && (
           <Can resource="tests" action="create">
             <Button onClick={() => setShowCreate(true)} className="shrink-0">
               <Plus size={18} className="mr-2" />Add Test
@@ -403,11 +398,7 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
             activeCount={activeFilterCount}
           />
           <ViewToggle value={view} onChange={setView} onGridClick={() => setSelectedTestId(null)} />
-          {isPatient ? (
-            <Button onClick={() => setBookModal({ open: true, test: null })} className="shrink-0">
-              <ShoppingCart size={18} className="mr-2" />Book a Test
-            </Button>
-          ) : (
+          {!isPatient && (
             <Can resource="tests" action="create">
               <Button onClick={() => setShowCreate(true)} className="shrink-0">
                 <Plus size={18} className="mr-2" />Add Test
@@ -540,15 +531,13 @@ const TestsManagePage = ({ tests, isLoading, isError, onRefresh }) => {
                       <td className="px-4 py-3" onClick={(event) => event.stopPropagation()}>
                         <div className="flex items-center gap-1">
                           {isPatient && (
-                            <Tooltip title="Book" arrow placement="top">
-                              <button
-                                type="button"
-                                onClick={(e) => { e.stopPropagation(); setBookModal({ open: true, test }) }}
-                                className="p-1.5 text-primary hover:bg-primary/10 rounded transition"
-                              >
-                                <ShoppingCart size={15} />
-                              </button>
-                            </Tooltip>
+                            <button
+                              type="button"
+                              onClick={(e) => { e.stopPropagation(); setBookModal({ open: true, test }) }}
+                              className="bg-primary hover:bg-primary/90 text-white rounded-lg px-3 py-1 type-primary-body-b3-medium transition"
+                            >
+                              Book Now
+                            </button>
                           )}
                           <button
                             type="button"
