@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useCallback, useEffect } from 'react'
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
 import {
   ArrowDown,
   ArrowUp,
@@ -52,6 +53,26 @@ import { BookingCard } from './BookingCard'
 
 const PAGE_SIZE = 12
 const PAGE_SIZES = [12, 24, 48]
+
+const LAB_CHANGE_LOCK_STATUSES = [
+  BOOKING_STATUS.REACHED,
+  BOOKING_STATUS.SAMPLE_COLLECTED,
+  'Processing',
+  'Report Ready',
+  BOOKING_STATUS.COMPLETED,
+]
+
+const isLabChangeLocked = (booking) =>
+  Boolean(booking?.assignedLabAssistant) && LAB_CHANGE_LOCK_STATUSES.includes(booking?.status)
+
+const REPORT_UPLOAD_STATUSES = [
+  BOOKING_STATUS.SAMPLE_COLLECTED,
+  'Processing',
+  'Report Ready',
+]
+
+const canUploadReport = (booking) =>
+  REPORT_UPLOAD_STATUSES.includes(booking?.status) && booking?.paymentStatus === PAYMENT_STATUS.PAID
 
 const STATUS_STYLES = {
   Pending: { bg: 'bg-warning/10', text: 'text-warning', dot: 'bg-warning' },
@@ -317,7 +338,26 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
   const [selectedLab, setSelectedLab] = useState('')
   const [labOwners, setLabOwners] = useState([])
   const [savingLab, setSavingLab] = useState(false)
-  const [assistants, setAssistants] = useState([])
+  const assistantsQuery = useQuery({
+    queryKey: ['my-assistants', user?._id],
+    queryFn: () => getMyAssistants(),
+    enabled: Boolean(isLabOwner || isAdmin),
+    retry: 2,
+    staleTime: 60 * 1000,
+  })
+  const assistants = useMemo(() => {
+    const list = assistantsQuery.data?.data
+    return Array.isArray(list) ? list : []
+  }, [assistantsQuery.data])
+
+  useEffect(() => {
+    if (assistantsQuery.error) {
+      console.error(
+        'Failed to load assistants:',
+        assistantsQuery.error?.response?.status || assistantsQuery.error?.message
+      )
+    }
+  }, [assistantsQuery.error])
   const [markingReachedId, setMarkingReachedId] = useState(null)
   const [showSampleModal, setShowSampleModal] = useState(false)
   const [selectedBookingForSample, setSelectedBookingForSample] = useState(null)
@@ -327,6 +367,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
   const [showPaymentModal, setShowPaymentModal] = useState(false)
   const [paymentBooking, setPaymentBooking] = useState(null)
   const [paymentReceipt, setPaymentReceipt] = useState(null)
+  const [paymentMethod, setPaymentMethod] = useState('UPI')
   const [uploadingPayment, setUploadingPayment] = useState(false)
   const [paymentSetting, setPaymentSetting] = useState(null)
   const [reportModalBooking, setReportModalBooking] = useState(null)
@@ -489,6 +530,10 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
   }, [onRefresh])
 
   const openEditModal = useCallback((booking) => {
+    if (isLabChangeLocked(booking)) {
+      toast.info('Lab cannot be changed after assistant reaches the location')
+      return
+    }
     setSelectedBookingForEdit(booking)
     setSelectedLab(booking.labOwner?._id || '')
     setShowEditModal(true)
@@ -496,6 +541,10 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
 
   const handleUpdateLab = useCallback(async () => {
     if (!selectedBookingForEdit || !selectedLab) return
+    if (isLabChangeLocked(selectedBookingForEdit)) {
+      toast.info('Lab cannot be changed after assistant reaches the location')
+      return
+    }
     try {
       setSavingLab(true)
       await updateBookingLab(selectedBookingForEdit._id, selectedLab)
@@ -512,7 +561,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
   }, [selectedBookingForEdit, selectedLab, onRefresh])
 
   useEffect(() => {
-    if (showEditModal && isAdmin) {
+    if (isAdmin) {
       getAllLabOwners()
         .then(({ data }) => {
           const list = data?.data || data?.labOwners || data || []
@@ -520,16 +569,23 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
         })
         .catch(() => setLabOwners([]))
     }
-  }, [showEditModal, isAdmin])
+  }, [isAdmin])
 
-  useEffect(() => {
-    getMyAssistants()
-      .then(({ data }) => {
-        const list = data?.data || data || []
-        setAssistants(Array.isArray(list) ? list : [])
-      })
-      .catch(() => setAssistants([]))
-  }, [])
+  const handleAssignLab = useCallback(async (bookingId, labOwnerId) => {
+    if (!labOwnerId) return
+    const booking = bookings.find((b) => b._id === bookingId)
+    if (booking && isLabChangeLocked(booking)) {
+      toast.info('Lab cannot be changed after assistant reaches the location')
+      return
+    }
+    try {
+      await updateBookingLab(bookingId, labOwnerId)
+      toast.success('Lab assigned successfully')
+      if (onRefresh) onRefresh()
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Failed to assign lab')
+    }
+  }, [bookings, onRefresh])
 
   const handleAssignAssistant = useCallback(async (bookingId, assistantId) => {
     if (!assistantId) return
@@ -587,6 +643,8 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
 
   const handlePayment = async (booking) => {
     setPaymentBooking(booking)
+    setPaymentMethod('UPI')
+    setPaymentReceipt(null)
     try {
       const { data } = await getPaymentSetting()
       setPaymentSetting(data.data)
@@ -597,19 +655,23 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
   }
 
   const handlePaymentDone = async () => {
-    if (!paymentReceipt) {
+    if (paymentMethod !== 'Cash' && !paymentReceipt) {
       toast.error('Please upload payment receipt.')
       return
     }
     try {
       setUploadingPayment(true)
       const formData = new FormData()
-      formData.append('receipt', paymentReceipt)
+      formData.append('paymentMethod', paymentMethod)
+      if (paymentReceipt) {
+        formData.append('receipt', paymentReceipt)
+      }
       const res = await uploadPaymentReceipt(paymentBooking._id, formData)
       toast.success(res.data.message)
       setShowPaymentModal(false)
       setPaymentReceipt(null)
       setPaymentBooking(null)
+      setPaymentMethod('UPI')
       if (onRefresh) onRefresh()
     } catch (err) {
       toast.error(err.response?.data?.message || 'Upload failed')
@@ -871,6 +933,10 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                 onManageBooking={openManageModal}
                 onAssignAssistant={handleAssignAssistant}
                 assistants={assistants}
+                labOwners={labOwners}
+                onAssignLab={handleAssignLab}
+                onUploadReport={handleUploadReport}
+                uploadingReportId={uploadingReportId}
                 onMenuToggle={(e, b, cardId) => {
                   if (menuOpen?.id === cardId) {
                     setMenuOpen(null)
@@ -1066,7 +1132,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         </td>
                         )}
                         <td className="px-4 py-3">
-                          {(booking.status === 'Assigned' || booking.status === 'Pending') ? (
+                          {isLabOwner && (booking.status === 'Assigned' || booking.status === 'Pending') ? (
                             <Select
                               value={booking.assignedLabAssistant?._id || ""}
                               onChange={(e) => { e.stopPropagation(); handleAssignAssistant(booking._id, e.target.value) }}
@@ -1351,7 +1417,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                       openEditModal(menuOpen.booking)
                       setMenuOpen(null)
                     }}
-                    disabled={menuOpen.booking?.status === BOOKING_STATUS.COMPLETED || menuOpen.booking?.status === BOOKING_STATUS.CANCELLED}
+                    disabled={isLabChangeLocked(menuOpen.booking) || menuOpen.booking?.status === BOOKING_STATUS.COMPLETED || menuOpen.booking?.status === BOOKING_STATUS.CANCELLED}
                     className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Pencil size={14} className="text-warning" /> Edit Lab
@@ -1376,6 +1442,10 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
+                        if (!canUploadReport(menuOpen.booking)) {
+                          toast.info('Report can only be uploaded after payment is collected and sample is collected')
+                          return
+                        }
                         const input = document.createElement('input')
                         input.type = 'file'
                         input.accept = '.pdf,.jpg,.jpeg,.png'
@@ -1388,7 +1458,7 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
                         input.click()
                         setMenuOpen(null)
                       }}
-                      disabled={uploadingReportId === menuOpen.booking?._id}
+                      disabled={uploadingReportId === menuOpen.booking?._id || !canUploadReport(menuOpen.booking)}
                       className="flex items-center gap-2 px-3 py-2 type-primary-body-b2 text-foreground hover:bg-accent w-full text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <span className="inline-flex items-center justify-center size-6 rounded-md bg-success/10 text-success">
@@ -1484,77 +1554,107 @@ const BookingsManagePage = ({ bookings, isLoading, isError, onRefresh, user: use
           onClose={() => {
             setShowPaymentModal(false)
             setPaymentReceipt(null)
+            setPaymentMethod('UPI')
           }}
           size="md"
         >
-          {paymentSetting?.qrImage && (
+          <div className="flex gap-2 mb-3">
+            <button
+              type="button"
+              onClick={() => setPaymentMethod('UPI')}
+              className={`flex-1 rounded-lg border-2 px-3 py-2 type-primary-body-b3-medium transition ${
+                paymentMethod === 'UPI'
+                  ? 'border-primary bg-primary/10 text-primary'
+                  : 'border-border text-muted-foreground hover:bg-accent'
+              }`}
+            >
+              UPI
+            </button>
+            <button
+              type="button"
+              onClick={() => setPaymentMethod('Cash')}
+              className={`flex-1 rounded-lg border-2 px-3 py-2 type-primary-body-b3-medium transition ${
+                paymentMethod === 'Cash'
+                  ? 'border-primary bg-primary/10 text-primary'
+                  : 'border-border text-muted-foreground hover:bg-accent'
+              }`}
+            >
+              Cash
+            </button>
+          </div>
+          {paymentMethod === 'UPI' && paymentSetting?.qrImage && (
             <div className="flex justify-center">
-              <img src={paymentSetting.qrImage} alt="" className="w-64 rounded-2xl border" />
+              <img src={paymentSetting.qrImage} alt="" className="w-40 h-40 rounded-xl border" />
             </div>
           )}
-          <div className="mt-6 space-y-2">
-            <p className="type-primary-body-b2"><strong>Amount:</strong> ₹{paymentBooking?.test?.price || paymentBooking?.package?.price}</p>
-          </div>
-          <div className="mt-5">
-            <h3 className="type-primary-heading-h3-medium mb-3">Upload Payment Receipt</h3>
-            <div className="grid grid-cols-2 gap-3">
-              <label className="border-2 border-dashed border-primary/30 rounded-2xl p-4 cursor-pointer hover:bg-primary/5 transition">
-                <input
-                  type="file"
-                  accept="image/*"
-                  capture="environment"
-                  hidden
-                  onChange={(e) => {
-                    if (e.target.files[0]) setPaymentReceipt(e.target.files[0])
-                  }}
-                />
-                <div className="flex flex-col items-center">
-                  <div className="text-3xl">📷</div>
-                  <p className="mt-2 type-primary-body-b2-medium">Capture</p>
-                </div>
-              </label>
-              <label className="border-2 border-dashed border-success/30 rounded-2xl p-4 cursor-pointer hover:bg-success/5 transition">
-                <input
-                  type="file"
-                  accept="image/*,.pdf"
-                  hidden
-                  onChange={(e) => {
-                    if (e.target.files[0]) setPaymentReceipt(e.target.files[0])
-                  }}
-                />
-                <div className="flex flex-col items-center">
-                  <div className="text-3xl">🖼️</div>
-                  <p className="mt-2 type-primary-body-b2-medium">Upload</p>
-                </div>
-              </label>
+          {paymentMethod === 'Cash' && (
+            <div className="rounded-xl border-2 border-dashed border-success/40 bg-success/5 p-4 text-center">
+              <p className="type-primary-body-b2-medium text-foreground">Cash Payment</p>
+              <p className="mt-1 type-primary-body-b3 text-muted-foreground">
+                Collect ₹{paymentBooking?.totalAmount || paymentBooking?.test?.price || paymentBooking?.package?.price} in cash
+              </p>
             </div>
-            {paymentReceipt && (
-              <div className="mt-4 p-3 rounded-xl bg-primary/5 border">
-                <p className="type-primary-body-b2-medium">{paymentReceipt.name}</p>
-                {paymentReceipt.type.startsWith('image/') && (
-                  <img
-                    src={URL.createObjectURL(paymentReceipt)}
-                    alt=""
-                    className="w-28 h-28 object-cover rounded-lg mt-3 border"
-                  />
-                )}
-              </div>
-            )}
+          )}
+          <div className="mt-3 space-y-1">
+            <p className="type-primary-body-b2"><strong>Amount:</strong> ₹{paymentBooking?.totalAmount || paymentBooking?.test?.price || paymentBooking?.package?.price}</p>
+            <p className="type-primary-body-b3 text-muted-foreground"><strong>Method:</strong> {paymentMethod}</p>
           </div>
-          <div className="grid grid-cols-2 gap-3 mt-5">
+          {paymentMethod === 'UPI' && (
+            <div className="mt-3">
+              <h3 className="type-primary-body-b2-medium mb-2">Upload Payment Receipt</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <label className="border-2 border-dashed border-primary/30 rounded-xl p-3 cursor-pointer hover:bg-primary/5 transition">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    hidden
+                    onChange={(e) => {
+                      if (e.target.files[0]) setPaymentReceipt(e.target.files[0])
+                    }}
+                  />
+                  <div className="flex flex-col items-center">
+                    <div className="text-2xl">📷</div>
+                    <p className="mt-1 type-primary-body-b3-medium">Capture</p>
+                  </div>
+                </label>
+                <label className="border-2 border-dashed border-success/30 rounded-xl p-3 cursor-pointer hover:bg-success/5 transition">
+                  <input
+                    type="file"
+                    accept="image/*,.pdf"
+                    hidden
+                    onChange={(e) => {
+                      if (e.target.files[0]) setPaymentReceipt(e.target.files[0])
+                    }}
+                  />
+                  <div className="flex flex-col items-center">
+                    <div className="text-2xl">🖼️</div>
+                    <p className="mt-1 type-primary-body-b3-medium">Upload</p>
+                  </div>
+                </label>
+              </div>
+              {paymentReceipt && (
+                <div className="mt-2 p-2 rounded-lg bg-primary/5 border">
+                  <p className="type-primary-body-b3-medium truncate">{paymentReceipt.name}</p>
+                </div>
+              )}
+            </div>
+          )}
+          <div className="grid grid-cols-2 gap-2 mt-4">
             <Button
               variant="secondary"
               fullWidth
               onClick={() => {
                 setShowPaymentModal(false)
                 setPaymentReceipt(null)
+                setPaymentMethod('UPI')
               }}
             >
               Cancel
             </Button>
             <Button
               onClick={handlePaymentDone}
-              disabled={!paymentReceipt}
+              disabled={paymentMethod !== 'Cash' && !paymentReceipt}
               loading={uploadingPayment}
               fullWidth
               variant="primary"

@@ -214,6 +214,19 @@ export const uploadReport = async (req, res) => {
         message: "Booking Not Found",
       });
     }
+    const reportUploadStatuses = ["Sample Collected", "Processing", "Report Ready"];
+    if (!reportUploadStatuses.includes(booking.status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Report can only be uploaded after sample collection",
+      });
+    }
+    if (booking.paymentStatus !== "Paid") {
+      return res.status(400).json({
+        success: false,
+        message: "Report can only be uploaded after payment is collected",
+      });
+    }
     if (!req.file) {
       return res.status(400).json({
         success: false,
@@ -475,7 +488,9 @@ export const markPaymentDone = async (req, res) => {
       });
     }
 
-    if (!req.file) {
+    const paymentMethod = req.body.paymentMethod || "UPI";
+
+    if (paymentMethod !== "Cash" && !req.file) {
       return res.status(400).json({
         success: false,
         message: "Please upload payment receipt.",
@@ -509,7 +524,10 @@ export const markPaymentDone = async (req, res) => {
 
     booking.systemCommission = Number(commissionAmount.toFixed(2));
     booking.labShare = Number((amount - commissionAmount).toFixed(2));
-    booking.paymentScreenshot = req.file.path;
+    if (req.file) {
+      booking.paymentScreenshot = req.file.path;
+    }
+    booking.paymentMethod = paymentMethod;
     booking.paymentStatus = "Paid";
     booking.labPaymentStatus = "Pending";
     booking.paidAt = new Date();
@@ -751,6 +769,14 @@ export const updateBookingLab = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: "Booking Not Found",
+      });
+    }
+
+    const labChangeLockStatuses = ["Reached", "Sample Collected", "Processing", "Report Ready", "Completed"];
+    if (booking.assignedLabAssistant && labChangeLockStatuses.includes(booking.status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Lab cannot be changed after assistant reaches the location",
       });
     }
 

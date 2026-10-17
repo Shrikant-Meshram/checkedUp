@@ -11,6 +11,7 @@ import {
   Users,
   Building2,
   Landmark,
+  BookOpen,
 } from 'lucide-react'
 
 const page = (title, description, icon, permission, dataSource, emptyMessage) => ({
@@ -37,6 +38,7 @@ export const ALL_PAGES = {
   'upload-reports': page('Upload Reports', 'Select a booking to upload its laboratory report.', Upload, { resource: 'bookings', action: 'update' }, 'allBookings'),
   'lab-profile': page('Lab Profile', 'Review your laboratory account and profile information.', UserCog, { resource: 'lab_owners', action: 'read' }, 'labProfile'),
   'upload-prescription': page('Upload Prescription', 'Attach a prescription to a booking.', Upload, { resource: 'bookings', action: 'create' }, 'myBookings'),
+  'help-manual': page('Help Manual', 'Step-by-step guide for using the platform.', BookOpen, null, 'helpManual'),
 }
 
 const ROLE_DATA_SOURCE_OVERRIDES = {

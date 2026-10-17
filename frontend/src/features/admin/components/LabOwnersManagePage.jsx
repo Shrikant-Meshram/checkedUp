@@ -331,7 +331,7 @@ const LabOwnersManagePage = ({ labOwners, isLoading, isError, onRefresh }) => {
       setForm(emptyForm)
       setLabCertificateFile(null)
       setLabRegistrationFile(null)
-      setOtherDocFile(null)
+      setOtherDocsFiles([])
       setErrors({})
       onRefresh()
     } catch (err) {

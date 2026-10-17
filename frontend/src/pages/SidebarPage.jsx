@@ -24,6 +24,7 @@ import SettlementDashboard from '@/features/settlements/components/SettlementDas
 import ReportsManagePage from '@/features/reports/components/ReportsManagePage'
 import SamplePickupsManagePage from '@/features/sample-pickups/components/SamplePickupsManagePage'
 import UploadReportsManagePage from '@/features/upload-reports/components/UploadReportsManagePage'
+import HelpManual from '@/features/help/components/HelpManual'
 
 const sources = {
   tests: getAllTests,
@@ -74,6 +75,15 @@ const SidebarPage = ({ page: pageProp }) => {
     return (
       <DashboardLayout>
         <SettlementDashboard />
+      </DashboardLayout>
+    )
+  }
+
+  // Handle help manual page separately (static content, no data fetch)
+  if (slug === 'help-manual') {
+    return (
+      <DashboardLayout>
+        <HelpManual />
       </DashboardLayout>
     )
   }
