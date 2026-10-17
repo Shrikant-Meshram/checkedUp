@@ -42,6 +42,7 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
     totalAmount: booking.paymentAmount || 0,
     labShare: booking.labShare || 0,
     commission: booking.systemCommission || 0,
+    paymentMethod: booking.paymentMethod || '—',
   } : summary
 
   return (
@@ -71,6 +72,10 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
             <div>
               <p className="type-primary-body-b3 text-muted-foreground">Date</p>
               <p className="type-primary-body-b2-medium">{formatDate(displaySummary.settledAt || booking?.createdAt)}</p>
+            </div>
+            <div>
+              <p className="type-primary-body-b3 text-muted-foreground">Payment Method</p>
+              <p className="type-primary-body-b2-medium">{booking?.paymentMethod || displayBookings[0]?.paymentMethod || '—'}</p>
             </div>
             {!isPending && (
               <>
@@ -137,6 +142,7 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
                     <tr>
                       <th className="px-3 py-2 type-primary-body-b3-medium">Patient</th>
                       <th className="px-3 py-2 type-primary-body-b3-medium">Test / Package</th>
+                      <th className="px-3 py-2 type-primary-body-b3-medium">Payment Method</th>
                       <th className="px-3 py-2 type-primary-body-b3-medium text-right">Amount</th>
                       <th className="px-3 py-2 type-primary-body-b3-medium text-right">Lab Share</th>
                       <th className="px-3 py-2 type-primary-body-b3-medium text-right">Commission</th>
@@ -150,6 +156,7 @@ const SettlementDetailModal = ({ open, onClose, booking, isAdmin }) => {
                           <p className="type-primary-body-b3 text-muted-foreground">{b.phone}</p>
                         </td>
                         <td className="px-3 py-2">{b.test?.title || b.package?.title || '—'}</td>
+                        <td className="px-3 py-2">{b.paymentMethod || '—'}</td>
                         <td className="px-3 py-2 text-right">{formatCurrency(b.paymentAmount)}</td>
                         <td className="px-3 py-2 text-right">{formatCurrency(b.labShare)}</td>
                         <td className="px-3 py-2 text-right">{formatCurrency(b.systemCommission || b.commission)}</td>

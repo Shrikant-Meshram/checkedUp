@@ -13,6 +13,7 @@ import {
   Upload,
   UserCog,
   Landmark,
+  BookOpen,
 } from 'lucide-react'
 
 const ROLE_PREFIX = {
@@ -175,6 +176,16 @@ export const ALL_MENU_ITEMS = [
     permission: { resource: 'roles', action: 'read' },
     routes: {
       admin: '/admin/settings',
+    },
+  },
+  {
+    label: 'Help Manual',
+    icon: BookOpen,
+    routes: {
+      admin: '/admin/help-manual',
+      lab_owner: '/lab-owner/help-manual',
+      lab_assistant: '/lab-assistant/help-manual',
+      patient: '/booking/help-manual',
     },
   },
 ]

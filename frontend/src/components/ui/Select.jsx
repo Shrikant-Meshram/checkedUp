@@ -15,6 +15,7 @@ const Select = ({
   value,
   defaultValue,
   onChange,
+  onClick: onButtonClick,
   placeholder,
   options = [],
   size = 'default',
@@ -145,9 +146,6 @@ const Select = ({
           id={selectId}
           type="button"
           disabled={disabled}
-          onClick={() => {
-            if (!disabled) setIsOpen(!isOpen)
-          }}
           className={`
             peer w-full flex items-center justify-between border rounded-lg bg-white text-left
             outline-none focus:border-primary focus:ring-1 focus:ring-primary
@@ -163,6 +161,10 @@ const Select = ({
           aria-haspopup="listbox"
           aria-expanded={isOpen}
           {...props}
+          onClick={(e) => {
+            onButtonClick?.(e)
+            if (!disabled) setIsOpen(!isOpen)
+          }}
         >
           <span className="truncate">{displayText}</span>
         </button>

@@ -13,6 +13,20 @@ export const uploadReport = async (req, res) => {
       });
     }
 
+    const reportUploadStatuses = ["Sample Collected", "Processing", "Report Ready"];
+    if (!reportUploadStatuses.includes(booking.status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Report can only be uploaded after sample collection",
+      });
+    }
+    if (booking.paymentStatus !== "Paid") {
+      return res.status(400).json({
+        success: false,
+        message: "Report can only be uploaded after payment is collected",
+      });
+    }
+
     booking.report = req.file.path;
     booking.status = "Completed";
     booking.assignedLabAssistant = req.user._id;
