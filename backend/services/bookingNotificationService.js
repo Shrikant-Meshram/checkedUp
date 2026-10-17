@@ -42,11 +42,19 @@ const bookingFields = (booking) => ({
 
 /**
  * New booking received.
- * Notifies: assigned lab owner (if any) + all admins. No patient message.
+ * Notifies: assigned lab owner (if any) + all admins + the patient.
  */
 export const notifyBookingCreated = async (booking, labOwnerPhone) => {
   try {
     const { bookingId, patientName, dateTime, amount } = bookingFields(booking);
+
+    if (booking.phone) {
+      await safeSend(booking.phone, {
+        templateName: "booking_created_patient",
+        bodyParams: [bookingId, patientName, dateTime, amount],
+        fallbackText: `✅ Your Booking is Done\n\nBooking ID: ${bookingId}\nPatient: ${patientName}\nDate: ${dateTime}\nAmount: Rs.${amount}\n\nWe will notify you once your sample is collected.`,
+      });
+    }
 
     if (labOwnerPhone) {
       await safeSend(labOwnerPhone, {
@@ -117,11 +125,19 @@ export const notifyAssistantAssigned = async (booking, assistantPhone, assistant
 
 /**
  * Report uploaded / booking completed.
- * Notifies: lab owner + all admins. No patient message.
+ * Notifies: lab owner + all admins + the patient.
  */
 export const notifyReportReady = async (booking, labOwnerPhone) => {
   try {
     const { bookingId, patientName, dateTime } = bookingFields(booking);
+
+    if (booking.phone) {
+      await safeSend(booking.phone, {
+        templateName: "report_ready_patient",
+        bodyParams: [bookingId, patientName, dateTime],
+        fallbackText: `📄 Your Report is Ready\n\nBooking ID: ${bookingId}\nPatient: ${patientName}\nDate: ${dateTime}\n\nPlease contact your lab to collect the report.`,
+      });
+    }
 
     if (labOwnerPhone) {
       await safeSend(labOwnerPhone, {

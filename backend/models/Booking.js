@@ -244,7 +244,7 @@ paymentMethod: {
     "Card",
     "Online"
   ],
-  default: "Cash"
+  default: "UPI"
 },
 
 // Settlement with Lab

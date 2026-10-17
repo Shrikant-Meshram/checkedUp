@@ -219,6 +219,7 @@ export const getSettlementDetails = async (req, res) => {
       test: booking.test,
       package: booking.package,
       paymentAmount: booking.paymentAmount,
+      paymentMethod: booking.paymentMethod,
       labShare: booking.labShare,
       commission: booking.systemCommission,
       paymentStatus: booking.paymentStatus,

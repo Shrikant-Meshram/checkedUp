@@ -56,13 +56,13 @@ export const sendWhatsAppText = async (to, message) => {
  * @param {string} to         - Recipient phone (with country code, e.g. "919876543210")
  * @param {string} templateName - Name of the approved template
  * @param {string[]} bodyParams - Positional body parameters ({{1}}, {{2}}, ...)
- * @param {string} languageCode - Template language (default "en")
+ * @param {string} languageCode - Template language (default "en_US")
  */
 export const sendWhatsAppTemplate = async (
   to,
   templateName,
   bodyParams = [],
-  languageCode = "en"
+  languageCode = "en_US"
 ) => {
   const payload = {
     messaging_product: "whatsapp",
@@ -105,7 +105,7 @@ export const sendWhatsAppTemplate = async (
  */
 export const sendWhatsAppSmart = async (
   to,
-  { templateName, bodyParams = [], fallbackText, languageCode = "en" }
+  { templateName, bodyParams = [], fallbackText, languageCode = "en_US" }
 ) => {
   if (templateName) {
     try {
